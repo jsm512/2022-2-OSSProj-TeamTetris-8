@@ -14,7 +14,7 @@ BLUE        = (  0,   0, 155)
 LIGHTBLUE   = ( 20,  20, 175)
 YELLOW      = (155, 155,   0)
 LIGHTYELLOW = (175, 175,  20)
-testcode
+
 class Tetris:
 
     def __init__(self):
