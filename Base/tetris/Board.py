@@ -142,7 +142,7 @@ class Board:
     def delete_lines(self):
         remove = [y for y, row in enumerate(self.board) if all(row)]
         for y in remove:
-            line_sound = pygame.mixer.Sound("OSD_game-master/tetris/assets/sounds/Line_Clear.wav")
+            line_sound = pygame.mixer.Sound("2022-2-OSSProj-TeamTetris-8/Base/tetris/assets/sounds/Line_Clear.wav")
             line_sound.play()
             self.delete_line(y)
             self.score += 10 * self.level
@@ -207,16 +207,16 @@ class Board:
         self.draw_blocks(self.board)
         pygame.draw.rect(self.screen, WHITE, Rect(250, 0, 350, 450))
         self.draw_next_piece(self.next_piece)
-        next_text = pygame.font.Font('OSD_game-master/tetris/assets/Roboto-Bold.ttf', 18).render('NEXT', True, BLACK)
-        skill_text = pygame.font.Font('OSD_game-master/tetris/assets/Roboto-Bold.ttf', 18).render('SKILL', True, BLACK)
-        skill_value = pygame.font.Font('OSD_game-master/tetris/assets/Roboto-Bold.ttf', 16).render(str(self.skill)+'%', True, BLACK)
-        score_text = pygame.font.Font('OSD_game-master/tetris/assets/Roboto-Bold.ttf', 18).render('SCORE', True, BLACK)
-        score_value = pygame.font.Font('OSD_game-master/tetris/assets/Roboto-Bold.ttf', 16).render(str(self.score), True, BLACK)
-        level_text = pygame.font.Font('OSD_game-master/tetris/assets/Roboto-Bold.ttf', 18).render('LEVEL', True, BLACK)
-        level_value = pygame.font.Font('OSD_game-master/tetris/assets/Roboto-Bold.ttf', 16).render(str(self.level), True, BLACK)
-        goal_text = pygame.font.Font('OSD_game-master/tetris/assets/Roboto-Bold.ttf', 18).render('GOAL', True, BLACK)
-        goal_value = pygame.font.Font('OSD_game-master/tetris/assets/Roboto-Bold.ttf', 16).render(str(self.goal), True, BLACK)
-        time_text = pygame.font.Font('OSD_game-master/tetris/assets/Roboto-Bold.ttf', 14).render(str(nowTime), True, BLACK)
+        next_text = pygame.font.Font('2022-2-OSSProj-TeamTetris-8/Base/tetris/assets/Roboto-Bold.ttf', 18).render('NEXT', True, BLACK)
+        skill_text = pygame.font.Font('2022-2-OSSProj-TeamTetris-8/Base/tetris/assets/Roboto-Bold.ttf', 18).render('SKILL', True, BLACK)
+        skill_value = pygame.font.Font('2022-2-OSSProj-TeamTetris-8/Base/tetris/assets/Roboto-Bold.ttf', 16).render(str(self.skill)+'%', True, BLACK)
+        score_text = pygame.font.Font('2022-2-OSSProj-TeamTetris-8/Base/tetris/assets/Roboto-Bold.ttf', 18).render('SCORE', True, BLACK)
+        score_value = pygame.font.Font('2022-2-OSSProj-TeamTetris-8/Base/tetris/assets/Roboto-Bold.ttf', 16).render(str(self.score), True, BLACK)
+        level_text = pygame.font.Font('2022-2-OSSProj-TeamTetris-8/Base/tetris/assets/Roboto-Bold.ttf', 18).render('LEVEL', True, BLACK)
+        level_value = pygame.font.Font('2022-2-OSSProj-TeamTetris-8/Base/tetris/assets/Roboto-Bold.ttf', 16).render(str(self.level), True, BLACK)
+        goal_text = pygame.font.Font('2022-2-OSSProj-TeamTetris-8/Base/tetris/assets/Roboto-Bold.ttf', 18).render('GOAL', True, BLACK)
+        goal_value = pygame.font.Font('2022-2-OSSProj-TeamTetris-8/Base/tetris/assets/Roboto-Bold.ttf', 16).render(str(self.goal), True, BLACK)
+        time_text = pygame.font.Font('2022-2-OSSProj-TeamTetris-8/Base/tetris/assets/Roboto-Bold.ttf', 14).render(str(nowTime), True, BLACK)
         self.screen.blit(next_text, (255, 20))
         self.screen.blit(skill_text, (255, 120))
         self.screen.blit(skill_value, (255, 145))
@@ -229,11 +229,11 @@ class Board:
         self.screen.blit(time_text, (255, 430))
 
     def pause(self):
-        fontObj = pygame.font.Font('OSD_game-master/tetris/assets/Roboto-Bold.ttf', 32)
+        fontObj = pygame.font.Font('2022-2-OSSProj-TeamTetris-8/Base/tetris/assets/Roboto-Bold.ttf', 32)
         textSurfaceObj = fontObj.render('Paused', True, GREEN)
         textRectObj = textSurfaceObj.get_rect()
         textRectObj.center = (175, 185)
-        fontObj2 = pygame.font.Font('OSD_game-master/tetris/assets/Roboto-Bold.ttf', 16)
+        fontObj2 = pygame.font.Font('2022-2-OSSProj-TeamTetris-8/Base/tetris/assets/Roboto-Bold.ttf', 16)
         textSurfaceObj2 = fontObj2.render('Press p to continue', True, GREEN)
         textRectObj2 = textSurfaceObj2.get_rect()
         textRectObj2.center = (175, 235)
@@ -248,13 +248,14 @@ class Board:
                     sys.exit()
                 elif event.type == KEYUP and event.key == K_p:
                     running = False
-
+##게임 종료시 첫번째 화면
     def GameOver(self):
-        fontObj = pygame.font.Font('OSD_game-master/tetris/assets/Roboto-Bold.ttf', 32)
+        fontObj = pygame.font.Font('2022-2-OSSProj-TeamTetris-8/Base/tetris/assets/Roboto-Bold.ttf', 32)
         textSurfaceObj = fontObj.render('Game over', True, GREEN)
         textRectObj = textSurfaceObj.get_rect()
         textRectObj.center = (175, 185)
-        fontObj2 = pygame.font.Font('OSD_game-master/tetris/assets/Roboto-Bold.ttf', 16)
+        ##메인화면으로 갈건지 다시 실행할건지 고를 수 있게 만들기 ?? 어디에 넣을지 고민
+        fontObj2 = pygame.font.Font('2022-2-OSSProj-TeamTetris-8/Base/tetris/assets/Roboto-Bold.ttf', 16)
         textSurfaceObj2 = fontObj2.render('Press a key to continue', True, GREEN)
         textRectObj2 = textSurfaceObj2.get_rect()
         textRectObj2.center = (175, 235)
@@ -269,13 +270,13 @@ class Board:
                     sys.exit()
                 elif event.type == KEYDOWN:
                     running = False
-
+##처음 실행했을 때 화면 설정임 + 스코어 다음 화면
     def newGame(self):
-        fontObj = pygame.font.Font('OSD_game-master/tetris/assets/Roboto-Bold.ttf', 32)
+        fontObj = pygame.font.Font('2022-2-OSSProj-TeamTetris-8/Base/tetris/assets/Roboto-Bold.ttf', 32)
         textSurfaceObj = fontObj.render('Tetris', True, GREEN)
         textRectObj = textSurfaceObj.get_rect()
         textRectObj.center = (175, 185)
-        fontObj2 = pygame.font.Font('OSD_game-master/tetris/assets/Roboto-Bold.ttf', 16)
+        fontObj2 = pygame.font.Font('2022-2-OSSProj-TeamTetris-8/Base/tetris/assets/Roboto-Bold.ttf', 16)
         textSurfaceObj2 = fontObj2.render('Press a key to continue', True, GREEN)
         textRectObj2 = textSurfaceObj2.get_rect()
         textRectObj2.center = (175, 235)
@@ -291,14 +292,14 @@ class Board:
                     sys.exit()
                 elif event.type == KEYDOWN:
                     running = False
-
+##게임 종료 시 두번째 화면
     def HS(self, txt="no"):
         if txt != "no":
-            fontObj = pygame.font.Font('OSD_game-master/tetris/assets/Roboto-Bold.ttf', 32)
+            fontObj = pygame.font.Font('2022-2-OSSProj-TeamTetris-8/Base/tetris/assets/Roboto-Bold.ttf', 32)
             textSurfaceObj = fontObj.render('HighScore : '+txt, True, GREEN)
             textRectObj = textSurfaceObj.get_rect()
             textRectObj.center = (175, 185)
-            fontObj2 = pygame.font.Font('OSD_game-master/tetris/assets/Roboto-Bold.ttf', 16)
+            fontObj2 = pygame.font.Font('2022-2-OSSProj-TeamTetris-8/Base/tetris/assets/Roboto-Bold.ttf', 16)
             textSurfaceObj2 = fontObj2.render('Press a key to continue', True, GREEN)
             textRectObj2 = textSurfaceObj2.get_rect()
             textRectObj2.center = (175, 235)
@@ -314,12 +315,12 @@ class Board:
                         sys.exit()
                     elif event.type == KEYDOWN:
                         running = False
-
+##궁극기
     def ultimate(self):
         if self.skill == 100:
-            bomb = pygame.image.load("OSD_game-master/tetris/assets/images/bomb.jpg")
+            bomb = pygame.image.load("2022-2-OSSProj-TeamTetris-8/Base/tetris/assets/images/bomb.jpg")
             bomb = pygame.transform.scale(bomb, (350, 450))
-            bomb_sound = pygame.mixer.Sound('OSD_game-master/tetris/assets/sounds/bomb.wav')
+            bomb_sound = pygame.mixer.Sound('2022-2-OSSProj-TeamTetris-8/Base/tetris/assets/sounds/bomb.wav')
             self.screen.blit(bomb, (0, 0))
             pygame.display.update()
             bomb_sound.play()

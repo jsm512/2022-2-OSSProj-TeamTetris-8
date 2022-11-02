@@ -46,19 +46,19 @@ class Tetris:
 
     def HighScore(self):
         try:
-            f = open('OSD_game-master/tetris/assets/save.txt', 'r')
+            f = open('2022-2-OSSProj-TeamTetris-8/Base/tetris/assets/save.txt', 'r')
             l = f.read()
             f.close()
             if int(l) < self.board.score:
                 h_s = self.board.score
-                f = open('OSD_game-master/tetris/assets/save.txt', 'w')
+                f = open('2022-2-OSSProj-TeamTetris-8/Base/tetris/assets/save.txt', 'w')
                 f.write(str(self.board.score))
                 f.close()
             else:
                 h_s = l
             self.board.HS(str(h_s))
         except:
-            f = open('OSD_game-master/tetris/assets/save.txt', 'w')
+            f = open('2022-2-OSSProj-TeamTetris-8/Base/tetris/assets/save.txt', 'w')
             f.write(str(self.board.score))
             f.close()
             self.board.HS(str(self.board.score))
@@ -66,13 +66,13 @@ class Tetris:
 
     def run(self):
         pygame.init()
-        icon = pygame.image.load('OSD_game-master/tetris/assets/images/icon.png')
+        icon = pygame.image.load('2022-2-OSSProj-TeamTetris-8/Base/tetris/assets/images/icon.png')
         pygame.display.set_icon(icon)
         pygame.display.set_caption('Tetris')
         pygame.time.set_timer(pygame.USEREVENT, 500)
-        start_sound = pygame.mixer.Sound('OSD_game-master/tetris/assets/sounds/Start.wav')
+        start_sound = pygame.mixer.Sound('2022-2-OSSProj-TeamTetris-8/Base/tetris/assets/sounds/Start.wav')
         start_sound.play()
-        bgm = pygame.mixer.music.load('OSD_game-master/tetris/assets/sounds/bgm.mp3')
+        bgm = pygame.mixer.music.load('2022-2-OSSProj-TeamTetris-8/Base/tetris/assets/sounds/bgm.mp3')
         while True:
             if self.check_reset:
                 self.board.newGame()
