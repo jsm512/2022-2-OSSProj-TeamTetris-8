@@ -14,11 +14,14 @@ BLUE        = (  0,   0, 155)
 LIGHTBLUE   = ( 20,  20, 175)
 YELLOW      = (155, 155,   0)
 LIGHTYELLOW = (175, 175,  20)
+board_width = 350 # Board width
+board_height = 450 # Board height
+blocksize=int(board_height*0.045)
 
 class Tetris:
 
     def __init__(self):
-        self.screen = pygame.display.set_mode((350, 450))
+        self.screen = pygame.display.set_mode((board_width, board_height),pygame.RESIZABLE)
         self.clock = pygame.time.Clock()
         self.board = Board(self.screen)
         self.music_on_off = True
@@ -66,7 +69,7 @@ class Tetris:
 
     def run(self):
         pygame.init()
-        icon = pygame.image.load('2022-2-OSSProj-TeamTetris-8/Tetris/assets/vector/icon.PNG').convert_alpha()
+        icon = pygame.image.load('2022-2-OSSProj-TeamTetris-8/Tetris/assets/vector/tetris.jpg')
         pygame.display.set_icon(icon)
         pygame.display.set_caption('Tetris')
         pygame.time.set_timer(pygame.USEREVENT, 500)
