@@ -67,7 +67,7 @@ class Piece:
             self.piece_name = random.choice(list(Piece.PIECES.keys()))
         self.rotation = 0
         self.array2d = Piece.PIECES[self.piece_name][self.rotation]
-
+    
     def __iter__(self):
         for row in self.array2d:
             yield row
@@ -78,3 +78,4 @@ class Piece:
         else:
             self.rotation = (self.rotation - 1) % 4
         self.array2d = Piece.PIECES[self.piece_name][self.rotation]
+    
