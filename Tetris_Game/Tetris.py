@@ -44,6 +44,8 @@ clock = pygame.time.Clock()
 screen = pygame.display.set_mode((board_width, board_height), pygame.RESIZABLE)
 pygame.time.set_timer(pygame.USEREVENT, framerate * 10)
 pygame.display.set_caption("TETRIS")
+icon = pygame.image.load('2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/icon_tetris.png')
+pygame.display.set_icon(icon)
 
 initialize = True  # Start Screen 에서 set_initial_values()로 초기화할지 여부를 boolean으로 저장
 
@@ -137,7 +139,7 @@ class ui_variables:
 
 
 # 각 이미지 주소
-background_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/images/background_image.png'  # 메뉴화면(첫 화면) 배경
+background_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/images/mainpage_background.png'  # 메뉴화면(첫 화면) 배경
 gamebackground_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/images/background_nyc.png'  # 게임 배경화면 : 기본값 뉴욕
 pause_board_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/pause_board.png'
 
@@ -319,16 +321,13 @@ class button():  # 버튼객체
         return False
 # 메뉴 버튼
 
+# (self, board_width, board_height, x_rate, y_rate, width_rate, height_rate, img='')
+# (self, board_width, board_height,   0.2,   0.2,     0.22,        0.2,      img='')
+select_mode_button = button(board_width, board_height, 0.1, 0.4, 0.22, 0.2, select_mode_button_image)
+setting_button = button(board_width, board_height, 0.35,0.4, 0.22, 0.2, setting_button_image)
 
-select_mode_button = button(
-    board_width, board_height, 0.2, 0.2, 0.22, 0.2, select_mode_button_image)
-setting_button = button(board_width, board_height, 0.2,
-                        0.8, 0.22, 0.2, setting_button_image)
-
-quit_button = button(board_width, board_height, 0.8,
-                     0.8, 0.22, 0.2, quit_button_image)
-score_board_button = button(
-    board_width, board_height, 0.8, 0.2, 0.22, 0.2, score_board_button_image)
+quit_button = button(board_width, board_height, 0.65,0.4, 0.22, 0.2, quit_button_image)
+score_board_button = button(board_width, board_height, 0.9, 0.4, 0.22, 0.2, score_board_button_image)
 
 single_button = button(board_width, board_height, 0.25,
                        0.35, 0.22, 0.2, single_button_image)
