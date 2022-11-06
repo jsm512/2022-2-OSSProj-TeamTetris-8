@@ -320,18 +320,13 @@ class button():  # 버튼객체
 # 메뉴 버튼
 
 
-select_mode_button = button(
-    board_width, board_height, 0.2, 0.2, 0.22, 0.2, select_mode_button_image)
-setting_button = button(board_width, board_height, 0.2,
-                        0.8, 0.22, 0.2, setting_button_image)
+select_mode_button = button(board_width, board_height, 0.2, 0.2, 0.22, 0.2, select_mode_button_image)
+setting_button = button(board_width, board_height, 0.2,0.8, 0.22, 0.2, setting_button_image)
 
-quit_button = button(board_width, board_height, 0.8,
-                     0.8, 0.22, 0.2, quit_button_image)
-score_board_button = button(
-    board_width, board_height, 0.8, 0.2, 0.22, 0.2, score_board_button_image)
+quit_button = button(board_width, board_height, 0.8,0.8, 0.22, 0.2, quit_button_image)
+score_board_button = button(board_width, board_height, 0.8, 0.2, 0.22, 0.2, score_board_button_image)
 
-single_button = button(board_width, board_height, 0.25,
-                       0.35, 0.22, 0.2, single_button_image)
+single_button = button(board_width, board_height, 0.25,0.35, 0.22, 0.2, single_button_image)
 hard_button = button(board_width, board_height, 0.5,
                      0.35, 0.22, 0.2, hard_button_image)
 pvp_button = button(board_width, board_height, 0.75,

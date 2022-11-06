@@ -44,7 +44,7 @@ clock = pygame.time.Clock()
 screen = pygame.display.set_mode((board_width, board_height), pygame.RESIZABLE)
 pygame.time.set_timer(pygame.USEREVENT, framerate * 10)
 pygame.display.set_caption("TETRIS")
-icon = pygame.image.load('2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/icon_tetris.png')
+icon = pygame.image.load('Tetris_Game/assets/vector/icon_tetris.png').convert_alpha()
 pygame.display.set_icon(icon)
 
 initialize = True  # Start Screen 에서 set_initial_values()로 초기화할지 여부를 boolean으로 저장
@@ -52,9 +52,9 @@ initialize = True  # Start Screen 에서 set_initial_values()로 초기화할지
 
 class ui_variables:
     # Fonts
-    font_path = "2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/fonts/a옛날사진관3.ttf"
-    font_path_b = "2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/fonts/a옛날사진관3.ttf"
-    font_path_i = "2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/fonts/a옛날사진관3.ttf"
+    font_path = "Tetris_Game/assets/fonts/a옛날사진관3.ttf"
+    font_path_b = "Tetris_Game/assets/fonts/a옛날사진관3.ttf"
+    font_path_i = "Tetris_Game/assets/fonts/a옛날사진관3.ttf"
 
     h1 = pygame.font.Font(font_path, 50)
     h2 = pygame.font.Font(font_path, 30)
@@ -70,39 +70,39 @@ class ui_variables:
     h5_i = pygame.font.Font(font_path_i, 13)
 
     # Sounds
-    pygame.mixer.music.load("2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/sounds/BGM1.wav")  # 음악 불러옴
+    pygame.mixer.music.load("Tetris_Game/assets/sounds/BGM1.wav")  # 음악 불러옴
     pygame.mixer.music.set_volume(0.5)  # 이 부분도 필요 없음, set_volume에 추가해야 함
-    intro_sound = pygame.mixer.Sound("2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/sounds/intro.wav")
-    fall_sound = pygame.mixer.Sound("2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/sounds/SFX_Fall.wav")
-    break_sound = pygame.mixer.Sound("2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/sounds/SFX_Break.wav")
-    click_sound = pygame.mixer.Sound("2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/sounds/SFX_ButtonUp.wav")  # 여기부터
-    move_sound = pygame.mixer.Sound("2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/sounds/SFX_PieceMoveLR.wav")
-    drop_sound = pygame.mixer.Sound("2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/sounds/SFX_PieceHardDrop.wav")
+    intro_sound = pygame.mixer.Sound("Tetris_Game/assets/sounds/intro.wav")
+    fall_sound = pygame.mixer.Sound("Tetris_Game/assets/sounds/SFX_Fall.wav")
+    break_sound = pygame.mixer.Sound("Tetris_Game/assets/sounds/SFX_Break.wav")
+    click_sound = pygame.mixer.Sound("Tetris_Game/assets/sounds/SFX_ButtonUp.wav")  # 여기부터
+    move_sound = pygame.mixer.Sound("Tetris_Game/assets/sounds/SFX_PieceMoveLR.wav")
+    drop_sound = pygame.mixer.Sound("Tetris_Game/assets/sounds/SFX_PieceHardDrop.wav")
     single_sound = pygame.mixer.Sound(
-        "2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/sounds/SFX_SpecialLineClearSingle.wav")
+        "Tetris_Game/assets/sounds/SFX_SpecialLineClearSingle.wav")
     double_sound = pygame.mixer.Sound(
-        "2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/sounds/SFX_SpecialLineClearDouble.wav")
+        "Tetris_Game/assets/sounds/SFX_SpecialLineClearDouble.wav")
     triple_sound = pygame.mixer.Sound(
-        "2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/sounds/SFX_SpecialLineClearTriple.wav")  # 여기까지는 기존코드
-    tetris_sound = pygame.mixer.Sound("2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/sounds/SFX_SpecialTetris.wav")
-    LevelUp_sound = pygame.mixer.Sound("2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/sounds/SFX_LevelUp.wav")
-    GameOver_sound = pygame.mixer.Sound("2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/sounds/SFX_GameOver.wav")
+        "Tetris_Game/assets/sounds/SFX_SpecialLineClearTriple.wav")  # 여기까지는 기존코드
+    tetris_sound = pygame.mixer.Sound("Tetris_Game/assets/sounds/SFX_SpecialTetris.wav")
+    LevelUp_sound = pygame.mixer.Sound("Tetris_Game/assets/sounds/SFX_LevelUp.wav")
+    GameOver_sound = pygame.mixer.Sound("Tetris_Game/assets/sounds/SFX_GameOver.wav")
 
     # 레벨업 이미지
-    LevelUp_vector = pygame.image.load('2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/Level_Up.png')
+    LevelUp_vector = pygame.image.load('Tetris_Game/assets/vector/Level_Up.png')
 
     # # Combo graphic
     # combos = []
     # large_combos = []
-    # combo_ring = pygame.image.load("2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/Combo/4combo ring.png")  # 4블록 동시제거 그래픽
+    # combo_ring = pygame.image.load("Tetris_Game/assets/Combo/4combo ring.png")  # 4블록 동시제거 그래픽
     # combo_4ring = pygame.transform.smoothscale(combo_ring, (200, 100)) #이미지를 특정 크기로 불러옴, 200=가로크기, 100=세로크기#
     # for i in range(1, 11): #10가지의 콤보 이미지 존재. 각 숫자에 해당하는 이미지 불러옴
-    #     combos.append(pygame.image.load("2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/Combo/" + str(i) + "combo.png"))
+    #     combos.append(pygame.image.load("Tetris_Game/assets/Combo/" + str(i) + "combo.png"))
     #     large_combos.append(pygame.transform.smoothscale(combos[i - 1], (150, 200))) #콤보이미지를 특정 크기로 불러옴, 150=가로크기, 200=세로크기#
 
     # combos_sound = []
     # for i in range(1, 10): #1-9까지 콤보사운드 존재. 각 숫자에 해당하는 음악 불러옴
-    #     combos_sound.append(pygame.mixer.Sound("2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/sounds/SFX_" + str(i + 2) + "Combo.wav"))
+    #     combos_sound.append(pygame.mixer.Sound("Tetris_Game/assets/sounds/SFX_" + str(i + 2) + "Combo.wav"))
 
     # Background colors
     black = (10, 10, 10)  # rgb(10, 10, 10)
@@ -124,160 +124,148 @@ class ui_variables:
     red = (225, 13, 27)  # rgb(225, 13, 27) # Z
 
     t_color = [grey_2, cyan, blue, orange, yellow, green, pink, red, grey_3]
-    cyan_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/block_images/cyan.png'
-    blue_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/block_images/blue.png'
-    orange_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/block_images/orange.png'
-    yellow_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/block_images/yellow.png'
-    green_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/block_images/green.png'
-    pink_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/block_images/purple.png'
-    red_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/block_images/red.png'
-    ghost_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/block_images/ghost.png'
-    table_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/block_images/background.png'
-    linessent_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/block_images/linessent.png'
+    cyan_image = 'Tetris_Game/assets/block_images/cyan.png'
+    blue_image = 'Tetris_Game/assets/block_images/blue.png'
+    orange_image = 'Tetris_Game/assets/block_images/orange.png'
+    yellow_image = 'Tetris_Game/assets/block_images/yellow.png'
+    green_image = 'Tetris_Game/assets/block_images/green.png'
+    pink_image = 'Tetris_Game/assets/block_images/purple.png'
+    red_image = 'Tetris_Game/assets/block_images/red.png'
+    ghost_image = 'Tetris_Game/assets/block_images/ghost.png'
+    table_image = 'Tetris_Game/assets/block_images/background.png'
+    linessent_image = 'Tetris_Game/assets/block_images/linessent.png'
     t_block = [table_image, cyan_image, blue_image, orange_image, yellow_image, green_image, pink_image, red_image,
                ghost_image, linessent_image]
 
 
 # 각 이미지 주소
-background_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/images/mainpage_background.png'  # 메뉴화면(첫 화면) 배경
-gamebackground_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/images/background_nyc.png'  # 게임 배경화면 : 기본값 뉴욕
-pause_board_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/pause_board.png'
+background_image = 'Tetris_Game/assets/images/mainpage_background.png'  # 메뉴화면(첫 화면) 배경
+gamebackground_image = 'Tetris_Game/assets/images/background_nyc.png'  # 게임 배경화면 : 기본값 뉴욕
+pause_board_image = 'Tetris_Game/assets/vector/pause_board.png'
 
-help_board_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/help_board.png'
-select_mode_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/select_mode_button.png'
-clicked_select_mode_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_select_mode_button.png'
+help_board_image = 'Tetris_Game/assets/vector/help_board.png'
+select_mode_button_image = 'Tetris_Game/assets/vector/Mode.png'
+clicked_select_mode_button_image = 'Tetris_Game/assets/vector/clicked_Mode.png'
 
-setting_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/settings_button.png'
-clicked_setting_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_settings_button.png'
+setting_button_image = 'Tetris_Game/assets/vector/Setting.png'
+clicked_setting_button_image = 'Tetris_Game/assets/vector/clicked_Setting.png'
 
-pause_setting_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/pause_settings_button.png'
-clicked_pause_setting_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_pause_settings_button.png'
+pause_setting_button_image = 'Tetris_Game/assets/vector/pause_settings_button.png'
+clicked_pause_setting_button_image = 'Tetris_Game/assets/vector/clicked_pause_settings_button.png'
 
-score_board_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/score_board_button.png'
-clicked_score_board_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_score_board_button.png'
+score_board_button_image = 'Tetris_Game/assets/vector/Score.png'
+clicked_score_board_button_image = 'Tetris_Game/assets/vector/clicked_Score.png'
 
-quit_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/quit_button.png'
-clicked_quit_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_quit_button.png'
+quit_button_image = 'Tetris_Game/assets/vector/Quit.png'
+clicked_quit_button_image = 'Tetris_Game/assets/vector/clicked_Quit.png'
 
-resume_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/resume_button.png'
-clicked_resume_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_resume_button.png'
+resume_button_image = 'Tetris_Game/assets/vector/Resume.png'
+clicked_resume_button_image = 'Tetris_Game/assets/vector/clicked_resume_button.png'
 
-help_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/help_button.png'
-clicked_help_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_help_button.png'
+help_button_image = 'Tetris_Game/assets/vector/Help.png'
+clicked_help_button_image = 'Tetris_Game/assets/vector/clicked_Help.png'
 
 easy_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/easy_button.png'
 clicked_easy_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_easy_button.png'
 
-hard_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/hard_button.png'
-clicked_hard_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_hard_button.png'
+hard_button_image = 'Tetris_Game/assets/vector/Hard.png'
+clicked_hard_button_image = 'Tetris_Game/assets/vector/clicked_Hard.png'
 
-pvp_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/multi_button.png'
-clicked_pvp_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_multi_button.png'
-
-
-hard_training_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/hard_tutorial_button.png'
-clicked_hard_training_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_hard_tutorial_button.png'
-
-multi_training_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/multi_tutorial_button.png'
-clicked_multi_training_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_multi_tutorial_button.png'
+pvp_button_image = 'Tetris_Game/assets/vector/PvP.png'
+clicked_pvp_button_image = 'Tetris_Game/assets/vector/clicked_PvP.png'
 
 
-gameover_board_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/gameover_board.png'
+hard_training_button_image = 'Tetris_Game/assets/vector/hard_tutorial_button.png'
+clicked_hard_training_button_image = 'Tetris_Game/assets/vector/clicked_hard_tutorial_button.png'
 
-'''
-help_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/help_button.png'
-clicked_help_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_help_button.png'
-gravity_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/gravity_button.png'
-clicked_gravity_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_gravity_button.png'
-setting_vector = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/setting_vector.png'
-clicked_setting_vector = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_setting_vector.png'
-setting_board_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/setting_board.png'
-gameover_board_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/gameover_board.png'
-gameover_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/gameover.png'
-'''
-hard_training_start_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/images/hard_tutorial_menual.png'
-multi_training_start_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/images/multi_tutorial_menual.png'
-setting_board_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/setting_board.png'
-number_board = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/number_board.png'
-mute_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/allmute_button.png'
-clicked_mute_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_allmute_button.png'
+multi_training_button_image = 'Tetris_Game/assets/vector/multi_tutorial_button.png'
+clicked_multi_training_button_image = 'Tetris_Game/assets/vector/clicked_multi_tutorial_button.png'
 
-background1_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/images/background_hongkong.png'
-background2_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/images/background_nyc.png'
-background3_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/images/background_uk.png'
 
-clicked_background1_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/images/clicked_background_hongkong.png'
-clicked_background2_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/images/clicked_background_nyc.png'
-clicked_background3_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/images/clicked_background_uk.png'
+gameover_board_image = 'Tetris_Game/assets/vector/gameover_board.png'
+hard_training_start_image = 'Tetris_Game/assets/images/hard_tutorial_menual.png'
+multi_training_start_image = 'Tetris_Game/assets/images/multi_tutorial_menual.png'
+setting_board_image = 'Tetris_Game/assets/vector/setting_board.png'
+number_board = 'Tetris_Game/assets/vector/number_board.png'
+mute_button_image = 'Tetris_Game/assets/vector/allmute_button.png'
+clicked_mute_button_image = 'Tetris_Game/assets/vector/clicked_allmute_button.png'
 
-mute_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/allmute_button.png'
-default_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/default_button.png'
-clicked_default_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_default_button.png'
-number_board = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/number_board.png'
+background1_image = 'Tetris_Game/assets/images/background_hongkong.png'
+background2_image = 'Tetris_Game/assets/images/background_nyc.png'
+background3_image = 'Tetris_Game/assets/images/background_uk.png'
 
-resume_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/resume_button.png'
-clicked_resume_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_resume_button.png'
-restart_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/restart_button.png'
-clicked_restart_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_restart_button.png'
+clicked_background1_image = 'Tetris_Game/assets/images/clicked_background_hongkong.png'
+clicked_background2_image = 'Tetris_Game/assets/images/clicked_background_nyc.png'
+clicked_background3_image = 'Tetris_Game/assets/images/clicked_background_uk.png'
 
-back_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/back_button.png'
-clicked_back_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_back_button.png'
-volume_vector = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/volume_vector.png'
-clicked_volume_vector = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_volume_vector.png'
-keyboard_vector = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/keyboard_vector.png'
-clicked_keyboard_vector = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_keyboard_vector.png'
-screen_vector = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/screen_vector.png'
-clicked_screen_vector = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_screen_vector.png'
-menu_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/menu_button.png'
-clicked_menu_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_menu_button.png'
-ok_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/ok_button.png'
-clicked_ok_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_ok_button.png'
-plus_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/plus_button.png'
-clicked_plus_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_plus_button.png'
-minus_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/minus_button.png'
-clicked_minus_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_minus_button.png'
+mute_button_image = 'Tetris_Game/assets/vector/allmute_button.png'
+default_button_image = 'Tetris_Game/assets/vector/default_button.png'
+clicked_default_button_image = 'Tetris_Game/assets/vector/clicked_default_button.png'
+number_board = 'Tetris_Game/assets/vector/number_board.png'
 
-backgroundmusic_select_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/backgroundmusic_select.png'
-clicked_backgroundmusic_select_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_backgroundmusic_select.png'
-sound_off_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/sound_off_button.png'
-sound_on_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/sound_on_button.png'
-check_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/checkbox_button.png'
-clicked_check_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_checkbox_button.png'
+resume_button_image = 'Tetris_Game/assets/vector/Resume.png'
+clicked_resume_button_image = 'Tetris_Game/assets/vector/clicked_Resume.png'
+restart_button_image = 'Tetris_Game/assets/vector/restart_button.png'
+clicked_restart_button_image = 'Tetris_Game/assets/vector/clicked_restart_button.png'
 
-pvp_win_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/pvp_win.png'
-pvp_lose_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/pvp_lose.png'
-leaderboard_vector = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/leaderboard_vector.png'
-clicked_leaderboard_vector = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_leaderboard_vector.png'
-multi_win_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/multi_win.png'
-multi_lose_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/multi_lose.png'
-multi_game_over = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/multi_game_over.png'
+back_button_image = 'Tetris_Game/assets/vector/back_button.png'
+clicked_back_button_image = 'Tetris_Game/assets/vector/clicked_back_button.png'
+volume_vector = 'Tetris_Game/assets/vector/volume_vector.png'
+clicked_volume_vector = 'Tetris_Game/assets/vector/clicked_volume_vector.png'
+keyboard_vector = 'Tetris_Game/assets/vector/keyboard_vector.png'
+clicked_keyboard_vector = 'Tetris_Game/assets/vector/clicked_keyboard_vector.png'
+screen_vector = 'Tetris_Game/assets/vector/screen_vector.png'
+clicked_screen_vector = 'Tetris_Game/assets/vector/clicked_screen_vector.png'
+menu_button_image = 'Tetris_Game/assets/vector/Menu.png'
+clicked_menu_button_image = 'Tetris_Game/assets/vector/clicked_Menu.png'
+ok_button_image = 'Tetris_Game/assets/vector/ok_button.png'
+clicked_ok_button_image = 'Tetris_Game/assets/vector/clicked_ok_button.png'
+plus_button_image = 'Tetris_Game/assets/vector/plus_button.png'
+clicked_plus_button_image = 'Tetris_Game/assets/vector/clicked_plus_button.png'
+minus_button_image = 'Tetris_Game/assets/vector/minus_button.png'
+clicked_minus_button_image = 'Tetris_Game/assets/vector/clicked_minus_button.png'
 
-leaderboard_vector = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/leaderboard_vector.png'
-clicked_leaderboard_vector = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_leaderboard_vector.png'
-scoreboard_board_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/score_board.png'
+backgroundmusic_select_image = 'Tetris_Game/assets/vector/backgroundmusic_select.png'
+clicked_backgroundmusic_select_image = 'Tetris_Game/assets/vector/clicked_backgroundmusic_select.png'
+sound_off_button_image = 'Tetris_Game/assets/vector/sound_off_button.png'
+sound_on_button_image = 'Tetris_Game/assets/vector/sound_on_button.png'
+check_button_image = 'Tetris_Game/assets/vector/checkbox_button.png'
+clicked_check_button_image = 'Tetris_Game/assets/vector/clicked_checkbox_button.png'
 
-multi_gameover_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/multi_game_over.png'
-multi_win_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/multi_win.png'
-multi_lose_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/multi_lose.png'
+pvp_win_image = 'Tetris_Game/assets/vector/pvp_win.png'
+pvp_lose_image = 'Tetris_Game/assets/vector/pvp_lose.png'
+leaderboard_vector = 'Tetris_Game/assets/vector/leaderboard_vector.png'
+clicked_leaderboard_vector = 'Tetris_Game/assets/vector/clicked_leaderboard_vector.png'
+multi_win_image = 'Tetris_Game/assets/vector/multi_win.png'
+multi_lose_image = 'Tetris_Game/assets/vector/multi_lose.png'
+multi_game_over = 'Tetris_Game/assets/vector/multi_game_over.png'
 
-multi_key_reverse_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/key_reverse.png'
-hard_speed_up_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/speed_up.png'
-hard_flipped_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/flipped.png'
+leaderboard_vector = 'Tetris_Game/assets/vector/leaderboard_vector.png'
+clicked_leaderboard_vector = 'Tetris_Game/assets/vector/clicked_leaderboard_vector.png'
+scoreboard_board_image = 'Tetris_Game/assets/vector/score_board.png'
 
-multi_1P_break_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/images/multi_1p_break.png'
-multi_2P_break_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/images/multi_2p_break.png'
-training_box_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/box.png'
+multi_gameover_image = 'Tetris_Game/assets/vector/multi_game_over.png'
+multi_win_image = 'Tetris_Game/assets/vector/multi_win.png'
+multi_lose_image = 'Tetris_Game/assets/vector/multi_lose.png'
 
-line_message_multi_break_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/line_message_multi_tutorial_break.png'
-line_message_multi_win_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/line_message_multi_tutorial_win.png'
+multi_key_reverse_image = 'Tetris_Game/assets/vector/key_reverse.png'
+hard_speed_up_image = 'Tetris_Game/assets/vector/speed_up.png'
+hard_flipped_image = 'Tetris_Game/assets/vector/flipped.png'
 
-training_completed_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/images/training_completed.png'
-training_incomplete_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/images/training_incomplete.png'
+multi_1P_break_image = 'Tetris_Game/assets/images/multi_1p_break.png'
+multi_2P_break_image = 'Tetris_Game/assets/images/multi_2p_break.png'
+training_box_image = 'Tetris_Game/assets/vector/box.png'
+
+line_message_multi_break_image = 'Tetris_Game/assets/vector/line_message_multi_tutorial_break.png'
+line_message_multi_win_image = 'Tetris_Game/assets/vector/line_message_multi_tutorial_win.png'
+
+training_completed_image = 'Tetris_Game/assets/images/training_completed.png'
+training_incomplete_image = 'Tetris_Game/assets/images/training_incomplete.png'
 
 # 트레이닝모드 중간 이벤트 발생 시 나오는 설명 이미지
-hard_3line_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/images/hard_3line.png'  # 하드트레이닝 3줄 제거시 등장
-hard_10s_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/images/hard_10s.png'  # 하드트레이닝 10초 경과시 등장
-hard_line_message = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/line_message_hard_tutorial.png'  # 하드트레이닝 시작하자마자 메시지 등장
+hard_3line_image = 'Tetris_Game/assets/images/hard_3line.png'  # 하드트레이닝 3줄 제거시 등장
+hard_10s_image = 'Tetris_Game/assets/images/hard_10s.png'  # 하드트레이닝 10초 경과시 등장
+hard_line_message = 'Tetris_Game/assets/vector/line_message_hard_tutorial.png'  # 하드트레이닝 시작하자마자 메시지 등장
 
 
 class button():  # 버튼객체
@@ -301,8 +289,7 @@ class button():  # 버튼객체
     def draw(self, win, outline=None):  # 버튼 보이게 만들기
 
         if outline:
-            draw_image(screen, self.image, self.x,
-                       self.y, self.width, self.height)
+            draw_image(screen, self.image, self.x, self.y, self.width, self.height)
 
     # 마우스의 위치가 버튼이미지 위에 있는지 확인  (pos[0]은 마우스 x좌표, pos[1]은 마우스 y좌표)
     def isOver(self, pos):
@@ -430,15 +417,10 @@ BGM3_sound_on_button = button(
     board_width, board_height, 0.67, 0.83, 0.08, 0.15, backgroundmusic_select_image)
 
 # 선택된 BGM
-selected_bgm = "2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/sounds/BGM1.wav"
+selected_bgm = "Tetris_Game/assets/sounds/BGM1.wav"
 
 
 # 게임 중 버튼 생성하기위한 버튼객체 리스트 (버튼 전체)
-'''button_list = [mute_button, default_button, single_button, pvp_button, help_button, quit_button, gravity_button, timeattack_button, resume_button, restart_button, setting_button, pause_quit_button, back_button,
-        ok_button, menu_button, gameover_quit_button, effect_plus_button, effect_minus_button, sound_plus_button, sound_minus_button, level_plus_button,
-        effect_sound_off_button, music_sound_off_button, effect_sound_on_button, music_sound_on_button, mute_check_button, smallsize_check_button, midiumsize_check_button, bigsize_check_button,
-        setting_icon, leaderboard_icon, volume_icon, screen_icon, level_minus_button, combo_minus_button, combo_plus_button, speed_minus_button, speed_plus_button]
-'''
 
 button_list = [
     select_mode_button, setting_button, quit_button, score_board_button, single_button, hard_button, pvp_button,
@@ -534,17 +516,7 @@ def draw_board(next1, next2, hold, score, level, goal):
             if grid_n2[i][j] != 0:
                 draw_block_image(dx2, dy2, ui_variables.t_block[grid_n2[i][j]])
 
-    ''''# Draw hold mino
-    grid_h = tetrimino.mino_map[hold - 1][0]
-
-    if hold_mino != -1:
-        for i in range(4):
-            for j in range(4):
-                dx = 220 + block_size * j
-                dy = 50 + block_size * i
-                if grid_h[i][j] != 0:
-                    draw_block_image(
-                        dx, dy, ui_variables.t_block[grid_h[i][j]])'''  # hold 블록 출력
+    
     # Draw hold mino
     grid_h = tetrimino.mino_map[hold - 1][0]  # (배열이라-1) 기본 모양
     if hold_mino != -1:  # hold 존재X
@@ -556,6 +528,8 @@ def draw_board(next1, next2, hold, score, level, goal):
                 if grid_h[i][j] != 0:  # 해당 부분에 블록이 존재하면
                     draw_block_image(
                         dx, dy, ui_variables.t_block[grid_h[i][j]])  # hold 블록 출력
+                      # Draw hold mino
+    
 
     # Set max score
     if score > 999999:
@@ -638,29 +612,18 @@ def draw_hardboard(next1, next2, hold, score, remaining_time, line):
             if grid_n2[i][j] != 0:
                 draw_block_image(dx2, dy2, ui_variables.t_block[grid_n2[i][j]])
 
-    '''# Draw hold mino
-    grid_h = tetrimino.mino_map[hold - 1][0]
-
-    if hold_mino != -1:
-        for i in range(4):
-            for j in range(4):
-                dx = 220 + block_size * j
-                dy = 50 + block_size * i
-                if grid_h[i][j] != 0:
-                    draw_block_image(
-                        dx, dy, ui_variables.t_block[grid_h[i][j]])  # hold 블록 출력'''
     # Draw hold mino
-    grid_h = tetrimino.mino_map[hold - 1][0]  # (배열이라-1) 기본 모양
+    # grid_h = tetrimino.mino_map[hold - 1][0]  # (배열이라-1) 기본 모양
 
-    if hold_mino != -1:  # hold 존재X
-        for i in range(mino_matrix_y):
-            for j in range(mino_matrix_x):
-                dx = int(board_width * 0.045) + sidebar_width + \
-                    block_size * j  # 위치 비율 고정
-                dy = int(board_height * 0.1336) + block_size * i  # 위치 비율 고정
-                if grid_h[i][j] != 0:  # 해당 부분에 블록이 존재하면
-                    draw_block_image(
-                        dx, dy, ui_variables.t_block[grid_h[i][j]])  # hold 블록 출력
+    # if hold_mino != -1:  # hold 존재X
+    #     for i in range(mino_matrix_y):
+    #         for j in range(mino_matrix_x):
+    #             dx = int(board_width * 0.045) + sidebar_width + \
+    #                 block_size * j  # 위치 비율 고정
+    #             dy = int(board_height * 0.1336) + block_size * i  # 위치 비율 고정
+    #             if grid_h[i][j] != 0:  # 해당 부분에 블록이 존재하면
+    #                 draw_block_image(
+    #                     dx, dy, ui_variables.t_block[grid_h[i][j]])  # hold 블록 출력
 
     # Set max score
     if score > 999999:
@@ -746,17 +709,6 @@ def draw_hardboard_change(next1, next2, hold, score, remaining_time, line):
             if grid_n2[i][j] != 0:
                 draw_block_image(dx2, dy2, ui_variables.t_block[grid_n2[i][j]])
 
-    '''# Draw hold mino
-    grid_h = tetrimino.mino_map[hold - 1][0]
-
-    if hold_mino != -1:
-        for i in range(4):
-            for j in range(4):
-                dx = 220 + block_size * j
-                dy = 50 + block_size * i
-                if grid_h[i][j] != 0:
-                    draw_block_image(
-                        dx, dy, ui_variables.t_block[grid_h[i][j]])  # hold 블록 출력'''
     # Draw hold mino
     grid_h = tetrimino.mino_map[hold - 1][0]  # (배열이라-1) 기본 모양
 
@@ -1040,7 +992,7 @@ def draw_2Pboard(next, hold, current_key_2P):
             dy = int(board_height * 0.055) + block_size * y  # 위치비율 고정
             draw_block_image(dx, dy, ui_variables.t_block[matrix_2P[x][y + 1]])
 
-
+#PvP board 생성
 def draw_multiboard(next_1P, hold_1P, next_2P, hold_2P, current_key, current_key_2P):
     screen.fill(ui_variables.real_white)
     draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
@@ -1185,111 +1137,7 @@ def is_stackable(mino, matrix):
     return True
 
 
-'''
-# Draw a tetrimino
-def draw_mino(x, y, mino, r, matrix):  # mino는 모양, r은 회전된 모양 중 하나
-    grid = tetrimino.mino_map[mino - 1][r]  # grid : 출력할 테트리스
-    tx, ty = x, y
-    # 테트리스가 바닥에 존재하면 true -> not이니까 바닥에 없는 상태
-    while not is_bottom(tx, ty, mino, r, matrix):
-        ty += 1  # 한칸 밑으로 하강
-    # Draw ghost
-    for i in range(mino_matrix_y):
-        for j in range(mino_matrix_x):
-            if grid[i][j] != 0:  # 테트리스 블록에서 해당 행렬위치에 블록 존재하면
-                matrix[tx + j][ty + i] = 8  # 테트리스가 쌓일 위치에 8 이라는 ghost 만듦
-    # Draw mino
-    for i in range(mino_matrix_y):
-        for j in range(mino_matrix_x):
-            if grid[i][j] != 0:  # 테트리스 블록에서 해당 행렬위치에 블록 존재하면
-                matrix[x + j][y + i] = grid[i][j]  # 해당 위치에 블록 만듦
-# Erase a tetrimino
-def erase_mino(x, y, mino, r, matrix):
-    grid = tetrimino.mino_map[mino - 1][r]
-    # Erase ghost
-    for j in range(board_y + 1):
-        for i in range(board_x):
-            if matrix[i][j] == 8:  # 테트리스 블록에서 해당 행렬위치에 ghost블록 존재하면
-                matrix[i][j] = 0  # 없애서 빈 곳으로 만들기
-    # Erase mino
-    for i in range(mino_matrix_y):
-        for j in range(mino_matrix_x):
-            if grid[i][j] != 0:  # 테트리스 블록에서 해당 행렬위치에 블록 존재하면
-                matrix[x + j][y + i] = 0  # 해당 위치에 블록 없애서 빈 곳으로 만들기
-# Returns true if mino is at bottom
-def is_bottom(x, y, mino, r, matrix):
-    grid = tetrimino.mino_map[mino - 1][r]  # grid : 출력할 테트리스
-    for i in range(mino_matrix_y):
-        for j in range(mino_matrix_x):
-            if grid[i][j] != 0:  # 테트리스 블록에서 해당 행렬위치에 블록 존재하면
-                if (y + i + 1) > board_y:  # 바닥의 y좌표에 있음(바닥에 닿음)
-                    return True
-                # 그 블록위치에 0, 8 아님(즉 블록 존재 함)
-                elif matrix[x + j][y + i + 1] != 0 and matrix[x + j][y + i + 1] != 8:
-                    return True
-    return False
-# Returns true if mino is at the left edge
-def is_leftedge(x, y, mino, r, matrix):
-    grid = tetrimino.mino_map[mino - 1][r] #grid : 출력할 테트리스
-    for i in range(mino_matrix_y):
-        for j in range(mino_matrix_x):
-            if grid[i][j] != 0: #테트리스 블록에서 해당 행렬위치에 블록 존재하면
-                if (x + j - 1) < 0:  #맨 왼쪽에 위치함
-                    return True
-                elif matrix[x + j - 1][y + i] != 0:  #그 위치의 왼쪽에 이미 무엇인가 존재함
-                    return True
-    return False
-# Returns true if mino is at the right edge
-def is_rightedge(x, y, mino, r, matrix):
-    grid = tetrimino.mino_map[mino - 1][r] #grid : 출력할 테트리스
-    for i in range(mino_matrix_y):
-        for j in range(mino_matrix_x):
-            if grid[i][j] != 0: #테트리스 블록에서 해당 행렬위치에 블록 존재하면
-                if (x + j + 1) >= board_x :  #맨 오른쪽에 위치
-                    return True
-                elif matrix[x + j + 1][y + i] != 0:   #그 위치의 오른쪽에 이미 무엇인가 존재함
-                    return True
-    return False
-def is_turnable_r(x, y, mino, r, matrix):
-    if r != 3:  #회전모양 총 0, 1, 2, 3번째 총 4가지 있음
-        grid = tetrimino.mino_map[mino - 1][r + 1] #3이 아니면 그 다음 모양
-    else:
-        grid = tetrimino.mino_map[mino - 1][0] #3이면 0번째 모양으로
-    for i in range(mino_matrix_y):
-        for j in range(mino_matrix_x):
-            if grid[i][j] != 0:  #테트리스 블록에서 해당 행렬위치에 블록 존재하면
-                # 테트리스 matrix크기 벗어나면 못돌림
-                if (x + j) < 0 or (x + j) >= board_x or (y + i) < 0 or (y + i) > board_y :
-                    return False
-                elif matrix[x + j][y + i] != 0:  #해당 자리에 이미 블록이 있으면 못돌림
-                    return False
-    return True
-# Returns true if turning left is possible
-def is_turnable_l(x, y, mino, r, matrix):
-    if r != 0:  #회전모양 총 0, 1, 2, 3번째 총 4가지 있음
-        grid = tetrimino.mino_map[mino - 1][r - 1]  #0이 아니면 그 다음 모양
-    else:
-        grid = tetrimino.mino_map[mino - 1][3] #0이면 3번째 모양으로
-    for i in range(mino_matrix_y):
-        for j in range(mino_matrix_x):
-            if grid[i][j] != 0:  #테트리스 블록에서 해당 행렬위치에 블록 존재하면
-                # 테트리스 matrix크기 벗어나면 못돌림
-                if (x + j) < 0 or (x + j) >= board_x or (y + i) < 0 or (y + i) > board_y:
-                    return False
-                elif matrix[x + j][y + i] != 0: #해당 자리에 이미 블록이 있으면 못돌림
-                    return False
-    return True
-# Returns true if new block is drawable
-def is_stackable(mino, matrix):
-    grid = tetrimino.mino_map[mino - 1][0] #grid : 출력할 테트리스
-    for i in range(mino_matrix_y):
-        for j in range(mino_matrix_x):
-            if grid[i][j] != 0 and matrix[3 + j][i] != 0: ###
-                return False
-    return True
-'''
-
-
+#한줄 뿌시면 공격
 def multi_reverse_key(rev, player):
     # 하드드롭-왼쪽회전, 소프트드롭-오른쪽회전, 오른쪽이동-왼쪽이동 방향키 전환
     keys_1P = {'hardDrop': K_e, 'softDrop': K_s, 'turnRight': K_w,
@@ -1418,10 +1266,10 @@ def set_initial_values():
     pause_time = pygame.time.get_ticks()
 
     # easy mode 스코어보드 leaders 배열에 저장
-    with open('2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/leaderboard.txt') as f:
+    with open('Tetris_Game/leaderboard.txt') as f:
         lines = f.readlines()
     lines = [line.rstrip('\n') for line in open(
-        '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/leaderboard.txt')]  # leaderboard.txt 한줄씩 읽어옴
+        'Tetris_Game/leaderboard.txt')]  # leaderboard.txt 한줄씩 읽어옴
 
     leaders = {'AAA': 0, 'BBB': 0, 'CCC': 0}
     for i in lines:
@@ -1429,21 +1277,21 @@ def set_initial_values():
     leaders = sorted(leaders.items(), key=operator.itemgetter(1), reverse=True)
 
     # hard mode 스코어보드 leaders_hard 배열에 저장
-    with open('2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/leaderboard_hard.txt') as h:
+    with open('Tetris_Game/leaderboard_hard.txt') as h:
         lines = h.readlines()
     lines = [line.rstrip('\n') for line in open(
-        '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/leaderboard_hard.txt')]  # leaderboard.txt 한줄씩 읽어옴
+        'Tetris_Game/leaderboard_hard.txt')]  # leaderboard.txt 한줄씩 읽어옴
 
     leaders_hard = {'AAA': 0, 'BBB': 0, 'CCC': 0}
     for i in lines:
         leaders_hard[i.split(' ')[0]] = int(i.split(' ')[1])
     leaders_hard = sorted(leaders_hard.items(),
-                          key=operator.itemgetter(1), reverse=True)
+                        key=operator.itemgetter(1), reverse=True)
 
     matrix = [[0 for y in range(height + 1)]
-              for x in range(width)]  # Board matrix
+            for x in range(width)]  # Board matrix
     matrix_2P = [[0 for y in range(height + 1)]
-                 for x in range(width)]  # Board matrix
+                for x in range(width)]  # Board matrix
 
     pygame.mixer.init()
     ui_variables.click_sound.set_volume(effect_volume / 10)
@@ -1470,7 +1318,7 @@ while not done:
         if start:
             screen.fill(ui_variables.real_white)
             draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
-                       0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                        0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
             draw_board(next_mino1, next_mino2, hold_mino, score, level, goal)
             # 화면 회색으로 약간 불투명하게
             pause_surface = screen.convert_alpha()  # 투명 가능하도록
@@ -1507,9 +1355,9 @@ while not done:
             screen.fill(ui_variables.real_white)
 
             draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
-                       0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                    0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
             draw_hardboard(next_mino1, next_mino2, hold_mino,
-                           score, remaining_time, line_count)
+                        score, remaining_time, line_count)
 
             # 화면 회색으로 약간 불투명하게
             pause_surface = screen.convert_alpha()  # 투명 가능하도록
@@ -1773,7 +1621,7 @@ while not done:
                         draw_image(screen, gamebackground_image, board_width *
                                    0.5, board_height * 0.5, board_width, board_height)
                         draw_board(next_mino1, next_mino2,
-                                   hold_mino, score, level, goal)
+                                hold_mino, score, level, goal)
                         pygame.display.update()
                         if is_stackable(next_mino1, matrix):
                             mino = next_mino1
@@ -1844,7 +1692,7 @@ while not done:
                     pygame.time.set_timer(pygame.USEREVENT, framerate)
                     draw_mino(dx, dy, mino, rotation, matrix)
                     draw_board(next_mino1, next_mino2,
-                               hold_mino, score, level, goal)
+                            hold_mino, score, level, goal)
                 # Hold
                 elif event.key == K_LSHIFT or event.key == K_c:
                     if hold == False:
@@ -1861,7 +1709,7 @@ while not done:
                         hold = True
                     draw_mino(dx, dy, mino, rotation, matrix)
                     draw_board(next_mino1, next_mino2,
-                               hold_mino, score, level, goal)
+                            hold_mino, score, level, goal)
                 # Turn right
                 elif event.key == K_UP or event.key == K_x:
                     if is_turnable_r(dx, dy, mino, rotation, matrix):
@@ -1896,7 +1744,7 @@ while not done:
                         rotation = 0
                     draw_mino(dx, dy, mino, rotation, matrix)
                     draw_board(next_mino1, next_mino2,
-                               hold_mino, score, level, goal)
+                            hold_mino, score, level, goal)
                 # Turn left
                 elif event.key == K_z or event.key == K_LCTRL:
                     if is_turnable_l(dx, dy, mino, rotation, matrix):
@@ -1930,7 +1778,7 @@ while not done:
                         rotation = 3
                     draw_mino(dx, dy, mino, rotation, matrix)
                     draw_board(next_mino1, next_mino2,
-                               hold_mino, score, level, goal)
+                            hold_mino, score, level, goal)
                 # Move left
                 elif event.key == K_LEFT:
                     if not is_leftedge(dx, dy, mino, rotation, matrix):
@@ -1938,7 +1786,7 @@ while not done:
                         dx -= 1
                     draw_mino(dx, dy, mino, rotation, matrix)
                     draw_board(next_mino1, next_mino2,
-                               hold_mino, score, level, goal)
+                            hold_mino, score, level, goal)
                 # Move right
                 elif event.key == K_RIGHT:
                     if not is_rightedge(dx, dy, mino, rotation, matrix):
@@ -1946,7 +1794,7 @@ while not done:
                         dx += 1
                     draw_mino(dx, dy, mino, rotation, matrix)
                     draw_board(next_mino1, next_mino2,
-                               hold_mino, score, level, goal)
+                            hold_mino, score, level, goal)
 
             elif event.type == VIDEORESIZE:
                 board_width = event.w
@@ -2004,14 +1852,14 @@ while not done:
                 draw_mino(dx, dy, mino, rotation, matrix)
                 screen.fill(ui_variables.real_white)
                 draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
-                           0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                        0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
                 # change가 홀수이면 위아래전환, 아니면 원래대로
                 if change % 2 == 1:
                     draw_hardboard_change(
                         next_mino1, next_mino2, hold_mino, score, remaining_time, line_count)
                 else:
                     draw_hardboard(next_mino1, next_mino2, hold_mino,
-                                   score, remaining_time, line_count)
+                                score, remaining_time, line_count)
                     pygame.display.update()
 
                 current_time = pygame.time.get_ticks()
@@ -2030,7 +1878,7 @@ while not done:
                         draw_mino(dx, dy, mino, rotation, matrix)
                         screen.fill(ui_variables.real_white)
                         draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
-                                   0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                                0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
                         # change가 홀수이면 위아래전환, 아니면 원래대로
                         if change % 2 == 1:
                             draw_hardboard_change(
@@ -2141,14 +1989,14 @@ while not done:
                     draw_mino(dx, dy, mino, rotation, matrix)
                     screen.fill(ui_variables.real_white)
                     draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
-                               0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                            0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
                     # change가 홀수이면 위아래전환, 아니면 원래대로
                     if change % 2 == 1:
                         draw_hardboard_change(
                             next_mino1, next_mino2, hold_mino, score, remaining_time, line_count)
                     else:
                         draw_hardboard(next_mino1, next_mino2, hold_mino,
-                                       score, remaining_time, line_count)
+                                    score, remaining_time, line_count)
                 elif event.key == K_j:
                     framerate = int(framerate-speed_change)
                     print(framerate)
@@ -2177,7 +2025,7 @@ while not done:
                             next_mino1, next_mino2, hold_mino, score, remaining_time, line_count)
                     else:
                         draw_hardboard(next_mino1, next_mino2, hold_mino,
-                                       score, remaining_time, line_count)
+                                    score, remaining_time, line_count)
 
                 # dx, dy는 각각 좌표위치 이동에 해당하며, rotation은 mino.py의 테트리스 블록 회전에 해당함
                 # Turn right
@@ -2215,14 +2063,14 @@ while not done:
                     draw_mino(dx, dy, mino, rotation, matrix)
                     screen.fill(ui_variables.real_white)
                     draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
-                               0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                            0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
                     # change가 홀수이면 위아래전환, 아니면 원래대로
                     if change % 2 == 1:
                         draw_hardboard_change(
                             next_mino1, next_mino2, hold_mino, score, remaining_time, line_count)
                     else:
                         draw_hardboard(next_mino1, next_mino2, hold_mino,
-                                       score, remaining_time, line_count)
+                                    score, remaining_time, line_count)
 
                 # Turn left
                 elif event.key == K_m:
@@ -2258,14 +2106,14 @@ while not done:
                     draw_mino(dx, dy, mino, rotation, matrix)
                     screen.fill(ui_variables.real_white)
                     draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
-                               0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                            0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
                     # change가 홀수이면 위아래전환, 아니면 원래대로
                     if change % 2 == 1:
                         draw_hardboard_change(
                             next_mino1, next_mino2, hold_mino, score, remaining_time, line_count)
                     else:
                         draw_hardboard(next_mino1, next_mino2, hold_mino,
-                                       score, remaining_time, line_count)
+                                    score, remaining_time, line_count)
 
                 # Move left
                 elif event.key == K_LEFT:
@@ -2275,14 +2123,14 @@ while not done:
                     draw_mino(dx, dy, mino, rotation, matrix)
                     screen.fill(ui_variables.real_white)
                     draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
-                               0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                            0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
                     # change가 홀수이면 위아래전환, 아니면 원래대로
                     if change % 2 == 1:
                         draw_hardboard_change(
                             next_mino1, next_mino2, hold_mino, score, remaining_time, line_count)
                     else:
                         draw_hardboard(next_mino1, next_mino2, hold_mino,
-                                       score, remaining_time, line_count)
+                                    score, remaining_time, line_count)
 
                 # Move right
                 elif event.key == K_RIGHT:
@@ -2292,14 +2140,14 @@ while not done:
                     draw_mino(dx, dy, mino, rotation, matrix)
                     screen.fill(ui_variables.real_white)
                     draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
-                               0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                            0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
                     # change가 홀수이면 위아래전환, 아니면 원래대로
                     if change % 2 == 1:
                         draw_hardboard_change(
                             next_mino1, next_mino2, hold_mino, score, remaining_time, line_count)
                     else:
                         draw_hardboard(next_mino1, next_mino2, hold_mino,
-                                       score, remaining_time, line_count)
+                                    score, remaining_time, line_count)
 
                 # debug mode block change
                 elif debug:
@@ -2435,7 +2283,7 @@ while not done:
                         hard_drop_2P = False
                         bottom_count_2P = 0
                         draw_mino(dx_2P, dy_2P, mino_2P,
-                                  rotation_2P, matrix_2P)
+                                rotation_2P, matrix_2P)
 
                         if is_stackable(next_mino1_2P, matrix_2P):
                             mino_2P = next_mino1_2P
@@ -2923,7 +2771,7 @@ while not done:
                         hard_drop_2P = False
                         bottom_count_2P = 0
                         draw_mino(dx_2P, dy_2P, mino_2P,
-                                  rotation_2P, matrix_2P)
+                                rotation_2P, matrix_2P)
 
                         if is_stackable(next_mino1_2P, matrix_2P):
                             mino_2P = next_mino1_2P
@@ -3361,14 +3209,14 @@ while not done:
                 draw_mino(dx, dy, mino, rotation, matrix)
                 screen.fill(ui_variables.real_white)
                 draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
-                           0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                        0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
                 # change가 홀수이면 위아래전환, 아니면 원래대로
                 if change % 2 == 1:
                     draw_hardboard_change(
                         next_mino1, next_mino2, hold_mino, score, remaining_time, line_count)
                 else:
                     draw_hardboard(next_mino1, next_mino2, hold_mino,
-                                   score, remaining_time, line_count)
+                                score, remaining_time, line_count)
                 pygame.display.update()
 
                 current_time = pygame.time.get_ticks()
@@ -3387,7 +3235,7 @@ while not done:
                         draw_mino(dx, dy, mino, rotation, matrix)
                         screen.fill(ui_variables.real_white)
                         draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
-                                   0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                                0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
                         # change가 홀수이면 위아래전환, 아니면 원래대로
                         if change % 2 == 1:
                             draw_hardboard_change(
@@ -3522,7 +3370,7 @@ while not done:
                             next_mino1, next_mino2, hold_mino, score, remaining_time, line_count)
                     else:
                         draw_hardboard(next_mino1, next_mino2, hold_mino,
-                                       score, remaining_time, line_count)
+                                    score, remaining_time, line_count)
 
                     pygame.display.update()
                 elif event.key == K_j:
@@ -3546,14 +3394,14 @@ while not done:
                     draw_mino(dx, dy, mino, rotation, matrix)
                     screen.fill(ui_variables.real_white)
                     draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
-                               0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                            0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
                     # change가 홀수이면 위아래전환, 아니면 원래대로
                     if change % 2 == 1:
                         draw_hardboard_change(
                             next_mino1, next_mino2, hold_mino, score, remaining_time, line_count)
                     else:
                         draw_hardboard(next_mino1, next_mino2, hold_mino,
-                                       score, remaining_time, line_count)
+                                    score, remaining_time, line_count)
 
                 # dx, dy는 각각 좌표위치 이동에 해당하며, rotation은 mino.py의 테트리스 블록 회전에 해당함
                 # Turn right
@@ -3591,14 +3439,14 @@ while not done:
                     draw_mino(dx, dy, mino, rotation, matrix)
                     screen.fill(ui_variables.real_white)
                     draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
-                               0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                            0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
                     # change가 홀수이면 위아래전환, 아니면 원래대로
                     if change % 2 == 1:
                         draw_hardboard_change(
                             next_mino1, next_mino2, hold_mino, score, remaining_time, line_count)
                     else:
                         draw_hardboard(next_mino1, next_mino2, hold_mino,
-                                       score, remaining_time, line_count)
+                                    score, remaining_time, line_count)
 
                 # Turn left
                 elif event.key == K_m:
@@ -3634,14 +3482,14 @@ while not done:
                     draw_mino(dx, dy, mino, rotation, matrix)
                     screen.fill(ui_variables.real_white)
                     draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
-                               0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                            0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
                     # change가 홀수이면 위아래전환, 아니면 원래대로
                     if change % 2 == 1:
                         draw_hardboard_change(
                             next_mino1, next_mino2, hold_mino, score, remaining_time, line_count)
                     else:
                         draw_hardboard(next_mino1, next_mino2, hold_mino,
-                                       score, remaining_time, line_count)
+                                    score, remaining_time, line_count)
 
                 # Move left
                 elif event.key == K_LEFT:
@@ -3651,14 +3499,14 @@ while not done:
                     draw_mino(dx, dy, mino, rotation, matrix)
                     screen.fill(ui_variables.real_white)
                     draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
-                               0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                            0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
                     # change가 홀수이면 위아래전환, 아니면 원래대로
                     if change % 2 == 1:
                         draw_hardboard_change(
                             next_mino1, next_mino2, hold_mino, score, remaining_time, line_count)
                     else:
                         draw_hardboard(next_mino1, next_mino2, hold_mino,
-                                       score, remaining_time, line_count)
+                                    score, remaining_time, line_count)
 
                 # Move right
                 elif event.key == K_RIGHT:
@@ -3668,14 +3516,14 @@ while not done:
                     draw_mino(dx, dy, mino, rotation, matrix)
                     screen.fill(ui_variables.real_white)
                     draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
-                               0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                            0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
                     # change가 홀수이면 위아래전환, 아니면 원래대로
                     if change % 2 == 1:
                         draw_hardboard_change(
                             next_mino1, next_mino2, hold_mino, score, remaining_time, line_count)
                     else:
                         draw_hardboard(next_mino1, next_mino2, hold_mino,
-                                       score, remaining_time, line_count)
+                                    score, remaining_time, line_count)
 
                 # debug mode block change
                 elif debug:
@@ -3750,7 +3598,7 @@ while not done:
                 if game_status == 'pvp':
                     # 기존 화면 약간 어둡게 처리
                     draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
-                               0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                            0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
                     draw_multiboard(next_mino1, hold_mino, next_mino1_2P, hold_mino_2P,
                                     current_key, current_key_2P)
                     pause_surface = screen.convert_alpha()  # 투명 가능하도록
@@ -4092,16 +3940,16 @@ while not done:
     elif select_mode:
         screen.fill(ui_variables.real_white)
         draw_image(screen, background_image, board_width * 0.5, board_height *
-                   0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
         pause_surface = screen.convert_alpha()  # 투명 가능하도록
         pause_surface.fill((0, 0, 0, 0))  # 투명한 검정색으로 덮기
         pygame.draw.rect(pause_surface, (ui_variables.black_pause), [0, 0, int(
             board_width), int(board_height)])  # (screen, 색깔, 위치 x, y좌표, 너비, 높이)
         screen.blit(pause_surface, (0, 0))
 
-        single_button.draw(screen, (0, 0, 0))
-        pvp_button.draw(screen, (0, 0, 0))
-        hard_button.draw(screen, (0, 0, 0))
+        single_button.draw(screen, (0, 0, 0)) #easy mode
+        pvp_button.draw(screen, (0, 0, 0)) #multi mode
+        hard_button.draw(screen, (0, 0, 0)) #hard mode
         hard_training_button.draw(screen, (0, 0, 0))
         multi_training_button.draw(screen, (0, 0, 0))
         back_button.draw(screen, (0, 0, 0))
@@ -4112,15 +3960,8 @@ while not done:
             pos = pygame.mouse.get_pos()
             if event.type == QUIT:
                 done = True
-
-            # 기존 pytris: 첫 화면에서 space만 누르면 게임 시작
-            elif event.type == KEYDOWN:
-                '''
-                if event.key == K_SPACE:
-                    ui_variables.click_sound.play()
-                    start = True
-                '''
-
+                
+            # button 이미지 mouse over 시 색칠
             elif event.type == pygame.MOUSEMOTION:
                 if single_button.isOver_2(pos):
                     single_button.image = clicked_easy_button_image
@@ -4151,7 +3992,8 @@ while not done:
                     back_button.image = clicked_back_button_image
                 else:
                     back_button.image = back_button_image
-
+                    
+            # mouse click 시 
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if single_button.isOver_2(pos):
                     ui_variables.click_sound.play()
@@ -4171,6 +4013,7 @@ while not done:
                     pvp = True
                     initialize = True
                     select_mode = False
+                    
                 if hard_button.isOver_2(pos):
                     ui_variables.click_sound.play()
                     ui_variables.intro_sound.stop()
@@ -4178,6 +4021,7 @@ while not done:
                     hard = True
                     initialize = True
                     select_mode = False
+                    
                 if hard_training_button.isOver_2(pos):
                     ui_variables.click_sound.play()
                     hard_training_info = True
@@ -4186,6 +4030,7 @@ while not done:
                     pygame.mixer.music.play(-1)
                     initialize = True
                     select_mode = False
+                    
                 if multi_training_button.isOver_2(pos):
                     ui_variables.click_sound.play()
                     multi_training_info = True
@@ -4194,11 +4039,13 @@ while not done:
                     pygame.mixer.music.play(-1)
                     initialize = True
                     select_mode = False
+                    
                 if back_button.isOver(pos):
                     ui_variables.click_sound.play()
                     select_mode = False
                     initialize = False
-
+                    
+            # 창 사이즈 조절
             elif event.type == VIDEORESIZE:
                 board_width = event.w
                 board_height = event.h
@@ -4222,11 +4069,11 @@ while not done:
 
                 for i in range(len(button_list)):
                     button_list[i].change(board_width, board_height)
-
+# score_board 셋팅
     elif leader_board:
         screen.fill(ui_variables.real_white)
         draw_image(screen, background_image, board_width * 0.5, board_height *
-                   0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
         pause_surface = screen.convert_alpha()  # 투명 가능하도록
         pause_surface.fill((0, 0, 0, 0))  # 투명한 검정색으로 덮기
         pygame.draw.rect(pause_surface, (ui_variables.black_pause), [0, 0, int(
@@ -4321,9 +4168,9 @@ while not done:
             screen.fill(ui_variables.real_white)
 
             draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
-                       0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                    0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
             draw_hardboard(next_mino1, next_mino2, hold_mino,
-                           score, remaining_time, line_count)
+                        score, remaining_time, line_count)
 
             # 화면 회색으로 약간 불투명하게
             pause_surface = screen.convert_alpha()  # 투명 가능하도록
@@ -4333,7 +4180,7 @@ while not done:
             screen.blit(pause_surface, (0, 0))
 
             draw_image(screen, hard_training_start_image, board_width * 0.5, board_height *
-                       0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                    0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
 
         if multi_training_info:
             draw_multiboard(next_mino1, hold_mino, next_mino1_2P, hold_mino_2P,
@@ -4346,7 +4193,7 @@ while not done:
             screen.blit(pause_surface, (0, 0))
 
             draw_image(screen, multi_training_start_image, board_width * 0.5, board_height *
-                       0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                    0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
 
         if help_status == True:
             # pause_surface = screen.convert_alpha()  # 투명 가능하도록
@@ -4396,7 +4243,7 @@ while not done:
                     board_width = int(board_height / board_rate)
                     # 높이를 적정 비율로 바꿔줌
                     board_height = int(board_width*board_rate)
-                if board_width >= mid_width:  # 화면 사이즈가 큰 경우
+                if board_width >= mid_width:  # 화면 사이즈가 큰 경우E
                     textsize = True  # 큰 글자크기 사용
                 if board_width < mid_width:  # 화면 사이즈가 작은 경우
                     textsize = False  # 작은 글자크기 사용
@@ -4407,11 +4254,11 @@ while not done:
 
                 for i in range(len(button_list)):
                     button_list[i].change(board_width, board_height)
-
+#셋팅 페이지 
     elif screen_setting:
         screen.fill(ui_variables.pinkpurple)
         draw_image(screen, background_image, board_width * 0.5, board_height *
-                   0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
         select_mode_button.draw(screen, (0, 0, 0))
         setting_button.draw(screen, (0, 0, 0))
         score_board_button.draw(screen, (0, 0, 0))
@@ -4467,21 +4314,21 @@ while not done:
                     ui_variables.click_sound.play()
                     screen_setting = False
                 if background1_check_button.isOver(pos):
-                    gamebackground_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/images/background_hongkong.png'
+                    gamebackground_image = 'Tetris_Game/assets/images/background_hongkong.png'
                     # 클릭한 이미지에만 체크 표시
                     background2_check_button.image = background2_image
                     background3_check_button.image = background3_image
                     background1_check_button.image = clicked_background1_image
 
                 if background2_check_button.isOver(pos):
-                    gamebackground_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/images/background_nyc.png'
+                    gamebackground_image = 'Tetris_Game/assets/images/background_nyc.png'
                     # 클릭한 이미지에만 체크 표시
                     background1_check_button.image = background1_image
                     background3_check_button.image = background3_image
                     background2_check_button.image = clicked_background2_image
 
                 if background3_check_button.isOver(pos):
-                    gamebackground_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/images/background_uk.png'
+                    gamebackground_image = 'Tetris_Game/assets/images/background_uk.png'
                     # 클릭한 이미지에만 체크 표시
                     background1_check_button.image = background1_image
                     background2_check_button.image = background2_image
@@ -4688,36 +4535,36 @@ while not done:
                 #BGM 선택 기능 추가#
                 # BGM버튼을 누르면 인트로음악은 멈추고 해당 BGM재생됨 (Back버튼을 눌러 뒤로가기 전까지 계속 재생)
                 if BGM1_sound_on_button.isOver(pos):
-                    #ui_variables.intro_sound.("2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/sounds/BGM2.wav")#
+                    #ui_variables.intro_sound.("Tetris_Game/assets/sounds/BGM2.wav")#
                     # 클릭한 버튼만 체크 표시되도록
                     BGM2_sound_on_button.image = backgroundmusic_select_image
                     BGM3_sound_on_button.image = backgroundmusic_select_image
                     BGM1_sound_on_button.image = clicked_backgroundmusic_select_image
                     ui_variables.intro_sound.stop()
                     pygame.mixer.music.stop()
-                    selected_bgm = "2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/sounds/BGM1.wav"
+                    selected_bgm = "Tetris_Game/assets/sounds/BGM1.wav"
                     pygame.mixer.music.load(selected_bgm)
                     pygame.mixer.music.play()
                 if BGM2_sound_on_button.isOver(pos):
-                    #ui_variables.intro_sound.("2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/sounds/BGM2.wav")#
+                    #ui_variables.intro_sound.("Tetris_Game/assets/sounds/BGM2.wav")#
                     # 클릭한 버튼만 체크 표시되도록
                     BGM1_sound_on_button.image = backgroundmusic_select_image
                     BGM3_sound_on_button.image = backgroundmusic_select_image
                     BGM2_sound_on_button.image = clicked_backgroundmusic_select_image
                     ui_variables.intro_sound.stop()
                     pygame.mixer.music.stop()
-                    selected_bgm = "2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/sounds/BGM2.wav"
+                    selected_bgm = "Tetris_Game/assets/sounds/BGM2.wav"
                     pygame.mixer.music.load(selected_bgm)
                     pygame.mixer.music.play()
                 if BGM3_sound_on_button.isOver(pos):
-                    #ui_variables.intro_sound.("2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/sounds/BGM2.wav")#
+                    #ui_variables.intro_sound.("Tetris_Game/assets/sounds/BGM2.wav")#
                     # 클릭한 버튼만 체크 표시되도록
                     BGM1_sound_on_button.image = backgroundmusic_select_image
                     BGM2_sound_on_button.image = backgroundmusic_select_image
                     BGM3_sound_on_button.image = clicked_backgroundmusic_select_image
                     ui_variables.intro_sound.stop()
                     pygame.mixer.music.stop()
-                    selected_bgm = "2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/sounds/BGM3.wav"
+                    selected_bgm = "Tetris_Game/assets/sounds/BGM3.wav"
                     pygame.mixer.music.load(selected_bgm)
                     pygame.mixer.music.play()
 
@@ -4878,14 +4725,6 @@ while not done:
             if event.type == QUIT:
                 done = True
 
-            # 기존 pytris: 첫 화면에서 space만 누르면 게임 시작
-            elif event.type == KEYDOWN:
-                '''
-                if event.key == K_SPACE:
-                    ui_variables.click_sound.play()
-                    start = True
-                '''
-
             elif event.type == pygame.MOUSEMOTION:
                 if select_mode_button.isOver_2(pos):
                     select_mode_button.image = clicked_select_mode_button_image
@@ -4949,76 +4788,15 @@ while not done:
                 for i in range(len(button_list)):
                     button_list[i].change(board_width, board_height)
 
-                '''
-                if single_button.isOver_2(pos):
-                    ui_variables.click_sound.play()
-                    previous_time = pygame.time.get_ticks()
-                    start = True
-                    initialize = True
-                    pygame.mixer.music.play(-1) #play(-1) = 노래 반복재생
-                    ui_variables.intro_sound.stop()
-                if pvp_button.isOver_2(pos):
-                    ui_variables.click_sound.play()
-                    pvp = True
-                    initialize = True
-                    pygame.mixer.music.play(-1)
-                    ui_variables.intro_sound.stop()
-                if gravity_button.isOver_2(pos):
-                    ui_variables.click_sound.play()
-                    start = True
-                    gravity_mode = True
-                    initialize = True
-                    pygame.mixer.music.play(-1)
-                    ui_variables.intro_sound.stop()
-                if timeattack_button.isOver_2(pos):
-                    ui_variables.click_sound.play()
-                    start = True
-                    time_attack = True
-                    initialize = True
-                    pygame.mixer.music.play(-1)
-                    ui_variables.intro_sound.stop()
-                if leaderboard_icon.isOver(pos):
-                    ui_variables.click_sound.play()
-                    leader_board = True
-                if setting_icon.isOver(pos):
-                    ui_variables.click_sound.play()
-                    setting = True
-
-                if help_button.isOver_2(pos):
-                    ui_variables.click_sound.play()
-                    help = True
-                '''
-
-        # pygame.time.set_timer(pygame.USEREVENT, 300)
-        '''
-        screen.fill(ui_variables.white)
-        pygame.draw.rect(
-            screen,
-            ui_variables.grey_1,
-            Rect(0, 187, 300, 187)
-        )
-        '''
-
         # 메인화면 배경
         draw_image(screen, background_image, board_width * 0.5, board_height *
-                   0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
 
         # 버튼그리기
         select_mode_button.draw(screen, (0, 0, 0))
         setting_button.draw(screen, (0, 0, 0))
         score_board_button.draw(screen, (0, 0, 0))
         quit_button.draw(screen, (0, 0, 0))
-
-        '''
-        # 리더보드 
-        leader_1 = ui_variables.h5_i.render('1st ' + leaders[0][0] + ' ' + str(leaders[0][1]), 1, ui_variables.grey_1)
-        leader_2 = ui_variables.h5_i.render('2nd ' + leaders[1][0] + ' ' + str(leaders[1][1]), 1, ui_variables.grey_1)
-        leader_3 = ui_variables.h5_i.render('3rd ' + leaders[2][0] + ' ' + str(leaders[2][1]), 1, ui_variables.grey_1)
-        
-        screen.blit(leader_1, (10, 10))
-        screen.blit(leader_2, (10, 23))
-        screen.blit(leader_3, (10, 36))
-        '''
 
         if not start:
             pygame.display.update()
