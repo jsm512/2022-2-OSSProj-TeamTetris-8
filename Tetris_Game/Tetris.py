@@ -163,16 +163,16 @@ resume_button_image = 'Tetris_Game/assets/vector/Resume.png'
 clicked_resume_button_image = 'Tetris_Game/assets/vector/clicked_resume_button.png'
 
 help_button_image = 'Tetris_Game/assets/vector/Help.png'
-clicked_help_button_image = 'Tetris_Game/assets/vector/clicked_help_button.png'
+clicked_help_button_image = 'Tetris_Game/assets/vector/clicked_Help.png'
 
 single_button_image = 'Tetris_Game/assets/vector/Easy.png'
-clicked_single_button_image = 'Tetris_Game/assets/vector/clicked_easy_button.png'
+clicked_single_button_image = 'Tetris_Game/assets/vector/clicked_Easy.png'
 
 hard_button_image = 'Tetris_Game/assets/vector/Hard.png'
-clicked_hard_button_image = 'Tetris_Game/assets/vector/clicked_hard_button.png'
+clicked_hard_button_image = 'Tetris_Game/assets/vector/clicked_Hard.png'
 
 pvp_button_image = 'Tetris_Game/assets/vector/PvP.png'
-clicked_pvp_button_image = 'Tetris_Game/assets/vector/clicked_multi_button.png'
+clicked_pvp_button_image = 'Tetris_Game/assets/vector/clicked_PvP.png'
 
 
 hard_training_button_image = 'Tetris_Game/assets/vector/hard_tutorial_button.png'
@@ -203,8 +203,8 @@ default_button_image = 'Tetris_Game/assets/vector/default_button.png'
 clicked_default_button_image = 'Tetris_Game/assets/vector/clicked_default_button.png'
 number_board = 'Tetris_Game/assets/vector/number_board.png'
 
-resume_button_image = 'Tetris_Game/assets/vector/resume_button.png'
-clicked_resume_button_image = 'Tetris_Game/assets/vector/clicked_resume_button.png'
+resume_button_image = 'Tetris_Game/assets/vector/Resume.png'
+clicked_resume_button_image = 'Tetris_Game/assets/vector/clicked_Resume.png'
 restart_button_image = 'Tetris_Game/assets/vector/restart_button.png'
 clicked_restart_button_image = 'Tetris_Game/assets/vector/clicked_restart_button.png'
 
@@ -216,8 +216,8 @@ keyboard_vector = 'Tetris_Game/assets/vector/keyboard_vector.png'
 clicked_keyboard_vector = 'Tetris_Game/assets/vector/clicked_keyboard_vector.png'
 screen_vector = 'Tetris_Game/assets/vector/screen_vector.png'
 clicked_screen_vector = 'Tetris_Game/assets/vector/clicked_screen_vector.png'
-menu_button_image = 'Tetris_Game/assets/vector/menu_button.png'
-clicked_menu_button_image = 'Tetris_Game/assets/vector/clicked_menu_button.png'
+menu_button_image = 'Tetris_Game/assets/vector/Menu.png'
+clicked_menu_button_image = 'Tetris_Game/assets/vector/clicked_Menu.png'
 ok_button_image = 'Tetris_Game/assets/vector/ok_button.png'
 clicked_ok_button_image = 'Tetris_Game/assets/vector/clicked_ok_button.png'
 plus_button_image = 'Tetris_Game/assets/vector/plus_button.png'
