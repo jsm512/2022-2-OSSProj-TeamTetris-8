@@ -144,34 +144,34 @@ gamebackground_image = 'Tetris_Game/assets/images/background_nyc.png'  # 게임 
 pause_board_image = 'Tetris_Game/assets/vector/pause_board.png'
 
 help_board_image = 'Tetris_Game/assets/vector/help_board.png'
-select_mode_button_image = 'Tetris_Game/assets/vector/select_mode_button.png'
-clicked_select_mode_button_image = 'Tetris_Game/assets/vector/clicked_select_mode_button.png'
+select_mode_button_image = 'Tetris_Game/assets/vector/Mode.png'
+clicked_select_mode_button_image = 'Tetris_Game/assets/vector/clicked_Mode.png'
 
-setting_button_image = 'Tetris_Game/assets/vector/settings_button.png'
-clicked_setting_button_image = 'Tetris_Game/assets/vector/clicked_settings_button.png'
+setting_button_image = 'Tetris_Game/assets/vector/Setting.png'
+clicked_setting_button_image = 'Tetris_Game/assets/vector/clicked_Setting.png'
 
 pause_setting_button_image = 'Tetris_Game/assets/vector/pause_settings_button.png'
 clicked_pause_setting_button_image = 'Tetris_Game/assets/vector/clicked_pause_settings_button.png'
 
-score_board_button_image = 'Tetris_Game/assets/vector/score_board_button.png'
-clicked_score_board_button_image = 'Tetris_Game/assets/vector/clicked_score_board_button.png'
+score_board_button_image = 'Tetris_Game/assets/vector/Score.png'
+clicked_score_board_button_image = 'Tetris_Game/assets/vector/clicked_Score.png'
 
-quit_button_image = 'Tetris_Game/assets/vector/quit_button.png'
-clicked_quit_button_image = 'Tetris_Game/assets/vector/clicked_quit_button.png'
+quit_button_image = 'Tetris_Game/assets/vector/Quit.png'
+clicked_quit_button_image = 'Tetris_Game/assets/vector/clicked_Quit.png'
 
-resume_button_image = 'Tetris_Game/assets/vector/resume_button.png'
+resume_button_image = 'Tetris_Game/assets/vector/Resume.png'
 clicked_resume_button_image = 'Tetris_Game/assets/vector/clicked_resume_button.png'
 
-help_button_image = 'Tetris_Game/assets/vector/help_button.png'
+help_button_image = 'Tetris_Game/assets/vector/Help.png'
 clicked_help_button_image = 'Tetris_Game/assets/vector/clicked_help_button.png'
 
-single_button_image = 'Tetris_Game/assets/vector/easy_button.png'
+single_button_image = 'Tetris_Game/assets/vector/Easy.png'
 clicked_single_button_image = 'Tetris_Game/assets/vector/clicked_easy_button.png'
 
-hard_button_image = 'Tetris_Game/assets/vector/hard_button.png'
+hard_button_image = 'Tetris_Game/assets/vector/Hard.png'
 clicked_hard_button_image = 'Tetris_Game/assets/vector/clicked_hard_button.png'
 
-pvp_button_image = 'Tetris_Game/assets/vector/multi_button.png'
+pvp_button_image = 'Tetris_Game/assets/vector/PvP.png'
 clicked_pvp_button_image = 'Tetris_Game/assets/vector/clicked_multi_button.png'
 
 
