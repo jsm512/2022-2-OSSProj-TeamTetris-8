@@ -165,8 +165,8 @@ clicked_resume_button_image = 'Tetris_Game/assets/vector/clicked_resume_button.p
 help_button_image = 'Tetris_Game/assets/vector/Help.png'
 clicked_help_button_image = 'Tetris_Game/assets/vector/clicked_Help.png'
 
-easy_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/easy_button.png'
-clicked_easy_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_easy_button.png'
+easy_button_image = 'Tetris_Game/assets/vector/easy.png'
+clicked_easy_button_image = 'Tetris_Game/assets/vector/clicked_easy.png'
 
 hard_button_image = 'Tetris_Game/assets/vector/Hard.png'
 clicked_hard_button_image = 'Tetris_Game/assets/vector/clicked_Hard.png'
@@ -178,8 +178,8 @@ clicked_pvp_button_image = 'Tetris_Game/assets/vector/clicked_PvP.png'
 hard_training_button_image = 'Tetris_Game/assets/vector/hard_tutorial_button.png'
 clicked_hard_training_button_image = 'Tetris_Game/assets/vector/clicked_hard_tutorial_button.png'
 
-multi_training_button_image = 'Tetris_Game/assets/vector/multi_tutorial_button.png'
-clicked_multi_training_button_image = 'Tetris_Game/assets/vector/clicked_multi_tutorial_button.png'
+# multi_training_button_image = 'Tetris_Game/assets/vector/multi_tutorial_button.png'
+# clicked_multi_training_button_image = 'Tetris_Game/assets/vector/clicked_multi_tutorial_button.png'
 
 
 gameover_board_image = 'Tetris_Game/assets/vector/gameover_board.png'
@@ -208,8 +208,8 @@ clicked_resume_button_image = 'Tetris_Game/assets/vector/clicked_Resume.png'
 restart_button_image = 'Tetris_Game/assets/vector/restart_button.png'
 clicked_restart_button_image = 'Tetris_Game/assets/vector/clicked_restart_button.png'
 
-back_button_image = 'Tetris_Game/assets/vector/back_button.png'
-clicked_back_button_image = 'Tetris_Game/assets/vector/clicked_back_button.png'
+back_button_image = 'Tetris_Game/assets/vector/Back.png'
+clicked_back_button_image = 'Tetris_Game/assets/vector/clicked_Back.png'
 volume_vector = 'Tetris_Game/assets/vector/volume_vector.png'
 clicked_volume_vector = 'Tetris_Game/assets/vector/clicked_volume_vector.png'
 keyboard_vector = 'Tetris_Game/assets/vector/keyboard_vector.png'
@@ -312,90 +312,57 @@ class button():  # 버튼객체
 # (self, board_width, board_height,   0.2,   0.2,     0.22,        0.2,      img='')
 select_mode_button = button(board_width, board_height, 0.1, 0.4, 0.22, 0.2, select_mode_button_image)
 setting_button = button(board_width, board_height, 0.35,0.4, 0.22, 0.2, setting_button_image)
-
 quit_button = button(board_width, board_height, 0.65,0.4, 0.22, 0.2, quit_button_image)
 score_board_button = button(board_width, board_height, 0.9, 0.4, 0.22, 0.2, score_board_button_image)
 
-single_button = button(board_width, board_height, 0.25,
-                       0.35, 0.22, 0.2, easy_button_image)
-hard_button = button(board_width, board_height, 0.5,
-                     0.35, 0.22, 0.2, hard_button_image)
-pvp_button = button(board_width, board_height, 0.75,
-                    0.35, 0.22, 0.2, pvp_button_image)
-hard_training_button = button(
-    board_width, board_height, 0.37, 0.65, 0.22, 0.2, hard_training_button_image)
-multi_training_button = button(
-    board_width, board_height, 0.63, 0.65, 0.22, 0.2, multi_training_button_image)
-resume_button = button(board_width, board_height, 0.5,
-                       0.23, 0.17, 0.2, resume_button_image)
-menu_button2 = button(board_width, board_height, 0.5,
-                      0.43, 0.17, 0.2, menu_button_image)
-help_button = button(board_width, board_height, 0.5,
-                     0.63, 0.17, 0.2, help_button_image)
-training_help_button = button(board_width, board_height, 0.68,
-                     0.6, 0.17, 0.2, help_button_image)
 
-pause_quit_button = button(board_width, board_height,
-                           0.5, 0.83, 0.17, 0.2, quit_button_image)
-pause_setting_button = button(
-    board_width, board_height, 0.5, 0.63, 0.17, 0.2, pause_setting_button_image)
+single_button = button(board_width, board_height, 0.25,0.35, 0.22, 0.2, easy_button_image)
+hard_button = button(board_width, board_height, 0.5,0.35, 0.22, 0.2, hard_button_image)
+pvp_button = button(board_width, board_height, 0.75,0.35, 0.22, 0.2, pvp_button_image)
+hard_training_button = button(board_width, board_height, 0.37, 0.65, 0.22, 0.2, hard_training_button_image)
+# multi_training_button = button(board_width, board_height, 0.63, 0.65, 0.22, 0.2, multi_training_button_image)
+resume_button = button(board_width, board_height, 0.5,0.23, 0.17, 0.2, resume_button_image)
+menu_button2 = button(board_width, board_height, 0.5,0.43, 0.17, 0.2, menu_button_image)
+help_button = button(board_width, board_height, 0.5,0.63, 0.17, 0.2, help_button_image)
+training_help_button = button(board_width, board_height, 0.68,0.6, 0.17, 0.2, help_button_image)
 
-leaderboard_icon = button(board_width, board_height,
-                          0.77, 0.85, 0.15, 0.2, leaderboard_vector)
-mute_button = button(board_width, board_height, 0.5,
-                     0.20, 0.15, 0.2, mute_button_image)
-default_button = button(board_width, board_height, 0.5,
-                        0.27, 0.15, 0.2, default_button_image)
+pause_quit_button = button(board_width, board_height,0.5, 0.83, 0.17, 0.2, quit_button_image)
+pause_setting_button = button(board_width, board_height, 0.5, 0.63, 0.17, 0.2, pause_setting_button_image)
+
+leaderboard_icon = button(board_width, board_height,0.77, 0.85, 0.15, 0.2, leaderboard_vector)
+mute_button = button(board_width, board_height, 0.5,0.20, 0.15, 0.2, mute_button_image)
+default_button = button(board_width, board_height, 0.5,0.27, 0.15, 0.2, default_button_image)
 
 
-restart_button = button(board_width, board_height, 0.5,
-                        0.23, 0.17, 0.2, restart_button_image)
-back_button = button(board_width, board_height, 0.5,
-                     0.85, 0.1, 0.12, back_button_image)
-back_button2 = button(board_width, board_height, 0.2,
-                      0.85, 0.1, 0.12, back_button_image)
-ok_button = button(board_width, board_height, 0.5,
-                   0.83, 0.15, 0.2, ok_button_image)
+restart_button = button(board_width, board_height, 0.5,0.23, 0.17, 0.2, restart_button_image)
+back_button = button(board_width, board_height, 0.5,0.85, 0.1, 0.12, back_button_image)
+back_button2 = button(board_width, board_height, 0.2,0.85, 0.1, 0.12, back_button_image)
+ok_button = button(board_width, board_height, 0.5,0.83, 0.15, 0.2, ok_button_image)
 
 # 멀티모드 게임오버화면 버튼
-multi_menu_button = button(board_width, board_height,
-                           0.35, 0.8, 0.2, 0.2, menu_button_image)
-multi_restart_button = button(
-    board_width, board_height, 0.65, 0.8, 0.2, 0.2, restart_button_image)
+multi_menu_button = button(board_width, board_height,0.35, 0.8, 0.2, 0.2, menu_button_image)
+multi_restart_button = button(board_width, board_height, 0.65, 0.8, 0.2, 0.2, restart_button_image)
 # 트레이닝 게임오버 화면 버튼
-training_restart_button = button(
-    board_width, board_height, 0.35, 0.8, 0.2, 0.2, restart_button_image)
-training_multi_start_button = button(
-    board_width, board_height, 0.65, 0.8, 0.2, 0.2, pvp_button_image)
-training_hard_start_button = button(
-    board_width, board_height, 0.65, 0.8, 0.2, 0.2, hard_button_image)
+training_restart_button = button(board_width, board_height, 0.35, 0.8, 0.2, 0.2, restart_button_image)
+training_multi_start_button = button(board_width, board_height, 0.65, 0.8, 0.2, 0.2, pvp_button_image)
+training_hard_start_button = button(board_width, board_height, 0.65, 0.8, 0.2, 0.2, hard_button_image)
 
 
-effect_plus_button = button(
-    board_width, board_height, 0.27, 0.73, 0.0625, 0.1111, plus_button_image)
-effect_minus_button = button(
-    board_width, board_height, 0.42, 0.73, 0.0625, 0.1111, minus_button_image)
+effect_plus_button = button(board_width, board_height, 0.27, 0.73, 0.0625, 0.1111, plus_button_image)
+effect_minus_button = button(board_width, board_height, 0.42, 0.73, 0.0625, 0.1111, minus_button_image)
 
-sound_plus_button = button(board_width, board_height,
-                           0.27, 0.53, 0.0625, 0.1111, plus_button_image)
-sound_minus_button = button(
-    board_width, board_height, 0.42, 0.53, 0.0625, 0.1111, minus_button_image)
+sound_plus_button = button(board_width, board_height,0.27, 0.53, 0.0625, 0.1111, plus_button_image)
+sound_minus_button = button(board_width, board_height, 0.42, 0.53, 0.0625, 0.1111, minus_button_image)
 
 
-mute_check_button = button(board_width, board_height,
-                           0.2, 0.4, 0.0625, 0.1111, check_button_image)
+mute_check_button = button(board_width, board_height,0.2, 0.4, 0.0625, 0.1111, check_button_image)
 
-background1_check_button = button(
-    board_width, board_height, 0.5, 0.25, 0.1875, 0.1444, background1_image)  # hongkong
-background2_check_button = button(
-    board_width, board_height, 0.5, 0.45, 0.1875, 0.1444, clicked_background2_image)  # nyc (default background)
-background3_check_button = button(
-    board_width, board_height, 0.5, 0.65, 0.1875, 0.1444, background3_image)  # uk
+background1_check_button = button(board_width, board_height, 0.5, 0.25, 0.1875, 0.1444, background1_image)  # hongkong
+background2_check_button = button(board_width, board_height, 0.5, 0.45, 0.1875, 0.1444, clicked_background2_image)  # nyc (default background)
+background3_check_button = button(board_width, board_height, 0.5, 0.65, 0.1875, 0.1444, background3_image)  # uk
 
-volume_icon = button(board_width, board_height, 0.4,
-                     0.5, 0.12, 0.23, volume_vector)
-screen_icon = button(board_width, board_height, 0.6,
-                     0.5, 0.12, 0.23, screen_vector)
+volume_icon = button(board_width, board_height, 0.4, 0.5, 0.12, 0.23, volume_vector)
+screen_icon = button(board_width, board_height, 0.6, 0.5, 0.12, 0.23, screen_vector)
 
 
 #음소거 추가#
@@ -424,7 +391,7 @@ selected_bgm = "Tetris_Game/assets/sounds/BGM1.wav"
 
 button_list = [
     select_mode_button, setting_button, quit_button, score_board_button, single_button, hard_button, pvp_button,
-    hard_training_button, multi_training_button, resume_button, menu_button2, help_button, pause_quit_button, pause_setting_button,
+    hard_training_button, resume_button, menu_button2, help_button, pause_quit_button, pause_setting_button,
     leaderboard_icon, mute_button, default_button, restart_button, back_button, ok_button, effect_plus_button, effect_minus_button,
     sound_plus_button, sound_minus_button, mute_check_button, background1_check_button, background2_check_button, background3_check_button,
     volume_icon, screen_icon, effect_sound_off_button, music_sound_off_button, effect_sound_on_button, music_sound_on_button,
@@ -480,8 +447,6 @@ def draw_block_image(x, y, image):
     draw_image(screen, image, x, y, block_size, block_size)
 
 # Draw game screen
-
-
 def draw_board(next1, next2, hold, score, level, goal):
     # 크기 비율 고정, 전체 board 가로길이에서 원하는 비율을 곱해줌
     sidebar_width = int(board_width * 0.5312)
@@ -3950,8 +3915,8 @@ while not done:
         single_button.draw(screen, (0, 0, 0)) #easy mode
         pvp_button.draw(screen, (0, 0, 0)) #multi mode
         hard_button.draw(screen, (0, 0, 0)) #hard mode
-        hard_training_button.draw(screen, (0, 0, 0))
-        multi_training_button.draw(screen, (0, 0, 0))
+        # hard_training_button.draw(screen, (0, 0, 0))
+        # multi_training_button.draw(screen, (0, 0, 0))
         back_button.draw(screen, (0, 0, 0))
 
         pygame.display.update()  # select mode 화면으로 넘어가도록 전체 화면 업데이트
@@ -3978,15 +3943,15 @@ while not done:
                 else:
                     hard_button.image = hard_button_image
 
-                if hard_training_button.isOver_2(pos):
-                    hard_training_button.image = clicked_hard_training_button_image
-                else:
-                    hard_training_button.image = hard_training_button_image
+                # if hard_training_button.isOver_2(pos):
+                #     hard_training_button.image = clicked_hard_training_button_image
+                # else:
+                #     hard_training_button.image = hard_training_button_image
 
-                if multi_training_button.isOver_2(pos):
-                    multi_training_button.image = clicked_multi_training_button_image
-                else:
-                    multi_training_button.image = multi_training_button_image
+                # if multi_training_button.isOver_2(pos):
+                #     multi_training_button.image = clicked_multi_training_button_image
+                # else:
+                #     multi_training_button.image = multi_training_button_image
 
                 if back_button.isOver(pos):
                     back_button.image = clicked_back_button_image
@@ -4022,23 +3987,23 @@ while not done:
                     initialize = True
                     select_mode = False
                     
-                if hard_training_button.isOver_2(pos):
-                    ui_variables.click_sound.play()
-                    hard_training_info = True
-                    training_status = True
-                    ui_variables.intro_sound.stop()
-                    pygame.mixer.music.play(-1)
-                    initialize = True
-                    select_mode = False
+                # if hard_training_button.isOver_2(pos):
+                #     ui_variables.click_sound.play()
+                #     hard_training_info = True
+                #     training_status = True
+                #     ui_variables.intro_sound.stop()
+                #     pygame.mixer.music.play(-1)
+                #     initialize = True
+                #     select_mode = False
                     
-                if multi_training_button.isOver_2(pos):
-                    ui_variables.click_sound.play()
-                    multi_training_info = True
-                    training_status = True
-                    ui_variables.intro_sound.stop()
-                    pygame.mixer.music.play(-1)
-                    initialize = True
-                    select_mode = False
+                # if multi_training_button.isOver_2(pos):
+                #     ui_variables.click_sound.play()
+                #     multi_training_info = True
+                #     training_status = True
+                #     ui_variables.intro_sound.stop()
+                #     pygame.mixer.music.play(-1)
+                #     initialize = True
+                #     select_mode = False
                     
                 if back_button.isOver(pos):
                     ui_variables.click_sound.play()
