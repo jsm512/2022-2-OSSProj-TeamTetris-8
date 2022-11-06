@@ -165,8 +165,8 @@ clicked_resume_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/ve
 help_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/help_button.png'
 clicked_help_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_help_button.png'
 
-single_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/easy_button.png'
-clicked_single_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_easy_button.png'
+easy_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/easy_button.png'
+clicked_easy_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_easy_button.png'
 
 hard_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/hard_button.png'
 clicked_hard_button_image = '2022-2-OSSPROJ-TEAMTETRIS-8/Tetris_Game/assets/vector/clicked_hard_button.png'
@@ -330,7 +330,7 @@ quit_button = button(board_width, board_height, 0.65,0.4, 0.22, 0.2, quit_button
 score_board_button = button(board_width, board_height, 0.9, 0.4, 0.22, 0.2, score_board_button_image)
 
 single_button = button(board_width, board_height, 0.25,
-                       0.35, 0.22, 0.2, single_button_image)
+                       0.35, 0.22, 0.2, easy_button_image)
 hard_button = button(board_width, board_height, 0.5,
                      0.35, 0.22, 0.2, hard_button_image)
 pvp_button = button(board_width, board_height, 0.75,
@@ -4123,9 +4123,9 @@ while not done:
 
             elif event.type == pygame.MOUSEMOTION:
                 if single_button.isOver_2(pos):
-                    single_button.image = clicked_single_button_image
+                    single_button.image = clicked_easy_button_image
                 else:
-                    single_button.image = single_button_image
+                    single_button.image = easy_button_image
 
                 if pvp_button.isOver_2(pos):
                     pvp_button.image = clicked_pvp_button_image
