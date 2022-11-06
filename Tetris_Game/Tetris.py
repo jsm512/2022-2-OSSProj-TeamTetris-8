@@ -183,18 +183,6 @@ clicked_multi_training_button_image = 'Tetris_Game/assets/vector/clicked_multi_t
 
 
 gameover_board_image = 'Tetris_Game/assets/vector/gameover_board.png'
-
-'''
-help_button_image = 'Tetris_Game/assets/vector/help_button.png'
-clicked_help_button_image = 'Tetris_Game/assets/vector/clicked_help_button.png'
-gravity_button_image = 'Tetris_Game/assets/vector/gravity_button.png'
-clicked_gravity_button_image = 'Tetris_Game/assets/vector/clicked_gravity_button.png'
-setting_vector = 'Tetris_Game/assets/vector/setting_vector.png'
-clicked_setting_vector = 'Tetris_Game/assets/vector/clicked_setting_vector.png'
-setting_board_image = 'Tetris_Game/assets/vector/setting_board.png'
-gameover_board_image = 'Tetris_Game/assets/vector/gameover_board.png'
-gameover_image = 'Tetris_Game/assets/vector/gameover.png'
-'''
 hard_training_start_image = 'Tetris_Game/assets/images/hard_tutorial_menual.png'
 multi_training_start_image = 'Tetris_Game/assets/images/multi_tutorial_menual.png'
 setting_board_image = 'Tetris_Game/assets/vector/setting_board.png'
@@ -434,11 +422,6 @@ selected_bgm = "Tetris_Game/assets/sounds/BGM1.wav"
 
 
 # 게임 중 버튼 생성하기위한 버튼객체 리스트 (버튼 전체)
-'''button_list = [mute_button, default_button, single_button, pvp_button, help_button, quit_button, gravity_button, timeattack_button, resume_button, restart_button, setting_button, pause_quit_button, back_button,
-        ok_button, menu_button, gameover_quit_button, effect_plus_button, effect_minus_button, sound_plus_button, sound_minus_button, level_plus_button,
-        effect_sound_off_button, music_sound_off_button, effect_sound_on_button, music_sound_on_button, mute_check_button, smallsize_check_button, midiumsize_check_button, bigsize_check_button,
-        setting_icon, leaderboard_icon, volume_icon, screen_icon, level_minus_button, combo_minus_button, combo_plus_button, speed_minus_button, speed_plus_button]
-'''
 
 button_list = [
     select_mode_button, setting_button, quit_button, score_board_button, single_button, hard_button, pvp_button,
@@ -534,17 +517,7 @@ def draw_board(next1, next2, hold, score, level, goal):
             if grid_n2[i][j] != 0:
                 draw_block_image(dx2, dy2, ui_variables.t_block[grid_n2[i][j]])
 
-    ''''# Draw hold mino
-    grid_h = tetrimino.mino_map[hold - 1][0]
-
-    if hold_mino != -1:
-        for i in range(4):
-            for j in range(4):
-                dx = 220 + block_size * j
-                dy = 50 + block_size * i
-                if grid_h[i][j] != 0:
-                    draw_block_image(
-                        dx, dy, ui_variables.t_block[grid_h[i][j]])'''  # hold 블록 출력
+    
     # Draw hold mino
     grid_h = tetrimino.mino_map[hold - 1][0]  # (배열이라-1) 기본 모양
     if hold_mino != -1:  # hold 존재X
@@ -556,6 +529,8 @@ def draw_board(next1, next2, hold, score, level, goal):
                 if grid_h[i][j] != 0:  # 해당 부분에 블록이 존재하면
                     draw_block_image(
                         dx, dy, ui_variables.t_block[grid_h[i][j]])  # hold 블록 출력
+                      # Draw hold mino
+    
 
     # Set max score
     if score > 999999:
@@ -638,29 +613,18 @@ def draw_hardboard(next1, next2, hold, score, remaining_time, line):
             if grid_n2[i][j] != 0:
                 draw_block_image(dx2, dy2, ui_variables.t_block[grid_n2[i][j]])
 
-    '''# Draw hold mino
-    grid_h = tetrimino.mino_map[hold - 1][0]
-
-    if hold_mino != -1:
-        for i in range(4):
-            for j in range(4):
-                dx = 220 + block_size * j
-                dy = 50 + block_size * i
-                if grid_h[i][j] != 0:
-                    draw_block_image(
-                        dx, dy, ui_variables.t_block[grid_h[i][j]])  # hold 블록 출력'''
     # Draw hold mino
-    grid_h = tetrimino.mino_map[hold - 1][0]  # (배열이라-1) 기본 모양
+    # grid_h = tetrimino.mino_map[hold - 1][0]  # (배열이라-1) 기본 모양
 
-    if hold_mino != -1:  # hold 존재X
-        for i in range(mino_matrix_y):
-            for j in range(mino_matrix_x):
-                dx = int(board_width * 0.045) + sidebar_width + \
-                    block_size * j  # 위치 비율 고정
-                dy = int(board_height * 0.1336) + block_size * i  # 위치 비율 고정
-                if grid_h[i][j] != 0:  # 해당 부분에 블록이 존재하면
-                    draw_block_image(
-                        dx, dy, ui_variables.t_block[grid_h[i][j]])  # hold 블록 출력
+    # if hold_mino != -1:  # hold 존재X
+    #     for i in range(mino_matrix_y):
+    #         for j in range(mino_matrix_x):
+    #             dx = int(board_width * 0.045) + sidebar_width + \
+    #                 block_size * j  # 위치 비율 고정
+    #             dy = int(board_height * 0.1336) + block_size * i  # 위치 비율 고정
+    #             if grid_h[i][j] != 0:  # 해당 부분에 블록이 존재하면
+    #                 draw_block_image(
+    #                     dx, dy, ui_variables.t_block[grid_h[i][j]])  # hold 블록 출력
 
     # Set max score
     if score > 999999:
@@ -746,17 +710,6 @@ def draw_hardboard_change(next1, next2, hold, score, remaining_time, line):
             if grid_n2[i][j] != 0:
                 draw_block_image(dx2, dy2, ui_variables.t_block[grid_n2[i][j]])
 
-    '''# Draw hold mino
-    grid_h = tetrimino.mino_map[hold - 1][0]
-
-    if hold_mino != -1:
-        for i in range(4):
-            for j in range(4):
-                dx = 220 + block_size * j
-                dy = 50 + block_size * i
-                if grid_h[i][j] != 0:
-                    draw_block_image(
-                        dx, dy, ui_variables.t_block[grid_h[i][j]])  # hold 블록 출력'''
     # Draw hold mino
     grid_h = tetrimino.mino_map[hold - 1][0]  # (배열이라-1) 기본 모양
 
@@ -1184,110 +1137,6 @@ def is_stackable(mino, matrix):
 
     return True
 
-
-'''
-# Draw a tetrimino
-def draw_mino(x, y, mino, r, matrix):  # mino는 모양, r은 회전된 모양 중 하나
-    grid = tetrimino.mino_map[mino - 1][r]  # grid : 출력할 테트리스
-    tx, ty = x, y
-    # 테트리스가 바닥에 존재하면 true -> not이니까 바닥에 없는 상태
-    while not is_bottom(tx, ty, mino, r, matrix):
-        ty += 1  # 한칸 밑으로 하강
-    # Draw ghost
-    for i in range(mino_matrix_y):
-        for j in range(mino_matrix_x):
-            if grid[i][j] != 0:  # 테트리스 블록에서 해당 행렬위치에 블록 존재하면
-                matrix[tx + j][ty + i] = 8  # 테트리스가 쌓일 위치에 8 이라는 ghost 만듦
-    # Draw mino
-    for i in range(mino_matrix_y):
-        for j in range(mino_matrix_x):
-            if grid[i][j] != 0:  # 테트리스 블록에서 해당 행렬위치에 블록 존재하면
-                matrix[x + j][y + i] = grid[i][j]  # 해당 위치에 블록 만듦
-# Erase a tetrimino
-def erase_mino(x, y, mino, r, matrix):
-    grid = tetrimino.mino_map[mino - 1][r]
-    # Erase ghost
-    for j in range(board_y + 1):
-        for i in range(board_x):
-            if matrix[i][j] == 8:  # 테트리스 블록에서 해당 행렬위치에 ghost블록 존재하면
-                matrix[i][j] = 0  # 없애서 빈 곳으로 만들기
-    # Erase mino
-    for i in range(mino_matrix_y):
-        for j in range(mino_matrix_x):
-            if grid[i][j] != 0:  # 테트리스 블록에서 해당 행렬위치에 블록 존재하면
-                matrix[x + j][y + i] = 0  # 해당 위치에 블록 없애서 빈 곳으로 만들기
-# Returns true if mino is at bottom
-def is_bottom(x, y, mino, r, matrix):
-    grid = tetrimino.mino_map[mino - 1][r]  # grid : 출력할 테트리스
-    for i in range(mino_matrix_y):
-        for j in range(mino_matrix_x):
-            if grid[i][j] != 0:  # 테트리스 블록에서 해당 행렬위치에 블록 존재하면
-                if (y + i + 1) > board_y:  # 바닥의 y좌표에 있음(바닥에 닿음)
-                    return True
-                # 그 블록위치에 0, 8 아님(즉 블록 존재 함)
-                elif matrix[x + j][y + i + 1] != 0 and matrix[x + j][y + i + 1] != 8:
-                    return True
-    return False
-# Returns true if mino is at the left edge
-def is_leftedge(x, y, mino, r, matrix):
-    grid = tetrimino.mino_map[mino - 1][r] #grid : 출력할 테트리스
-    for i in range(mino_matrix_y):
-        for j in range(mino_matrix_x):
-            if grid[i][j] != 0: #테트리스 블록에서 해당 행렬위치에 블록 존재하면
-                if (x + j - 1) < 0:  #맨 왼쪽에 위치함
-                    return True
-                elif matrix[x + j - 1][y + i] != 0:  #그 위치의 왼쪽에 이미 무엇인가 존재함
-                    return True
-    return False
-# Returns true if mino is at the right edge
-def is_rightedge(x, y, mino, r, matrix):
-    grid = tetrimino.mino_map[mino - 1][r] #grid : 출력할 테트리스
-    for i in range(mino_matrix_y):
-        for j in range(mino_matrix_x):
-            if grid[i][j] != 0: #테트리스 블록에서 해당 행렬위치에 블록 존재하면
-                if (x + j + 1) >= board_x :  #맨 오른쪽에 위치
-                    return True
-                elif matrix[x + j + 1][y + i] != 0:   #그 위치의 오른쪽에 이미 무엇인가 존재함
-                    return True
-    return False
-def is_turnable_r(x, y, mino, r, matrix):
-    if r != 3:  #회전모양 총 0, 1, 2, 3번째 총 4가지 있음
-        grid = tetrimino.mino_map[mino - 1][r + 1] #3이 아니면 그 다음 모양
-    else:
-        grid = tetrimino.mino_map[mino - 1][0] #3이면 0번째 모양으로
-    for i in range(mino_matrix_y):
-        for j in range(mino_matrix_x):
-            if grid[i][j] != 0:  #테트리스 블록에서 해당 행렬위치에 블록 존재하면
-                # 테트리스 matrix크기 벗어나면 못돌림
-                if (x + j) < 0 or (x + j) >= board_x or (y + i) < 0 or (y + i) > board_y :
-                    return False
-                elif matrix[x + j][y + i] != 0:  #해당 자리에 이미 블록이 있으면 못돌림
-                    return False
-    return True
-# Returns true if turning left is possible
-def is_turnable_l(x, y, mino, r, matrix):
-    if r != 0:  #회전모양 총 0, 1, 2, 3번째 총 4가지 있음
-        grid = tetrimino.mino_map[mino - 1][r - 1]  #0이 아니면 그 다음 모양
-    else:
-        grid = tetrimino.mino_map[mino - 1][3] #0이면 3번째 모양으로
-    for i in range(mino_matrix_y):
-        for j in range(mino_matrix_x):
-            if grid[i][j] != 0:  #테트리스 블록에서 해당 행렬위치에 블록 존재하면
-                # 테트리스 matrix크기 벗어나면 못돌림
-                if (x + j) < 0 or (x + j) >= board_x or (y + i) < 0 or (y + i) > board_y:
-                    return False
-                elif matrix[x + j][y + i] != 0: #해당 자리에 이미 블록이 있으면 못돌림
-                    return False
-    return True
-# Returns true if new block is drawable
-def is_stackable(mino, matrix):
-    grid = tetrimino.mino_map[mino - 1][0] #grid : 출력할 테트리스
-    for i in range(mino_matrix_y):
-        for j in range(mino_matrix_x):
-            if grid[i][j] != 0 and matrix[3 + j][i] != 0: ###
-                return False
-    return True
-'''
 
 #한줄 뿌시면 공격
 def multi_reverse_key(rev, player):
@@ -4876,14 +4725,6 @@ while not done:
             pos = pygame.mouse.get_pos()
             if event.type == QUIT:
                 done = True
-
-            # # 기존 pytris: 첫 화면에서 space만 누르면 게임 시작
-            # elif event.type == KEYDOWN:
-            #     '''
-            #     if event.key == K_SPACE:
-            #         ui_variables.click_sound.play()
-            #         start = True
-            #     '''
 
             elif event.type == pygame.MOUSEMOTION:
                 if select_mode_button.isOver_2(pos):
