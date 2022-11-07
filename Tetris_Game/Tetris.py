@@ -310,10 +310,10 @@ class button():  # 버튼객체
 
 # (self, board_width, board_height, x_rate, y_rate, width_rate, height_rate, img='')
 # (self, board_width, board_height,   0.2,   0.2,     0.22,        0.2,      img='')
-select_mode_button = button(board_width, board_height, 0.1, 0.4, 0.22, 0.2, select_mode_button_image)
-setting_button = button(board_width, board_height, 0.35,0.4, 0.22, 0.2, setting_button_image)
-quit_button = button(board_width, board_height, 0.65,0.4, 0.22, 0.2, quit_button_image)
-score_board_button = button(board_width, board_height, 0.9, 0.4, 0.22, 0.2, score_board_button_image)
+select_mode_button = button(board_width, board_height, 0.125, 0.4, 0.22, 0.2, select_mode_button_image)
+setting_button = button(board_width, board_height, 0.375,0.4, 0.22, 0.2, setting_button_image)
+quit_button = button(board_width, board_height, 0.625,0.4, 0.22, 0.2, quit_button_image)
+score_board_button = button(board_width, board_height, 0.875, 0.4, 0.22, 0.2, score_board_button_image)
 
 
 single_button = button(board_width, board_height, 0.25,0.35, 0.22, 0.2, easy_button_image)
