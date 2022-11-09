@@ -122,8 +122,9 @@ class ui_variables:
     green = (98, 190, 68)  # rgb(98, 190, 68) # S
     pink = (242, 64, 235)  # rgb(242, 64, 235) # T
     red = (225, 13, 27)  # rgb(225, 13, 27) # Z
-
-    t_color = [grey_2, cyan, blue, orange, yellow, green, pink, red, grey_3]
+    purple = (75,0,130) # rgb(75,0,130) # +
+    
+    t_color = [grey_2, cyan, blue, orange, yellow, green, pink, red, purple, grey_3]
     cyan_image = 'Tetris_Game/assets/block_images/cyan.png'
     blue_image = 'Tetris_Game/assets/block_images/blue.png'
     orange_image = 'Tetris_Game/assets/block_images/orange.png'
@@ -218,8 +219,8 @@ screen_vector = 'Tetris_Game/assets/vector/screen_vector.png'
 clicked_screen_vector = 'Tetris_Game/assets/vector/clicked_screen_vector.png'
 menu_button_image = 'Tetris_Game/assets/vector/Menu.png'
 clicked_menu_button_image = 'Tetris_Game/assets/vector/clicked_Menu.png'
-ok_button_image = 'Tetris_Game/assets/vector/ok_button.png'
-clicked_ok_button_image = 'Tetris_Game/assets/vector/clicked_ok_button.png'
+ok_button_image = 'Tetris_Game/assets/vector/Ok.png'
+clicked_ok_button_image = 'Tetris_Game/assets/vector/clicked_Ok.png'
 plus_button_image = 'Tetris_Game/assets/vector/plus_button.png'
 clicked_plus_button_image = 'Tetris_Game/assets/vector/clicked_plus_button.png'
 minus_button_image = 'Tetris_Game/assets/vector/minus_button.png'
@@ -578,17 +579,17 @@ def draw_hardboard(next1, next2, hold, score, remaining_time, line):
                 draw_block_image(dx2, dy2, ui_variables.t_block[grid_n2[i][j]])
 
     # Draw hold mino
-    # grid_h = tetrimino.mino_map[hold - 1][0]  # (배열이라-1) 기본 모양
+    grid_h = tetrimino.mino_map[hold - 1][0]  # (배열이라-1) 기본 모양
 
-    # if hold_mino != -1:  # hold 존재X
-    #     for i in range(mino_matrix_y):
-    #         for j in range(mino_matrix_x):
-    #             dx = int(board_width * 0.045) + sidebar_width + \
-    #                 block_size * j  # 위치 비율 고정
-    #             dy = int(board_height * 0.1336) + block_size * i  # 위치 비율 고정
-    #             if grid_h[i][j] != 0:  # 해당 부분에 블록이 존재하면
-    #                 draw_block_image(
-    #                     dx, dy, ui_variables.t_block[grid_h[i][j]])  # hold 블록 출력
+    if hold_mino != -1:  # hold 존재X
+        for i in range(mino_matrix_y):
+            for j in range(mino_matrix_x):
+                dx = int(board_width * 0.045) + sidebar_width + \
+                    block_size * j  # 위치 비율 고정
+                dy = int(board_height * 0.1336) + block_size * i  # 위치 비율 고정
+                if grid_h[i][j] != 0:  # 해당 부분에 블록이 존재하면
+                    draw_block_image(
+                        dx, dy, ui_variables.t_block[grid_h[i][j]])  # hold 블록 출력
 
     # Set max score
     if score > 999999:
