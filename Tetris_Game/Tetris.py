@@ -4232,7 +4232,7 @@ while not done:
         score_board_button.draw(screen, (0, 0, 0))
         quit_button.draw(screen, (0, 0, 0))
         # 배경 약간 어둡게
-        leaderboard_icon.draw(screen, (0, 0, 0))
+        # leaderboard_icon.draw(screen, (0, 0, 0))
         pause_surface = screen.convert_alpha()  # 투명 가능하도록
         pause_surface.fill((0, 0, 0, 0))  # 투명한 검정색으로 덮기
         pygame.draw.rect(pause_surface, (ui_variables.black_pause), [0, 0, int(
@@ -4329,7 +4329,7 @@ while not done:
 
     elif volume_setting:
         # 배경 약간 어둡게
-        leaderboard_icon.draw(screen, (0, 0, 0))  # rgb(0,0,0) = 검정색#
+        # leaderboard_icon.draw(screen, (0, 0, 0))  # rgb(0,0,0) = 검정색#
         pause_surface = screen.convert_alpha()  # 투명 가능하도록
         pause_surface.fill((0, 0, 0, 0))  # 투명한 검정색으로 덮기
         pygame.draw.rect(pause_surface, (ui_variables.black_pause), [0, 0, int(
