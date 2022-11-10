@@ -169,6 +169,9 @@ clicked_help_button_image = 'Tetris_Game/assets/vector/clicked_Help.png'
 easy_button_image = 'Tetris_Game/assets/vector/easy.png'
 clicked_easy_button_image = 'Tetris_Game/assets/vector/clicked_easy.png'
 
+normal_button_image='Tetris_Game/assets/vector/normal.png'
+clicked_normal_button_image='Tetris_Game/assets/vector/clicked_normal.png'
+
 hard_button_image = 'Tetris_Game/assets/vector/Hard.png'
 clicked_hard_button_image = 'Tetris_Game/assets/vector/clicked_Hard.png'
 
@@ -1130,8 +1133,8 @@ def multi_reverse_key(rev, player):
 def set_initial_values():
     global training_event_happened, pause_training, training_event, combo_count, combo_count_2P, line_count, score, level, goal, score_2P, level_2P, goal_2P, bottom_count, bottom_count_2P, hard_drop, hard_drop_2P, attack_point, attack_point_2P, dx, dy, dx_2P, dy_2P, rotation, rotation_2P, mino, mino_2P, next_mino1, next_mino2, next_mino1_2P, hold, hold_2P, hold_mino, hold_mino_2P, framerate, framerate_2P, matrix, matrix_2P, Change_RATE, blink, start, pause, done, game_over, leader_board, setting, volume_setting, screen_setting, pvp, help, gravity_mode, debug, d, e, b, u, g, start_ticks, textsize, CHANNELS, swidth, name_location, name, previous_time, current_time, pause_time, lines, leaders, leaders_hard, game_status, framerate_blockmove, framerate_2P_blockmove, game_speed, game_speed_2P, select_mode, hard, hard_training, multi_training, training_status, hard_time_setting, winner, key1, key2, key_reverse, key_reverse_2P, current_key, current_key_2P, hard_training_info, multi_training_info, game_over_training, help_status, remaining_time
 
-    framerate = 30  # Bigger -> Slower  기본 블록 하강 속도, 2도 할만 함, 0 또는 음수 이상이어야 함
-    framerate_blockmove = framerate * 3  # 블록 이동 시 속도
+    framerate = 20  # Bigger -> Slower  기본 블록 하강 속도, 2도 할만 함, 0 또는 음수 이상이어야 함
+    framerate_blockmove = framerate*3  # 블록 이동 시 속도
     game_speed = framerate * 20  # 게임 기본 속도
     framerate_2P = 30  # 2P
     framerate_2P_blockmove = framerate_2P * 3  # 블록 이동 시 속도
@@ -1558,7 +1561,7 @@ while not done:
                 if not game_over:
                     keys_pressed = pygame.key.get_pressed()
                     if keys_pressed[K_DOWN]:
-                        pygame.time.set_timer(pygame.USEREVENT, framerate * 1)
+                        pygame.time.set_timer(pygame.USEREVENT, framerate*2)
                     else:
                         pygame.time.set_timer(pygame.USEREVENT, game_speed)
 
@@ -3499,7 +3502,7 @@ while not done:
         score_board_button.draw(screen, (0, 0, 0))
         quit_button.draw(screen, (0, 0, 0))
         # 배경 약간 어둡게
-        leaderboard_icon.draw(screen, (0, 0, 0))
+        # leaderboard_icon.draw(screen, (0, 0, 0))
         pause_surface = screen.convert_alpha()  # 투명 가능하도록
         pause_surface.fill((0, 0, 0, 0))  # 투명한 검정색으로 덮기
         pygame.draw.rect(pause_surface, (ui_variables.black_pause), [0, 0, int(
@@ -3596,7 +3599,7 @@ while not done:
 
     elif volume_setting:
         # 배경 약간 어둡게
-        leaderboard_icon.draw(screen, (0, 0, 0))  # rgb(0,0,0) = 검정색#
+        # leaderboard_icon.draw(screen, (0, 0, 0))  # rgb(0,0,0) = 검정색#
         pause_surface = screen.convert_alpha()  # 투명 가능하도록
         pause_surface.fill((0, 0, 0, 0))  # 투명한 검정색으로 덮기
         pygame.draw.rect(pause_surface, (ui_variables.black_pause), [0, 0, int(
@@ -3867,7 +3870,7 @@ while not done:
         score_board_button.draw(screen, (0, 0, 0))
         quit_button.draw(screen, (0, 0, 0))
         # 배경 약간 어둡게
-        leaderboard_icon.draw(screen, (0, 0, 0))
+        # leaderboard_icon.draw(screen, (0, 0, 0))
         pause_surface = screen.convert_alpha()  # 투명 가능하도록
         pause_surface.fill((0, 0, 0, 0))  # 투명한 검정색으로 덮기
         pygame.draw.rect(pause_surface, (ui_variables.black_pause), [0, 0, int(
