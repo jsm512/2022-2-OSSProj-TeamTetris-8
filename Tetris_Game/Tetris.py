@@ -1371,16 +1371,7 @@ while not done:
                     ui_variables.click_sound.play()
                     pause = False
                     start = False
-                    # if pvp:
-                    #     pvp = False
-                    # if hard:
-                    #     hard = False
-
-                    # if hard_training:
-                    #     hard_training = False
-
-                    # if multi_training:
-                    #     multi_training = False
+                    
 
                 if resume_button.isOver_2(pos):
                     pygame.mixer.music.unpause()
