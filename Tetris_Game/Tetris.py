@@ -1284,7 +1284,7 @@ while not done:
     # 게임안에서 Pause 눌렀을 때 screen
     if pause:
         pygame.mixer.music.pause()
-
+        
         if help_status == True:
             pause_surface = screen.convert_alpha()  # 투명 가능하도록
             pause_surface.fill((0, 0, 0, 0))  # 투명한 검정색으로 덮기
@@ -1311,7 +1311,9 @@ while not done:
             if event.type == QUIT: 
                 done = True
 
-            
+            elif event.type == USEREVENT:
+                pygame.time.set_timer(pygame.USEREVENT, 300)
+                pygame.display.update()
             elif event.type == KEYDOWN:
                 erase_mino(dx, dy, mino, rotation, matrix)
                 if event.key == K_ESCAPE:
@@ -1370,7 +1372,11 @@ while not done:
                     ui_variables.click_sound.play()
                     pause = False
                     start = False
-                    
+                    if pvp:
+                        pvp = False
+                    if hard:
+                        hard = False
+    
 
                 if resume_button.isOver_2(pos):
                     pygame.mixer.music.unpause()
