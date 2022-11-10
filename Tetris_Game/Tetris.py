@@ -1273,7 +1273,7 @@ def set_initial_values():
 
 
 set_initial_values()
-pygame.time.set_timer(pygame.USEREVENT, 10)
+pygame.time.set_timer(pygame.USEREVENT, 500)
 
 
 ###########################################################
@@ -1306,9 +1306,9 @@ while not done:
 
         pygame.display.update()
 
-        for event in pygame.event.get():
-            pos = pygame.mouse.get_pos()
-            if event.type == QUIT:
+        for event in pygame.event.get(): #키보드, 마우스 입력값을 받음
+            pos = pygame.mouse.get_pos() # 마우스의 포지션 x,y로 튜플로 반환
+            if event.type == QUIT: 
                 done = True
 
             
@@ -1349,16 +1349,17 @@ while not done:
                     pause_quit_button.image = quit_button_image
                 pygame.display.update()
 
-            elif event.type == pygame.MOUSEBUTTONDOWN:   #마우스를 눌렀을 때 발생함
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                # help창 back버튼 클릭 시
                 if back_button2.isOver(pos):
                     ui_variables.click_sound.play()
                     help_status = False
                     pause = True
-
+                # pause창 quit 버튼 클릭 시
                 if pause_quit_button.isOver_2(pos):
                     ui_variables.click_sound.play()
                     done = True
-
+                # pause창 help 버튼 클릭 시
                 if help_button.isOver_2(pos):
                     ui_variables.click_sound.play()
                     help_status = True
@@ -1376,7 +1377,7 @@ while not done:
                     pause = False
                     ui_variables.click_sound.play()
                     pygame.time.set_timer(pygame.USEREVENT, 1)  # 0.001초
-            # 리사이
+            
             # 계속 반복되는 코드 함수로 만들기~
             elif event.type == VIDEORESIZE:
                 board_width = event.w
@@ -1446,6 +1447,7 @@ while not done:
                         draw_board(next_mino1, next_mino2,
                                 hold_mino, score, level, goal)
                         pygame.display.update()
+                        # 뭔 코드?
                         if is_stackable(next_mino1, matrix):
                             mino = next_mino1
                             next_mino1 = next_mino2
@@ -3488,6 +3490,6 @@ while not done:
 
         if not start:
             pygame.display.update()
-            clock.tick(3)
+            clock.tick(30)
 
 pygame.quit()
