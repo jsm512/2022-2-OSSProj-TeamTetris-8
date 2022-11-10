@@ -91,20 +91,6 @@ class ui_variables: #UI
     # 레벨업 이미지
     LevelUp_vector = pygame.image.load('Tetris_Game/assets/vector/Level_Up.png')
 
-    # # Combo graphic
-    # combos = []
-    # large_combos = []
-    # combo_ring = pygame.image.load("Tetris_Game/assets/Combo/4combo ring.png")  # 4블록 동시제거 그래픽
-    # combo_4ring = pygame.transform.smoothscale(combo_ring, (200, 100)) #이미지를 특정 크기로 불러옴, 200=가로크기, 100=세로크기#
-    # for i in range(1, 11): #10가지의 콤보 이미지 존재. 각 숫자에 해당하는 이미지 불러옴
-    #     combos.append(pygame.image.load("Tetris_Game/assets/Combo/" + str(i) + "combo.png"))
-    #     large_combos.append(pygame.transform.smoothscale(combos[i - 1], (150, 200))) #콤보이미지를 특정 크기로 불러옴, 150=가로크기, 200=세로크기#
-
-    # combos_sound = []
-    # for i in range(1, 10): #1-9까지 콤보사운드 존재. 각 숫자에 해당하는 음악 불러옴
-    #     combos_sound.append(pygame.mixer.Sound("Tetris_Game/assets/sounds/SFX_" + str(i + 2) + "Combo.wav"))
-
-    # Background colors
     black = (10, 10, 10)  # rgb(10, 10, 10)
     black_pause = (0, 0, 0, 127)
     real_white = (255, 255, 255)  # rgb(255, 255, 255)
@@ -795,9 +781,9 @@ def draw_1Pboard(next, hold, current_key):
         elif not current_key:
             reverse_value = ui_variables.h4.render(
                 "X", 1, ui_variables.real_white)
-        text_combo = ui_variables.h5.render("GOAL", 1, ui_variables.real_white)
+        text_combo = ui_variables.h5.render("COMBO", 1, ui_variables.real_white)
         combo_value = ui_variables.h4.render(
-            str(5 - combo_count), 1, ui_variables.real_white)
+            str(combo_count), 1, ui_variables.real_white)
     if textsize == True:
         text_hold = ui_variables.h3.render("HOLD", 1, ui_variables.real_white)
         text_next = ui_variables.h3.render("NEXT", 1, ui_variables.real_white)
@@ -815,9 +801,9 @@ def draw_1Pboard(next, hold, current_key):
         elif not current_key:
             reverse_value = ui_variables.h2.render(
                 "X", 1, ui_variables.real_white)
-        text_combo = ui_variables.h3.render("GOAL", 1, ui_variables.real_white)
+        text_combo = ui_variables.h3.render("COMBO", 1, ui_variables.real_white)
         combo_value = ui_variables.h2.render(
-            str(5 - combo_count), 1, ui_variables.real_white)
+            str(combo_count), 1, ui_variables.real_white)
     if debug:
         # speed를 알려주는 framerate(기본값 30. 빨라질 수록 숫자 작아짐)
         speed_value = ui_variables.h5.render(
@@ -907,9 +893,9 @@ def draw_2Pboard(next, hold, current_key_2P):
         elif not current_key_2P:
             reverse_value = ui_variables.h4.render(
                 "X", 1, ui_variables.real_white)
-        text_combo = ui_variables.h5.render("GOAL", 1, ui_variables.real_white)
+        text_combo = ui_variables.h5.render("COMBO", 1, ui_variables.real_white)
         combo_value = ui_variables.h4.render(
-            str(5 - combo_count_2P), 1, ui_variables.real_white)
+            str(combo_count_2P), 1, ui_variables.real_white)
     if textsize == True:
         text_hold = ui_variables.h4.render("HOLD", 1, ui_variables.real_white)
         text_next = ui_variables.h4.render("NEXT", 1, ui_variables.real_white)
@@ -927,9 +913,9 @@ def draw_2Pboard(next, hold, current_key_2P):
         elif not current_key_2P:
             reverse_value = ui_variables.h3.render(
                 "X", 1, ui_variables.real_white)
-        text_combo = ui_variables.h4.render("GOAL", 1, ui_variables.real_white)
+        text_combo = ui_variables.h4.render("COMBO", 1, ui_variables.real_white)
         combo_value = ui_variables.h3.render(
-            str(5 - combo_count_2P), 1, ui_variables.real_white)
+            str(combo_count_2P), 1, ui_variables.real_white)
     if debug:
         # speed를 알려주는 framerate(기본값 30. 빨라질 수록 숫자 작아짐)
         speed_value = ui_variables.h5.render(
@@ -2034,11 +2020,11 @@ while not done:
     elif pvp:
 
         for event in pygame.event.get():
-            if event.type == QUIT:
+            if event.type == QUIT: #창 종료
                 done = True
 
-            elif event.type == USEREVENT:
-                pygame.time.set_timer(pygame.USEREVENT, game_speed)  # 기본 게임속도 
+            elif event.type == USEREVENT: #키보드,마우스 이벤트 
+                pygame.time.set_timer(pygame.USEREVENT, game_speed)  # 기본 게임속도 600으로 초기 설정
 
                 # Draw a mino
                 draw_mino(dx, dy, mino, rotation, matrix)
@@ -2051,21 +2037,22 @@ while not done:
                     erase_mino(dx, dy, mino, rotation, matrix)
                     erase_mino(dx_2P, dy_2P, mino_2P, rotation_2P, matrix_2P)
 
-                if combo_count == 5:  # 5줄을 먼저 깨면 게임 종료
-                    winner = 1
-                    game_status = 'pvp'
-                    pvp = False
-                    game_over = True
-                    ui_variables.GameOver_sound.play()
-                    pygame.time.set_timer(pygame.USEREVENT, 1)
+                # if combo_count == 5:  # 5줄을 먼저 깨면 게임 종료
+                #     winner = 1
+                #     game_status = 'pvp'
+                #     pvp = False
+                #     game_over = True
+                #     ui_variables.GameOver_sound.play()
+                #     pygame.time.set_timer(pygame.USEREVENT, 1)
 
-                if combo_count_2P == 5:  # 5줄을 먼저 깨면 게임 종료
-                    winner = 2
-                    game_status = 'pvp'
-                    pvp = False
-                    game_over = True
-                    ui_variables.GameOver_sound.play()
-                    pygame.time.set_timer(pygame.USEREVENT, 1)
+                # if combo_count_2P == 5:  # 5줄을 먼저 깨면 게임 종료
+                #     winner = 2
+                #     game_status = 'pvp'
+                #     pvp = False
+                #     game_over = True
+                #     ui_variables.GameOver_sound.play()
+                #     pygame.time.set_timer(pygame.USEREVENT, 1)
+                
                 ### 1P ###
                 # Move mino down
                 if not is_bottom(dx, dy, mino, rotation, matrix):
