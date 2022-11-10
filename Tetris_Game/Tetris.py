@@ -2130,12 +2130,14 @@ while not done:
                     if is_full:
                         # erase_count += 1
                         combo_count += 1
-                        key_reverse_2P = True  # 상대방 키 반전조건 성립 (몇 줄을 깨든)
-                        draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                        if combo_count == 3:
+                            key_reverse_2P = True # 상대방 키 반전조건 성립 (몇 줄을 깨든)
+                            draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
                                         hold_mino_2P, current_key, current_key_2P)
                         # 2P 보드에 key reverse 이미지 표시
-                        draw_image(screen, multi_key_reverse_image, board_width * 0.8,
-                                   board_height * 0.2, int(board_width * 0.3), int(board_height * 0.12))
+                            draw_image(screen, multi_key_reverse_image, board_width * 0.8,
+                                    board_height * 0.2, int(board_width * 0.3), int(board_height * 0.12))
+                        
                         pygame.display.update()
                         pygame.time.delay(400)
                         ui_variables.break_sound.play()
@@ -2155,12 +2157,13 @@ while not done:
                     if is_full:
                         # erase_count_2P += 1
                         combo_count_2P += 1
-                        key_reverse = True  # 상대방 키 반전조건 성립 (몇 줄을 깨든)
-                        draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                        if combo_count_2P == 3:
+                            key_reverse = True  # 상대방 키 반전조건 성립 (몇 줄을 깨든)
+                            draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
                                         hold_mino_2P, current_key, current_key_2P)
                         # 1P 보드에 key reverse 이미지 표시
-                        draw_image(screen, multi_key_reverse_image, board_width * 0.2,
-                                   board_height * 0.2, int(board_width * 0.28), int(board_height * 0.1))
+                            draw_image(screen, multi_key_reverse_image, board_width * 0.2,
+                                    board_height * 0.2, int(board_width * 0.28), int(board_height * 0.1))
                         pygame.display.update()
                         pygame.time.delay(400)
                         ui_variables.break_sound.play()
