@@ -1285,16 +1285,6 @@ while not done:
     if pause:
         pygame.mixer.music.pause()
 
-        # if pvp:
-        #     draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
-        #                     hold_mino_2P, current_key, current_key_2P)
-        #     # 화면 회색으로 약간 불투명하게
-        #     pause_surface = screen.convert_alpha()  # 투명 가능하도록
-        #     pause_surface.fill((0, 0, 0, 0))  # 투명한 검정색으로 덮기
-        #     pygame.draw.rect(pause_surface, (ui_variables.black_pause), [0, 0, int(
-        #         board_width), int(board_height)])  # (screen, 색깔, 위치 x, y좌표, 너비, 높이)
-        #     screen.blit(pause_surface, (0, 0))
-
         if help_status == True:
             pause_surface = screen.convert_alpha()  # 투명 가능하도록
             pause_surface.fill((0, 0, 0, 0))  # 투명한 검정색으로 덮기
