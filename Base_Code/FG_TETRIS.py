@@ -1466,7 +1466,7 @@ while not done:
         if start:
             screen.fill(ui_variables.real_white)
             draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
-                       0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                        0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
             draw_board(next_mino1, next_mino2, hold_mino, score, level, goal)
             # 화면 회색으로 약간 불투명하게
             pause_surface = screen.convert_alpha()  # 투명 가능하도록
