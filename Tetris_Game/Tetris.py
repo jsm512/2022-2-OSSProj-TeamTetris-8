@@ -1284,18 +1284,6 @@ while not done:
     # 게임안에서 Pause 눌렀을 때 screen
     if pause:
         pygame.mixer.music.pause()
-    
-        # if hard:
-        #     screen.fill(ui_variables.real_white)
-        #     draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
-        #                0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
-        #     draw_hardboard(next_mino1, next_mino2, hold_mino, score, remaining_time, line_count)
-        #     # 화면 회색으로 약간 불투명하게
-        #     pause_surface = screen.convert_alpha()  # 투명 가능하도록
-        #     pause_surface.fill((0, 0, 0, 0))  # 투명한 검정색으로 덮기
-        #     pygame.draw.rect(pause_surface, (ui_variables.black_pause), [0, 0, int(
-        #         board_width), int(board_height)])  # (screen, 색깔, 위치 x, y좌표, 너비, 높이)
-        #     screen.blit(pause_surface, (0, 0))
 
         # if pvp:
         #     draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
