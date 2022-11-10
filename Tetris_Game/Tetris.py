@@ -1311,13 +1311,7 @@ while not done:
             if event.type == QUIT: 
                 done = True
 
-<<<<<<< HEAD
-            elif event.type == USEREVENT:
-                pygame.time.set_timer(pygame.USEREVENT, 500)
-                pygame.display.update()
-=======
             
->>>>>>> 1d406d7de94419461ba92445192d60d7c3d0ebfd
             elif event.type == KEYDOWN:
                 erase_mino(dx, dy, mino, rotation, matrix)
                 if event.key == K_ESCAPE:
@@ -1355,12 +1349,8 @@ while not done:
                     pause_quit_button.image = quit_button_image
                 pygame.display.update()
 
-<<<<<<< HEAD
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 # help창 back버튼 클릭 시
-=======
-            elif event.type == pygame.MOUSEBUTTONDOWN:   #마우스를 눌렀을 때 발생함
->>>>>>> 1d406d7de94419461ba92445192d60d7c3d0ebfd
                 if back_button2.isOver(pos):
                     ui_variables.click_sound.play()
                     help_status = False
@@ -1414,88 +1404,6 @@ while not done:
                     button_list[i].change(board_width, board_height)
                 pygame.display.update()
 
-<<<<<<< HEAD
-    # training mode 중간 멈추는 screen
-    # elif pause_training:
-    #     # ui_variables.intro_sound.stop()
-    #     pygame.mixer.music.pause()
-
-    #     # training_event가 하드의 3줄깨기 일 때,
-    #     if training_event == 'hard_3line':
-    #         draw_image(screen, training_box_image, board_width * 0.6,
-    #                    board_height * 0.9, int(board_height * 0.2), int(board_height * 0.2))
-    #         draw_image(screen, hard_3line_image, board_width * 0.3, board_height * 0.4,
-    #                    int(board_height * 0.7), int(board_height * 0.55))
-    #         training_event_happened['hard_3line'] = True
-
-    #     # training_event가 하드의 10초 지남 일 때,
-    #     elif training_event == 'hard_10sec':
-    #         draw_image(screen, training_box_image, board_width * 0.6,
-    #                    board_height * 0.7, int(board_height * 0.2), int(board_height * 0.2))
-    #         draw_image(screen, hard_10s_image, board_width * 0.3, board_height * 0.4,
-    #                    int(board_height * 0.7), int(board_height * 0.55))
-    #         training_event_happened['hard_10sec'] = True
-
-    #     # training_event가 멀티의 1P가 한 줄 이상 깸 일 때,
-    #     elif training_event == 'multi_1P_break':
-    #         draw_image(screen, training_box_image, board_width * 0.9,
-    #                    board_height * 0.75, int(board_height * 0.2), int(board_height * 0.18))
-    #         draw_image(screen, multi_1P_break_image, board_width * 0.65,
-    #                    board_height * 0.4, int(board_height * 0.7), int(board_height * 0.55))
-    #         training_event_happened['multi_1P_break'] = True
-
-    #     # training_event가 멀티의 2P가 한 줄 이상 깸 일 때,
-    #     elif training_event == 'multi_2P_break':
-    #         draw_image(screen, training_box_image, board_width * 0.39,
-    #                    board_height * 0.75, int(board_height * 0.2), int(board_height * 0.18))
-    #         draw_image(screen, multi_2P_break_image, board_width * 0.2,
-    #                    board_height * 0.4, int(board_height * 0.7), int(board_height * 0.55))
-    #         training_event_happened['multi_2P_break'] = True
-
-    #     # draw_image(screen, pause_board_image, board_width * 0.5, board_height * 0.5,
-    #     #            int(board_height * 1), board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
-
-    #     for event in pygame.event.get():
-    #         pos = pygame.mouse.get_pos()
-    #         if event.type == QUIT:
-    #             done = True
-    #         elif event.type == USEREVENT:
-    #             pygame.time.set_timer(pygame.USEREVENT, 300)
-    #             pygame.display.update()
-    #         elif event.type == KEYDOWN:
-    #             erase_mino(dx, dy, mino, rotation, matrix)
-    #             if event.key == K_RETURN:
-    #                 pause_training = False
-    #                 ui_variables.click_sound.play()
-    #                 # ui_variables.intro_sound.play()
-    #                 pygame.mixer.music.unpause()
-    #                 pygame.time.set_timer(pygame.USEREVENT, 1)
-    #         elif event.type == VIDEORESIZE:
-    #             board_width = event.w
-    #             board_height = event.h
-    #             if board_width < min_width or board_height < min_height:  # 최소 너비 또는 높이를 설정하려는 경우
-    #                 board_width = min_width
-    #                 board_height = min_height
-    #             # 높이 또는 너비가 비율의 일정수준 이상을 넘어서게 되면
-    #             if not ((board_rate-0.1) < (board_height/board_width) < (board_rate + 0.05)):
-    #                 # 너비를 적정 비율로 바꿔줌
-    #                 board_width = int(board_height / board_rate)
-    #                 # 높이를 적정 비율로 바꿔줌
-    #                 board_height = int(board_width*board_rate)
-    #             if board_width >= mid_width:  # 화면 사이즈가 큰 경우
-    #                 textsize = True  # 큰 글자크기 사용
-    #             if board_width < mid_width:  # 화면 사이즈가 작은 경우
-    #                 textsize = False  # 작은 글자크기 사용
-
-    #             block_size = int(board_height * 0.045)  # 블록 크기비율 고정
-    #             screen = pygame.display.set_mode(
-    #                 (board_width, board_height), pygame.RESIZABLE)
-
-    #             for i in range(len(button_list)):
-    #                 button_list[i].change(board_width, board_height)
-
-=======
->>>>>>> 1d406d7de94419461ba92445192d60d7c3d0ebfd
     # Game screen
     elif start:
         for event in pygame.event.get():
