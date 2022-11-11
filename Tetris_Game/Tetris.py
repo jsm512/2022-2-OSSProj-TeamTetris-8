@@ -152,6 +152,9 @@ clicked_resume_button_image = 'Tetris_Game/assets/vector/clicked_resume_button.p
 help_button_image = 'Tetris_Game/assets/vector/Help.png'
 clicked_help_button_image = 'Tetris_Game/assets/vector/clicked_Help.png'
 
+single_button_image = 'Tetris_Game/assets/vector/Single.png'
+clicked_single_button_image = 'Tetris_Game/assets/vector/clicked_Single.png'
+
 easy_button_image = 'Tetris_Game/assets/vector/easy.png'
 clicked_easy_button_image = 'Tetris_Game/assets/vector/clicked_easy.png'
 
@@ -306,12 +309,11 @@ setting_button = button(board_width, board_height, 0.375,0.4, 0.22, 0.2, setting
 quit_button = button(board_width, board_height, 0.625,0.4, 0.22, 0.2, quit_button_image)
 score_board_button = button(board_width, board_height, 0.875, 0.4, 0.22, 0.2, score_board_button_image)
 
-
-single_button = button(board_width, board_height, 0.25,0.35, 0.22, 0.2, easy_button_image)
+single_button = button(board_width, board_height, 0.25,0.35, 0.22, 0.2, single_button_image)
+easy_button = button(board_width, board_height, 0.25,0.35, 0.22, 0.2, easy_button_image)
 hard_button = button(board_width, board_height, 0.5,0.35, 0.22, 0.2, hard_button_image)
 pvp_button = button(board_width, board_height, 0.75,0.35, 0.22, 0.2, pvp_button_image)
-hard_training_button = button(board_width, board_height, 0.37, 0.65, 0.22, 0.2, hard_training_button_image)
-# multi_training_button = button(board_width, board_height, 0.63, 0.65, 0.22, 0.2, multi_training_button_image)
+
 resume_button = button(board_width, board_height, 0.5,0.23, 0.17, 0.2, resume_button_image)
 menu_button2 = button(board_width, board_height, 0.5,0.43, 0.17, 0.2, menu_button_image)
 help_button = button(board_width, board_height, 0.5,0.63, 0.17, 0.2, help_button_image)
@@ -357,22 +359,15 @@ screen_icon = button(board_width, board_height, 0.6, 0.5, 0.12, 0.23, screen_vec
 
 
 #음소거 추가#
-effect_sound_off_button = button(
-    board_width, board_height, 0.55, 0.73, 0.08, 0.15, sound_off_button_image)
-music_sound_off_button = button(
-    board_width, board_height, 0.55, 0.53, 0.08, 0.15, sound_off_button_image)
-effect_sound_on_button = button(
-    board_width, board_height, 0.55, 0.73, 0.08, 0.15, sound_on_button_image)
-music_sound_on_button = button(
-    board_width, board_height, 0.55, 0.53, 0.08, 0.15, sound_on_button_image)
+effect_sound_off_button = button(board_width, board_height, 0.55, 0.73, 0.08, 0.15, sound_off_button_image)
+music_sound_off_button = button(board_width, board_height, 0.55, 0.53, 0.08, 0.15, sound_off_button_image)
+effect_sound_on_button = button(board_width, board_height, 0.55, 0.73, 0.08, 0.15, sound_on_button_image)
+music_sound_on_button = button(board_width, board_height, 0.55, 0.53, 0.08, 0.15, sound_on_button_image)
 
 #BGM 선택 추가#
-BGM1_sound_on_button = button(
-    board_width, board_height, 0.67, 0.43, 0.08, 0.15, clicked_backgroundmusic_select_image)  # default bgm: BGM1
-BGM2_sound_on_button = button(
-    board_width, board_height, 0.67, 0.63, 0.08, 0.15, backgroundmusic_select_image)
-BGM3_sound_on_button = button(
-    board_width, board_height, 0.67, 0.83, 0.08, 0.15, backgroundmusic_select_image)
+BGM1_sound_on_button = button(board_width, board_height, 0.67, 0.43, 0.08, 0.15, clicked_backgroundmusic_select_image)  # default bgm: BGM1
+BGM2_sound_on_button = button(board_width, board_height, 0.67, 0.63, 0.08, 0.15, backgroundmusic_select_image)
+BGM3_sound_on_button = button(board_width, board_height, 0.67, 0.83, 0.08, 0.15, backgroundmusic_select_image)
 
 # 선택된 BGM
 selected_bgm = "Tetris_Game/assets/sounds/BGM1.wav"
@@ -381,8 +376,8 @@ selected_bgm = "Tetris_Game/assets/sounds/BGM1.wav"
 # 게임 중 버튼 생성하기위한 버튼객체 리스트 (버튼 전체)
 
 button_list = [
-    select_mode_button, setting_button, quit_button, score_board_button, single_button, hard_button, pvp_button,
-    hard_training_button, resume_button, menu_button2, help_button, pause_quit_button, pause_setting_button,
+    select_mode_button, setting_button, quit_button, score_board_button, single_button, easy_button, hard_button, pvp_button,
+    resume_button, menu_button2, help_button, pause_quit_button, pause_setting_button,
     leaderboard_icon, mute_button, default_button, restart_button, back_button, ok_button, effect_plus_button, effect_minus_button,
     sound_plus_button, sound_minus_button, mute_check_button, background1_check_button, background2_check_button, background3_check_button,
     volume_icon, screen_icon, effect_sound_off_button, music_sound_off_button, effect_sound_on_button, music_sound_on_button,
@@ -2753,7 +2748,8 @@ while not done:
             board_width), int(board_height)])  # (screen, 색깔, 위치 x, y좌표, 너비, 높이)
         screen.blit(pause_surface, (0, 0))
 
-        single_button.draw(screen, (0, 0, 0)) #easy mode
+        # single_button.draw(screen, (0, 0, 0))
+        easy_button.draw(screen, (0, 0, 0)) #easy mode
         pvp_button.draw(screen, (0, 0, 0)) #multi mode
         hard_button.draw(screen, (0, 0, 0)) #hard mode
         # hard_training_button.draw(screen, (0, 0, 0))
@@ -2770,9 +2766,13 @@ while not done:
             # button 이미지 mouse over 시 색칠
             elif event.type == pygame.MOUSEMOTION:
                 if single_button.isOver_2(pos):
-                    single_button.image = clicked_easy_button_image
+                    single_button.image = clicked_single_button_image
                 else:
-                    single_button.image = easy_button_image
+                    single_button.image = single_button_image
+                if easy_button.isOver_2(pos):
+                    easy_button.image = clicked_easy_button_image
+                else:
+                    easy_button.image = easy_button_image
 
                 if pvp_button.isOver_2(pos):
                     pvp_button.image = clicked_pvp_button_image
@@ -2791,7 +2791,8 @@ while not done:
                     
             # mouse click 시 
             elif event.type == pygame.MOUSEBUTTONDOWN:
-                if single_button.isOver_2(pos):
+
+                if easy_button.isOver_2(pos):
                     ui_variables.click_sound.play()
                     previous_time = pygame.time.get_ticks()
                     ui_variables.intro_sound.stop()
@@ -2800,8 +2801,8 @@ while not done:
                     initialize = True
                     select_mode = False
 
-                    # pygame.mixer.music.play(-1) #play(-1) = 노래 반복재생
-                    # ui_variables.intro_sound.stop()
+                    pygame.mixer.music.play(-1) #play(-1) = 노래 반복재생
+                    ui_variables.intro_sound.stop()
                 if pvp_button.isOver_2(pos):
                     ui_variables.click_sound.play()
                     ui_variables.intro_sound.stop()
