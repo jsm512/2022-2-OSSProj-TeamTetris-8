@@ -128,7 +128,8 @@ class ui_variables: #UI
     linessent_image = 'Tetris_Game/assets/block_images/linessent.png'
     t_block = [table_image, cyan_image, blue_image, orange_image, yellow_image, green_image, pink_image, red_image,
                lightgreen_image, gold_image, brown_image, ghost_image, linessent_image]
-
+    t_block_1 = [table_image, cyan_image, blue_image, orange_image, yellow_image, green_image, pink_image, red_image,
+                ghost_image, linessent_image]
 
 # 각 이미지 주소
 background_image = 'Tetris_Game/assets/images/mainpage_background.png'  # 메뉴화면(첫 화면) 배경
@@ -937,7 +938,6 @@ def draw_2Pboard(next, hold, current_key_2P):
     screen.blit(combo_value, (int(board_width*0.055) +
                 sidebar_width, int(board_height*0.8823)))
 
-    # Draw board
     for x in range(width):
         for y in range(height):
             dx = int(board_width * 0.54) + block_size * x  # 위치비율 고정
@@ -1355,6 +1355,8 @@ while not done:
                         pvp = False
                     if hard:
                         hard = False
+                    if normal:
+                        normal = False
     
 
                 if resume_button.isOver_2(pos):
