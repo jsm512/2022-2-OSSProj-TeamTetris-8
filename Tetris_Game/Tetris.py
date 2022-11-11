@@ -108,21 +108,26 @@ class ui_variables: #UI
     green = (98, 190, 68)  # rgb(98, 190, 68) # S
     pink = (242, 64, 235)  # rgb(242, 64, 235) # T
     red = (225, 13, 27)  # rgb(225, 13, 27) # Z
-    purple = (75,0,130) # rgb(75,0,130) # +
+    lightgreen = (192,237,112) # rgb(192,237,112) # +
+    gold = (255,215,0) # rgb(255,215,0)
+    brown = (139,69,19) # rgb(139,69,19)
     
-    t_color = [grey_2, cyan, blue, orange, yellow, green, pink, red, purple, grey_3]
+    t_color = [grey_2, cyan, blue, orange, yellow, green, pink, red, lightgreen, gold, brown, grey_3]
     cyan_image = 'Tetris_Game/assets/block_images/cyan.png'
     blue_image = 'Tetris_Game/assets/block_images/blue.png'
     orange_image = 'Tetris_Game/assets/block_images/orange.png'
     yellow_image = 'Tetris_Game/assets/block_images/yellow.png'
     green_image = 'Tetris_Game/assets/block_images/green.png'
-    pink_image = 'Tetris_Game/assets/block_images/purple.png'
+    pink_image = 'Tetris_Game/assets/block_images/pink.png'
     red_image = 'Tetris_Game/assets/block_images/red.png'
+    lightgreen_image = 'Tetris_Game/assets/block_images/lightgreen.png'
+    gold_image = 'Tetris_Game/assets/block_images/gold.png'
+    brown_image = 'Tetris_Game/assets/block_images/brown.png'
     ghost_image = 'Tetris_Game/assets/block_images/ghost.png'
     table_image = 'Tetris_Game/assets/block_images/background.png'
     linessent_image = 'Tetris_Game/assets/block_images/linessent.png'
     t_block = [table_image, cyan_image, blue_image, orange_image, yellow_image, green_image, pink_image, red_image,
-               ghost_image, linessent_image]
+               lightgreen_image, gold_image, brown_image, ghost_image, linessent_image]
 
 
 # 각 이미지 주소
@@ -167,9 +172,6 @@ clicked_pvp_button_image = 'Tetris_Game/assets/vector/clicked_PvP.png'
 
 hard_training_button_image = 'Tetris_Game/assets/vector/hard_tutorial_button.png'
 clicked_hard_training_button_image = 'Tetris_Game/assets/vector/clicked_hard_tutorial_button.png'
-
-# multi_training_button_image = 'Tetris_Game/assets/vector/multi_tutorial_button.png'
-# clicked_multi_training_button_image = 'Tetris_Game/assets/vector/clicked_multi_tutorial_button.png'
 
 
 gameover_board_image = 'Tetris_Game/assets/vector/gameover_board.png'
@@ -411,7 +413,7 @@ def draw_image(window, img_path, x, y, width, height):
     x = x - (width / 2)  # 해당 이미지의 가운데 x좌표, 가운데 좌표이기 때문에 2로 나눔
     y = y - (height / 2)  # 해당 이미지의 가운데 y좌표, 가운데 좌표이기 때문에 2로 나눔
     image = pygame.image.load(img_path)
-    image = pygame.transform.smoothscale(image, (width, height))
+    image = pygame.transform.smoothscale(image.convert_alpha(), (width, height))
     window.blit(image, (x, y))
 
 # Draw block
@@ -969,7 +971,7 @@ def draw_mino(x, y, mino, r, matrix):  # mino는 모양, r은 회전된 모양 �
     for i in range(mino_matrix_y):
         for j in range(mino_matrix_x):
             if grid[i][j] != 0:  # 테트리스 블록에서 해당 행렬위치에 블록 존재하면
-                matrix[tx + j][ty + i] = 8  # 테트리스가 쌓일 위치에 8 이라는 ghost 만듦
+                matrix[tx + j][ty + i] = 11  # 테트리스가 쌓일 위치에 8 이라는 ghost 만듦
 
     # Draw mino
     for i in range(mino_matrix_y):
@@ -985,7 +987,7 @@ def erase_mino(x, y, mino, r, matrix):
     # Erase ghost
     for j in range(board_y + 1):
         for i in range(board_x):
-            if matrix[i][j] == 8:  # 테트리스 블록에서 해당 행렬위치에 ghost블록 존재하면
+            if matrix[i][j] == 11:  # 테트리스 블록에서 해당 행렬위치에 ghost블록 존재하면
                 matrix[i][j] = 0  # 없애서 빈 곳으로 만들기
 
     # Erase mino
@@ -1005,7 +1007,7 @@ def is_bottom(x, y, mino, r, matrix):
                 if (y + i + 1) > board_y:  # 바닥의 y좌표에 있음(바닥에 닿음)
                     return True
                 # 그 블록위치에 0, 8 아님(즉 블록 존재 함)
-                elif matrix[x + j][y + i + 1] != 0 and matrix[x + j][y + i + 1] != 8:
+                elif matrix[x + j][y + i + 1] != 0 and matrix[x + j][y + i + 1] != 11:
                     return True
 
     return False
@@ -1086,7 +1088,8 @@ def is_stackable(mino, matrix):
 
     for i in range(mino_matrix_y):
         for j in range(mino_matrix_x):
-            if grid[i][j] != 0 and matrix[3 + j][i] != 0:
+            # 3->4
+            if grid[i][j] != 0 and matrix[4 + j][i] != 0:
                 return False
 
     return True
@@ -1139,15 +1142,7 @@ def set_initial_values():
     screen_setting = False
     pvp = False
     hard = False  # 하드모드 변수 추가
-    hard_training = False  # 하드 트레이닝 변수 추가
-    hard_training_info = False  # 하드 트레이닝 설명 화면
-
-    multi_training = False  # 멀티 트레이닝 변수 추가
-    multi_training_info = False  # 하드 트레이닝 설명 화면
-
-    training_status = False  # 여러 기능 설명 창 띄우기
-    pause_training = False  # 트레이닝의 pause 변수 추가
-    game_over_training = False  # 트레이닝 모드 게임오버 화면
+    
 
     help = False
     select_mode = False
@@ -1202,11 +1197,11 @@ def set_initial_values():
     dx_2P, dy_2P = 3, 0
     rotation = 0  # Minos rotation status
     rotation_2P = 0
-    mino = randint(1, 7)  # Current mino #테트리스 블록 7가지 중 하나
-    mino_2P = randint(1, 7)
-    next_mino1 = randint(1, 7)  # Next mino1 # 다음 테트리스 블록 7가지 중 하나
-    next_mino2 = randint(1, 7)  # Next mino2 # 다음 테트리스 블록 7가지 중 하나
-    next_mino1_2P = randint(1, 7)
+    mino = randint(1, 10)  # Current mino #테트리스 블록 7가지 중 하나
+    mino_2P = randint(1, 10)
+    next_mino1 = randint(1, 10)  # Next mino1 # 다음 테트리스 블록 7가지 중 하나
+    next_mino2 = randint(1, 10)  # Next mino2 # 다음 테트리스 블록 7가지 중 하나
+    next_mino1_2P = randint(1, 10)
     hold = False  # Hold status
     hold_2P = False
     hold_mino = -1  # Holded mino #현재 hold하는 것 없는 상태
@@ -1708,7 +1703,7 @@ while not done:
                         if is_stackable(next_mino1, matrix):
                             mino = next_mino1
                             next_mino1 = next_mino2
-                            next_mino2 = randint(1, 7)
+                            next_mino2 = randint(1, 10)
                             dx, dy = 3, 0
                             rotation = 0
                             hold = False
@@ -1729,7 +1724,7 @@ while not done:
                 for j in range(board_y+1):
                     is_full = True
                     for i in range(board_x):
-                        if matrix[i][j] == 0 or matrix[i][j] == 9:  # 빈 공간이거나, 장애물블록
+                        if matrix[i][j] == 0 or matrix[i][j] == 10:  # 빈 공간이거나, 장애물블록
                             is_full = False
                     if is_full:  # 한 줄 꽉 찼을 때
                         erase_count += 1
@@ -1826,7 +1821,7 @@ while not done:
                             hold_mino = mino
                             mino = next_mino1
                             next_mino1 = next_mino2
-                            next_mino2 = randint(1, 7)
+                            next_mino2 = randint(1, 10)
                         else:
                             hold_mino, mino = mino, hold_mino
                         dx, dy = 3, 0
@@ -2074,7 +2069,7 @@ while not done:
 
                         if is_stackable(next_mino1, matrix):
                             mino = next_mino1
-                            next_mino1 = randint(1, 7)
+                            next_mino1 = randint(1, 10)
                             dx, dy = 3, 0
                             rotation = 0
                             hold = False
@@ -2105,7 +2100,7 @@ while not done:
 
                         if is_stackable(next_mino1_2P, matrix_2P):
                             mino_2P = next_mino1_2P
-                            next_mino1_2P = randint(1, 7)
+                            next_mino1_2P = randint(1, 10)
                             dx_2P, dy_2P = 3, 0
                             rotation_2P = 0
                             hold_2P = False
@@ -2136,7 +2131,7 @@ while not done:
                     if is_full:
                         # erase_count += 1
                         combo_count += 1
-                        if combo_count == 3:
+                        if combo_count % 3 == 0:
                             key_reverse_2P = True # 상대방 키 반전조건 성립 (몇 줄을 깨든)
                             draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
                                         hold_mino_2P, current_key, current_key_2P)
@@ -2163,7 +2158,7 @@ while not done:
                     if is_full:
                         # erase_count_2P += 1
                         combo_count_2P += 1
-                        if combo_count_2P == 3:
+                        if combo_count_2P % 3 == 0:
                             key_reverse = True  # 상대방 키 반전조건 성립 (몇 줄을 깨든)
                             draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
                                         hold_mino_2P, current_key, current_key_2P)
@@ -2205,7 +2200,7 @@ while not done:
                         if hold_mino == -1:
                             hold_mino = mino
                             mino = next_mino1
-                            next_mino1 = randint(1, 7)
+                            next_mino1 = randint(1, 10)
                         else:
                             hold_mino, mino = mino, hold_mino
                         dx, dy = 3, 0
@@ -2221,7 +2216,7 @@ while not done:
                         if hold_mino_2P == -1:
                             hold_mino_2P = mino_2P
                             mino_2P = next_mino1_2P
-                            next_mino1_2P = randint(1, 7)
+                            next_mino1_2P = randint(1, 10)
                         else:
                             hold_mino_2P, mino_2P = mino_2P, hold_mino_2P
                         dx_2P, dy_2P = 3, 0
@@ -2456,6 +2451,10 @@ while not done:
                 # Soft drop (1P)
                 elif event.key == key1['softDrop']:
                     if not is_bottom(dx, dy, mino, rotation, matrix):
+                        ui_variables.move_sound.play()
+                        keys_pressed = pygame.key.get_pressed()
+                        pygame.time.set_timer(
+                            pygame.KEYUP, framerate_blockmove)
                         dy = dy + 1
                     draw_mino(dx, dy, mino, rotation, matrix)
                     draw_mino(dx_2P, dy_2P, mino_2P, rotation_2P, matrix_2P)
@@ -2464,6 +2463,10 @@ while not done:
                 # Soft drop (2P)
                 elif event.key == key2['softDrop']:
                     if not is_bottom(dx_2P, dy_2P, mino_2P, rotation_2P, matrix_2P):
+                        ui_variables.move_sound.play()
+                        keys_pressed = pygame.key.get_pressed()
+                        pygame.time.set_timer(
+                            pygame.KEYUP, framerate_2P_blockmove)
                         dy_2P = dy_2P + 1
                     draw_mino(dx_2P, dy_2P, mino_2P, rotation_2P, matrix_2P)
                     draw_mino(dx, dy, mino, rotation, matrix)
@@ -2756,8 +2759,6 @@ while not done:
         single_button.draw(screen, (0, 0, 0)) #easy mode
         pvp_button.draw(screen, (0, 0, 0)) #multi mode
         hard_button.draw(screen, (0, 0, 0)) #hard mode
-        # hard_training_button.draw(screen, (0, 0, 0))
-        # multi_training_button.draw(screen, (0, 0, 0))
         back_button.draw(screen, (0, 0, 0))
 
         pygame.display.update()  # select mode 화면으로 넘어가도록 전체 화면 업데이트
