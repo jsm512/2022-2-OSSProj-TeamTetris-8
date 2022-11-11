@@ -311,10 +311,11 @@ setting_button = button(board_width, board_height, 0.375,0.4, 0.22, 0.2, setting
 quit_button = button(board_width, board_height, 0.625,0.4, 0.22, 0.2, quit_button_image)
 score_board_button = button(board_width, board_height, 0.875, 0.4, 0.22, 0.2, score_board_button_image)
 
-single_button = button(board_width, board_height, 0.25,0.35, 0.22, 0.2, single_button_image)
+single_button = button(board_width, board_height, 0.35, 0.35, 0.22, 0.2, single_button_image)
 easy_button = button(board_width, board_height, 0.25,0.35, 0.22, 0.2, easy_button_image)
-hard_button = button(board_width, board_height, 0.5,0.35, 0.22, 0.2, hard_button_image)
-pvp_button = button(board_width, board_height, 0.75,0.35, 0.22, 0.2, pvp_button_image)
+normal_button = button(board_width, board_height, 0.5, 0.35, 0.22 , 0.2, normal_button_image)
+hard_button = button(board_width, board_height, 0.75,0.35, 0.22, 0.2, hard_button_image)
+pvp_button = button(board_width, board_height, 0.65,0.35, 0.22, 0.2, pvp_button_image)
 
 resume_button = button(board_width, board_height, 0.5,0.23, 0.17, 0.2, resume_button_image)
 menu_button2 = button(board_width, board_height, 0.5,0.43, 0.17, 0.2, menu_button_image)
@@ -378,7 +379,7 @@ selected_bgm = "Tetris_Game/assets/sounds/BGM1.wav"
 # 게임 중 버튼 생성하기위한 버튼객체 리스트 (버튼 전체)
 
 button_list = [
-    select_mode_button, setting_button, quit_button, score_board_button, single_button, easy_button, hard_button, pvp_button,
+    select_mode_button, setting_button, quit_button, score_board_button, single_button, easy_button, normal_button, hard_button, pvp_button,
     resume_button, menu_button2, help_button, pause_quit_button, pause_setting_button,
     leaderboard_icon, mute_button, default_button, restart_button, back_button, ok_button, effect_plus_button, effect_minus_button,
     sound_plus_button, sound_minus_button, mute_check_button, background1_check_button, background2_check_button, background3_check_button,
@@ -1115,7 +1116,7 @@ def multi_reverse_key(rev, player):
 
 
 def set_initial_values():
-    global training_event_happened, pause_training, training_event, combo_count, combo_count_2P, line_count, score, level, goal, score_2P, level_2P, goal_2P, bottom_count, bottom_count_2P, hard_drop, hard_drop_2P, attack_point, attack_point_2P, dx, dy, dx_2P, dy_2P, rotation, rotation_2P, mino, mino_2P, next_mino1, next_mino2, next_mino1_2P, hold, hold_2P, hold_mino, hold_mino_2P, framerate, framerate_2P, matrix, matrix_2P, Change_RATE, blink, start, pause, done, game_over, leader_board, setting, volume_setting, screen_setting, pvp, help, gravity_mode, debug, d, e, b, u, g, start_ticks, textsize, CHANNELS, swidth, name_location, name, previous_time, current_time, pause_time, lines, leaders, leaders_hard, game_status, framerate_blockmove, framerate_2P_blockmove, game_speed, game_speed_2P, select_mode, hard, hard_training, multi_training, training_status, hard_time_setting, winner, key1, key2, key_reverse, key_reverse_2P, current_key, current_key_2P, hard_training_info, multi_training_info, game_over_training, help_status, remaining_time
+    global training_event_happened, pause_training, training_event, combo_count, combo_count_2P, line_count, score, level, goal, score_2P, level_2P, goal_2P, bottom_count, bottom_count_2P, hard_drop, hard_drop_2P, attack_point, attack_point_2P, dx, dy, dx_2P, dy_2P, rotation, rotation_2P, mino, mino_2P, next_mino1, next_mino2, next_mino1_2P, hold, hold_2P, hold_mino, hold_mino_2P, framerate, framerate_2P, matrix, matrix_2P, Change_RATE, blink, start, pause, done, game_over, leader_board, setting, volume_setting, screen_setting, pvp, help, gravity_mode, debug, d, e, b, u, g, start_ticks, textsize, CHANNELS, swidth, name_location, name, previous_time, current_time, pause_time, lines, leaders, leaders_hard, game_status, framerate_blockmove, framerate_2P_blockmove, game_speed, game_speed_2P, select_mode, single, normal, hard, hard_training, multi_training, training_status, hard_time_setting, winner, key1, key2, key_reverse, key_reverse_2P, current_key, current_key_2P, hard_training_info, multi_training_info, game_over_training, help_status, remaining_time
 
     framerate = 30  # Bigger -> Slower  기본 블록 하강 속도, 2도 할만 함, 0 또는 음수 이상이어야 함
     framerate_blockmove = framerate * 3  # 블록 이동 시 속도
@@ -1127,7 +1128,7 @@ def set_initial_values():
     help_status = False
     # Initial values
     blink = False
-    start = False
+    start = False # easy mode
     pause = False
     done = False
     game_over = False
@@ -1135,8 +1136,10 @@ def set_initial_values():
     setting = False
     volume_setting = False
     screen_setting = False
+    single = False
     pvp = False
     hard = False  # 하드모드 변수 추가
+    normal = False
     
 
     help = False
@@ -2751,11 +2754,13 @@ while not done:
             board_width), int(board_height)])  # (screen, 색깔, 위치 x, y좌표, 너비, 높이)
         screen.blit(pause_surface, (0, 0))
 
-        # single_button.draw(screen, (0, 0, 0))
-        easy_button.draw(screen, (0, 0, 0)) #easy mode
+        single_button.draw(screen, (0, 0, 0))
+        # easy_button.draw(screen, (0, 0, 0)) #easy mode
+        # hard_button.draw(screen, (0, 0, 0)) #hard mode
+        # normal_button.draw(screen, (0, 0, 0))
         pvp_button.draw(screen, (0, 0, 0)) #multi mode
-        hard_button.draw(screen, (0, 0, 0)) #hard mode
         back_button.draw(screen, (0, 0, 0))
+        
 
         pygame.display.update()  # select mode 화면으로 넘어가도록 전체 화면 업데이트
 
@@ -2770,20 +2775,20 @@ while not done:
                     single_button.image = clicked_single_button_image
                 else:
                     single_button.image = single_button_image
-                if easy_button.isOver_2(pos):
-                    easy_button.image = clicked_easy_button_image
-                else:
-                    easy_button.image = easy_button_image
+                # if easy_button.isOver_2(pos):
+                #     easy_button.image = clicked_easy_button_image
+                # else:
+                #     easy_button.image = easy_button_image
 
                 if pvp_button.isOver_2(pos):
                     pvp_button.image = clicked_pvp_button_image
                 else:
                     pvp_button.image = pvp_button_image
 
-                if hard_button.isOver_2(pos):
-                    hard_button.image = clicked_hard_button_image
-                else:
-                    hard_button.image = hard_button_image
+                # if hard_button.isOver_2(pos):
+                #     hard_button.image = clicked_hard_button_image
+                # else:
+                #     hard_button.image = hard_button_image
 
                 if back_button.isOver(pos):
                     back_button.image = clicked_back_button_image
@@ -2792,18 +2797,21 @@ while not done:
                     
             # mouse click 시 
             elif event.type == pygame.MOUSEBUTTONDOWN:
-
-                if easy_button.isOver_2(pos):
+                
+                if single_button.isOver_2(pos):
                     ui_variables.click_sound.play()
-                    previous_time = pygame.time.get_ticks()
-                    ui_variables.intro_sound.stop()
-                    pygame.mixer.music.play(-1)
-                    start = True
+                    single = True
                     initialize = True
                     select_mode = False
 
-                    pygame.mixer.music.play(-1) #play(-1) = 노래 반복재생
-                    ui_variables.intro_sound.stop()
+                # if easy_button.isOver_2(pos):
+                #     ui_variables.click_sound.play()
+                #     previous_time = pygame.time.get_ticks()
+                #     ui_variables.intro_sound.stop()
+                #     pygame.mixer.music.play(-1)
+                #     start = True
+                #     initialize = True
+                #     select_mode = False
                 if pvp_button.isOver_2(pos):
                     ui_variables.click_sound.play()
                     ui_variables.intro_sound.stop()
@@ -2812,13 +2820,13 @@ while not done:
                     initialize = True
                     select_mode = False
                     
-                if hard_button.isOver_2(pos):
-                    ui_variables.click_sound.play()
-                    ui_variables.intro_sound.stop()
-                    pygame.mixer.music.play(-1)
-                    hard = True
-                    initialize = True
-                    select_mode = False
+                # if hard_button.isOver_2(pos):
+                #     ui_variables.click_sound.play()
+                #     ui_variables.intro_sound.stop()
+                #     pygame.mixer.music.play(-1)
+                #     hard = True
+                #     initialize = True
+                #     select_mode = False
                     
                 if back_button.isOver(pos):
                     ui_variables.click_sound.play()
@@ -2849,6 +2857,112 @@ while not done:
 
                 for i in range(len(button_list)):
                     button_list[i].change(board_width, board_height)
+    elif single:
+        screen.fill(ui_variables.real_white)
+        draw_image(screen, background_image, board_width * 0.5, board_height *
+                0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+        pause_surface = screen.convert_alpha()  # 투명 가능하도록
+        pause_surface.fill((0, 0, 0, 0))  # 투명한 검정색으로 덮기
+        pygame.draw.rect(pause_surface, (ui_variables.black_pause), [0, 0, int(
+            board_width), int(board_height)])  # (screen, 색깔, 위치 x, y좌표, 너비, 높이)
+        screen.blit(pause_surface, (0, 0))
+
+        easy_button.draw(screen, (0, 0, 0)) #easy mode
+        hard_button.draw(screen, (0, 0, 0)) #hard mode
+        normal_button.draw(screen, (0, 0, 0))
+        back_button.draw(screen, (0, 0, 0))
+        
+
+        pygame.display.update()  # select mode 화면으로 넘어가도록 전체 화면 업데이트
+        
+        for event in pygame.event.get():
+            pos = pygame.mouse.get_pos()
+            if event.type == QUIT:
+                done = True
+                
+            # button 이미지 mouse over 시 색칠
+            elif event.type == pygame.MOUSEMOTION:
+                if easy_button.isOver_2(pos):
+                    easy_button.image = clicked_easy_button_image
+                else:
+                    easy_button.image = easy_button_image
+                
+                if normal_button.isOver_2(pos):
+                    normal_button.image = clicked_normal_button_image
+                else:
+                    normal_button.image = normal_button_image
+
+                if hard_button.isOver_2(pos):
+                    hard_button.image = clicked_hard_button_image
+                else:
+                    hard_button.image = hard_button_image
+
+                if back_button.isOver(pos):
+                    back_button.image = clicked_back_button_image
+                else:
+                    back_button.image = back_button_image
+                    
+            # mouse click 시 
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+
+                if easy_button.isOver_2(pos):
+                    ui_variables.click_sound.play()
+                    previous_time = pygame.time.get_ticks()
+                    ui_variables.intro_sound.stop()
+                    pygame.mixer.music.play(-1)
+                    start = True
+                    initialize = True
+                    single = False
+                
+                
+                if normal_button.isOver_2(pos):
+                    ui_variables.click_sound.play()
+                    previous_time = pygame.time.get_ticks()
+                    ui_variables.intro_sound.stop()
+                    pygame.mixer.music.play(-1)
+                    normal = True
+                    initialize = True
+                    single = False
+                    
+                if hard_button.isOver_2(pos):
+                    ui_variables.click_sound.play()
+                    ui_variables.intro_sound.stop()
+                    pygame.mixer.music.play(-1)
+                    hard = True
+                    initialize = True
+                    single = False
+                    
+                if back_button.isOver(pos):
+                    ui_variables.click_sound.play()
+                    select_mode = True
+                    initialize = False
+                    single = False
+                    
+            # 창 사이즈 조절
+            elif event.type == VIDEORESIZE:
+                board_width = event.w
+                board_height = event.h
+                if board_width < min_width or board_height < min_height:  # 최소 너비 또는 높이를 설정하려는 경우
+                    board_width = min_width
+                    board_height = min_height
+                # 높이 또는 너비가 비율의 일정수준 이상을 넘어서게 되면
+                if not ((board_rate - 0.1) < (board_height / board_width) < (board_rate + 0.05)):
+                    # 너비를 적정 비율로 바꿔줌
+                    board_width = int(board_height / board_rate)
+                    # 높이를 적정 비율로 바꿔줌
+                    board_height = int(board_width * board_rate)
+                if board_width >= mid_width:  # 화면 사이즈가 큰 경우
+                    textsize = True  # 큰 글자크기 사용
+                if board_width < mid_width:  # 화면 사이즈가 작은 경우
+                    textsize = False  # 작은 글자크기 사용
+
+                block_size = int(board_height * 0.045)  # 블록 크기 고정
+                screen = pygame.display.set_mode(
+                    (board_width, board_height), pygame.RESIZABLE)
+
+                for i in range(len(button_list)):
+                    button_list[i].change(board_width, board_height)
+        
 # score_board 셋팅
     elif leader_board:
         screen.fill(ui_variables.real_white)
