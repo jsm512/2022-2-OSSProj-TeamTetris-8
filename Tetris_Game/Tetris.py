@@ -128,8 +128,8 @@ class ui_variables: #UI
     linessent_image = 'Tetris_Game/assets/block_images/linessent.png'
     t_block = [table_image, cyan_image, blue_image, orange_image, yellow_image, green_image, pink_image, red_image,
                lightgreen_image, gold_image, brown_image, ghost_image, linessent_image]
-    t_block_1 = [table_image, cyan_image, blue_image, orange_image, yellow_image, green_image, pink_image, red_image,
-                ghost_image, linessent_image]
+    # t_block_1 = [table_image, cyan_image, blue_image, orange_image, yellow_image, green_image, pink_image, red_image,
+    #             ghost_image, linessent_image]
 
 # 각 이미지 주소
 background_image = 'Tetris_Game/assets/images/mainpage_background.png'  # 메뉴화면(첫 화면) 배경
