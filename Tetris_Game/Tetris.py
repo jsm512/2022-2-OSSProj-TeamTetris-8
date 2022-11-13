@@ -202,8 +202,8 @@ number_board = 'Tetris_Game/assets/vector/number_board.png'
 # img 수정
 resume_button_image = 'Tetris_Game/assets/vector/Resume.png'
 clicked_resume_button_image = 'Tetris_Game/assets/vector/clicked_Resume.png'
-restart_button_image = 'Tetris_Game/assets/vector/restart_button.png'
-clicked_restart_button_image = 'Tetris_Game/assets/vector/clicked_restart_button.png'
+restart_button_image = 'Tetris_Game/assets/vector/Restart.png'
+clicked_restart_button_image = 'Tetris_Game/assets/vector/clicked_Restart.png'
 
 back_button_image = 'Tetris_Game/assets/vector/Back.png'
 clicked_back_button_image = 'Tetris_Game/assets/vector/clicked_Back.png'
@@ -1944,7 +1944,7 @@ while not done:
                     screen.blit(ui_variables.LevelUp_vector,
                                 (board_width * 0.28, board_height * 0.1))
                     ui_variables.LevelUp_sound.play()
-                    framerate = int(framerate - speed_change)
+                    framerate = int(framerate * 0.7)
 
             elif event.type == KEYDOWN:
                 erase1_mino(dx, dy, mino_en, rotation, matrix)
