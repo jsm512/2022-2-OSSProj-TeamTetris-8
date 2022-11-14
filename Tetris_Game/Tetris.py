@@ -1667,7 +1667,8 @@ while not done:
                         bottom_count += 1
 
                 # Erase line
-                erase_count = 0
+                erase_count = 0  #방금 추가
+                attack_stack = 0
                 for j in range(21):
                     is_full = True
                     for i in range(10):
@@ -1675,11 +1676,25 @@ while not done:
                             is_full = False
                     if is_full:
                         erase_count += 1
+                        attack_stack += 1  #방금 추가
                         k = j
                         while k > 0:
                             for i in range(10):
                                 matrix[i][k] = matrix[i][k - 1]
                             k -= 1
+                while attack_stack >= 2:
+                    for j in range(20):
+                        for i in range(10):
+                            matrix[i][j] = matrix[i][j + 1]
+
+                            attack_stack -= 1
+                    for i in range(10):
+                        matrix[i][20] = 9
+                    k = randint(1, 10)
+                    matrix[k][20] = 0
+                    attack_point += 1
+
+
                 if erase_count == 1:
                     ui_variables.single_sound.play()
                     score += 50 * level
