@@ -621,104 +621,104 @@ def draw1_board(next1, next2, hold, score, level, goal):
 
 # hard mode draw board
 #remaining_time --> level  + goal
-def draw_hardboard(next1, next2, hold, score, remaining_time, line):
-  # 크기 비율 고정, 전체 board 가로길이에서 원하는 비율을 곱해줌
-    sidebar_width = int(board_width * 0.5312)
+# def draw_hardboard(next1, next2, hold, score, remaining_time, line):
+#   # 크기 비율 고정, 전체 board 가로길이에서 원하는 비율을 곱해줌
+#     sidebar_width = int(board_width * 0.5312)
 
-    # screen.fill(ui_variables.grey_1)
+#     # screen.fill(ui_variables.grey_1)
 
-    # Draw sidebar
-    pygame.draw.rect(
-        screen,
-        ui_variables.grey_1,
-        Rect(sidebar_width, 0, int(board_width * 0.2375), board_height)  # 크기 비율 고정
-    )
+#     # Draw sidebar
+#     pygame.draw.rect(
+#         screen,
+#         ui_variables.grey_1,
+#         Rect(sidebar_width, 0, int(board_width * 0.2375), board_height)  # 크기 비율 고정
+#     )
 
-    # Draw 2 next minos
-    grid_n1 = tetrimino.mino_map[next1 - 1][0]
-    grid_n2 = tetrimino.mino_map[next2 - 1][0]
+#     # Draw 2 next minos
+#     grid_n1 = tetrimino.mino_map[next1 - 1][0]
+#     grid_n2 = tetrimino.mino_map[next2 - 1][0]
 
-    for i in range(mino_matrix_y):
-        for j in range(mino_matrix_x):
-            dx1 = int(board_width * 0.025) + sidebar_width + \
-                block_size * j  # 위치 비율 고정, 전체 board 가로 길이에서 원하는 비율을 곱해줌
-            dy1 = int(board_height * 0.3743) + block_size * \
-                i  # 위치 비율 고정, 전체 board 세로 길이에서 원하는 비율을 곱해줌#
-            if grid_n1[i][j] != 0:
-                draw_block_image(dx1, dy1, ui_variables.t_block[grid_n1[i][j]])
+#     for i in range(mino_matrix_y):
+#         for j in range(mino_matrix_x):
+#             dx1 = int(board_width * 0.025) + sidebar_width + \
+#                 block_size * j  # 위치 비율 고정, 전체 board 가로 길이에서 원하는 비율을 곱해줌
+#             dy1 = int(board_height * 0.3743) + block_size * \
+#                 i  # 위치 비율 고정, 전체 board 세로 길이에서 원하는 비율을 곱해줌#
+#             if grid_n1[i][j] != 0:
+#                 draw_block_image(dx1, dy1, ui_variables.t_block[grid_n1[i][j]])
 
-    for i in range(mino_matrix_y):
-        for j in range(mino_matrix_x):
-            dx2 = int(board_width * 0.145) + sidebar_width + \
-                block_size * j  # 위치 비율 고정, 전체 board 가로길이에서 원하는 비율을 곱해줌#
-            dy2 = int(board_height * 0.3743) + block_size * \
-                i  # 위치 비율 고정, 전체 board 세로길이에서 원하는 비율을 곱해줌#
-            if grid_n2[i][j] != 0:
-                draw_block_image(dx2, dy2, ui_variables.t_block[grid_n2[i][j]])
+#     for i in range(mino_matrix_y):
+#         for j in range(mino_matrix_x):
+#             dx2 = int(board_width * 0.145) + sidebar_width + \
+#                 block_size * j  # 위치 비율 고정, 전체 board 가로길이에서 원하는 비율을 곱해줌#
+#             dy2 = int(board_height * 0.3743) + block_size * \
+#                 i  # 위치 비율 고정, 전체 board 세로길이에서 원하는 비율을 곱해줌#
+#             if grid_n2[i][j] != 0:
+#                 draw_block_image(dx2, dy2, ui_variables.t_block[grid_n2[i][j]])
 
-    # Draw hold mino
-    grid_h = tetrimino.mino_map[hold - 1][0]  # (배열이라-1) 기본 모양
+#     # Draw hold mino
+#     grid_h = tetrimino.mino_map[hold - 1][0]  # (배열이라-1) 기본 모양
 
-    if hold_mino != -1:  # hold 존재X
-        for i in range(mino_matrix_y):
-            for j in range(mino_matrix_x):
-                dx = int(board_width * 0.045) + sidebar_width + \
-                    block_size * j  # 위치 비율 고정
-                dy = int(board_height * 0.1336) + block_size * i  # 위치 비율 고정
-                if grid_h[i][j] != 0:  # 해당 부분에 블록이 존재하면
-                    draw_block_image(
-                        dx, dy, ui_variables.t_block[grid_h[i][j]])  # hold 블록 출력
+#     if hold_mino != -1:  # hold 존재X
+#         for i in range(mino_matrix_y):
+#             for j in range(mino_matrix_x):
+#                 dx = int(board_width * 0.045) + sidebar_width + \
+#                     block_size * j  # 위치 비율 고정
+#                 dy = int(board_height * 0.1336) + block_size * i  # 위치 비율 고정
+#                 if grid_h[i][j] != 0:  # 해당 부분에 블록이 존재하면
+#                     draw_block_image(
+#                         dx, dy, ui_variables.t_block[grid_h[i][j]])  # hold 블록 출력
 
-    # Set max score
-    if score > 999999:
-        score = 999999
+#     # Set max score
+#     if score > 999999:
+#         score = 999999
 
-    # Draw texts
-    text_hold = ui_variables.h5.render("HOLD", 1, ui_variables.real_white)
-    text_next = ui_variables.h5.render("NEXT", 1, ui_variables.real_white)
-    text_score = ui_variables.h5.render("SCORE", 1, ui_variables.real_white)
-    score_value = ui_variables.h4.render(
-        str(score), 1, ui_variables.real_white)
-    text_remaining_time = ui_variables.h5.render(
-        "TIME", 1, ui_variables.real_white)
-    time_value = ui_variables.h4.render(
-        str(remaining_time), 1, ui_variables.real_white)
-    text_line = ui_variables.h5.render("LINE", 1, ui_variables.real_white)
-    line_value = ui_variables.h4.render(
-        str(line_count), 1, ui_variables.real_white)
+#     # Draw texts
+#     text_hold = ui_variables.h5.render("HOLD", 1, ui_variables.real_white)
+#     text_next = ui_variables.h5.render("NEXT", 1, ui_variables.real_white)
+#     text_score = ui_variables.h5.render("SCORE", 1, ui_variables.real_white)
+#     score_value = ui_variables.h4.render(
+#         str(score), 1, ui_variables.real_white)
+#     text_remaining_time = ui_variables.h5.render(
+#         "TIME", 1, ui_variables.real_white)
+#     time_value = ui_variables.h4.render(
+#         str(remaining_time), 1, ui_variables.real_white)
+#     text_line = ui_variables.h5.render("LINE", 1, ui_variables.real_white)
+#     line_value = ui_variables.h4.render(
+#         str(line_count), 1, ui_variables.real_white)
 
-    # Place texts
-    screen.blit(text_hold, (int(board_width * 0.045) +
-                sidebar_width, int(board_height * 0.0374)))
-    screen.blit(text_next, (int(board_width * 0.045) +
-                sidebar_width, int(board_height * 0.2780)))
-    screen.blit(text_score, (int(board_width * 0.045) +
-                sidebar_width, int(board_height * 0.5187)))
-    screen.blit(score_value, (int(board_width * 0.055) +
-                sidebar_width, int(board_height * 0.5614)))
-    screen.blit(text_remaining_time, (int(board_width * 0.045) +
-                sidebar_width, int(board_height * 0.6791)))
-    screen.blit(time_value, (int(board_width * 0.055) +
-                sidebar_width, int(board_height * 0.7219)))
-    screen.blit(text_line, (int(board_width * 0.045) +
-                sidebar_width, int(board_height * 0.8395)))
-    screen.blit(line_value, (int(board_width * 0.055) +
-                sidebar_width, int(board_height * 0.8823)))
+#     # Place texts
+#     screen.blit(text_hold, (int(board_width * 0.045) +
+#                 sidebar_width, int(board_height * 0.0374)))
+#     screen.blit(text_next, (int(board_width * 0.045) +
+#                 sidebar_width, int(board_height * 0.2780)))
+#     screen.blit(text_score, (int(board_width * 0.045) +
+#                 sidebar_width, int(board_height * 0.5187)))
+#     screen.blit(score_value, (int(board_width * 0.055) +
+#                 sidebar_width, int(board_height * 0.5614)))
+#     screen.blit(text_remaining_time, (int(board_width * 0.045) +
+#                 sidebar_width, int(board_height * 0.6791)))
+#     screen.blit(time_value, (int(board_width * 0.055) +
+#                 sidebar_width, int(board_height * 0.7219)))
+#     screen.blit(text_line, (int(board_width * 0.045) +
+#                 sidebar_width, int(board_height * 0.8395)))
+#     screen.blit(line_value, (int(board_width * 0.055) +
+#                 sidebar_width, int(board_height * 0.8823)))
 
-    # Draw board 
-    for x in range(width):
-        for y in range(height):
-            dx = int(board_width * 0.25) + block_size * \
-                x  # 위치비율 고정, board 가로길이에 원하는 비율을 곱해줌#
-            dy = int(board_height * 0.055) + block_size * \
-                y  # 위치비율 고정, board 세로길이에 원하는 비율을 곱해줌#
-            draw_block_image(dx, dy, ui_variables.t_block[matrix[x][y + 1]])
-            # draw_block_image(dx, dy, ui_variables.t_block[matrix[x][(height-1)-y+1]])
+#     # Draw board 
+#     for x in range(width):
+#         for y in range(height):
+#             dx = int(board_width * 0.25) + block_size * \
+#                 x  # 위치비율 고정, board 가로길이에 원하는 비율을 곱해줌#
+#             dy = int(board_height * 0.055) + block_size * \
+#                 y  # 위치비율 고정, board 세로길이에 원하는 비율을 곱해줌#
+#             draw_block_image(dx, dy, ui_variables.t_block[matrix[x][y + 1]])
+#             # draw_block_image(dx, dy, ui_variables.t_block[matrix[x][(height-1)-y+1]])
 
 
 # hard mode draw board change
 # 블록 뒤집기 코드~
-def draw_hardboard_change(next1, next2, hold, score, remaining_time, line):
+def draw_hardboard_change(next1, next2, hold, score, level, goal):
   # 크기 비율 고정, 전체 board 가로길이에서 원하는 비율을 곱해줌
     sidebar_width = int(board_width * 0.5312)
 
@@ -776,13 +776,11 @@ def draw_hardboard_change(next1, next2, hold, score, remaining_time, line):
     text_score = ui_variables.h5.render("SCORE", 1, ui_variables.real_white)
     score_value = ui_variables.h4.render(
         str(score), 1, ui_variables.real_white)
-    text_remaining_time = ui_variables.h5.render(
-        "TIME", 1, ui_variables.real_white)
-    time_value = ui_variables.h4.render(
-        str(remaining_time), 1, ui_variables.real_white)
-    text_line = ui_variables.h5.render("LINE", 1, ui_variables.real_white)
-    line_value = ui_variables.h4.render(
-        str(line_count), 1, ui_variables.real_white)
+    text_level = ui_variables.h5.render("LEVEL", 1, ui_variables.real_white)
+    level_value = ui_variables.h4.render(
+        str(level), 1, ui_variables.real_white)
+    text_goal = ui_variables.h5.render("GOAL", 1, ui_variables.real_white)
+    goal_value = ui_variables.h4.render(str(goal), 1, ui_variables.real_white)
 
     # Place texts
     screen.blit(text_hold, (int(board_width * 0.045) +
@@ -793,13 +791,13 @@ def draw_hardboard_change(next1, next2, hold, score, remaining_time, line):
                 sidebar_width, int(board_height * 0.5187)))
     screen.blit(score_value, (int(board_width * 0.055) +
                 sidebar_width, int(board_height * 0.5614)))
-    screen.blit(text_remaining_time, (int(board_width * 0.045) +
+    screen.blit(text_level, (int(board_width * 0.045) +
                 sidebar_width, int(board_height * 0.6791)))
-    screen.blit(time_value, (int(board_width * 0.055) +
+    screen.blit(level_value, (int(board_width * 0.055) +
                 sidebar_width, int(board_height * 0.7219)))
-    screen.blit(text_line, (int(board_width * 0.045) +
-                sidebar_width, int(board_height * 0.8395)))
-    screen.blit(line_value, (int(board_width * 0.055) +
+    screen.blit(text_goal, (int(board_width * 0.045) +
+                sidebar_width, int(board_height * 0.8400)))
+    screen.blit(goal_value, (int(board_width * 0.055) +
                 sidebar_width, int(board_height * 0.8823)))
 
     # Draw board
@@ -2108,6 +2106,7 @@ while not done:
     elif hard:
         for event in pygame.event.get():
             pos = pygame.mouse.get_pos()
+            change = line_count // 3   # board_change 변수 --> 향후 상수 파일로 작성
             if event.type == QUIT:
                 done = True
             elif event.type == USEREVENT:
@@ -2123,9 +2122,14 @@ while not done:
                 draw_mino(dx, dy, mino, rotation, matrix)
                 draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
                            0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
-                draw_board(next_mino1, next_mino2,
-                           hold_mino, score, level, goal)
-
+                # draw_board(next_mino1, next_mino2,
+                #            hold_mino, score, level, goal)
+                if change % 2 == 1:
+                    draw_hardboard_change(next_mino1, next_mino2, hold_mino, score, level, goal)
+                else:
+                    draw_board(next_mino1, next_mino2, hold_mino, score, level, goal)
+                    pygame.display.update()
+                    
                 # Erase a mino
                 if not game_over:
                     erase_mino(dx, dy, mino, rotation, matrix)
@@ -2144,9 +2148,13 @@ while not done:
                         screen.fill(ui_variables.real_white)
                         draw_image(screen, gamebackground_image, board_width *
                                    0.5, board_height * 0.5, board_width, board_height)
-                        draw_board(next_mino1, next_mino2,
-                                hold_mino, score, level, goal)
-                        pygame.display.update()
+                        
+                        if change % 2 == 1:
+                            draw_hardboard_change(next_mino1, next_mino2, hold_mino, score, level, goal)
+                        else:
+                            draw_board(next_mino1, next_mino2, hold_mino, score, level, goal)
+                            pygame.display.update()
+                            
                         # 뭔 코드?
                         if is_stackable(next_mino1, matrix):
                             mino = next_mino1
@@ -2173,6 +2181,7 @@ while not done:
                             is_full = False
                     if is_full:
                         erase_count += 1
+                        line_count += 1
                         k = j
                         while k > 0:
                             for i in range(10):
@@ -2217,6 +2226,11 @@ while not done:
                     draw_mino(dx, dy, mino, rotation, matrix)
                     draw_board(next_mino1, next_mino2,
                             hold_mino, score, level, goal)
+                    if change % 2 == 1:
+                        draw_hardboard_change(next_mino1, next_mino2, hold_mino, score, level, goal)
+                    else:
+                        draw_board(next_mino1, next_mino2, hold_mino, score, level, goal)
+                        pygame.display.update()
                 # Hold
                 elif event.key == K_LSHIFT or event.key == K_c:
                     if hold == False:
@@ -2234,6 +2248,11 @@ while not done:
                     draw_mino(dx, dy, mino, rotation, matrix)
                     draw_board(next_mino1, next_mino2,
                             hold_mino, score, level, goal)
+                    if change % 2 == 1:
+                        draw_hardboard_change(next_mino1, next_mino2, hold_mino, score, level, goal)
+                    else:
+                        draw_board(next_mino1, next_mino2, hold_mino, score, level, goal)
+                        pygame.display.update()
                 # Turn right
                 elif event.key == K_UP or event.key == K_x:
                     if is_turnable_r(dx, dy, mino, rotation, matrix):
@@ -2269,6 +2288,11 @@ while not done:
                     draw_mino(dx, dy, mino, rotation, matrix)
                     draw_board(next_mino1, next_mino2,
                             hold_mino, score, level, goal)
+                    if change % 2 == 1:
+                        draw_hardboard_change(next_mino1, next_mino2, hold_mino, score, level, goal)
+                    else:
+                        draw_board(next_mino1, next_mino2, hold_mino, score, level, goal)
+                        pygame.display.update()
                 # Turn left
                 elif event.key == K_z or event.key == K_LCTRL:
                     if is_turnable_l(dx, dy, mino, rotation, matrix):
@@ -2303,6 +2327,11 @@ while not done:
                     draw_mino(dx, dy, mino, rotation, matrix)
                     draw_board(next_mino1, next_mino2,
                             hold_mino, score, level, goal)
+                    if change % 2 == 1:
+                        draw_hardboard_change(next_mino1, next_mino2, hold_mino, score, level, goal)
+                    else:
+                        draw_board(next_mino1, next_mino2, hold_mino, score, level, goal)
+                        pygame.display.update()
                 # Move left
                 elif event.key == K_LEFT:
                     if not is_leftedge(dx, dy, mino, rotation, matrix):
@@ -2311,6 +2340,11 @@ while not done:
                     draw_mino(dx, dy, mino, rotation, matrix)
                     draw_board(next_mino1, next_mino2,
                             hold_mino, score, level, goal)
+                    if change % 2 == 1:
+                        draw_hardboard_change(next_mino1, next_mino2, hold_mino, score, level, goal)
+                    else:
+                        draw_board(next_mino1, next_mino2, hold_mino, score, level, goal)
+                        pygame.display.update()
                 # Move right
                 elif event.key == K_RIGHT:
                     if not is_rightedge(dx, dy, mino, rotation, matrix):
@@ -2319,6 +2353,11 @@ while not done:
                     draw_mino(dx, dy, mino, rotation, matrix)
                     draw_board(next_mino1, next_mino2,
                             hold_mino, score, level, goal)
+                    if change % 2 == 1:
+                        draw_hardboard_change(next_mino1, next_mino2, hold_mino, score, level, goal)
+                    else:
+                        draw_board(next_mino1, next_mino2, hold_mino, score, level, goal)
+                        pygame.display.update()
 
             elif event.type == VIDEORESIZE:
                 board_width = event.w
