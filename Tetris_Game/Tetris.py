@@ -1821,6 +1821,7 @@ while not done:
                             hold_mino, score, level, goal)
                 # Move left
                 elif event.key == K_LEFT:
+                    pygame.key.set_repeat(50)
                     if not is_leftedge1(dx, dy, mino_en, rotation, matrix):
                         ui_variables.move_sound.play()
                         dx -= 1
@@ -1829,6 +1830,7 @@ while not done:
                             hold_mino, score, level, goal)
                 # Move right
                 elif event.key == K_RIGHT:
+                    pygame.key.set_repeat(50)
                     if not is_rightedge1(dx, dy, mino_en, rotation, matrix):
                         ui_variables.move_sound.play()
                         dx += 1
