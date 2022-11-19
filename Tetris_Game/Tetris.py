@@ -824,6 +824,103 @@ def draw_1Pboard(next, hold, current_key):
             dy = int(board_height * 0.055) + block_size * \
                 y  # 위치 비율 고정, board의 세로길이에 원하는 비율을 곱해줌
             draw_block_image(dx, dy, ui_variables.t_block[matrix[x][y + 1]])
+            
+def draw_1Pboard_change(next, hold, current_key):
+    # 위치비율 고정, board 가로길이에 원하는 비율을 곱해줌#
+    sidebar_width = int(board_width * 0.31)
+
+    # Draw sidebar
+    pygame.draw.rect(
+        screen,
+        ui_variables.grey_1,
+        Rect(sidebar_width, 0, int(board_width * 0.1875),
+             board_height)  # 크기비율 고정, board 가로길이에 원하는 비율을 곱해줌#
+    )
+
+    # Draw next mino
+    grid_n = tetrimino.mino_map[next - 1][0]  # (배열이라-1) 다음 블록의 원래 모양
+
+    for i in range(mino_matrix_y):
+        for j in range(mino_matrix_x):
+            dx = int(board_width * 0.045) + sidebar_width + \
+                block_size * j  # 위치비율 고정, board 가로길이에 원하는 비율을 곱해줌#
+            dy = int(board_height * 0.3743) + block_size * \
+                i  # 위치비율 고정, board 세로길이에 원하는 비율을 곱해줌#
+            if grid_n[i][j] != 0:
+                draw_block_image(dx, dy, ui_variables.t_block[grid_n[i][j]])
+
+    # Draw hold mino
+    grid_h = tetrimino.mino_map[hold - 1][0]  # (배열이라-1) 기본 모양
+
+    if hold_mino != -1:  # 기본값이 -1. 즉 hold블록 존재할 떄
+        for i in range(mino_matrix_y):
+            for j in range(mino_matrix_x):
+                dx = int(board_width * 0.045) + sidebar_width + \
+                    block_size * j  # 위치비율 고정, board 가로길이에 원하는 비율을 곱해줌#
+                dy = int(board_height * 0.1336) + block_size * \
+                    i  # 위치비율 고정, board 세로길이에 원하는 비율을 곱해줌#
+                if grid_h[i][j] != 0:
+                    draw_block_image(
+                        dx, dy, ui_variables.t_block[grid_h[i][j]])  # hold 블록 그림
+
+    # Draw texts
+    # render("텍스트이름", 안티에일리어싱 적용, 색깔), 즉 아래의 코드에서 숫자 1=안티에일리어싱 적용에 관한 코드
+    if textsize == False:
+        text_hold = ui_variables.h5.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h5.render("NEXT", 1, ui_variables.real_white)
+        text_reverse = ui_variables.h5.render(
+            "REVERSE", 1, ui_variables.real_white)
+        if current_key:
+            reverse_value = ui_variables.h4.render(
+                "O", 1, ui_variables.real_white)
+        elif not current_key:
+            reverse_value = ui_variables.h4.render(
+                "X", 1, ui_variables.real_white)
+        text_combo = ui_variables.h5.render("COMBO", 1, ui_variables.real_white)
+        combo_value = ui_variables.h4.render(
+            str(combo_count), 1, ui_variables.real_white)
+    if textsize == True:
+        text_hold = ui_variables.h3.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h3.render("NEXT", 1, ui_variables.real_white)
+        text_reverse = ui_variables.h3.render(
+            "REVERSE", 1, ui_variables.real_white)
+        if current_key:
+            reverse_value = ui_variables.h2.render(
+                "O", 1, ui_variables.real_white)
+        elif not current_key:
+            reverse_value = ui_variables.h2.render(
+                "X", 1, ui_variables.real_white)
+        text_combo = ui_variables.h3.render("COMBO", 1, ui_variables.real_white)
+        combo_value = ui_variables.h2.render(
+            str(combo_count), 1, ui_variables.real_white)
+    if debug:
+        # speed를 알려주는 framerate(기본값 30. 빨라질 수록 숫자 작아짐)
+        speed_value = ui_variables.h5.render(
+            "SPEED : "+str(framerate), 1, ui_variables.real_white)
+        screen.blit(speed_value, (int(board_width * 0.045) + sidebar_width,
+                    int(board_height * 0.015)))  # 각각 전체 board 가로길이, 세로길이에 원하는 비율을 곱해줌
+    screen.blit(text_hold, (int(board_width * 0.045) +
+                sidebar_width, int(board_height * 0.0374)))
+    screen.blit(text_next, (int(board_width * 0.045) +
+                sidebar_width, int(board_height * 0.2780)))
+    screen.blit(text_reverse, (int(board_width*0.045) +
+                sidebar_width, int(board_height*0.6791)))
+    screen.blit(reverse_value, (int(board_width*0.055) +
+                sidebar_width, int(board_height*0.7219)))
+    screen.blit(text_combo, (int(board_width*0.045) +
+                sidebar_width, int(board_height*0.8395)))
+    screen.blit(combo_value, (int(board_width*0.055) +
+                sidebar_width, int(board_height*0.8823)))
+
+    # Draw board
+    for x in range(width):
+        for y in range(height):
+            dx = int(board_width * 0.05) + block_size * \
+                x  # 위치 비율 고정, board의 가로길이에 원하는 비율을 곱해줌
+            dy = int(board_height * 0.055) + block_size * \
+                y  # 위치 비율 고정, board의 세로길이에 원하는 비율을 곱해줌
+            draw_block_image(
+                dx, dy, ui_variables.t_block[matrix[x][(height-1)-y+1]])
 
 
 def draw_2Pboard(next, hold, current_key_2P):
@@ -918,6 +1015,99 @@ def draw_2Pboard(next, hold, current_key_2P):
             dy = int(board_height * 0.055) + block_size * y  # 위치비율 고정
             draw_block_image(dx, dy, ui_variables.t_block[matrix_2P[x][y + 1]])
 
+def draw_2Pboard_change(next, hold, current_key_2P):
+    # 위치 비율 고정, , board의 가로길이에 원하는 비율을 곱해줌
+    sidebar_width = int(board_width * 0.82)
+
+    # Draw sidebar
+    pygame.draw.rect(
+        screen,
+        ui_variables.grey_1,
+        # 크기 비율 고정, , board의 가로길이에 원하는 비율을 곱해줌, Rect(x축, y축, 가로길이, 세로길이)#
+        Rect(sidebar_width, 0, int(board_width * 0.1875), board_height)
+    )
+
+    # Draw next mino
+    grid_n = tetrimino.mino_map[next - 1][0]
+
+    for i in range(mino_matrix_y):  # 16개의 그리드 칸에서 true인 값만 뽑아서 draw.rect
+        for j in range(mino_matrix_x):
+            dx = int(board_width * 0.05) + sidebar_width + \
+                block_size * j  # 위치 비율 고정, board의 가로길이에 원하는 비율을 곱해줌
+            dy = int(board_height * 0.3743) + block_size * \
+                i  # 위치 비율 고정, board의 세로길이에 원하는 비율을 곱해줌
+            if grid_n[i][j] != 0:
+                draw_block_image(dx, dy, ui_variables.t_block[grid_n[i][j]])
+
+    # Draw hold mino
+    grid_h = tetrimino.mino_map[hold - 1][0]
+
+    if hold_mino_2P != -1:  # 기본값이 -1. 즉 hold블록 존재할 떄
+        for i in range(mino_matrix_y):
+            for j in range(mino_matrix_x):
+                dx = int(board_width * 0.045) + sidebar_width + \
+                    block_size * j  # 위치 비율 고정, board의 가로길이에 원하는 비율을 곱해줌
+                dy = int(board_height * 0.1336) + block_size * \
+                    i  # 위치 비율 고정, board의 세로길이에 원하는 비율을 곱해줌
+                if grid_h[i][j] != 0:
+                    draw_block_image(
+                        dx, dy, ui_variables.t_block[grid_h[i][j]])
+
+    # render("텍스트이름", 안티에일리어싱 적용, 색깔), 즉 아래 코드의 숫자 1=안티에일리어싱 적용에 대한 코드
+    if textsize == False:
+        text_hold = ui_variables.h5.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h5.render("NEXT", 1, ui_variables.real_white)
+        text_reverse = ui_variables.h5.render(
+            "REVERSE", 1, ui_variables.real_white)
+        if current_key_2P:
+            reverse_value = ui_variables.h4.render(
+                "O", 1, ui_variables.real_white)
+        elif not current_key_2P:
+            reverse_value = ui_variables.h4.render(
+                "X", 1, ui_variables.real_white)
+        text_combo = ui_variables.h5.render("COMBO", 1, ui_variables.real_white)
+        combo_value = ui_variables.h4.render(
+            str(combo_count_2P), 1, ui_variables.real_white)
+    if textsize == True:
+        text_hold = ui_variables.h4.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h4.render("NEXT", 1, ui_variables.real_white)
+        text_reverse = ui_variables.h4.render(
+            "REVERSE", 1, ui_variables.real_white)
+        if current_key_2P:
+            reverse_value = ui_variables.h3.render(
+                "O", 1, ui_variables.real_white)
+        elif not current_key_2P:
+            reverse_value = ui_variables.h3.render(
+                "X", 1, ui_variables.real_white)
+        text_combo = ui_variables.h4.render("COMBO", 1, ui_variables.real_white)
+        combo_value = ui_variables.h3.render(
+            str(combo_count_2P), 1, ui_variables.real_white)
+    if debug:
+        # speed를 알려주는 framerate(기본값 30. 빨라질 수록 숫자 작아짐)
+        speed_value = ui_variables.h5.render(
+            "SPEED : "+str(framerate_2P), 1, ui_variables.real_white)
+        screen.blit(speed_value, (int(board_width * 0.045) + sidebar_width,
+                    int(board_height * 0.015)))  # 각각 전체 board의 가로길이, 세로길이에 대해 원하는 비율을 곱해줌
+    screen.blit(text_hold, (int(board_width * 0.045) +
+                sidebar_width, int(board_height * 0.0374)))
+    screen.blit(text_next, (int(board_width * 0.045) +
+                sidebar_width, int(board_height * 0.2780)))
+    screen.blit(text_reverse, (int(board_width*0.045) +
+                sidebar_width, int(board_height*0.6791)))
+    screen.blit(reverse_value, (int(board_width*0.055) +
+                sidebar_width, int(board_height*0.7219)))
+    screen.blit(text_combo, (int(board_width*0.045) +
+                sidebar_width, int(board_height*0.8395)))
+    screen.blit(combo_value, (int(board_width*0.055) +
+                sidebar_width, int(board_height*0.8823)))
+
+    for x in range(width):
+        for y in range(height):
+            dx = int(board_width * 0.54) + block_size * x  # 위치비율 고정
+            dy = int(board_height * 0.055) + block_size * y  # 위치비율 고정
+            draw_block_image(
+                dx, dy, ui_variables.t_block[matrix[x][(height-1)-y+1]])
+
 #PvP board 생성
 def draw_multiboard(next_1P, hold_1P, next_2P, hold_2P, current_key, current_key_2P):
     screen.fill(ui_variables.real_white)
@@ -925,6 +1115,22 @@ def draw_multiboard(next_1P, hold_1P, next_2P, hold_2P, current_key, current_key
                0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
     draw_1Pboard(next_1P, hold_1P, current_key)
     draw_2Pboard(next_2P, hold_2P, current_key_2P)
+    
+def draw_multiboard_1p_change(next_1P, hold_1P, next_2P, hold_2P, current_key, current_key_2P):
+    screen.fill(ui_variables.real_white)
+    draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
+               0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+    draw_1Pboard_change(next_1P, hold_1P, current_key)
+    draw_2Pboard(next_2P, hold_2P, current_key_2P)
+
+def draw_multiboard_2p_change(next_1P, hold_1P, next_2P, hold_2P, current_key, current_key_2P):
+    screen.fill(ui_variables.real_white)
+    draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
+               0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+    draw_1Pboard(next_1P, hold_1P, current_key)
+    draw_2Pboard_change(next_2P, hold_2P, current_key_2P)
+    
+
 
 
 # Draw a tetrimino
@@ -1211,7 +1417,7 @@ def multi_reverse_key(rev, player):
 
 
 def set_initial_values():
-    global combo_count, combo_count_2P, line_count, score, level, goal, score_2P, level_2P, goal_2P, bottom_count, bottom_count_2P, hard_drop, hard_drop_2P, attack_point, attack_point_2P, dx, dy, dx_2P, dy_2P, rotation, rotation_2P, mino,mino_en, mino_2P, next_mino1,next_mino1_en, next_mino2,next_mino2_en, next_mino1_2P, hold, hold_2P, hold_mino, hold_mino_2P, framerate, framerate_2P, matrix, matrix_2P, Change_RATE, blink, start, pause, done, game_over, leader_board, setting, volume_setting, screen_setting, pvp, help, gravity_mode, debug, d, e, b, u, g, start_ticks, textsize, CHANNELS, swidth, name_location, name, previous_time, current_time, pause_time, lines, leaders, leaders_hard, game_status, framerate_blockmove, framerate_2P_blockmove, game_speed, game_speed_2P, select_mode, single, normal, hard, hard_time_setting, winner, key1, key2, key_reverse, key_reverse_2P, current_key, current_key_2P, help_status, remaining_time
+    global attack_point, attack_point_2P, combo_count, combo_count_2P, line_count, score, level, goal, score_2P, level_2P, goal_2P, bottom_count, bottom_count_2P, hard_drop, hard_drop_2P, attack_point, attack_point_2P, dx, dy, dx_2P, dy_2P, rotation, rotation_2P, mino,mino_en, mino_2P, next_mino1,next_mino1_en, next_mino2,next_mino2_en, next_mino1_2P, hold, hold_2P, hold_mino, hold_mino_2P, framerate, framerate_2P, matrix, matrix_2P, Change_RATE, blink, start, pause, done, game_over, leader_board, setting, volume_setting, screen_setting, pvp, help, gravity_mode, debug, d, e, b, u, g, start_ticks, textsize, CHANNELS, swidth, name_location, name, previous_time, current_time, pause_time, lines, leaders, leaders_hard, game_status, framerate_blockmove, framerate_2P_blockmove, game_speed, game_speed_2P, select_mode, single, normal, hard, hard_time_setting, winner, key1, key2, key_reverse, key_reverse_2P, current_key, current_key_2P, help_status, remaining_time
 
     framerate = 30  # Bigger -> Slower  기본 블록 하강 속도, 2도 할만 함, 0 또는 음수 이상이어야 함
     framerate_blockmove = framerate * 3  # 블록 이동 시 속도
@@ -2273,8 +2479,15 @@ while not done:
                 # Draw a mino
                 draw_mino(dx, dy, mino, rotation, matrix)
                 draw_mino(dx_2P, dy_2P, mino_2P, rotation_2P, matrix_2P)
-                draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
-                                hold_mino_2P, current_key, current_key_2P)
+                if attack_point == 2:
+                    draw_multiboard_2p_change(next_mino1, hold_mino, next_mino1_2P,
+                                    hold_mino_2P, current_key, current_key_2P)
+                if attack_point_2P == 2:
+                        draw_multiboard_1p_change(next_mino1, hold_mino, next_mino1_2P,
+                                    hold_mino_2P, current_key, current_key_2P)
+                else:
+                    draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                                    hold_mino_2P, current_key, current_key_2P)
 
                 # Erase a mino
                 if not game_over:
@@ -2293,6 +2506,13 @@ while not done:
                         hard_drop = False
                         bottom_count = 0
                         draw_mino(dx, dy, mino, rotation, matrix)
+                        
+                        if attack_point == 2:
+                            draw_multiboard_2p_change(next_mino1, hold_mino, next_mino1_2P,
+                                    hold_mino_2P, current_key, current_key_2P)
+                        else:
+                            draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                                    hold_mino_2P, current_key, current_key_2P)
 
                         if is_stackable(next_mino1, matrix):
                             mino = next_mino1
@@ -2324,6 +2544,12 @@ while not done:
                         bottom_count_2P = 0
                         draw_mino(dx_2P, dy_2P, mino_2P,
                                 rotation_2P, matrix_2P)
+                        if attack_point_2P == 2:
+                            draw_multiboard_1p_change(next_mino1, hold_mino, next_mino1_2P,
+                                    hold_mino_2P, current_key, current_key_2P)
+                        else:
+                            draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                                    hold_mino_2P, current_key, current_key_2P)
 
                         if is_stackable(next_mino1_2P, matrix_2P):
                             mino_2P = next_mino1_2P
@@ -2350,13 +2576,22 @@ while not done:
                             is_full = False  # 클리어 되지 못함
                     if is_full:
                         combo_count += 1
-                        if combo_count % 3 == 0:
-                            key_reverse_2P = True # 상대방 키 반전조건 성립 (몇 줄을 깨든)
-                            draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
-                                    hold_mino_2P, current_key, current_key_2P)
+                        if combo_count % 1 == 0:
+                            attack_point = randint(1,2)
+                            if attack_point == 1:
+                                key_reverse_2P = True # 상대방 키 반전조건 성립 (몇 줄을 깨든)
+                                draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                                   hold_mino_2P, current_key, current_key_2P)
                         # 2P 보드에 key reverse 이미지 표시
-                            draw_image(screen, multi_key_reverse_image, board_width * 0.8,
+                                draw_image(screen, multi_key_reverse_image, board_width * 0.8,
                                     board_height * 0.2, int(board_width * 0.3), int(board_height * 0.12))
+                                
+                            if attack_point == 2:
+                                draw_multiboard_2p_change(next_mino1, hold_mino, next_mino1_2P,
+                                        hold_mino_2P, current_key, current_key_2P)
+                            else:
+                                draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                                        hold_mino_2P, current_key, current_key_2P)
                             
                     
                         pygame.display.update()
@@ -2376,15 +2611,23 @@ while not done:
                         if matrix_2P[i][j] == 0:  # 빈 곳인 경우
                             is_full = False  # 클리어 되지 못함
                     if is_full:
-                        # erase_count_2P += 1
                         combo_count_2P += 1
-                        if combo_count_2P % 3 == 0:
-                            key_reverse = True  # 상대방 키 반전조건 성립 (몇 줄을 깨든)
-                            draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                        if combo_count_2P % 1 == 0:
+                            attack_point_2P = randint(1,2)
+                            if attack_point_2P == 1:
+                                key_reverse = True  # 상대방 키 반전조건 성립 (몇 줄을 깨든)
+                                draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
                                         hold_mino_2P, current_key, current_key_2P)
                         # 1P 보드에 key reverse 이미지 표시
-                            draw_image(screen, multi_key_reverse_image, board_width * 0.2,
+                                draw_image(screen, multi_key_reverse_image, board_width * 0.2,
                                     board_height * 0.2, int(board_width * 0.28), int(board_height * 0.1))
+                            if attack_point_2P == 2:
+                                draw_multiboard_1p_change(next_mino1, hold_mino, next_mino1_2P,
+                                        hold_mino_2P, current_key, current_key_2P)
+                            else:
+                                draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                                        hold_mino_2P, current_key, current_key_2P)
+                            
                         pygame.display.update()
                         pygame.time.delay(400)
                         ui_variables.break_sound.play()
@@ -2428,8 +2671,14 @@ while not done:
                         hold = True
                     draw_mino(dx, dy, mino, rotation, matrix)
                     draw_mino(dx_2P, dy_2P, mino_2P, rotation_2P, matrix_2P)
-                    draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                    
+                    if attack_point == 2:
+                        draw_multiboard_2p_change(next_mino1, hold_mino, next_mino1_2P,
                                     hold_mino_2P, current_key, current_key_2P)
+                    else:
+                        draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                                    hold_mino_2P, current_key, current_key_2P)
+                            
                 elif event.key == K_RSHIFT:
                     if hold_2P == False:
                         ui_variables.move_sound.play()
@@ -2444,7 +2693,11 @@ while not done:
                         hold_2P = True
                     draw_mino(dx_2P, dy_2P, mino_2P, rotation_2P, matrix_2P)
                     draw_mino(dx, dy, mino, rotation, matrix)
-                    draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                    if attack_point_2P == 2:
+                        draw_multiboard_1p_change(next_mino1, hold_mino, next_mino1_2P,
+                                    hold_mino_2P, current_key, current_key_2P)
+                    else:
+                        draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
                                     hold_mino_2P, current_key, current_key_2P)
 
                     # dx, dy는 각각 좌표위치 이동에 해당하며, rotation은 mino.py의 테트리스 블록 회전에 해당함
@@ -2459,8 +2712,13 @@ while not done:
                     pygame.time.set_timer(pygame.USEREVENT, framerate)
                     draw_mino(dx, dy, mino, rotation, matrix)
                     draw_mino(dx_2P, dy_2P, mino_2P, rotation_2P, matrix_2P)
-                    draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                    if attack_point == 2:
+                        draw_multiboard_2p_change(next_mino1, hold_mino, next_mino1_2P,
                                     hold_mino_2P, current_key, current_key_2P)
+                    else:
+                        draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                                    hold_mino_2P, current_key, current_key_2P)
+                        
                 elif event.key == key2['hardDrop']:  # 오른쪽창#
                     ui_variables.fall_sound.play()
                     ui_variables.drop_sound.play()
@@ -2470,7 +2728,11 @@ while not done:
                     pygame.time.set_timer(pygame.USEREVENT, framerate_2P)
                     draw_mino(dx_2P, dy_2P, mino_2P, rotation_2P, matrix_2P)
                     draw_mino(dx, dy, mino, rotation, matrix)
-                    draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                    if attack_point_2P == 2:
+                        draw_multiboard_1p_change(next_mino1, hold_mino, next_mino1_2P,
+                                    hold_mino_2P, current_key, current_key_2P)
+                    else:
+                        draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
                                     hold_mino_2P, current_key, current_key_2P)
 
                 # Turn right
@@ -2507,8 +2769,13 @@ while not done:
                         rotation = 0
                     draw_mino(dx, dy, mino, rotation, matrix)
                     draw_mino(dx_2P, dy_2P, mino_2P, rotation_2P, matrix_2P)
-                    draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                    if attack_point == 2:
+                        draw_multiboard_2p_change(next_mino1, hold_mino, next_mino1_2P,
                                     hold_mino_2P, current_key, current_key_2P)
+                    else:
+                        draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                                    hold_mino_2P, current_key, current_key_2P)
+                        
                 elif event.key == key2['turnRight']:  # 오른쪽창#
                     if is_turnable_r(dx_2P, dy_2P, mino_2P, rotation_2P, matrix_2P):
                         ui_variables.move_sound.play()
@@ -2542,7 +2809,11 @@ while not done:
                         rotation_2P = 0
                     draw_mino(dx_2P, dy_2P, mino_2P, rotation_2P, matrix_2P)
                     draw_mino(dx, dy, mino, rotation, matrix)
-                    draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                    if attack_point_2P == 2:
+                        draw_multiboard_1p_change(next_mino1, hold_mino, next_mino1_2P,
+                                    hold_mino_2P, current_key, current_key_2P)
+                    else:
+                        draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
                                     hold_mino_2P, current_key, current_key_2P)
 
                 # Turn left
@@ -2579,8 +2850,13 @@ while not done:
                         rotation = 3
                     draw_mino(dx, dy, mino, rotation, matrix)
                     draw_mino(dx_2P, dy_2P, mino_2P, rotation_2P, matrix_2P)
-                    draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                    if attack_point == 2:
+                        draw_multiboard_2p_change(next_mino1, hold_mino, next_mino1_2P,
                                     hold_mino_2P, current_key, current_key_2P)
+                    else:
+                        draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                                    hold_mino_2P, current_key, current_key_2P)
+                        
                 elif event.key == key2['turnLeft']:  # 오른쪽창#
                     if is_turnable_l(dx_2P, dy_2P, mino_2P, rotation_2P, matrix_2P):
                         ui_variables.move_sound.play()
@@ -2614,7 +2890,11 @@ while not done:
                         rotation_2P = 3
                     draw_mino(dx_2P, dy_2P, mino_2P, rotation_2P, matrix_2P)
                     draw_mino(dx, dy, mino, rotation, matrix)
-                    draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                    if attack_point_2P == 2:
+                        draw_multiboard_1p_change(next_mino1, hold_mino, next_mino1_2P,
+                                    hold_mino_2P, current_key, current_key_2P)
+                    else:
+                        draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
                                     hold_mino_2P, current_key, current_key_2P)
 
                 # Move left (1P)
@@ -2628,8 +2908,13 @@ while not done:
                         dx -= 1
                     draw_mino(dx, dy, mino, rotation, matrix)
                     draw_mino(dx_2P, dy_2P, mino_2P, rotation_2P, matrix_2P)
-                    draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                    if attack_point == 2:
+                        draw_multiboard_2p_change(next_mino1, hold_mino, next_mino1_2P,
                                     hold_mino_2P, current_key, current_key_2P)
+                    else:
+                        draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                                    hold_mino_2P, current_key, current_key_2P)
+                        
                 # Move right (1P)
                 elif event.key == key1['moveRight']:
                     if not is_rightedge(dx, dy, mino, rotation, matrix):
@@ -2640,7 +2925,11 @@ while not done:
                         dx += 1
                     draw_mino(dx, dy, mino, rotation, matrix)
                     draw_mino(dx_2P, dy_2P, mino_2P, rotation_2P, matrix_2P)
-                    draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                    if attack_point == 2:
+                        draw_multiboard_2p_change(next_mino1, hold_mino, next_mino1_2P,
+                                    hold_mino_2P, current_key, current_key_2P)
+                    else:
+                        draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
                                     hold_mino_2P, current_key, current_key_2P)
 
                 # Move left(2P)
@@ -2653,8 +2942,13 @@ while not done:
                         dx_2P -= 1
                     draw_mino(dx_2P, dy_2P, mino_2P, rotation_2P, matrix_2P)
                     draw_mino(dx, dy, mino, rotation, matrix)
-                    draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                    if attack_point_2P == 2:
+                        draw_multiboard_1p_change(next_mino1, hold_mino, next_mino1_2P,
                                     hold_mino_2P, current_key, current_key_2P)
+                    else:
+                        draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                                    hold_mino_2P, current_key, current_key_2P)
+                        
                 # Move right(2P)
                 elif event.key == key2['moveRight']:
                     if not is_rightedge(dx_2P, dy_2P, mino_2P, rotation_2P, matrix_2P):
@@ -2665,7 +2959,11 @@ while not done:
                         dx_2P += 1
                     draw_mino(dx_2P, dy_2P, mino_2P, rotation_2P, matrix_2P)
                     draw_mino(dx, dy, mino, rotation, matrix)
-                    draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                    if attack_point_2P == 2:
+                        draw_multiboard_1p_change(next_mino1, hold_mino, next_mino1_2P,
+                                    hold_mino_2P, current_key, current_key_2P)
+                    else:
+                        draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
                                     hold_mino_2P, current_key, current_key_2P)
 
                 # Soft drop (1P)
@@ -2678,8 +2976,13 @@ while not done:
                         dy = dy + 1
                     draw_mino(dx, dy, mino, rotation, matrix)
                     draw_mino(dx_2P, dy_2P, mino_2P, rotation_2P, matrix_2P)
-                    draw_multiboard(next_mino1, hold_mino, next_mino1_2P, hold_mino_2P,
-                                    current_key, current_key_2P)
+                    if attack_point == 2:
+                        draw_multiboard_2p_change(next_mino1, hold_mino, next_mino1_2P,
+                                    hold_mino_2P, current_key, current_key_2P)
+                    else:
+                        draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                                    hold_mino_2P, current_key, current_key_2P)
+                        
                 # Soft drop (2P)
                 elif event.key == key2['softDrop']:
                     if not is_bottom(dx_2P, dy_2P, mino_2P, rotation_2P, matrix_2P):
@@ -2690,8 +2993,12 @@ while not done:
                         dy_2P = dy_2P + 1
                     draw_mino(dx_2P, dy_2P, mino_2P, rotation_2P, matrix_2P)
                     draw_mino(dx, dy, mino, rotation, matrix)
-                    draw_multiboard(next_mino1, hold_mino, next_mino1_2P, hold_mino_2P,
-                                    current_key, current_key_2P)
+                    if attack_point_2P == 2:
+                        draw_multiboard_1p_change(next_mino1, hold_mino, next_mino1_2P,
+                                    hold_mino_2P, current_key, current_key_2P)
+                    else:
+                        draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                                    hold_mino_2P, current_key, current_key_2P)
 
             elif event.type == VIDEORESIZE:
                 board_width = event.w
