@@ -631,101 +631,6 @@ def draw1_board(next1, next2, hold, score, level, goal):
                 y  # 위치비율 고정, board 세로길이에 원하는 비율을 곱해줌#
             draw_block_image(dx, dy, ui_variables.t_block_1[matrix[x][y + 1]])
 
-# hard mode draw board
-#remaining_time --> level  + goal
-# def draw_hardboard(next1, next2, hold, score, remaining_time, line):
-#   # 크기 비율 고정, 전체 board 가로길이에서 원하는 비율을 곱해줌
-#     sidebar_width = int(board_width * 0.5312)
-
-#     # screen.fill(ui_variables.grey_1)
-
-#     # Draw sidebar
-#     pygame.draw.rect(
-#         screen,
-#         ui_variables.grey_1,
-#         Rect(sidebar_width, 0, int(board_width * 0.2375), board_height)  # 크기 비율 고정
-#     )
-
-#     # Draw 2 next minos
-#     grid_n1 = tetrimino.mino_map[next1 - 1][0]
-#     grid_n2 = tetrimino.mino_map[next2 - 1][0]
-
-#     for i in range(mino_matrix_y):
-#         for j in range(mino_matrix_x):
-#             dx1 = int(board_width * 0.025) + sidebar_width + \
-#                 block_size * j  # 위치 비율 고정, 전체 board 가로 길이에서 원하는 비율을 곱해줌
-#             dy1 = int(board_height * 0.3743) + block_size * \
-#                 i  # 위치 비율 고정, 전체 board 세로 길이에서 원하는 비율을 곱해줌#
-#             if grid_n1[i][j] != 0:
-#                 draw_block_image(dx1, dy1, ui_variables.t_block[grid_n1[i][j]])
-
-#     for i in range(mino_matrix_y):
-#         for j in range(mino_matrix_x):
-#             dx2 = int(board_width * 0.145) + sidebar_width + \
-#                 block_size * j  # 위치 비율 고정, 전체 board 가로길이에서 원하는 비율을 곱해줌#
-#             dy2 = int(board_height * 0.3743) + block_size * \
-#                 i  # 위치 비율 고정, 전체 board 세로길이에서 원하는 비율을 곱해줌#
-#             if grid_n2[i][j] != 0:
-#                 draw_block_image(dx2, dy2, ui_variables.t_block[grid_n2[i][j]])
-
-#     # Draw hold mino
-#     grid_h = tetrimino.mino_map[hold - 1][0]  # (배열이라-1) 기본 모양
-
-#     if hold_mino != -1:  # hold 존재X
-#         for i in range(mino_matrix_y):
-#             for j in range(mino_matrix_x):
-#                 dx = int(board_width * 0.045) + sidebar_width + \
-#                     block_size * j  # 위치 비율 고정
-#                 dy = int(board_height * 0.1336) + block_size * i  # 위치 비율 고정
-#                 if grid_h[i][j] != 0:  # 해당 부분에 블록이 존재하면
-#                     draw_block_image(
-#                         dx, dy, ui_variables.t_block[grid_h[i][j]])  # hold 블록 출력
-
-#     # Set max score
-#     if score > 999999:
-#         score = 999999
-
-#     # Draw texts
-#     text_hold = ui_variables.h5.render("HOLD", 1, ui_variables.real_white)
-#     text_next = ui_variables.h5.render("NEXT", 1, ui_variables.real_white)
-#     text_score = ui_variables.h5.render("SCORE", 1, ui_variables.real_white)
-#     score_value = ui_variables.h4.render(
-#         str(score), 1, ui_variables.real_white)
-#     text_remaining_time = ui_variables.h5.render(
-#         "TIME", 1, ui_variables.real_white)
-#     time_value = ui_variables.h4.render(
-#         str(remaining_time), 1, ui_variables.real_white)
-#     text_line = ui_variables.h5.render("LINE", 1, ui_variables.real_white)
-#     line_value = ui_variables.h4.render(
-#         str(line_count), 1, ui_variables.real_white)
-
-#     # Place texts
-#     screen.blit(text_hold, (int(board_width * 0.045) +
-#                 sidebar_width, int(board_height * 0.0374)))
-#     screen.blit(text_next, (int(board_width * 0.045) +
-#                 sidebar_width, int(board_height * 0.2780)))
-#     screen.blit(text_score, (int(board_width * 0.045) +
-#                 sidebar_width, int(board_height * 0.5187)))
-#     screen.blit(score_value, (int(board_width * 0.055) +
-#                 sidebar_width, int(board_height * 0.5614)))
-#     screen.blit(text_remaining_time, (int(board_width * 0.045) +
-#                 sidebar_width, int(board_height * 0.6791)))
-#     screen.blit(time_value, (int(board_width * 0.055) +
-#                 sidebar_width, int(board_height * 0.7219)))
-#     screen.blit(text_line, (int(board_width * 0.045) +
-#                 sidebar_width, int(board_height * 0.8395)))
-#     screen.blit(line_value, (int(board_width * 0.055) +
-#                 sidebar_width, int(board_height * 0.8823)))
-
-#     # Draw board 
-#     for x in range(width):
-#         for y in range(height):
-#             dx = int(board_width * 0.25) + block_size * \
-#                 x  # 위치비율 고정, board 가로길이에 원하는 비율을 곱해줌#
-#             dy = int(board_height * 0.055) + block_size * \
-#                 y  # 위치비율 고정, board 세로길이에 원하는 비율을 곱해줌#
-#             draw_block_image(dx, dy, ui_variables.t_block[matrix[x][y + 1]])
-#             # draw_block_image(dx, dy, ui_variables.t_block[matrix[x][(height-1)-y+1]])
 
 
 # hard mode draw board change
@@ -867,12 +772,6 @@ def draw_1Pboard(next, hold, current_key):
     if textsize == False:
         text_hold = ui_variables.h5.render("HOLD", 1, ui_variables.real_white)
         text_next = ui_variables.h5.render("NEXT", 1, ui_variables.real_white)
-        # text_score = ui_variables.h5.render(
-        #     "SCORE", 1, ui_variables.real_white)
-        # score_value = ui_variables.h4.render(
-        #     str(score), 1, ui_variables.real_white)
-        # text_level = ui_variables.h5.render("LEVEL", 1, ui_variables.real_white)
-        # level_value = ui_variables.h4.render(str(level), 1, ui_variables.real_white)
         text_reverse = ui_variables.h5.render(
             "REVERSE", 1, ui_variables.real_white)
         if current_key:
@@ -887,12 +786,6 @@ def draw_1Pboard(next, hold, current_key):
     if textsize == True:
         text_hold = ui_variables.h3.render("HOLD", 1, ui_variables.real_white)
         text_next = ui_variables.h3.render("NEXT", 1, ui_variables.real_white)
-        # text_score = ui_variables.h3.render(
-        #     "SCORE", 1, ui_variables.real_white)
-        # score_value = ui_variables.h2.render(
-        #     str(score), 1, ui_variables.real_white)
-        # text_level = ui_variables.h3.render("LEVEL", 1, ui_variables.real_white)
-        # level_value = ui_variables.h2.render(str(level), 1, ui_variables.real_white)
         text_reverse = ui_variables.h3.render(
             "REVERSE", 1, ui_variables.real_white)
         if current_key:
@@ -914,10 +807,6 @@ def draw_1Pboard(next, hold, current_key):
                 sidebar_width, int(board_height * 0.0374)))
     screen.blit(text_next, (int(board_width * 0.045) +
                 sidebar_width, int(board_height * 0.2780)))
-    # screen.blit(text_score, (int(board_width * 0.045) +
-    #             sidebar_width, int(board_height * 0.5187)))
-    # screen.blit(score_value, (int(board_width * 0.055) +
-    #             sidebar_width, int(board_height * 0.5614)))
     screen.blit(text_reverse, (int(board_width*0.045) +
                 sidebar_width, int(board_height*0.6791)))
     screen.blit(reverse_value, (int(board_width*0.055) +
@@ -979,12 +868,6 @@ def draw_2Pboard(next, hold, current_key_2P):
     if textsize == False:
         text_hold = ui_variables.h5.render("HOLD", 1, ui_variables.real_white)
         text_next = ui_variables.h5.render("NEXT", 1, ui_variables.real_white)
-        # text_score = ui_variables.h5.render(
-        #     "SCORE", 1, ui_variables.real_white)
-        # score_value = ui_variables.h4.render(
-        #     str(score_2P), 1, ui_variables.real_white)
-        # text_level = ui_variables.h5.render("LEVEL", 1, ui_variables.real_white)
-        # level_value = ui_variables.h4.render(str(level), 1, ui_variables.real_white)
         text_reverse = ui_variables.h5.render(
             "REVERSE", 1, ui_variables.real_white)
         if current_key_2P:
@@ -999,12 +882,6 @@ def draw_2Pboard(next, hold, current_key_2P):
     if textsize == True:
         text_hold = ui_variables.h4.render("HOLD", 1, ui_variables.real_white)
         text_next = ui_variables.h4.render("NEXT", 1, ui_variables.real_white)
-        # text_score = ui_variables.h4.render(
-        #     "SCORE", 1, ui_variables.real_white)
-        # score_value = ui_variables.h3.render(
-        #     str(score_2P), 1, ui_variables.real_white)
-        # text_level = ui_variables.h4.render("LEVEL", 1, ui_variables.real_white)
-        # level_value = ui_variables.h3.render(str(level), 1, ui_variables.real_white)
         text_reverse = ui_variables.h4.render(
             "REVERSE", 1, ui_variables.real_white)
         if current_key_2P:
@@ -1026,10 +903,6 @@ def draw_2Pboard(next, hold, current_key_2P):
                 sidebar_width, int(board_height * 0.0374)))
     screen.blit(text_next, (int(board_width * 0.045) +
                 sidebar_width, int(board_height * 0.2780)))
-    # screen.blit(text_score, (int(board_width * 0.045) +
-    #             sidebar_width, int(board_height * 0.5187)))
-    # screen.blit(score_value, (int(board_width * 0.055) +
-    #             sidebar_width, int(board_height * 0.5614)))
     screen.blit(text_reverse, (int(board_width*0.045) +
                 sidebar_width, int(board_height*0.6791)))
     screen.blit(reverse_value, (int(board_width*0.055) +
@@ -1378,12 +1251,7 @@ def set_initial_values():
     winner = 0  # multi mode에서 1P가 이기면 1, 2P가 이기면 2 (기본값은 0)
     start_ticks = pygame.time.get_ticks()
     textsize = False
-    # 트레이닝에서 발생한 이벤트 상태 저장용 변수 (hard_10sec, hard_3line, hard_full, multi_1P_break, multi_2P_break, multi_5break, multi_full, no_event)
-    training_event = ''
-    # 트레이닝에서 반복해서 발생하는 이벤트 발생 첫 회에서만 설명 띄울 수 있게, 발생 여부를 저장하는 딕셔너리
-    training_event_happened = {'hard_3line': False, 'hard_10sec': False,
-                               'multi_1P_break': False, 'multi_2P_break': False}
-
+    
     # 게임 음악 속도 조절 관련 변수
     CHANNELS = 1
     swidth = 2
@@ -1733,7 +1601,6 @@ while not done:
                     while not is_bottom1(dx, dy, mino_en, rotation, matrix):
                         dy += 1
                     hard_drop = True
-                    pygame.time.set_timer(pygame.USEREVENT, framerate)
                     draw1_mino(dx, dy, mino_en, rotation, matrix)
                     draw1_board(next_mino1_en, next_mino2_en,
                             hold_mino, score, level, goal)
@@ -2414,22 +2281,6 @@ while not done:
                     erase_mino(dx, dy, mino, rotation, matrix)
                     erase_mino(dx_2P, dy_2P, mino_2P, rotation_2P, matrix_2P)
 
-                # if combo_count == 5:  # 5줄을 먼저 깨면 게임 종료
-                #     winner = 1
-                #     game_status = 'pvp'
-                #     pvp = False
-                #     game_over = True
-                #     ui_variables.GameOver_sound.play()
-                #     pygame.time.set_timer(pygame.USEREVENT, 1)
-
-                # if combo_count_2P == 5:  # 5줄을 먼저 깨면 게임 종료
-                #     winner = 2
-                #     game_status = 'pvp'
-                #     pvp = False
-                #     game_over = True
-                #     ui_variables.GameOver_sound.play()
-                #     pygame.time.set_timer(pygame.USEREVENT, 1)
-                
                 ### 1P ###
                 # Move mino down
                 if not is_bottom(dx, dy, mino, rotation, matrix):
@@ -2491,13 +2342,6 @@ while not done:
                     else:
                         bottom_count_2P += 1
 
-                # Erase line
-                # 콤보 카운트
-                # erase_count = 0
-                # erase_count_2P = 0
-                # attack_line = 0
-                # attack_line_2P = 0
-
                 # 한 줄이 차면 그 위의 블럭들 한 줄씩 아래로 내리기. (1P)
                 for j in range(board_y + 1):
                     is_full = True  # 한 줄이 가득 찼는지 확인하기 위한 변수
@@ -2505,16 +2349,16 @@ while not done:
                         if matrix[i][j] == 0:  # 빈 곳인 경우
                             is_full = False  # 클리어 되지 못함
                     if is_full:
-                        # erase_count += 1
                         combo_count += 1
                         if combo_count % 3 == 0:
                             key_reverse_2P = True # 상대방 키 반전조건 성립 (몇 줄을 깨든)
                             draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
-                                        hold_mino_2P, current_key, current_key_2P)
+                                    hold_mino_2P, current_key, current_key_2P)
                         # 2P 보드에 key reverse 이미지 표시
                             draw_image(screen, multi_key_reverse_image, board_width * 0.8,
                                     board_height * 0.2, int(board_width * 0.3), int(board_height * 0.12))
-                        
+                            
+                    
                         pygame.display.update()
                         pygame.time.delay(400)
                         ui_variables.break_sound.play()
