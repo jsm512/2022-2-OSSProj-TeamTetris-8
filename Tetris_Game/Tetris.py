@@ -16,12 +16,24 @@ width = 10  # Board에 가로로 들어갈 칸의 개수
 height = 20  # Board에 세로로 들어갈 칸의 개수
 framerate = 30  # Bigger -> Slower
 
+
 total_time = 60  # 타임 어택 시간
 speed_change = 2  # 레벨별 블록 하강 속도 상승 정도
 
 board_width = 800  # 전체 창의 가로 길이
 board_height = 450  # 전체 창의 세로 길이
 board_rate = 0.5625  # 가로세로비율
+max_level = 15
+goal_achieve = 1
+increase_level = 1
+increase_goal = 5
+levelup_img_width = 0.28
+levelup_img_height = 0.1
+increase_easy_speed = 0.6
+increase_noraml_speed = 0.7
+increase_hard_speed = 0.8
+img_upload_delay = 400
+
 
 min_width = 400
 min_height = 225
@@ -42,7 +54,7 @@ pygame.init()
 
 clock = pygame.time.Clock()
 screen = pygame.display.set_mode((board_width, board_height), pygame.RESIZABLE) #처음 사이즈 400*1200으로 사이즈 조절 가능
-pygame.time.set_timer(pygame.USEREVENT, framerate * 10)
+pygame.time.set_timer(pygame.USEREVENT, 500)
 pygame.display.set_caption("TETRIS")
 icon = pygame.image.load('Tetris_Game/assets/vector/icon_tetris.png').convert_alpha()
 pygame.display.set_icon(icon)
@@ -1326,7 +1338,7 @@ def multi_reverse_key(rev, player):
 
 
 def set_initial_values():
-    global training_event_happened, pause_training, training_event, combo_count, combo_count_2P, line_count, score, level, goal, score_2P, level_2P, goal_2P, bottom_count, bottom_count_2P, hard_drop, hard_drop_2P, attack_point, attack_point_2P, dx, dy, dx_2P, dy_2P, rotation, rotation_2P, mino,mino_en, mino_2P, next_mino1,next_mino1_en, next_mino2,next_mino2_en, next_mino1_2P, hold, hold_2P, hold_mino, hold_mino_2P, framerate, framerate_2P, matrix, matrix_2P, Change_RATE, blink, start, pause, done, game_over, leader_board, setting, volume_setting, screen_setting, pvp, help, gravity_mode, debug, d, e, b, u, g, start_ticks, textsize, CHANNELS, swidth, name_location, name, previous_time, current_time, pause_time, lines, leaders, leaders_hard, game_status, framerate_blockmove, framerate_2P_blockmove, game_speed, game_speed_2P, select_mode, single, normal, hard, hard_training, multi_training, training_status, hard_time_setting, winner, key1, key2, key_reverse, key_reverse_2P, current_key, current_key_2P, hard_training_info, multi_training_info, game_over_training, help_status, remaining_time
+    global combo_count, combo_count_2P, line_count, score, level, goal, score_2P, level_2P, goal_2P, bottom_count, bottom_count_2P, hard_drop, hard_drop_2P, attack_point, attack_point_2P, dx, dy, dx_2P, dy_2P, rotation, rotation_2P, mino,mino_en, mino_2P, next_mino1,next_mino1_en, next_mino2,next_mino2_en, next_mino1_2P, hold, hold_2P, hold_mino, hold_mino_2P, framerate, framerate_2P, matrix, matrix_2P, Change_RATE, blink, start, pause, done, game_over, leader_board, setting, volume_setting, screen_setting, pvp, help, gravity_mode, debug, d, e, b, u, g, start_ticks, textsize, CHANNELS, swidth, name_location, name, previous_time, current_time, pause_time, lines, leaders, leaders_hard, game_status, framerate_blockmove, framerate_2P_blockmove, game_speed, game_speed_2P, select_mode, single, normal, hard, hard_time_setting, winner, key1, key2, key_reverse, key_reverse_2P, current_key, current_key_2P, help_status, remaining_time
 
     framerate = 30  # Bigger -> Slower  기본 블록 하강 속도, 2도 할만 함, 0 또는 음수 이상이어야 함
     framerate_blockmove = framerate * 3  # 블록 이동 시 속도
@@ -1615,7 +1627,7 @@ while not done:
                 if not game_over:
                     keys_pressed = pygame.key.get_pressed()
                     if keys_pressed[K_DOWN]:
-                        pygame.time.set_timer(pygame.USEREVENT, framerate * 1)
+                        pygame.time.set_timer(pygame.USEREVENT, framerate)
                     else:
                         pygame.time.set_timer(pygame.USEREVENT, game_speed)
 
@@ -1680,17 +1692,6 @@ while not done:
                             for i in range(10):
                                 matrix[i][k] = matrix[i][k - 1]
                             k -= 1
-                while attack_stack >= 2:
-                    for j in range(20):
-                        for i in range(10):
-                            matrix[i][j] = matrix[i][j + 1]
-
-                            attack_stack -= 1
-                    for i in range(10):
-                        matrix[i][20] = 9
-                    k = randint(1, 10)
-                    matrix[k][20] = 0
-                    attack_point += 1
                     
                     
                 if erase_count == 1:
@@ -1708,15 +1709,18 @@ while not done:
 
                 # Increase level
                 goal -= erase_count
-                if goal < 1 and level < 15:
-                    level += 1
-                    goal += level * 5
+                if goal < goal_achieve and level < max_level:
+                    level += increase_level
+                    goal += level * increase_goal
                     # blit(이미지, 위치)
                     screen.blit(ui_variables.LevelUp_vector,
-                                (board_width * 0.28, board_height * 0.1))
+                                (board_width * levelup_img_width, board_height * levelup_img_height))
                     pygame.display.update()
-                    pygame.time.delay(400)  # 0.4초
-                    framerate = int(framerate * 0.8)
+                    pygame.time.delay(img_upload_delay)  # 0.4초
+                    if level <= max_level:
+                        pygame.time.set_timer(pygame.USEREVENT, (500 - 50 * (level-increase_level)))
+                    else:
+                        pygame.time.set_timer(pygame.USEREVENT, 100)
 
             elif event.type == KEYDOWN:
                 erase1_mino(dx, dy, mino_en, rotation, matrix)
@@ -1950,14 +1954,15 @@ while not done:
 
                 # Increase level
                 goal -= erase_count
-                if goal < 1 and level < 15:
-                    level += 1
-                    goal += level * 5
+                if goal < goal_achieve and level < max_level:
+                    level += increase_level
+                    goal += level * increase_goal
                     # blit(이미지, 위치)
                     screen.blit(ui_variables.LevelUp_vector,
-                                (board_width * 0.28, board_height * 0.1))
-                    ui_variables.LevelUp_sound.play()
-                    framerate = int(framerate * 0.7)
+                                (board_width * levelup_img_width, board_height * levelup_img_height))
+                    pygame.display.update()
+                    pygame.time.delay(img_upload_delay)  # 0.4초
+                    framerate = int(framerate * increase_noraml_speed)
 
             elif event.type == KEYDOWN:
                 erase1_mino(dx, dy, mino_en, rotation, matrix)
@@ -2202,14 +2207,15 @@ while not done:
 
                 # Increase level
                 goal -= erase_count
-                if goal < 1 and level < 15:
-                    level += 1
-                    goal += level * 5
+                if goal < goal_achieve and level < max_level:
+                    level += increase_level
+                    goal += level * increase_goal
                     # blit(이미지, 위치)
                     screen.blit(ui_variables.LevelUp_vector,
-                                (board_width * 0.28, board_height * 0.1))
-                    ui_variables.LevelUp_sound.play()
-                    framerate = int(framerate * 0.6)
+                                (board_width * levelup_img_width, board_height * levelup_img_height))
+                    pygame.display.update()
+                    pygame.time.delay(img_upload_delay)  # 0.4초
+                    framerate = int(framerate * increase_hard_speed)
 
             elif event.type == KEYDOWN:
                 erase_mino(dx, dy, mino, rotation, matrix)
