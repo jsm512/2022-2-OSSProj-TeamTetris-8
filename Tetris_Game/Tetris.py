@@ -206,6 +206,10 @@ clicked_background1_image = 'Tetris_Game/assets/images/clicked_background_hongko
 clicked_background2_image = 'Tetris_Game/assets/images/clicked_background_nyc.png'
 clicked_background3_image = 'Tetris_Game/assets/images/clicked_background_uk.png'
 
+size1_image = 'Tetris_Game/assets/images/small.png'
+size2_image = 'Tetris_Game/assets/images/medium.png'
+size3_image = 'Tetris_Game/assets/images/big.png'
+
 mute_button_image = 'Tetris_Game/assets/vector/allmute_button.png'
 default_button_image = 'Tetris_Game/assets/vector/default_button.png'
 clicked_default_button_image = 'Tetris_Game/assets/vector/clicked_default_button.png'
@@ -225,6 +229,8 @@ keyboard_vector = 'Tetris_Game/assets/vector/keyboard_vector.png'
 clicked_keyboard_vector = 'Tetris_Game/assets/vector/clicked_keyboard_vector.png'
 screen_vector = 'Tetris_Game/assets/vector/screen_vector.png'
 clicked_screen_vector = 'Tetris_Game/assets/vector/clicked_screen_vector.png'
+size_vector = 'Tetris_Game/assets/vector/size_vector.png'
+clicked_size_vector = 'Tetris_Game/assets/vector/clicked_size_vector.png'
 menu_button_image = 'Tetris_Game/assets/vector/Menu.png'
 clicked_menu_button_image = 'Tetris_Game/assets/vector/clicked_Menu.png'
 ok_button_image = 'Tetris_Game/assets/vector/Ok.png'
@@ -370,8 +376,13 @@ background1_check_button = button(board_width, board_height, 0.5, 0.25, 0.1875, 
 background2_check_button = button(board_width, board_height, 0.5, 0.45, 0.1875, 0.1444, clicked_background2_image)  # nyc (default background)
 background3_check_button = button(board_width, board_height, 0.5, 0.65, 0.1875, 0.1444, background3_image)  # uk
 
-volume_icon = button(board_width, board_height, 0.4, 0.5, 0.12, 0.23, volume_vector)
-screen_icon = button(board_width, board_height, 0.6, 0.5, 0.12, 0.23, screen_vector)
+size1_check_button = button(board_width, board_height, 0.3, 0.5, 0.1875, 0.1444, size1_image)
+size2_check_button = button(board_width, board_height, 0.51, 0.5, 0.1875, 0.1444, size2_image)
+size3_check_button = button(board_width, board_height, 0.7, 0.5, 0.1875, 0.1444, size3_image)
+
+volume_icon = button(board_width, board_height, 0.3, 0.5, 0.12, 0.23, volume_vector)
+screen_icon = button(board_width, board_height, 0.7, 0.5, 0.12, 0.23, screen_vector)
+size_icon = button(board_width, board_height, 0.5, 0.5, 0.12, 0.23, size_vector)
 
 
 #음소거 추가#
@@ -394,9 +405,9 @@ selected_bgm = "Tetris_Game/assets/sounds/BGM1.wav"
 button_list = [
     select_mode_button, setting_button, quit_button, score_board_button, single_button, easy_button, normal_button, hard_button, pvp_button,
     resume_button, menu_button2, help_button, pause_quit_button, pause_setting_button,
-    leaderboard_icon, mute_button, default_button, restart_button, back_button, ok_button, effect_plus_button, effect_minus_button,
+    leaderboard_icon, mute_button, default_button, restart_button, back_button, ok_button, effect_plus_button, effect_minus_button,  size1_check_button, size2_check_button, size3_check_button, 
     sound_plus_button, sound_minus_button, mute_check_button, background1_check_button, background2_check_button, background3_check_button,
-    volume_icon, screen_icon, effect_sound_off_button, music_sound_off_button, effect_sound_on_button, music_sound_on_button,
+    volume_icon, screen_icon, size_icon, effect_sound_off_button, music_sound_off_button, effect_sound_on_button, music_sound_on_button,
     BGM1_sound_on_button, BGM2_sound_on_button, BGM3_sound_on_button, multi_restart_button, multi_menu_button, back_button2, training_restart_button, training_multi_start_button, training_hard_start_button]
 
 
@@ -1417,7 +1428,7 @@ def multi_reverse_key(rev, player):
 
 
 def set_initial_values():
-    global attack_point, attack_point_2P, combo_count, combo_count_2P, line_count, score, level, goal, score_2P, level_2P, goal_2P, bottom_count, bottom_count_2P, hard_drop, hard_drop_2P, attack_point, attack_point_2P, dx, dy, dx_2P, dy_2P, rotation, rotation_2P, mino,mino_en, mino_2P, next_mino1,next_mino1_en, next_mino2,next_mino2_en, next_mino1_2P, hold, hold_2P, hold_mino, hold_mino_2P, framerate, framerate_2P, matrix, matrix_2P, Change_RATE, blink, start, pause, done, game_over, leader_board, setting, volume_setting, screen_setting, pvp, help, gravity_mode, debug, d, e, b, u, g, start_ticks, textsize, CHANNELS, swidth, name_location, name, previous_time, current_time, pause_time, lines, leaders, leaders_hard, game_status, framerate_blockmove, framerate_2P_blockmove, game_speed, game_speed_2P, select_mode, single, normal, hard, hard_time_setting, winner, key1, key2, key_reverse, key_reverse_2P, current_key, current_key_2P, help_status, remaining_time
+    global attack_point, attack_point_2P, combo_count, combo_count_2P, line_count, score, level, goal, score_2P, level_2P, goal_2P, bottom_count, bottom_count_2P, hard_drop, hard_drop_2P, attack_point, attack_point_2P, dx, dy, dx_2P, dy_2P, rotation, rotation_2P, mino,mino_en, mino_2P, next_mino1,next_mino1_en, next_mino2,next_mino2_en, next_mino1_2P, hold, hold_2P, hold_mino, hold_mino_2P, framerate, framerate_2P, matrix, matrix_2P, Change_RATE, blink, start, pause, done, game_over, leader_board, setting, volume_setting, size_setting, screen_setting, pvp, help, gravity_mode, debug, d, e, b, u, g, start_ticks, textsize, CHANNELS, swidth, name_location, name, previous_time, current_time, pause_time, lines, leaders, leaders_hard, game_status, framerate_blockmove, framerate_2P_blockmove, game_speed, game_speed_2P, select_mode, single, normal, hard, hard_time_setting, winner, key1, key2, key_reverse, key_reverse_2P, current_key, current_key_2P, help_status, remaining_time
 
     framerate = 30  # Bigger -> Slower  기본 블록 하강 속도, 2도 할만 함, 0 또는 음수 이상이어야 함
     framerate_blockmove = framerate * 3  # 블록 이동 시 속도
@@ -1437,6 +1448,7 @@ def set_initial_values():
     setting = False
     volume_setting = False
     screen_setting = False
+    size_setting = False
     single = False
     pvp = False
     hard = False  # 하드모드 변수 추가
@@ -3973,6 +3985,89 @@ while not done:
                 for i in range(len(button_list)):
                     button_list[i].change(board_width, board_height)
 
+    elif size_setting:
+        screen.fill(ui_variables.pinkpurple)
+        draw_image(screen, background_image, board_width * 0.5, board_height *
+                0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+        select_mode_button.draw(screen, (0, 0, 0))
+        setting_button.draw(screen, (0, 0, 0))
+        score_board_button.draw(screen, (0, 0, 0))
+        quit_button.draw(screen, (0, 0, 0))
+        # 배경 약간 어둡게
+        leaderboard_icon.draw(screen, (0, 0, 0))
+        pause_surface = screen.convert_alpha()  # 투명 가능하도록
+        pause_surface.fill((0, 0, 0, 0))  # 투명한 검정색으로 덮기
+        pygame.draw.rect(pause_surface, (ui_variables.black_pause),
+                         [0, 0, int(board_width), int(board_height)])  # (screen, 색깔, 위치 x, y좌표, 너비, 높이)
+
+        screen.blit(pause_surface, (0, 0))
+
+        draw_image(screen, setting_board_image, board_width * 0.5, board_height * 0.5, int(board_height * 1.3),
+                   board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+        size1_check_button.draw(screen, (0, 0, 0))
+        size2_check_button.draw(screen, (0, 0, 0))
+        size3_check_button.draw(screen, (0, 0, 0))
+        back_button.draw(screen, (0, 0, 0))
+
+        for event in pygame.event.get():
+            pos = pygame.mouse.get_pos()
+
+            if event.type == QUIT:
+                done = True
+            elif event.type == USEREVENT:
+                pygame.time.set_timer(pygame.USEREVENT, 300)  # 0.3초로 설정
+                pygame.display.update()
+
+            elif event.type == pygame.MOUSEMOTION:
+                if back_button.isOver(pos):
+                    back_button.image = clicked_back_button_image
+                else:
+                    back_button.image = back_button_image
+
+                pygame.display.update()
+
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if back_button.isOver(pos):
+                    ui_variables.click_sound.play()
+                    size_setting = False
+                    
+                if size1_check_button.isOver(pos):
+                    ui_variables.click_sound.play()
+                    board_width = 800
+                    board_height = 400
+                    block_size = int(board_height * 0.045)  # 블록 크기 비율 고정
+                    screen = pygame.display.set_mode((board_width, board_height), pygame.RESIZABLE)
+                    textsize = False
+
+                    for i in range(len(button_list)):
+                        button_list[i].change(board_width, board_height)
+                    pygame.display.update()
+
+                if size2_check_button.isOver(pos):
+                    ui_variables.click_sound.play()
+                    board_width = 1200
+                    board_height = 600
+                    block_size = int(board_height * 0.045)  # 블록 크기 비율 고정
+                    screen = pygame.display.set_mode((board_width, board_height), pygame.RESIZABLE)
+                    textsize = True
+
+                    for i in range(len(button_list)):
+                        button_list[i].change(board_width, board_height)
+
+                    pygame.display.update()
+
+                if size3_check_button.isOver(pos):
+                    ui_variables.click_sound.play()
+                    board_width = 1600
+                    board_height = 800
+                    block_size = int(board_height * 0.045)  # 블록 크기 비율 고정
+                    screen = pygame.display.set_mode((board_width, board_height), pygame.RESIZABLE)
+                    textsize = True
+
+                    for i in range(len(button_list)):
+                        button_list[i].change(board_width, board_height)
+                    pygame.display.update()
+
     elif setting:
         select_mode_button.draw(screen, (0, 0, 0))
         setting_button.draw(screen, (0, 0, 0))
@@ -3991,6 +4086,7 @@ while not done:
 
         screen_icon.draw(screen, (0, 0, 0))  # rgb(0,0,0) = 검정색
         volume_icon.draw(screen, (0, 0, 0))
+        size_icon.draw(screen, (0, 0, 0))
 
         back_button.draw(screen, (0, 0, 0))
 
@@ -4018,6 +4114,11 @@ while not done:
                     screen_icon.image = clicked_screen_vector
                 else:
                     screen_icon.image = screen_vector
+                
+                if size_icon.isOver(pos):
+                    size_icon.image = clicked_size_vector
+                else:
+                    size_icon.image = size_vector
 
                 pygame.display.update()
             elif event.type == pygame.MOUSEBUTTONDOWN:
@@ -4032,6 +4133,10 @@ while not done:
                 if screen_icon.isOver(pos):
                     ui_variables.click_sound.play()
                     screen_setting = True
+
+                if size_icon.isOver(pos):
+                    ui_variables.click_sound.play()
+                    size_setting = True    
 
             elif event.type == VIDEORESIZE:
                 board_width = event.w
