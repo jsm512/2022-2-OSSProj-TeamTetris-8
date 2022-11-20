@@ -1693,6 +1693,7 @@ while not done:
     # Game screen
     elif start:
         for event in pygame.event.get():
+            attack_stack = 0
             pos = pygame.mouse.get_pos()
             if event.type == QUIT:
                 done = True
@@ -1807,6 +1808,7 @@ while not done:
                     while not is_bottom1(dx, dy, mino_en, rotation, matrix):
                         dy += 1
                     hard_drop = True
+                    pygame.time.set_timer(pygame.USEREVENT, framerate)
                     draw1_mino(dx, dy, mino_en, rotation, matrix)
                     draw1_board(next_mino1_en, next_mino2_en,
                             hold_mino, score, level, goal)
@@ -1898,7 +1900,6 @@ while not done:
                             hold_mino, score, level, goal)
                 # Move left
                 elif event.key == K_LEFT:
-                    pygame.key.set_repeat(50)
                     if not is_leftedge1(dx, dy, mino_en, rotation, matrix):
                         ui_variables.move_sound.play()
                         dx -= 1
@@ -1907,7 +1908,6 @@ while not done:
                             hold_mino, score, level, goal)
                 # Move right
                 elif event.key == K_RIGHT:
-                    pygame.key.set_repeat(50)
                     if not is_rightedge1(dx, dy, mino_en, rotation, matrix):
                         ui_variables.move_sound.play()
                         dx += 1
