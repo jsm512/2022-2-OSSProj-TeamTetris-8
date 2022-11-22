@@ -22,7 +22,7 @@ speed_change = 2  # 레벨별 블록 하강 속도 상승 정도
 
 board_width = 800  # 전체 창의 가로 길이
 board_height = 450  # 전체 창의 세로 길이
-board_rate = 0.5625  # 가로세로비율
+board_rate = 0.5625  # 가로세로비율 16:9
 max_level = 15
 goal_achieve = 1
 increase_level = 1
@@ -53,7 +53,7 @@ board_y = 20
 pygame.init()
 
 clock = pygame.time.Clock()
-screen = pygame.display.set_mode((board_width, board_height), pygame.RESIZABLE) #처음 사이즈 400*1200으로 사이즈 조절 가능
+screen = pygame.display.set_mode((board_width, board_height), pygame.RESIZABLE) 
 pygame.time.set_timer(pygame.USEREVENT, 500)
 pygame.display.set_caption("TETRIS")
 icon = pygame.image.load('Tetris_Game/assets/vector/icon_tetris.png').convert_alpha()
@@ -4034,7 +4034,7 @@ while not done:
                 if size1_check_button.isOver(pos):
                     ui_variables.click_sound.play()
                     board_width = 800
-                    board_height = 400
+                    board_height = 450
                     block_size = int(board_height * 0.045)  # 블록 크기 비율 고정
                     screen = pygame.display.set_mode((board_width, board_height), pygame.RESIZABLE)
                     textsize = False
@@ -4046,7 +4046,7 @@ while not done:
                 if size2_check_button.isOver(pos):
                     ui_variables.click_sound.play()
                     board_width = 1200
-                    board_height = 600
+                    board_height = 675
                     block_size = int(board_height * 0.045)  # 블록 크기 비율 고정
                     screen = pygame.display.set_mode((board_width, board_height), pygame.RESIZABLE)
                     textsize = True
@@ -4059,7 +4059,7 @@ while not done:
                 if size3_check_button.isOver(pos):
                     ui_variables.click_sound.play()
                     board_width = 1600
-                    board_height = 800
+                    board_height = 900
                     block_size = int(board_height * 0.045)  # 블록 크기 비율 고정
                     screen = pygame.display.set_mode((board_width, board_height), pygame.RESIZABLE)
                     textsize = True
