@@ -1751,8 +1751,10 @@ while not done:
                         bottom_count += 1
 
                 # Erase line
-                erase_count = 0  #방금 추가
+                erase_count = 0
+                combo_value = 0
                 attack_stack = 0
+
                 for j in range(21):
                     is_full = True
                     for i in range(10):
@@ -1760,14 +1762,28 @@ while not done:
                             is_full = False
                     if is_full:
                         erase_count += 1
-                        attack_stack += 1  #방금 추가
+                        attack_stack += 1
                         k = j
+                        combo_value += 1
+                        
                         while k > 0:
                             for i in range(10):
-                                matrix[i][k] = matrix[i][k - 1]
+                                matrix[i][k] = matrix[i][k - 1]   # 남아있는 블록 한 줄씩 내리기(덮어쓰기)
                             k -= 1
                     
-                    
+                while attack_stack >= 2:
+                    for j in range(20):
+                        for i in range(10):
+                            matrix[i][j] = matrix[i][j + 1]
+
+                            attack_stack -= 1
+                    for i in range(10):
+                        matrix[i][20] = 9
+                    k = randint(0, 9)
+                    matrix[k][20] = 0
+                    attack_point += 1
+                    attack_stack -= 1
+
                 if erase_count == 1:
                     ui_variables.single_sound.play()
                     score += 50 * level
@@ -1803,6 +1819,7 @@ while not done:
                     pause = True
                 # Hard drop
                 elif event.key == K_SPACE:
+                    pygame.time.set_timer(pygame.USEREVENT, framerate)
                     ui_variables.drop_sound.play()
                     while not is_bottom1(dx, dy, mino_en, rotation, matrix):
                         dy += 1
@@ -1898,7 +1915,7 @@ while not done:
                             hold_mino, score, level, goal)
                 # Move left
                 elif event.key == K_LEFT:
-                    pygame.key.set_repeat(50)
+                    # pygame.key.set_repeat(50)
                     if not is_leftedge1(dx, dy, mino_en, rotation, matrix):
                         ui_variables.move_sound.play()
                         dx -= 1
@@ -1907,7 +1924,7 @@ while not done:
                             hold_mino, score, level, goal)
                 # Move right
                 elif event.key == K_RIGHT:
-                    pygame.key.set_repeat(50)
+                    # pygame.key.set_repeat(50)
                     if not is_rightedge1(dx, dy, mino_en, rotation, matrix):
                         ui_variables.move_sound.play()
                         dx += 1
@@ -2580,6 +2597,8 @@ while not done:
                         bottom_count_2P += 1
 
                 # 한 줄이 차면 그 위의 블럭들 한 줄씩 아래로 내리기. (1P)
+                attack_stack=0
+                attack_stack_2P=0
                 for j in range(board_y + 1):
                     is_full = True  # 한 줄이 가득 찼는지 확인하기 위한 변수
                     for i in range(board_x):
@@ -2587,6 +2606,7 @@ while not done:
                             is_full = False  # 클리어 되지 못함
                     if is_full:
                         combo_count += 1
+                        attack_stack+=1
                         if combo_count % 3 == 0:
                             attack_point = randint(1,2)
                             if attack_point == 1:
@@ -2618,6 +2638,7 @@ while not done:
                             is_full = False  # 클리어 되지 못함
                     if is_full:
                         combo_count_2P += 1
+                        attack_stack_2P+=1
                         if combo_count_2P % 3 == 0:
                             attack_point_2P = randint(1,2)
                             if attack_point_2P == 1:
@@ -2639,6 +2660,29 @@ while not done:
                                 # 한줄씩 밑으로 내림
                                 matrix_2P[i][k] = matrix_2P[i][k - 1]
                             k -= 1
+                while attack_stack >= 2:
+                    for j in range(20):
+                        for i in range(10):
+                            matrix_2P[i][j] = matrix_2P[i][j + 1]
+
+                            attack_stack -= 1
+                    for i in range(10):
+                        matrix_2P[i][20] = 9
+                    k = randint(0, 9)
+                    matrix_2P[k][20] = 0
+                    attack_point += 1
+
+                while attack_stack_2P >= 2:
+                    for j in range(20):
+                        for i in range(10):
+                            matrix[i][j] = matrix[i][j + 1]
+
+                            attack_stack_2P -= 1
+                    for i in range(10):
+                        matrix[i][20] = 9
+                    k = randint(0, 9)
+                    matrix[k][20] = 0
+                    attack_point_2P += 1
 
                 if key_reverse:   # 키 반전 조건(상대가 몇 줄이든 깸)이 성립됐다면
                     # 방향키 반전 (최근 방향키가 어떤 것이었든 반대로)
