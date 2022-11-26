@@ -103,6 +103,9 @@ class ui_variables: #UI
     # 레벨업 이미지
     LevelUp_vector = pygame.image.load('Tetris_Game/assets/vector/Level_Up.png')
 
+    # 피버 이미지
+    fever_image = pygame.image.load("Tetris_Game/assets/images/fever.png")
+
     black = (10, 10, 10)  # rgb(10, 10, 10)
     black_pause = (0, 0, 0, 127)
     real_white = (255, 255, 255)  # rgb(255, 255, 255)
@@ -147,6 +150,8 @@ class ui_variables: #UI
 background_image = 'Tetris_Game/assets/images/mainpage_background.png'  # 메뉴화면(첫 화면) 배경
 gamebackground_image = 'Tetris_Game/assets/images/background_nyc.png'  # 게임 배경화면 : 기본값 뉴욕
 pause_board_image = 'Tetris_Game/assets/vector/pause_board.png'
+
+fever_image = 'Tetris_Game/assets/vector/fever.png'
 
 help_board_image = 'Tetris_Game/assets/vector/help_board.png'
 select_mode_button_image = 'Tetris_Game/assets/vector/Mode.png'
@@ -246,6 +251,7 @@ sound_off_button_image = 'Tetris_Game/assets/vector/sound_off_button.png'
 sound_on_button_image = 'Tetris_Game/assets/vector/sound_on_button.png'
 check_button_image = 'Tetris_Game/assets/vector/checkbox_button.png'
 clicked_check_button_image = 'Tetris_Game/assets/vector/clicked_checkbox_button.png'
+
 
 pvp_win_image = 'Tetris_Game/assets/vector/pvp_win.png'
 pvp_lose_image = 'Tetris_Game/assets/vector/pvp_lose.png'
@@ -522,6 +528,8 @@ def draw_board(next1, next2, hold, score, level, goal):
         str(level), 1, ui_variables.real_white)
     text_goal = ui_variables.h5.render("GOAL", 1, ui_variables.real_white)
     goal_value = ui_variables.h4.render(str(goal), 1, ui_variables.real_white)
+    text_fever = ui_variables.h5.render("NEXT FEVER", 1, ui_variables.real_white)
+    next_fever_value = ui_variables.h4.render(str(next_fever), 1, ui_variables.real_white)
 
     # Place texts
     screen.blit(text_hold, (int(board_width * 0.045) +
@@ -539,6 +547,10 @@ def draw_board(next1, next2, hold, score, level, goal):
     screen.blit(text_goal, (int(board_width * 0.045) +
                 sidebar_width, int(board_height * 0.8400)))
     screen.blit(goal_value, (int(board_width * 0.055) +
+                sidebar_width, int(board_height * 0.8823)))
+    screen.blit(text_fever, (int(board_width * 0.12) + 
+                sidebar_width, int(board_height * 0.8395)))
+    screen.blit(next_fever_value, (int(board_width * 0.13) + 
                 sidebar_width, int(board_height * 0.8823)))
 
     # Draw board
@@ -613,6 +625,8 @@ def draw1_board(next1, next2, hold, score, level, goal):
         str(level), 1, ui_variables.real_white)
     text_goal = ui_variables.h5.render("GOAL", 1, ui_variables.real_white)
     goal_value = ui_variables.h4.render(str(goal), 1, ui_variables.real_white)
+    text_fever = ui_variables.h5.render("NEXT FEVER", 1, ui_variables.real_white)
+    next_fever_value = ui_variables.h4.render(str(next_fever), 1, ui_variables.real_white)
 
     # Place texts
     screen.blit(text_hold, (int(board_width * 0.045) +
@@ -631,6 +645,10 @@ def draw1_board(next1, next2, hold, score, level, goal):
                 sidebar_width, int(board_height * 0.8400)))
     screen.blit(goal_value, (int(board_width * 0.055) +
                 sidebar_width, int(board_height * 0.8823)))
+    screen.blit(text_fever, (int(board_width * 0.12) + 
+                sidebar_width, int(board_height * 0.8395)))
+    screen.blit(next_fever_value, (int(board_width * 0.13) + 
+                sidebar_width, int(board_height * 0.8823)))            
 
     # Draw board
     # 테트리스 블록이 들어갈 공간? 그리기 ..맞나?
@@ -1426,9 +1444,8 @@ def multi_reverse_key(rev, player):
         elif player == 2:
             return keys_2P_reverse
 
-
 def set_initial_values():
-    global attack_point, attack_point_2P, combo_count, combo_count_2P, line_count, score, level, goal, score_2P, level_2P, goal_2P, bottom_count, bottom_count_2P, hard_drop, hard_drop_2P, attack_point, attack_point_2P, dx, dy, dx_2P, dy_2P, rotation, rotation_2P, mino,mino_en, mino_2P, next_mino1,next_mino1_en, next_mino2,next_mino2_en, next_mino1_2P, hold, hold_2P, hold_mino, hold_mino_2P, framerate, framerate_2P, matrix, matrix_2P, Change_RATE, blink, start, pause, done, game_over, leader_board, setting, volume_setting, size_setting, screen_setting, pvp, help, gravity_mode, debug, d, e, b, u, g, start_ticks, textsize, CHANNELS, swidth, name_location, name, previous_time, current_time, pause_time, lines, leaders, leaders_hard, game_status, framerate_blockmove, framerate_2P_blockmove, game_speed, game_speed_2P, select_mode, single, normal, hard, hard_time_setting, winner, key1, key2, key_reverse, key_reverse_2P, current_key, current_key_2P, help_status, remaining_time
+    global attack_point, attack_point_2P, combo_count, combo_count_2P, line_count, score, level, goal, next_fever, fever_score, fever_interval, max_score, score_2P, level_2P, goal_2P, bottom_count, bottom_count_2P, hard_drop, hard_drop_2P, attack_point, attack_point_2P, dx, dy, dx_2P, dy_2P, rotation, rotation_2P, mino,mino_en, mino_2P, next_mino1,next_mino1_en, next_mino2,next_mino2_en, next_mino1_2P, hold, hold_2P, hold_mino, hold_mino_2P, framerate, framerate_2P, matrix, matrix_2P, Change_RATE, blink, start, pause, done, game_over, leader_board, setting, volume_setting, size_setting, screen_setting, pvp, help, gravity_mode, debug, d, e, b, u, g, start_ticks, textsize, CHANNELS, swidth, name_location, name, previous_time, current_time, pause_time, lines, leaders, leaders_hard, game_status, framerate_blockmove, framerate_2P_blockmove, game_speed, game_speed_2P, select_mode, single, normal, hard, hard_time_setting, winner, key1, key2, key_reverse, key_reverse_2P, current_key, current_key_2P, help_status, remaining_time
 
     framerate = 30  # Bigger -> Slower  기본 블록 하강 속도, 2도 할만 함, 0 또는 음수 이상이어야 함
     framerate_blockmove = framerate * 3  # 블록 이동 시 속도
@@ -1474,6 +1491,11 @@ def set_initial_values():
     CHANNELS = 1
     swidth = 2
     Change_RATE = 2
+
+    fever_score = 200
+    next_fever = 200
+    fever_interval = 3
+    max_score = 99999
 
     line_count = 0
     score = 0
@@ -1807,6 +1829,23 @@ while not done:
                         pygame.time.set_timer(pygame.USEREVENT, (500 - 50 * (level-increase_level)))
                     else:
                         pygame.time.set_timer(pygame.USEREVENT, 100)
+                
+                # 점수 구간에 따른 피버타임 #fever_interval=3
+                for i in range(1, max_score, fever_interval):
+                    if score > i * fever_score and score < (i + 1) * fever_score:  # 500~1000,2000~2500.3500~4000
+                        mino = randint(1, 1)
+                        next_mino1 = randint(1, 1)
+                        next_mino2 = randint(1, 1)
+                        next_fever = (i + fever_interval) * fever_score
+                        # fever time시 이미지 깜빡거리게
+                        if blink:
+                            screen.blit(pygame.transform.scale(ui_variables.fever_image,
+                                                               (int(board_width * 0.3), int(board_height * 0.2))),
+                                        (board_width * 0.01, board_height * 0.1))
+                            blink = False
+                        else:
+                            blink = True
+                
 
             elif event.type == KEYDOWN:
                 erase1_mino(dx, dy, mino_en, rotation, matrix)
@@ -1910,7 +1949,6 @@ while not done:
                             hold_mino, score, level, goal)
                 # Move left
                 elif event.key == K_LEFT:
-                    pygame.key.set_repeat(50)
                     if not is_leftedge1(dx, dy, mino_en, rotation, matrix):
                         ui_variables.move_sound.play()
                         dx -= 1
@@ -1919,7 +1957,6 @@ while not done:
                             hold_mino, score, level, goal)
                 # Move right
                 elif event.key == K_RIGHT:
-                    pygame.key.set_repeat(50)
                     if not is_rightedge1(dx, dy, mino_en, rotation, matrix):
                         ui_variables.move_sound.play()
                         dx += 1
