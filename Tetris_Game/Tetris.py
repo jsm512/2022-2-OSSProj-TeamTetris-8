@@ -22,7 +22,7 @@ speed_change = 2  # 레벨별 블록 하강 속도 상승 정도
 
 board_width = 800  # 전체 창의 가로 길이
 board_height = 450  # 전체 창의 세로 길이
-board_rate = 0.5625  # 가로세로비율
+board_rate = 0.5625  # 가로세로비율 16:9
 max_level = 15
 goal_achieve = 1
 increase_level = 1
@@ -53,7 +53,7 @@ board_y = 20
 pygame.init()
 
 clock = pygame.time.Clock()
-screen = pygame.display.set_mode((board_width, board_height), pygame.RESIZABLE) #처음 사이즈 400*1200으로 사이즈 조절 가능
+screen = pygame.display.set_mode((board_width, board_height), pygame.RESIZABLE) 
 pygame.time.set_timer(pygame.USEREVENT, 500)
 pygame.display.set_caption("TETRIS")
 icon = pygame.image.load('Tetris_Game/assets/vector/icon_tetris.png').convert_alpha()
@@ -1705,6 +1705,7 @@ while not done:
     # Game screen
     elif start:
         for event in pygame.event.get():
+            attack_stack = 0
             pos = pygame.mouse.get_pos()
             if event.type == QUIT:
                 done = True
@@ -1717,13 +1718,23 @@ while not done:
                     else:
                         pygame.time.set_timer(pygame.USEREVENT, game_speed)
 
-                # Draw a mino
-                draw1_mino(dx, dy, mino_en, rotation, matrix)
-                draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
+                # Draw a mino 5 * 10
+                if board_height <= 450 and board_width <= 800:
+                    draw1_mino(dx, dy, mino_en, rotation, matrix)
+                    draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
                            0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
-                draw1_board(next_mino1_en, next_mino2_en,
+                    draw1_board(next_mino1_en, next_mino2_en,
                            hold_mino, score, level, goal)
-
+                #10*20
+                elif board_height <= 675 and board_width <= 1200:
+                    draw_mino(dx, dy, mino, rotation, matrix)
+                    draw_mino(dx_2P, dy_2P, mino_2P, rotation_2P, matrix_2P)
+                    draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                                    hold_mino_2P, current_key, current_key_2P)
+                #15 * 30
+                # elif 1600 900    
+                
+                
                 # Erase a mino
                 if not game_over:
                     erase1_mino(dx, dy, mino_en, rotation, matrix)
@@ -1836,6 +1847,7 @@ while not done:
                     while not is_bottom1(dx, dy, mino_en, rotation, matrix):
                         dy += 1
                     hard_drop = True
+                    pygame.time.set_timer(pygame.USEREVENT, framerate)
                     draw1_mino(dx, dy, mino_en, rotation, matrix)
                     draw1_board(next_mino1_en, next_mino2_en,
                             hold_mino, score, level, goal)
@@ -1927,7 +1939,6 @@ while not done:
                             hold_mino, score, level, goal)
                 # Move left
                 elif event.key == K_LEFT:
-                    # pygame.key.set_repeat(50)
                     if not is_leftedge1(dx, dy, mino_en, rotation, matrix):
                         ui_variables.move_sound.play()
                         dx -= 1
@@ -1936,7 +1947,6 @@ while not done:
                             hold_mino, score, level, goal)
                 # Move right
                 elif event.key == K_RIGHT:
-                    # pygame.key.set_repeat(50)
                     if not is_rightedge1(dx, dy, mino_en, rotation, matrix):
                         ui_variables.move_sound.play()
                         dx += 1
@@ -4078,7 +4088,7 @@ while not done:
                 if size1_check_button.isOver(pos):
                     ui_variables.click_sound.play()
                     board_width = 800
-                    board_height = 400
+                    board_height = 450
                     block_size = int(board_height * 0.045)  # 블록 크기 비율 고정
                     screen = pygame.display.set_mode((board_width, board_height), pygame.RESIZABLE)
                     textsize = False
@@ -4090,7 +4100,7 @@ while not done:
                 if size2_check_button.isOver(pos):
                     ui_variables.click_sound.play()
                     board_width = 1200
-                    board_height = 600
+                    board_height = 675
                     block_size = int(board_height * 0.045)  # 블록 크기 비율 고정
                     screen = pygame.display.set_mode((board_width, board_height), pygame.RESIZABLE)
                     textsize = True
@@ -4103,7 +4113,7 @@ while not done:
                 if size3_check_button.isOver(pos):
                     ui_variables.click_sound.play()
                     board_width = 1600
-                    board_height = 800
+                    board_height = 900
                     block_size = int(board_height * 0.045)  # 블록 크기 비율 고정
                     screen = pygame.display.set_mode((board_width, board_height), pygame.RESIZABLE)
                     textsize = True
@@ -4266,6 +4276,7 @@ while not done:
                 if board_width < min_width or board_height < min_height:  # 최소 너비 또는 높이를 설정하려는 경우
                     board_width = min_width
                     board_height = min_height
+                    pygame.display.set_caption("TETRIS(s)")
                 # 높이 또는 너비가 비율의 일정수준 이상을 넘어서게 되면
                 if not ((board_rate - 0.1) < (board_height / board_width) < (board_rate + 0.05)):
                     # 너비를 적정 비율로 바꿔줌
