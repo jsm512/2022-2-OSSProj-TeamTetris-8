@@ -1718,13 +1718,23 @@ while not done:
                     else:
                         pygame.time.set_timer(pygame.USEREVENT, game_speed)
 
-                # Draw a mino
-                draw1_mino(dx, dy, mino_en, rotation, matrix)
-                draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
+                # Draw a mino 5 * 10
+                if board_height <= 450 and board_width <= 800:
+                    draw1_mino(dx, dy, mino_en, rotation, matrix)
+                    draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
                            0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
-                draw1_board(next_mino1_en, next_mino2_en,
+                    draw1_board(next_mino1_en, next_mino2_en,
                            hold_mino, score, level, goal)
-
+                #10*20
+                elif board_height <= 675 and board_width <= 1200:
+                    draw_mino(dx, dy, mino, rotation, matrix)
+                    draw_mino(dx_2P, dy_2P, mino_2P, rotation_2P, matrix_2P)
+                    draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                                    hold_mino_2P, current_key, current_key_2P)
+                #15 * 30
+                # elif 1600 900    
+                
+                
                 # Erase a mino
                 if not game_over:
                     erase1_mino(dx, dy, mino_en, rotation, matrix)
@@ -4222,6 +4232,7 @@ while not done:
                 if board_width < min_width or board_height < min_height:  # 최소 너비 또는 높이를 설정하려는 경우
                     board_width = min_width
                     board_height = min_height
+                    pygame.display.set_caption("TETRIS(s)")
                 # 높이 또는 너비가 비율의 일정수준 이상을 넘어서게 되면
                 if not ((board_rate - 0.1) < (board_height / board_width) < (board_rate + 0.05)):
                     # 너비를 적정 비율로 바꿔줌
