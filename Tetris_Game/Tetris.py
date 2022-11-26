@@ -2101,6 +2101,34 @@ while not done:
                     pygame.time.delay(img_upload_delay)  # 0.4초
                     framerate = int(framerate * increase_noraml_speed)
 
+                # 점수 구간에 따른 피버타임 #fever_interval=3
+                for i in range(1, max_score, fever_interval):
+                    if score > i * fever_score and score < (i + 1) * fever_score:  # 500~1000,2000~2500.3500~4000
+                        mino = randint(1, 1)
+                        next_mino1_en = randint(1, 1)
+                        next_mino2_en = randint(1, 1)
+                        next_fever = (i + fever_interval) * fever_score
+                        if erase_count == 1:
+                            ui_variables.single_sound.play()
+                            score += 100 * level
+                        elif erase_count == 2:
+                            ui_variables.double_sound.play()
+                            score += 300 * level
+                        elif erase_count == 3:
+                            ui_variables.triple_sound.play()
+                            score += 700 * level
+                        elif erase_count == 4:
+                            ui_variables.tetris_sound.play()
+                            score += 2000 * level
+                        # fever time시 이미지 깜빡거리게
+                        if blink:
+                            screen.blit(pygame.transform.scale(ui_variables.fever_image,
+                                                               (int(board_width * 0.3), int(board_height * 0.2))),
+                                        (board_width * 0.01, board_height * 0.1))
+                            blink = False
+                        else:
+                            blink = True    
+
             elif event.type == KEYDOWN:
                 erase1_mino(dx, dy, mino_en, rotation, matrix)
                 if event.key == K_ESCAPE:
@@ -2353,6 +2381,34 @@ while not done:
                     pygame.display.update()
                     pygame.time.delay(img_upload_delay)  # 0.4초
                     framerate = int(framerate * increase_hard_speed)
+
+                # 점수 구간에 따른 피버타임 #fever_interval=3
+                for i in range(1, max_score, fever_interval):
+                    if score > i * fever_score and score < (i + 1) * fever_score:  # 500~1000,2000~2500.3500~4000
+                        mino = randint(1, 1)
+                        next_mino1_en = randint(1, 1)
+                        next_mino2_en = randint(1, 1)
+                        next_fever = (i + fever_interval) * fever_score
+                        if erase_count == 1:
+                            ui_variables.single_sound.play()
+                            score += 100 * level
+                        elif erase_count == 2:
+                            ui_variables.double_sound.play()
+                            score += 300 * level
+                        elif erase_count == 3:
+                            ui_variables.triple_sound.play()
+                            score += 700 * level
+                        elif erase_count == 4:
+                            ui_variables.tetris_sound.play()
+                            score += 2000 * level
+                        # fever time시 이미지 깜빡거리게
+                        if blink:
+                            screen.blit(pygame.transform.scale(ui_variables.fever_image,
+                                                               (int(board_width * 0.3), int(board_height * 0.2))),
+                                        (board_width * 0.01, board_height * 0.1))
+                            blink = False
+                        else:
+                            blink = True
 
             elif event.type == KEYDOWN:
                 erase_mino(dx, dy, mino, rotation, matrix)
