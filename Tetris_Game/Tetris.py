@@ -325,12 +325,16 @@ class button():  # 버튼객체
 
 # (self, board_width, board_height, x_rate, y_rate, width_rate, height_rate, img='')
 # (self, board_width, board_height,   0.2,   0.2,     0.22,        0.2,      img='')
+
+
 select_mode_button = button(board_width, board_height, 0.125, 0.4, 0.22, 0.2, select_mode_button_image)
 setting_button = button(board_width, board_height, 0.375,0.4, 0.22, 0.2, setting_button_image)
 quit_button = button(board_width, board_height, 0.625,0.4, 0.22, 0.2, quit_button_image)
 score_board_button = button(board_width, board_height, 0.875, 0.4, 0.22, 0.2, score_board_button_image)
 
 single_button = button(board_width, board_height, 0.35, 0.35, 0.22, 0.2, single_button_image)
+pvp_button = button(board_width, board_height, 0.65,0.35, 0.22, 0.2, pvp_button_image)
+
 easy_button = button(board_width, board_height, 0.25,0.35, 0.22, 0.2, easy_button_image)
 normal_button = button(board_width, board_height, 0.5, 0.35, 0.22 , 0.2, normal_button_image)
 hard_button = button(board_width, board_height, 0.75,0.35, 0.22, 0.2, hard_button_image)
@@ -1571,6 +1575,38 @@ pygame.time.set_timer(pygame.USEREVENT, 500)
 ###########################################################
 
 while not done:
+    if board_width<=500:
+        select_mode_button = button(board_width, board_height, 0.5, 0.125, 0.22, 0.2, select_mode_button_image)
+        setting_button = button(board_width, board_height, 0.5,0.375, 0.22, 0.2, setting_button_image)
+        quit_button = button(board_width, board_height, 0.5,0.625, 0.22, 0.2, quit_button_image)
+        score_board_button = button(board_width, board_height, 0.5, 0.875, 0.22, 0.2, score_board_button_image)
+
+        easy_button = button(board_width, board_height, 0.5,0.125, 0.22, 0.2, easy_button_image)
+        normal_button = button(board_width, board_height, 0.5, 0.375, 0.22 , 0.2, normal_button_image)
+        hard_button = button(board_width, board_height, 0.5,0.625, 0.22, 0.2, hard_button_image)
+        
+        single_button = button(board_width, board_height, 0.5, 0.25, 0.22, 0.2, single_button_image)
+        pvp_button = button(board_width, board_height, 0.5,0.5, 0.22, 0.2, pvp_button_image)
+
+        volume_icon = button(board_width, board_height, 0.5, 0.25, 0.06, 0.12, volume_vector)
+        screen_icon = button(board_width, board_height, 0.5, 0.41, 0.06, 0.12, screen_vector)
+        size_icon = button(board_width, board_height, 0.5, 0.6, 0.06, 0.12, size_vector)
+    else:
+        select_mode_button = button(board_width, board_height, 0.125, 0.4, 0.22, 0.2, select_mode_button_image)
+        setting_button = button(board_width, board_height, 0.375,0.4, 0.22, 0.2, setting_button_image)
+        quit_button = button(board_width, board_height, 0.625,0.4, 0.22, 0.2, quit_button_image)
+        score_board_button = button(board_width, board_height, 0.875, 0.4, 0.22, 0.2, score_board_button_image)
+        
+        easy_button = button(board_width, board_height, 0.25,0.35, 0.22, 0.2, easy_button_image)
+        normal_button = button(board_width, board_height, 0.5, 0.35, 0.22 , 0.2, normal_button_image)
+        hard_button = button(board_width, board_height, 0.75,0.35, 0.22, 0.2, hard_button_image)
+
+        single_button = button(board_width, board_height, 0.35, 0.35, 0.22, 0.2, single_button_image)
+        pvp_button = button(board_width, board_height, 0.65,0.35, 0.22, 0.2, pvp_button_image)
+        
+        volume_icon = button(board_width, board_height, 0.3, 0.5, 0.12, 0.23, volume_vector)
+        screen_icon = button(board_width, board_height, 0.7, 0.5, 0.12, 0.23, screen_vector)
+        size_icon = button(board_width, board_height, 0.5, 0.5, 0.12, 0.23, size_vector)
     # 게임안에서 Pause 눌렀을 때 screen
     if pause:
         pygame.mixer.music.pause()
@@ -1699,7 +1735,7 @@ while not done:
                     (board_width, board_height), pygame.RESIZABLE)
 
                 for i in range(len(button_list)):
-                    button_list[i].change(board_width, board_height)
+                    F[i].change(board_width, board_height)
                 pygame.display.update()
 
     # Game screen
