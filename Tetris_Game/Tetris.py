@@ -1838,6 +1838,18 @@ while not done:
                         next_mino1_en = randint(1, 1)
                         next_mino2_en = randint(1, 1)
                         next_fever = (i + fever_interval) * fever_score
+                        if erase_count == 1:
+                            ui_variables.single_sound.play()
+                            score += 100 * level
+                        elif erase_count == 2:
+                            ui_variables.double_sound.play()
+                            score += 300 * level
+                        elif erase_count == 3:
+                            ui_variables.triple_sound.play()
+                            score += 700 * level
+                        elif erase_count == 4:
+                            ui_variables.tetris_sound.play()
+                            score += 2000 * level
                         # fever time시 이미지 깜빡거리게
                         if blink:
                             screen.blit(pygame.transform.scale(ui_variables.fever_image,
