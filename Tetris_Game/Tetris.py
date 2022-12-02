@@ -1777,6 +1777,16 @@ while not done:
                     keys_pressed = pygame.key.get_pressed()
                     if keys_pressed[K_DOWN]:
                         pygame.time.set_timer(pygame.USEREVENT, framerate)
+                    elif keys_pressed[K_LEFT]:
+                        pygame.time.set_timer(pygame.USEREVENT, game_speed)
+                        if not is_leftedge1(dx, dy, mino_en, rotation, matrix):
+                            ui_variables.move_sound.play()
+                            dx -= 1
+                    elif keys_pressed[K_RIGHT]:
+                        pygame.time.set_timer(pygame.USEREVENT, game_speed)
+                        if not is_rightedge1(dx, dy, mino_en, rotation, matrix):
+                            ui_variables.move_sound.play()
+                            dx += 1
                     else:
                         pygame.time.set_timer(pygame.USEREVENT, game_speed)
 
@@ -2028,22 +2038,22 @@ while not done:
                     draw1_mino(dx, dy, mino_en, rotation, matrix)
                     draw1_board(next_mino1_en, next_mino2_en,
                             hold_mino, score, level, goal)
-                # Move left
-                elif event.key == K_LEFT:
-                    if not is_leftedge1(dx, dy, mino_en, rotation, matrix):
-                        ui_variables.move_sound.play()
-                        dx -= 1
-                    draw1_mino(dx, dy, mino_en, rotation, matrix)
-                    draw1_board(next_mino1_en, next_mino2_en,
-                            hold_mino, score, level, goal)
-                # Move right
-                elif event.key == K_RIGHT:
-                    if not is_rightedge1(dx, dy, mino_en, rotation, matrix):
-                        ui_variables.move_sound.play()
-                        dx += 1
-                    draw1_mino(dx, dy, mino_en, rotation, matrix)
-                    draw1_board(next_mino1_en, next_mino2_en,
-                            hold_mino, score, level, goal)
+                # # Move left
+                # elif event.key == K_LEFT:
+                #     if not is_leftedge1(dx, dy, mino_en, rotation, matrix):
+                #         ui_variables.move_sound.play()
+                #         dx -= 1
+                #     draw1_mino(dx, dy, mino_en, rotation, matrix)
+                #     draw1_board(next_mino1_en, next_mino2_en,
+                #             hold_mino, score, level, goal)
+                # # Move right
+                # elif event.key == K_RIGHT:
+                #     if not is_rightedge1(dx, dy, mino_en, rotation, matrix):
+                #         ui_variables.move_sound.play()
+                #         dx += 1
+                #     draw1_mino(dx, dy, mino_en, rotation, matrix)
+                #     draw1_board(next_mino1_en, next_mino2_en,
+                #             hold_mino, score, level, goal)
 
             elif event.type == VIDEORESIZE:
                 board_width = event.w
