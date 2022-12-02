@@ -1498,7 +1498,7 @@ def set_initial_values():
     max_score = 99999
     fever = 0
 
-    combo_fever = 2
+    combo_fever = 1
 
     line_count = 0
     score = 0
@@ -1967,17 +1967,12 @@ while not done:
                     if not is_leftedge1(dx, dy, mino_en, rotation, matrix):
                         ui_variables.move_sound.play()
                         dx -= 1
-                    draw1_mino(dx, dy, mino_en, rotation, matrix)
-                    draw1_board(next_mino1_en, next_mino2_en,
-                            hold_mino, score, level, goal)
+                        
                 # Move right
                 elif event.key == K_RIGHT:
                     if not is_rightedge1(dx, dy, mino_en, rotation, matrix):
                         ui_variables.move_sound.play()
                         dx += 1
-                    draw1_mino(dx, dy, mino_en, rotation, matrix)
-                    draw1_board(next_mino1_en, next_mino2_en,
-                            hold_mino, score, level, goal)
 
             elif event.type == VIDEORESIZE:
                 board_width = event.w
@@ -2237,17 +2232,12 @@ while not done:
                     if not is_leftedge1(dx, dy, mino_en, rotation, matrix):
                         ui_variables.move_sound.play()
                         dx -= 1
-                    draw1_mino(dx, dy, mino_en, rotation, matrix)
-                    draw1_board(next_mino1_en, next_mino2_en,
-                            hold_mino, score, level, goal)
+
                 # Move right
                 elif event.key == K_RIGHT:
                     if not is_rightedge1(dx, dy, mino_en, rotation, matrix):
                         ui_variables.move_sound.play()
                         dx += 1
-                    draw1_mino(dx, dy, mino_en, rotation, matrix)
-                    draw1_board(next_mino1_en, next_mino2_en,
-                            hold_mino, score, level, goal)
 
             elif event.type == VIDEORESIZE:
                 board_width = event.w
@@ -2760,6 +2750,36 @@ while not done:
                                 # 한줄씩 밑으로 내림
                                 matrix_2P[i][k] = matrix_2P[i][k - 1]
                             k -= 1
+
+                # 피버타임일 경우 상대방에게 변종블록 생성
+                #1P
+                for i in range(1, max_score, fever_interval):
+                    if combo_count > i * combo_fever and combo_count < (i + 1) * combo_fever:  # 2n의콤보에 따라 발생
+                        mino_2P = randint(8, 10)
+                        next_mino1_2P = randint(8, 10)
+                        next_fever = (i + fever_interval) * combo_fever
+                        # fever time시 이미지 깜빡거리게
+                        if blink:
+                            screen.blit(pygame.transform.scale(ui_variables.fever_image,
+                                                               (int(board_width * 0.3), int(board_height * 0.2))),
+                                        (board_width * 0.01, board_height * 0.1))
+                            blink = False
+                        else:
+                            blink = True
+                #2P
+                for i in range(1, max_score, fever_interval):
+                    if combo_count_2P > i * combo_fever and combo_count_2P < (i + 1) * combo_fever:  # 500~1000,2000~2500.3500~4000
+                        mino = randint(8, 10)
+                        next_mino1 = randint(8, 10)
+                        next_fever = (i + fever_interval) * combo_fever
+                        # fever time시 이미지 깜빡거리게
+                        if blink:
+                            screen.blit(pygame.transform.scale(ui_variables.fever_image,
+                                                               (int(board_width * 0.3), int(board_height * 0.2))),
+                                        (board_width * 0.01, board_height * 0.1))
+                            blink = False
+                        else:
+                            blink = True
 
                 if key_reverse:   # 키 반전 조건(상대가 몇 줄이든 깸)이 성립됐다면
                     # 방향키 반전 (최근 방향키가 어떤 것이었든 반대로)
