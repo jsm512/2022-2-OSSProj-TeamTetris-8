@@ -22,7 +22,7 @@ speed_change = 2  # 레벨별 블록 하강 속도 상승 정도
 
 board_width = 800  # 전체 창의 가로 길이
 board_height = 450  # 전체 창의 세로 길이
-board_rate = 0.5625  # 가로세로비율
+board_rate = 0.5625  # 가로세로비율 16:9
 max_level = 15
 goal_achieve = 1
 increase_level = 1
@@ -53,7 +53,7 @@ board_y = 20
 pygame.init()
 
 clock = pygame.time.Clock()
-screen = pygame.display.set_mode((board_width, board_height), pygame.RESIZABLE) #처음 사이즈 400*1200으로 사이즈 조절 가능
+screen = pygame.display.set_mode((board_width, board_height), pygame.RESIZABLE) 
 pygame.time.set_timer(pygame.USEREVENT, 500)
 pygame.display.set_caption("TETRIS")
 icon = pygame.image.load('Tetris_Game/assets/vector/icon_tetris.png').convert_alpha()
@@ -331,12 +331,16 @@ class button():  # 버튼객체
 
 # (self, board_width, board_height, x_rate, y_rate, width_rate, height_rate, img='')
 # (self, board_width, board_height,   0.2,   0.2,     0.22,        0.2,      img='')
+
+
 select_mode_button = button(board_width, board_height, 0.125, 0.4, 0.22, 0.2, select_mode_button_image)
 setting_button = button(board_width, board_height, 0.375,0.4, 0.22, 0.2, setting_button_image)
 quit_button = button(board_width, board_height, 0.625,0.4, 0.22, 0.2, quit_button_image)
 score_board_button = button(board_width, board_height, 0.875, 0.4, 0.22, 0.2, score_board_button_image)
 
 single_button = button(board_width, board_height, 0.35, 0.35, 0.22, 0.2, single_button_image)
+pvp_button = button(board_width, board_height, 0.65,0.35, 0.22, 0.2, pvp_button_image)
+
 easy_button = button(board_width, board_height, 0.25,0.35, 0.22, 0.2, easy_button_image)
 normal_button = button(board_width, board_height, 0.5, 0.35, 0.22 , 0.2, normal_button_image)
 hard_button = button(board_width, board_height, 0.75,0.35, 0.22, 0.2, hard_button_image)
@@ -1596,6 +1600,38 @@ pygame.time.set_timer(pygame.USEREVENT, 500)
 ###########################################################
 
 while not done:
+    if board_width<=500:
+        select_mode_button = button(board_width, board_height, 0.5, 0.125, 0.22, 0.2, select_mode_button_image)
+        setting_button = button(board_width, board_height, 0.5,0.375, 0.22, 0.2, setting_button_image)
+        quit_button = button(board_width, board_height, 0.5,0.625, 0.22, 0.2, quit_button_image)
+        score_board_button = button(board_width, board_height, 0.5, 0.875, 0.22, 0.2, score_board_button_image)
+
+        easy_button = button(board_width, board_height, 0.5,0.125, 0.22, 0.2, easy_button_image)
+        normal_button = button(board_width, board_height, 0.5, 0.375, 0.22 , 0.2, normal_button_image)
+        hard_button = button(board_width, board_height, 0.5,0.625, 0.22, 0.2, hard_button_image)
+        
+        single_button = button(board_width, board_height, 0.5, 0.25, 0.22, 0.2, single_button_image)
+        pvp_button = button(board_width, board_height, 0.5,0.5, 0.22, 0.2, pvp_button_image)
+
+        volume_icon = button(board_width, board_height, 0.5, 0.25, 0.06, 0.12, volume_vector)
+        screen_icon = button(board_width, board_height, 0.5, 0.41, 0.06, 0.12, screen_vector)
+        size_icon = button(board_width, board_height, 0.5, 0.6, 0.06, 0.12, size_vector)
+    else:
+        select_mode_button = button(board_width, board_height, 0.125, 0.4, 0.22, 0.2, select_mode_button_image)
+        setting_button = button(board_width, board_height, 0.375,0.4, 0.22, 0.2, setting_button_image)
+        quit_button = button(board_width, board_height, 0.625,0.4, 0.22, 0.2, quit_button_image)
+        score_board_button = button(board_width, board_height, 0.875, 0.4, 0.22, 0.2, score_board_button_image)
+        
+        easy_button = button(board_width, board_height, 0.25,0.35, 0.22, 0.2, easy_button_image)
+        normal_button = button(board_width, board_height, 0.5, 0.35, 0.22 , 0.2, normal_button_image)
+        hard_button = button(board_width, board_height, 0.75,0.35, 0.22, 0.2, hard_button_image)
+
+        single_button = button(board_width, board_height, 0.35, 0.35, 0.22, 0.2, single_button_image)
+        pvp_button = button(board_width, board_height, 0.65,0.35, 0.22, 0.2, pvp_button_image)
+        
+        volume_icon = button(board_width, board_height, 0.3, 0.5, 0.12, 0.23, volume_vector)
+        screen_icon = button(board_width, board_height, 0.7, 0.5, 0.12, 0.23, screen_vector)
+        size_icon = button(board_width, board_height, 0.5, 0.5, 0.12, 0.23, size_vector)
     # 게임안에서 Pause 눌렀을 때 screen
     if pause:
         pygame.mixer.music.pause()
@@ -1724,12 +1760,13 @@ while not done:
                     (board_width, board_height), pygame.RESIZABLE)
 
                 for i in range(len(button_list)):
-                    button_list[i].change(board_width, board_height)
+                    F[i].change(board_width, board_height)
                 pygame.display.update()
 
     # Game screen
     elif start:
         for event in pygame.event.get():
+            attack_stack = 0
             pos = pygame.mouse.get_pos()
             if event.type == QUIT:
                 done = True
@@ -1742,13 +1779,23 @@ while not done:
                     else:
                         pygame.time.set_timer(pygame.USEREVENT, game_speed)
 
-                # Draw a mino
-                draw1_mino(dx, dy, mino_en, rotation, matrix)
-                draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
+                # Draw a mino 5 * 10
+                if board_height <= 450 and board_width <= 800:
+                    draw1_mino(dx, dy, mino_en, rotation, matrix)
+                    draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
                            0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
-                draw1_board(next_mino1_en, next_mino2_en,
+                    draw1_board(next_mino1_en, next_mino2_en,
                            hold_mino, score, level, goal)
-
+                #10*20
+                elif board_height <= 675 and board_width <= 1200:
+                    draw_mino(dx, dy, mino, rotation, matrix)
+                    draw_mino(dx_2P, dy_2P, mino_2P, rotation_2P, matrix_2P)
+                    draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                                    hold_mino_2P, current_key, current_key_2P)
+                #15 * 30
+                # elif 1600 900    
+                
+                
                 # Erase a mino
                 if not game_over:
                     erase1_mino(dx, dy, mino_en, rotation, matrix)
@@ -1788,8 +1835,10 @@ while not done:
                         bottom_count += 1
 
                 # Erase line
-                erase_count = 0  #방금 추가
+                erase_count = 0
+                combo_value = 0
                 attack_stack = 0
+
                 for j in range(21):
                     is_full = True
                     for i in range(10):
@@ -1797,14 +1846,28 @@ while not done:
                             is_full = False
                     if is_full:
                         erase_count += 1
-                        attack_stack += 1  #방금 추가
+                        attack_stack += 1
                         k = j
+                        combo_value += 1
+                        
                         while k > 0:
                             for i in range(10):
-                                matrix[i][k] = matrix[i][k - 1]
+                                matrix[i][k] = matrix[i][k - 1]   # 남아있는 블록 한 줄씩 내리기(덮어쓰기)
                             k -= 1
                     
-                    
+                while attack_stack >= 2:
+                    for j in range(20):
+                        for i in range(10):
+                            matrix[i][j] = matrix[i][j + 1]
+
+                            attack_stack -= 1
+                    for i in range(10):
+                        matrix[i][20] = 9
+                    k = randint(0, 9)
+                    matrix[k][20] = 0
+                    attack_point += 1
+                    attack_stack -= 1
+
                 if erase_count == 1:
                     ui_variables.single_sound.play()
                     score += 50 * level
@@ -1869,10 +1932,12 @@ while not done:
                     pause = True
                 # Hard drop
                 elif event.key == K_SPACE:
+                    pygame.time.set_timer(pygame.USEREVENT, framerate)
                     ui_variables.drop_sound.play()
                     while not is_bottom1(dx, dy, mino_en, rotation, matrix):
                         dy += 1
                     hard_drop = True
+                    pygame.time.set_timer(pygame.USEREVENT, framerate)
                     draw1_mino(dx, dy, mino_en, rotation, matrix)
                     draw1_board(next_mino1_en, next_mino2_en,
                             hold_mino, score, level, goal)
@@ -2691,6 +2756,8 @@ while not done:
 
 
                 # 한 줄이 차면 그 위의 블럭들 한 줄씩 아래로 내리기. (1P)
+                attack_stack=0
+                attack_stack_2P=0
                 for j in range(board_y + 1):
                     is_full = True  # 한 줄이 가득 찼는지 확인하기 위한 변수
                     for i in range(board_x):
@@ -2698,6 +2765,7 @@ while not done:
                             is_full = False  # 클리어 되지 못함
                     if is_full:
                         combo_count += 1
+                        attack_stack+=1
                         if combo_count % 3 == 0:
                             attack_point = randint(1,2)
                             if attack_point == 1:
@@ -2729,6 +2797,7 @@ while not done:
                             is_full = False  # 클리어 되지 못함
                     if is_full:
                         combo_count_2P += 1
+                        attack_stack_2P+=1
                         if combo_count_2P % 3 == 0:
                             attack_point_2P = randint(1,2)
                             if attack_point_2P == 1:
@@ -2750,6 +2819,29 @@ while not done:
                                 # 한줄씩 밑으로 내림
                                 matrix_2P[i][k] = matrix_2P[i][k - 1]
                             k -= 1
+                while attack_stack >= 2:
+                    for j in range(20):
+                        for i in range(10):
+                            matrix_2P[i][j] = matrix_2P[i][j + 1]
+
+                            attack_stack -= 1
+                    for i in range(10):
+                        matrix_2P[i][20] = 9
+                    k = randint(0, 9)
+                    matrix_2P[k][20] = 0
+                    attack_point += 1
+
+                while attack_stack_2P >= 2:
+                    for j in range(20):
+                        for i in range(10):
+                            matrix[i][j] = matrix[i][j + 1]
+
+                            attack_stack_2P -= 1
+                    for i in range(10):
+                        matrix[i][20] = 9
+                    k = randint(0, 9)
+                    matrix[k][20] = 0
+                    attack_point_2P += 1
 
                 # 피버타임일 경우 상대방에게 변종블록 생성
                 #1P
@@ -4163,7 +4255,7 @@ while not done:
                 if size1_check_button.isOver(pos):
                     ui_variables.click_sound.play()
                     board_width = 800
-                    board_height = 400
+                    board_height = 450
                     block_size = int(board_height * 0.045)  # 블록 크기 비율 고정
                     screen = pygame.display.set_mode((board_width, board_height), pygame.RESIZABLE)
                     textsize = False
@@ -4175,7 +4267,7 @@ while not done:
                 if size2_check_button.isOver(pos):
                     ui_variables.click_sound.play()
                     board_width = 1200
-                    board_height = 600
+                    board_height = 675
                     block_size = int(board_height * 0.045)  # 블록 크기 비율 고정
                     screen = pygame.display.set_mode((board_width, board_height), pygame.RESIZABLE)
                     textsize = True
@@ -4188,7 +4280,7 @@ while not done:
                 if size3_check_button.isOver(pos):
                     ui_variables.click_sound.play()
                     board_width = 1600
-                    board_height = 800
+                    board_height = 900
                     block_size = int(board_height * 0.045)  # 블록 크기 비율 고정
                     screen = pygame.display.set_mode((board_width, board_height), pygame.RESIZABLE)
                     textsize = True
@@ -4351,6 +4443,7 @@ while not done:
                 if board_width < min_width or board_height < min_height:  # 최소 너비 또는 높이를 설정하려는 경우
                     board_width = min_width
                     board_height = min_height
+                    pygame.display.set_caption("TETRIS(s)")
                 # 높이 또는 너비가 비율의 일정수준 이상을 넘어서게 되면
                 if not ((board_rate - 0.1) < (board_height / board_width) < (board_rate + 0.05)):
                     # 너비를 적정 비율로 바꿔줌
