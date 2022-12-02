@@ -1448,7 +1448,7 @@ def multi_reverse_key(rev, player):
             return keys_2P_reverse
 
 def set_initial_values():
-    global attack_point, attack_point_2P, combo_count, combo_count_2P, line_count, score, level, goal, next_fever, fever_score, fever_interval, max_score, fever, combo_fever, score_2P, level_2P, goal_2P, bottom_count, bottom_count_2P, hard_drop, hard_drop_2P, attack_point, attack_point_2P, dx, dy, dx_2P, dy_2P, rotation, rotation_2P, mino,mino_en, mino_2P, next_mino1,next_mino1_en, next_mino2,next_mino2_en, next_mino1_2P, hold, hold_2P, hold_mino, hold_mino_2P, framerate, framerate_2P, matrix, matrix_2P, Change_RATE, blink, start, pause, done, game_over, leader_board, setting, volume_setting, size_setting, screen_setting, pvp, help, gravity_mode, debug, d, e, b, u, g, start_ticks, textsize, CHANNELS, swidth, name_location, name, previous_time, current_time, pause_time, lines, leaders, leaders_hard, game_status, framerate_blockmove, framerate_2P_blockmove, game_speed, game_speed_2P, normal_game_speed, select_mode, single, normal, hard, hard_time_setting, winner, key1, key2, key_reverse, key_reverse_2P, current_key, current_key_2P, help_status, remaining_time
+    global attack_point, attack_point_2P, combo_count, combo_count_2P, line_count, score, level, goal, next_fever, fever_score, fever_interval, max_score, fever, combo_fever, score_2P, level_2P, goal_2P, bottom_count, bottom_count_2P, hard_drop, hard_drop_2P, attack_point, attack_point_2P, dx, dy, dx_2P, dy_2P, rotation, rotation_2P, mino,mino_en, mino_2P, next_mino1,next_mino1_en, next_mino2,next_mino2_en, next_mino1_2P, hold, hold_2P, hold_mino, hold_mino_2P, framerate, framerate_2P, matrix, matrix_2P, Change_RATE, blink, start, pause, done, game_over, leader_board, setting, volume_setting, size_setting, screen_setting, pvp, help, gravity_mode, debug, d, e, b, u, g, start_ticks, textsize, CHANNELS, swidth, name_location, name, previous_time, current_time, pause_time, lines, leaders, leaders_hard, game_status, framerate_blockmove, framerate_2P_blockmove, game_speed, game_speed_2P, normal_game_speed, move_press, select_mode, single, normal, hard, hard_time_setting, winner, key1, key2, key_reverse, key_reverse_2P, current_key, current_key_2P, help_status, remaining_time
 
     framerate = 30  # Bigger -> Slower  기본 블록 하강 속도, 2도 할만 함, 0 또는 음수 이상이어야 함
     framerate_blockmove = framerate * 3  # 블록 이동 시 속도
@@ -1457,6 +1457,7 @@ def set_initial_values():
     framerate_2P = 30  # 2P
     framerate_2P_blockmove = framerate_2P * 3  # 블록 이동 시 속도
     game_speed_2P = framerate_2P * 20  # 2P 게임 기본 속도
+    move_press = 100
 
     help_status = False
     # Initial values
@@ -1775,14 +1776,14 @@ while not done:
                 if not game_over:
                     keys_pressed = pygame.key.get_pressed()
                     if keys_pressed[K_DOWN]:
-                        pygame.time.set_timer(pygame.USEREVENT, framerate)
+                        pygame.time.set_timer(pygame.USEREVENT, move_press)
                     elif keys_pressed[K_RIGHT]:
-                        pygame.time.set_timer(pygame.USEREVENT, framerate)
+                        pygame.time.set_timer(pygame.USEREVENT, move_press)
                         if not is_rightedge1(dx, dy, mino_en, rotation, matrix):
                             ui_variables.move_sound.play()
                             dx += 1
                     elif keys_pressed[K_LEFT]:
-                        pygame.time.set_timer(pygame.USEREVENT, framerate)
+                        pygame.time.set_timer(pygame.USEREVENT, move_press)
                         if not is_leftedge1(dx, dy, mino_en, rotation, matrix):
                             ui_variables.move_sound.play()
                             dx -= 1
