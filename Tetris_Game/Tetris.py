@@ -82,6 +82,8 @@ class ui_variables: #UI
     h5 = pygame.font.Font(font_path, 13)
     h6 = pygame.font.Font(font_path, 7)
 
+    s1 = pygame.font.Font(font_path, 16)
+
     h1_b = pygame.font.Font(font_path_b, 50)
     h2_b = pygame.font.Font(font_path_b, 30)
 
@@ -206,8 +208,7 @@ gameover_board_image = 'Tetris_Game/assets/vector/gameover_board.png'
 hard_training_start_image = 'Tetris_Game/assets/images/hard_tutorial_menual.png'
 multi_training_start_image = 'Tetris_Game/assets/images/multi_tutorial_menual.png'
 setting_board_image = 'Tetris_Game/assets/vector/setting_board.png'
-number_board = 'Tetris_Game/assets/vector/number_board.png'
-mute_button_image = 'Tetris_Game/assets/vector/allmute_button.png'
+mute_button_image = 'Tetris_Game/assets/vector/volume_mute.png'
 clicked_mute_button_image = 'Tetris_Game/assets/vector/clicked_allmute_button.png'
 
 background1_image = 'Tetris_Game/assets/images/background_hongkong.png'
@@ -222,10 +223,9 @@ size1_image = 'Tetris_Game/assets/images/small.png'
 size2_image = 'Tetris_Game/assets/images/medium.png'
 size3_image = 'Tetris_Game/assets/images/big.png'
 
-mute_button_image = 'Tetris_Game/assets/vector/allmute_button.png'
-default_button_image = 'Tetris_Game/assets/vector/default_button.png'
+mute_button_image = 'Tetris_Game/assets/vector/volume_mute.png'
+default_button_image = 'Tetris_Game/assets/vector/volume_on.png'
 clicked_default_button_image = 'Tetris_Game/assets/vector/clicked_default_button.png'
-number_board = 'Tetris_Game/assets/vector/number_board.png'
 
 # img 수정
 resume_button_image = 'Tetris_Game/assets/vector/Resume.png'
@@ -247,15 +247,15 @@ menu_button_image = 'Tetris_Game/assets/vector/Menu.png'
 clicked_menu_button_image = 'Tetris_Game/assets/vector/clicked_Menu.png'
 ok_button_image = 'Tetris_Game/assets/vector/Ok.png'
 clicked_ok_button_image = 'Tetris_Game/assets/vector/clicked_Ok.png'
-plus_button_image = 'Tetris_Game/assets/vector/plus_button.png'
+plus_button_image = 'Tetris_Game/assets/vector/volume_up.png'
 clicked_plus_button_image = 'Tetris_Game/assets/vector/clicked_plus_button.png'
-minus_button_image = 'Tetris_Game/assets/vector/minus_button.png'
+minus_button_image = 'Tetris_Game/assets/vector/volume_down.png'
 clicked_minus_button_image = 'Tetris_Game/assets/vector/clicked_minus_button.png'
 
-backgroundmusic_select_image = 'Tetris_Game/assets/vector/backgroundmusic_select.png'
-clicked_backgroundmusic_select_image = 'Tetris_Game/assets/vector/clicked_backgroundmusic_select.png'
-sound_off_button_image = 'Tetris_Game/assets/vector/sound_off_button.png'
-sound_on_button_image = 'Tetris_Game/assets/vector/sound_on_button.png'
+backgroundmusic_select_image = 'Tetris_Game/assets/vector/music_notselect.png'
+clicked_backgroundmusic_select_image = 'Tetris_Game/assets/vector/music_select.png'
+sound_off_button_image = 'Tetris_Game/assets/vector/volume_off_circle.png'
+sound_on_button_image = 'Tetris_Game/assets/vector/volume_on_circle.png'
 check_button_image = 'Tetris_Game/assets/vector/checkbox_button.png'
 clicked_check_button_image = 'Tetris_Game/assets/vector/clicked_checkbox_button.png'
 
@@ -362,7 +362,7 @@ pause_quit_button = button(board_width, board_height,0.5, 0.83, 0.17, 0.2, quit_
 pause_setting_button = button(board_width, board_height, 0.5, 0.63, 0.17, 0.2, pause_setting_button_image)
 
 leaderboard_icon = button(board_width, board_height,0.77, 0.85, 0.15, 0.2, leaderboard_vector)
-mute_button = button(board_width, board_height, 0.5,0.20, 0.15, 0.2, mute_button_image)
+mute_button = button(board_width, board_height, 0.58, 0.715, 0.06, 0.11, mute_button_image)
 default_button = button(board_width, board_height, 0.5,0.27, 0.15, 0.2, default_button_image)
 
 
@@ -379,13 +379,11 @@ training_restart_button = button(board_width, board_height, 0.35, 0.8, 0.2, 0.2,
 training_multi_start_button = button(board_width, board_height, 0.65, 0.8, 0.2, 0.2, pvp_button_image)
 training_hard_start_button = button(board_width, board_height, 0.65, 0.8, 0.2, 0.2, hard_button_image)
 
+effect_minus_button = button(board_width, board_height, 0.13, 0.73, 0.0625, 0.1111, minus_button_image)
+effect_plus_button = button(board_width, board_height, 0.28, 0.73, 0.0625, 0.1111, plus_button_image)
 
-effect_plus_button = button(board_width, board_height, 0.27, 0.73, 0.0625, 0.1111, plus_button_image)
-effect_minus_button = button(board_width, board_height, 0.42, 0.73, 0.0625, 0.1111, minus_button_image)
-
-sound_plus_button = button(board_width, board_height,0.27, 0.53, 0.0625, 0.1111, plus_button_image)
-sound_minus_button = button(board_width, board_height, 0.42, 0.53, 0.0625, 0.1111, minus_button_image)
-
+sound_minus_button = button(board_width, board_height, 0.13, 0.4, 0.0625, 0.1111, minus_button_image)
+sound_plus_button = button(board_width, board_height, 0.28, 0.4, 0.0625, 0.1111, plus_button_image)
 
 mute_check_button = button(board_width, board_height,0.2, 0.4, 0.0625, 0.1111, check_button_image)
 
@@ -403,15 +401,15 @@ size_icon = button(board_width, board_height, 0.5, 0.5, 0.12, 0.23, size_vector)
 
 
 #음소거 추가#
-effect_sound_off_button = button(board_width, board_height, 0.55, 0.73, 0.08, 0.15, sound_off_button_image)
-music_sound_off_button = button(board_width, board_height, 0.55, 0.53, 0.08, 0.15, sound_off_button_image)
-effect_sound_on_button = button(board_width, board_height, 0.55, 0.73, 0.08, 0.15, sound_on_button_image)
-music_sound_on_button = button(board_width, board_height, 0.55, 0.53, 0.08, 0.15, sound_on_button_image)
+effect_sound_off_button = button(board_width, board_height, 0.4, 0.73, 0.0625, 0.1111, sound_off_button_image)
+music_sound_off_button = button(board_width, board_height, 0.4, 0.4, 0.0625, 0.1111, sound_off_button_image)
+effect_sound_on_button = button(board_width, board_height, 0.4, 0.73, 0.0625, 0.1111, sound_on_button_image)
+music_sound_on_button = button(board_width, board_height, 0.4, 0.4, 0.0625, 0.1111, sound_on_button_image)
 
 #BGM 선택 추가#
-BGM1_sound_on_button = button(board_width, board_height, 0.67, 0.43, 0.08, 0.15, clicked_backgroundmusic_select_image)  # default bgm: BGM1
-BGM2_sound_on_button = button(board_width, board_height, 0.67, 0.63, 0.08, 0.15, backgroundmusic_select_image)
-BGM3_sound_on_button = button(board_width, board_height, 0.67, 0.83, 0.08, 0.15, backgroundmusic_select_image)
+BGM1_sound_on_button = button(board_width, board_height, 0.57, 0.37, 0.08, 0.15, clicked_backgroundmusic_select_image)  # default bgm: BGM1
+BGM2_sound_on_button = button(board_width, board_height, 0.69, 0.37, 0.08, 0.15, backgroundmusic_select_image)
+BGM3_sound_on_button = button(board_width, board_height, 0.81, 0.37, 0.08, 0.15, backgroundmusic_select_image)
 
 # 선택된 BGM
 selected_bgm = "Tetris_Game/assets/sounds/BGM1.wav"
@@ -3994,10 +3992,6 @@ while not done:
         # draw_image(window, 이미지주소, x좌표, y좌표, 너비, 높이)
         draw_image(screen, setting_board_image, board_width * 0.5,
                    board_height * 0.5, int(board_height * 1.3), board_height)
-        draw_image(screen, number_board, board_width * 0.35, board_height *
-                   0.53, int(board_width * 0.09), int(board_height * 0.1444))
-        draw_image(screen, number_board, board_width * 0.35, board_height *
-                   0.73, int(board_width * 0.09), int(board_height * 0.1444))
         mute_button.draw(screen, (0, 0, 0))  # rgb(0,0,0) = 검정색#
 
         effect_plus_button.draw(screen, (0, 0, 0))
@@ -4015,43 +4009,42 @@ while not done:
         back_button.draw(screen, (0, 0, 0))
 
         # render("텍스트이름", 안티에일리어싱 적용, 색깔), 즉 아래의 코드에서 숫자 1=안티에일리어싱 적용에 관한 코드
-        music_volume_text = ui_variables.h5.render(
-            'Music Volume', 1, ui_variables.white)
-        effect_volume_text = ui_variables.h5.render(
-            'Effect Volume', 1, ui_variables.white)
+        music_volume_text = ui_variables.s1.render(
+            'l 배경음', 1, ui_variables.white)
+        effect_volume_text = ui_variables.s1.render(
+            'l 효과음', 1, ui_variables.white)
+        bgm_volume_text = ui_variables.s1.render(
+            'l 배경음악 선택', 1, ui_variables.white)
+        mute_all_text = ui_variables.s1.render(
+            'l 전체 음소거', 1, ui_variables.white)
         screen.blit(music_volume_text, (board_width *
-                    0.3, board_height * 0.4))  # 위치 비율 고정
+                    0.1, board_height * 0.2))  # 위치 비율 고정
         screen.blit(effect_volume_text, (board_width *
-                    0.3, board_height * 0.62))  # 위치 비율 고정
+                    0.1, board_height * 0.55))  # 위치 비율 고정
+        screen.blit(bgm_volume_text, (board_width *
+                    0.54, board_height * 0.2))  # 위치 비율 고정
+        screen.blit(mute_all_text, (board_width *
+                    0.54, board_height * 0.55))  # 위치 비율 고정
 
-        music_volume_text = ui_variables.h5.render(
-            'Music On/Off', 1, ui_variables.white)
-        effect_volume_text = ui_variables.h5.render(
-            'Effect On/Off', 1, ui_variables.white)
-        screen.blit(music_volume_text, (board_width *
-                    0.5, board_height * 0.4))  # 위치 비율 고정
-        screen.blit(effect_volume_text, (board_width *
-                    0.5, board_height * 0.62))  # 위치 비율 고정
-
-        music_volume_size_text = ui_variables.h5.render(
-            str(music_volume), 1, ui_variables.grey_1)
-        effect_volume_size_text = ui_variables.h5.render(
-            str(effect_volume), 1, ui_variables.grey_1)
+        music_volume_size_text = ui_variables.h3.render(
+            str(music_volume), 1, ui_variables.white)
+        effect_volume_size_text = ui_variables.h3.render(
+            str(effect_volume), 1, ui_variables.white)
         screen.blit(music_volume_size_text, (board_width *
-                    0.345, board_height * 0.5))  # 위치 비율 고정
+                    0.19, board_height * 0.37))  # 위치 비율 고정
         screen.blit(effect_volume_size_text, (board_width *
-                    0.345, board_height * 0.7))  # 위치 비율 고정
+                    0.19, board_height * 0.7))  # 위치 비율 고정
 
         BGM1_text = ui_variables.h5.render('BGM1', 1, ui_variables.white)
         BGM2_text = ui_variables.h5.render('BGM2', 1, ui_variables.white)
         BGM3_text = ui_variables.h5.render('BGM3', 1, ui_variables.white)
 
-        screen.blit(BGM1_text, (board_width * 0.65,
-                    board_height * 0.32))  # 위치 비율 고정
-        screen.blit(BGM2_text, (board_width * 0.65,
-                    board_height * 0.52))  # 위치 비율 고정
-        screen.blit(BGM3_text, (board_width * 0.65,
-                    board_height * 0.72))  # 위치 비율 고정
+        screen.blit(BGM1_text, (board_width * 0.55,
+                    board_height * 0.45))  # 위치 비율 고정
+        screen.blit(BGM2_text, (board_width * 0.67,
+                    board_height * 0.45))  # 위치 비율 고정
+        screen.blit(BGM3_text, (board_width * 0.79,
+                    board_height * 0.45))  # 위치 비율 고정
 
         for event in pygame.event.get():
             pos = pygame.mouse.get_pos()
