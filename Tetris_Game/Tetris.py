@@ -1223,8 +1223,8 @@ def erase_mino(x, y, mino, r, matrix):
     grid = tetrimino.mino_map[mino - 1][r]
 
     # Erase ghost
-    for j in range(board_y + 2):
-        for i in range(board_x + 4):
+    for j in range(board_y):
+        for i in range(board_x):
             if matrix[i][j] == 11:  # 테트리스 블록에서 해당 행렬위치에 ghost블록 존재하면
                 matrix[i][j] = 0  # 없애서 빈 곳으로 만들기
 
@@ -1239,8 +1239,8 @@ def erase1_mino(x, y, mino_en, r, matrix):
     grid = tetrimino.mino_map[mino_en - 1][r]
 
     # Erase ghost
-    for j in range(board_y + 2):
-        for i in range(board_x+4):
+    for j in range(board_y):
+        for i in range(board_x):
             if matrix[i][j] == 8:  # 테트리스 블록에서 해당 행렬위치에 ghost블록 존재하면
                 matrix[i][j] = 0  # 없애서 빈 곳으로 만들기
 
@@ -1258,7 +1258,7 @@ def is_bottom(x, y, mino, r, matrix):
     for i in range(mino_matrix_y):
         for j in range(mino_matrix_x):
             if grid[i][j] != 0:  # 테트리스 블록에서 해당 행렬위치에 블록 존재하면
-                if (y + i + 3) > board_y+2:  # 바닥의 y좌표에 있음(바닥에 닿음)
+                if (y + i + 3) > board_y:  # 바닥의 y좌표에 있음(바닥에 닿음)
                     return True
                 # 그 블록위치에 0, 8 아님(즉 블록 존재 함)
                 elif matrix[x + j][y + i + 1] != 0 and matrix[x + j][y + i + 1] != 11:
@@ -1272,7 +1272,7 @@ def is_bottom1(x, y, mino_en, r, matrix):
     for i in range(mino_matrix_y):
         for j in range(mino_matrix_x):
             if grid[i][j] != 0:  # 테트리스 블록에서 해당 행렬위치에 블록 존재하면
-                if (y + i + 1) > board_y+2:  # 바닥의 y좌표에 있음(바닥에 닿음)
+                if (y + i + 1) > board_y:  # 바닥의 y좌표에 있음(바닥에 닿음)
                     return True
                 # 그 블록위치에 0, 8 아님(즉 블록 존재 함)
                 elif matrix[x + j][y + i + 1] != 0 and matrix[x + j][y + i + 1] != 8:
@@ -1330,7 +1330,7 @@ def is_rightedge1(x, y, mino_en, r, matrix):
     for i in range(mino_matrix_y):
         for j in range(mino_matrix_x):
             if grid[i][j] != 0:  # 테트리스 블록에서 해당 행렬위치에 블록 존재하면
-                if (x + j + 1) >= board_x+4:  # 맨 오른쪽에 위치
+                if (x + j + 1) >= board_x:  # 맨 오른쪽에 위치
                     return True
                 elif matrix[x + j + 1][y + i] != 0:  # 그 위치의 오른쪽에 이미 무엇인가 존재함
                     return True
@@ -1629,8 +1629,8 @@ while not done:
 
         width = width_small
         height = height_small
-        board_x = width
-        board_y = height
+        board_x = width_small
+        board_y = height_small
     elif (board_width>600 and board_width<=1200):
         select_mode_button = button(board_width, board_height, 0.125, 0.4, 0.22, 0.2, select_mode_button_image)
         setting_button = button(board_width, board_height, 0.375,0.4, 0.22, 0.2, setting_button_image)
@@ -1650,8 +1650,8 @@ while not done:
         
         width = width_normal
         height = height_normal
-        board_x = width
-        board_y = height
+        board_x = width_normal
+        board_y = height_normal
     else:
         select_mode_button = button(board_width, board_height, 0.125, 0.4, 0.22, 0.2, select_mode_button_image)
         setting_button = button(board_width, board_height, 0.375,0.4, 0.22, 0.2, setting_button_image)
@@ -1671,8 +1671,8 @@ while not done:
         
         width = width_big
         height = height_big
-        board_x = width
-        board_y = height
+        board_x = width_big
+        board_y = height_big
     # 게임안에서 Pause 눌렀을 때 screen
     if pause:
         pygame.mixer.music.pause()
@@ -1833,20 +1833,6 @@ while not done:
                 draw1_mino(dx, dy, mino_en, rotation, matrix)
                 draw_image(screen, gamebackground_image, board_width * 0.5, board_height *0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
                 draw1_board(next_mino1_en, next_mino2_en,hold_mino, score, level, goal)
-                # # Draw a mino 5 * 10
-                # if board_height <= 450 and board_width <= 800:
-                #     draw1_mino(dx, dy, mino_en, rotation, matrix)
-                #     draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
-                #            0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
-                #     draw1_board(next_mino1_en, next_mino2_en,hold_mino, score, level, goal)
-                # #10*20
-                # elif board_height <= 675 and board_width <= 1200:
-                #     draw_mino(dx, dy, mino, rotation, matrix)
-                #     draw_mino(dx_2P, dy_2P, mino_2P, rotation_2P, matrix_2P)
-                #     draw_multiboard(next_mino1, hold_mino, next_mino1_2P,hold_mino_2P, current_key, current_key_2P)
-                # #15 * 30
-                # # elif 1600 900    
-                
                 
                 # Erase a mino
                 if not game_over:
@@ -1908,15 +1894,15 @@ while not done:
                             k -= 1
                     
                 while attack_stack >= 2:
-                    for j in range(height+1):
+                    for j in range(height):
                         for i in range(width):
                             matrix[i][j] = matrix[i][j + 1]
 
                             attack_stack -= 1
                     for i in range(width):
-                        matrix[i][height+1] = 9
+                        matrix[i][height] = 9
                     k = randint(0, 9)
-                    matrix[k][height+1] = 0
+                    matrix[k][height] = 0
                     attack_point += 1
                     attack_stack -= 1
 
