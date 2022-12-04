@@ -12,8 +12,8 @@ from pygame.locals import *
 
 # Define
 block_size = 17  # Height, width of single block
-width = 10  # Board에 가로로 들어갈 칸의 개수
-height = 20  # Board에 세로로 들어갈 칸의 개수
+width = 14  # Board에 가로로 들어갈 칸의 개수
+height = 22  # Board에 세로로 들어갈 칸의 개수
 framerate = 30  # Bigger -> Slower
 
 
@@ -73,7 +73,7 @@ class ui_variables: #UI
     h3 = pygame.font.Font(font_path, 25)
     h4 = pygame.font.Font(font_path, 20)
     h5 = pygame.font.Font(font_path, 13)
-    h6 = pygame.font.Font(font_path, 10)
+    h6 = pygame.font.Font(font_path, 7)
 
     h1_b = pygame.font.Font(font_path_b, 50)
     h2_b = pygame.font.Font(font_path_b, 30)
@@ -557,7 +557,7 @@ def draw_board(next1, next2, hold, score, level, goal):
 
 def draw1_board(next1, next2, hold, score, level, goal):
     # 크기 비율 고정, 전체 board 가로길이에서 원하는 비율을 곱해줌
-    sidebar_width = int(board_width * 0.5312)
+    sidebar_width = int(board_width * 0.6)
     # screen.fill(ui_variables.grey_1)
 
     # Draw sidebar
@@ -1197,8 +1197,8 @@ def erase_mino(x, y, mino, r, matrix):
     grid = tetrimino.mino_map[mino - 1][r]
 
     # Erase ghost
-    for j in range(board_y + 1):
-        for i in range(board_x):
+    for j in range(board_y + 2):
+        for i in range(board_x + 4):
             if matrix[i][j] == 11:  # 테트리스 블록에서 해당 행렬위치에 ghost블록 존재하면
                 matrix[i][j] = 0  # 없애서 빈 곳으로 만들기
 
@@ -1213,8 +1213,8 @@ def erase1_mino(x, y, mino_en, r, matrix):
     grid = tetrimino.mino_map[mino_en - 1][r]
 
     # Erase ghost
-    for j in range(board_y + 1):
-        for i in range(board_x):
+    for j in range(board_y + 2):
+        for i in range(board_x+4):
             if matrix[i][j] == 8:  # 테트리스 블록에서 해당 행렬위치에 ghost블록 존재하면
                 matrix[i][j] = 0  # 없애서 빈 곳으로 만들기
 
@@ -1232,7 +1232,7 @@ def is_bottom(x, y, mino, r, matrix):
     for i in range(mino_matrix_y):
         for j in range(mino_matrix_x):
             if grid[i][j] != 0:  # 테트리스 블록에서 해당 행렬위치에 블록 존재하면
-                if (y + i + 1) > board_y:  # 바닥의 y좌표에 있음(바닥에 닿음)
+                if (y + i + 3) > board_y+2:  # 바닥의 y좌표에 있음(바닥에 닿음)
                     return True
                 # 그 블록위치에 0, 8 아님(즉 블록 존재 함)
                 elif matrix[x + j][y + i + 1] != 0 and matrix[x + j][y + i + 1] != 11:
@@ -1246,7 +1246,7 @@ def is_bottom1(x, y, mino_en, r, matrix):
     for i in range(mino_matrix_y):
         for j in range(mino_matrix_x):
             if grid[i][j] != 0:  # 테트리스 블록에서 해당 행렬위치에 블록 존재하면
-                if (y + i + 1) > board_y:  # 바닥의 y좌표에 있음(바닥에 닿음)
+                if (y + i + 1) > board_y+2:  # 바닥의 y좌표에 있음(바닥에 닿음)
                     return True
                 # 그 블록위치에 0, 8 아님(즉 블록 존재 함)
                 elif matrix[x + j][y + i + 1] != 0 and matrix[x + j][y + i + 1] != 8:
@@ -1304,7 +1304,7 @@ def is_rightedge1(x, y, mino_en, r, matrix):
     for i in range(mino_matrix_y):
         for j in range(mino_matrix_x):
             if grid[i][j] != 0:  # 테트리스 블록에서 해당 행렬위치에 블록 존재하면
-                if (x + j + 1) >= board_x:  # 맨 오른쪽에 위치
+                if (x + j + 1) >= board_x+4:  # 맨 오른쪽에 위치
                     return True
                 elif matrix[x + j + 1][y + i] != 0:  # 그 위치의 오른쪽에 이미 무엇인가 존재함
                     return True
@@ -1575,10 +1575,7 @@ pygame.time.set_timer(pygame.USEREVENT, 500)
 ###########################################################
 
 while not done:
-<<<<<<< HEAD
-        
-=======
-    if board_width<=500:
+    if board_width<600:
         select_mode_button = button(board_width, board_height, 0.5, 0.125, 0.22, 0.2, select_mode_button_image)
         setting_button = button(board_width, board_height, 0.5,0.375, 0.22, 0.2, setting_button_image)
         quit_button = button(board_width, board_height, 0.5,0.625, 0.22, 0.2, quit_button_image)
@@ -1594,6 +1591,9 @@ while not done:
         volume_icon = button(board_width, board_height, 0.5, 0.25, 0.06, 0.12, volume_vector)
         screen_icon = button(board_width, board_height, 0.5, 0.41, 0.06, 0.12, screen_vector)
         size_icon = button(board_width, board_height, 0.5, 0.6, 0.06, 0.12, size_vector)
+        
+        pygame.display.set_caption("TETRIS(S)")
+        
     else:
         select_mode_button = button(board_width, board_height, 0.125, 0.4, 0.22, 0.2, select_mode_button_image)
         setting_button = button(board_width, board_height, 0.375,0.4, 0.22, 0.2, setting_button_image)
@@ -1610,7 +1610,9 @@ while not done:
         volume_icon = button(board_width, board_height, 0.3, 0.5, 0.12, 0.23, volume_vector)
         screen_icon = button(board_width, board_height, 0.7, 0.5, 0.12, 0.23, screen_vector)
         size_icon = button(board_width, board_height, 0.5, 0.5, 0.12, 0.23, size_vector)
->>>>>>> fe8124e08c622baa05642e3340cd0be611eec047
+    
+        pygame.display.set_caption("TETRIS")
+        
     # 게임안에서 Pause 눌렀을 때 screen
     if pause:
         pygame.mixer.music.pause()
@@ -1739,7 +1741,7 @@ while not done:
                     (board_width, board_height), pygame.RESIZABLE)
 
                 for i in range(len(button_list)):
-                    F[i].change(board_width, board_height)
+                    button_list[i].change(board_width, board_height)
                 pygame.display.update()
 
     # Game screen
@@ -1823,9 +1825,9 @@ while not done:
                 combo_value = 0
                 attack_stack = 0
 
-                for j in range(21):
+                for j in range(height+1):
                     is_full = True
-                    for i in range(10):
+                    for i in range(width):
                         if matrix[i][j] == 0:
                             is_full = False
                     if is_full:
@@ -1835,20 +1837,20 @@ while not done:
                         combo_value += 1
                         
                         while k > 0:
-                            for i in range(10):
+                            for i in range(width):
                                 matrix[i][k] = matrix[i][k - 1]   # 남아있는 블록 한 줄씩 내리기(덮어쓰기)
                             k -= 1
                     
                 while attack_stack >= 2:
-                    for j in range(20):
-                        for i in range(10):
+                    for j in range(height+1):
+                        for i in range(width):
                             matrix[i][j] = matrix[i][j + 1]
 
                             attack_stack -= 1
-                    for i in range(10):
-                        matrix[i][20] = 9
+                    for i in range(width):
+                        matrix[i][height+1] = 9
                     k = randint(0, 9)
-                    matrix[k][20] = 0
+                    matrix[k][height+1] = 0
                     attack_point += 1
                     attack_stack -= 1
 
@@ -3850,43 +3852,43 @@ while not done:
         back_button.draw(screen, (0, 0, 0))
 
         # render("텍스트이름", 안티에일리어싱 적용, 색깔), 즉 아래의 코드에서 숫자 1=안티에일리어싱 적용에 관한 코드
-        music_volume_text = ui_variables.h6.render(
+        music_volume_text = ui_variables.h5.render(
             'Music Volume', 1, ui_variables.white)
-        effect_volume_text = ui_variables.h6.render(
+        effect_volume_text = ui_variables.h5.render(
             'Effect Volume', 1, ui_variables.white)
         screen.blit(music_volume_text, (board_width *
                     0.3, board_height * 0.4))  # 위치 비율 고정
         screen.blit(effect_volume_text, (board_width *
-                    0.3, board_height * 0.6))  # 위치 비율 고정
+                    0.3, board_height * 0.62))  # 위치 비율 고정
 
-        music_volume_text = ui_variables.h6.render(
+        music_volume_text = ui_variables.h5.render(
             'Music On/Off', 1, ui_variables.white)
-        effect_volume_text = ui_variables.h6.render(
+        effect_volume_text = ui_variables.h5.render(
             'Effect On/Off', 1, ui_variables.white)
         screen.blit(music_volume_text, (board_width *
                     0.5, board_height * 0.4))  # 위치 비율 고정
         screen.blit(effect_volume_text, (board_width *
-                    0.5, board_height * 0.6))  # 위치 비율 고정
+                    0.5, board_height * 0.62))  # 위치 비율 고정
 
-        music_volume_size_text = ui_variables.h4.render(
+        music_volume_size_text = ui_variables.h5.render(
             str(music_volume), 1, ui_variables.grey_1)
-        effect_volume_size_text = ui_variables.h4.render(
+        effect_volume_size_text = ui_variables.h5.render(
             str(effect_volume), 1, ui_variables.grey_1)
         screen.blit(music_volume_size_text, (board_width *
-                    0.33, board_height * 0.5))  # 위치 비율 고정
+                    0.345, board_height * 0.5))  # 위치 비율 고정
         screen.blit(effect_volume_size_text, (board_width *
-                    0.33, board_height * 0.7))  # 위치 비율 고정
+                    0.345, board_height * 0.7))  # 위치 비율 고정
 
         BGM1_text = ui_variables.h5.render('BGM1', 1, ui_variables.white)
         BGM2_text = ui_variables.h5.render('BGM2', 1, ui_variables.white)
         BGM3_text = ui_variables.h5.render('BGM3', 1, ui_variables.white)
 
         screen.blit(BGM1_text, (board_width * 0.65,
-                    board_height * 0.3))  # 위치 비율 고정
+                    board_height * 0.32))  # 위치 비율 고정
         screen.blit(BGM2_text, (board_width * 0.65,
-                    board_height * 0.5))  # 위치 비율 고정
+                    board_height * 0.52))  # 위치 비율 고정
         screen.blit(BGM3_text, (board_width * 0.65,
-                    board_height * 0.7))  # 위치 비율 고정
+                    board_height * 0.72))  # 위치 비율 고정
 
         for event in pygame.event.get():
             pos = pygame.mouse.get_pos()
