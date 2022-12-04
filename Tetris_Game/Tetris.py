@@ -13,8 +13,17 @@ from pygame.locals import *
 # Define
 block_size = 17  # Height, width of single block
 width = 10  # Board에 가로로 들어갈 칸의 개수
+width_big = 14
+width_normal = 10
+width_small = 7
 height = 20  # Board에 세로로 들어갈 칸의 개수
+height_big = 28
+height_normal = 20
+height_small=14
 framerate = 30  # Bigger -> Slower
+board_x = width
+board_y = height
+
 
 
 total_time = 60  # 타임 어택 시간
@@ -45,8 +54,7 @@ effect_volume = 5
 
 mino_matrix_x = 4  # mino는 4*4 배열이어서 이를 for문에 사용
 mino_matrix_y = 4  # mino는 4*4 배열이어서 이를 for문에 사용
-board_x = 10
-board_y = 20
+
 
 
 
@@ -1602,7 +1610,7 @@ pygame.time.set_timer(pygame.USEREVENT, 500)
 ###########################################################
 
 while not done:
-    if board_width<=500:
+    if board_width<=600:
         select_mode_button = button(board_width, board_height, 0.5, 0.125, 0.22, 0.2, select_mode_button_image)
         setting_button = button(board_width, board_height, 0.5,0.375, 0.22, 0.2, setting_button_image)
         quit_button = button(board_width, board_height, 0.5,0.625, 0.22, 0.2, quit_button_image)
@@ -1618,6 +1626,32 @@ while not done:
         volume_icon = button(board_width, board_height, 0.5, 0.25, 0.06, 0.12, volume_vector)
         screen_icon = button(board_width, board_height, 0.5, 0.41, 0.06, 0.12, screen_vector)
         size_icon = button(board_width, board_height, 0.5, 0.6, 0.06, 0.12, size_vector)
+
+        width = width_small
+        height = height_small
+        board_x = width
+        board_y = height
+    elif (board_width>600 and board_width<=1200):
+        select_mode_button = button(board_width, board_height, 0.125, 0.4, 0.22, 0.2, select_mode_button_image)
+        setting_button = button(board_width, board_height, 0.375,0.4, 0.22, 0.2, setting_button_image)
+        quit_button = button(board_width, board_height, 0.625,0.4, 0.22, 0.2, quit_button_image)
+        score_board_button = button(board_width, board_height, 0.875, 0.4, 0.22, 0.2, score_board_button_image)
+        
+        easy_button = button(board_width, board_height, 0.25,0.35, 0.22, 0.2, easy_button_image)
+        normal_button = button(board_width, board_height, 0.5, 0.35, 0.22 , 0.2, normal_button_image)
+        hard_button = button(board_width, board_height, 0.75,0.35, 0.22, 0.2, hard_button_image)
+
+        single_button = button(board_width, board_height, 0.35, 0.35, 0.22, 0.2, single_button_image)
+        pvp_button = button(board_width, board_height, 0.65,0.35, 0.22, 0.2, pvp_button_image)
+        
+        volume_icon = button(board_width, board_height, 0.3, 0.5, 0.12, 0.23, volume_vector)
+        screen_icon = button(board_width, board_height, 0.7, 0.5, 0.12, 0.23, screen_vector)
+        size_icon = button(board_width, board_height, 0.5, 0.5, 0.12, 0.23, size_vector)
+        
+        width = width_normal
+        height = height_normal
+        board_x = width
+        board_y = height
     else:
         select_mode_button = button(board_width, board_height, 0.125, 0.4, 0.22, 0.2, select_mode_button_image)
         setting_button = button(board_width, board_height, 0.375,0.4, 0.22, 0.2, setting_button_image)
@@ -1634,6 +1668,11 @@ while not done:
         volume_icon = button(board_width, board_height, 0.3, 0.5, 0.12, 0.23, volume_vector)
         screen_icon = button(board_width, board_height, 0.7, 0.5, 0.12, 0.23, screen_vector)
         size_icon = button(board_width, board_height, 0.5, 0.5, 0.12, 0.23, size_vector)
+        
+        width = width_big
+        height = height_big
+        board_x = width
+        board_y = height
     # 게임안에서 Pause 눌렀을 때 screen
     if pause:
         pygame.mixer.music.pause()
@@ -1790,22 +1829,23 @@ while not done:
                             dx += 1
                     else:
                         pygame.time.set_timer(pygame.USEREVENT, game_speed)
-
-                # Draw a mino 5 * 10
-                if board_height <= 450 and board_width <= 800:
-                    draw1_mino(dx, dy, mino_en, rotation, matrix)
-                    draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
-                           0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
-                    draw1_board(next_mino1_en, next_mino2_en,
-                           hold_mino, score, level, goal)
-                #10*20
-                elif board_height <= 675 and board_width <= 1200:
-                    draw_mino(dx, dy, mino, rotation, matrix)
-                    draw_mino(dx_2P, dy_2P, mino_2P, rotation_2P, matrix_2P)
-                    draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
-                                    hold_mino_2P, current_key, current_key_2P)
-                #15 * 30
-                # elif 1600 900    
+                
+                draw1_mino(dx, dy, mino_en, rotation, matrix)
+                draw_image(screen, gamebackground_image, board_width * 0.5, board_height *0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                draw1_board(next_mino1_en, next_mino2_en,hold_mino, score, level, goal)
+                # # Draw a mino 5 * 10
+                # if board_height <= 450 and board_width <= 800:
+                #     draw1_mino(dx, dy, mino_en, rotation, matrix)
+                #     draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
+                #            0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                #     draw1_board(next_mino1_en, next_mino2_en,hold_mino, score, level, goal)
+                # #10*20
+                # elif board_height <= 675 and board_width <= 1200:
+                #     draw_mino(dx, dy, mino, rotation, matrix)
+                #     draw_mino(dx_2P, dy_2P, mino_2P, rotation_2P, matrix_2P)
+                #     draw_multiboard(next_mino1, hold_mino, next_mino1_2P,hold_mino_2P, current_key, current_key_2P)
+                # #15 * 30
+                # # elif 1600 900    
                 
                 
                 # Erase a mino
