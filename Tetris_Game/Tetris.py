@@ -4056,54 +4056,6 @@ while not done:
 
                 pygame.display.update()
 
-            elif event.type == pygame.MOUSEMOTION:
-                if back_button.isOver(pos):
-                    back_button.image = clicked_back_button_image
-                else:
-                    back_button.image = back_button_image
-                if effect_plus_button.isOver(pos):
-                    effect_plus_button.image = clicked_plus_button_image
-                else:
-                    effect_plus_button.image = plus_button_image
-
-                if effect_minus_button.isOver(pos):
-                    effect_minus_button.image = clicked_minus_button_image
-                else:
-                    effect_minus_button.image = minus_button_image
-
-                if sound_plus_button.isOver(pos):
-                    sound_plus_button.image = clicked_plus_button_image
-                else:
-                    sound_plus_button.image = plus_button_image
-
-                if sound_minus_button.isOver(pos):
-                    sound_minus_button.image = clicked_minus_button_image
-                else:
-                    sound_minus_button.image = minus_button_image
-
-                if mute_button.image == mute_button_image:
-                    if mute_button.isOver(pos):
-                        mute_button.image = clicked_mute_button_image
-                    else:
-                        mute_button.image = mute_button_image
-                if mute_button.image == clicked_mute_button_image:
-                    if mute_button.isOver(pos):
-                        mute_button.image = clicked_mute_button_image
-                    else:
-                        mute_button.image = mute_button_image
-
-                if mute_button.image == default_button_image:
-                    if mute_button.isOver(pos):
-                        mute_button.image = clicked_default_button_image
-                    else:
-                        mute_button.image = default_button_image
-                if mute_button.image == clicked_default_button_image:
-                    if mute_button.isOver(pos):
-                        mute_button.image = clicked_default_button_image
-                    else:
-                        mute_button.image = default_button_image
-
-                pygame.display.update()
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if back_button.isOver(pos):
                     ui_variables.click_sound.play()
