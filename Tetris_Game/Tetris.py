@@ -1202,7 +1202,7 @@ def draw1_mino(x, y, mino_en, r, matrix):  # mino는 모양, r은 회전된 모�
 
     tx, ty = x, y
     # 테트리스가 바닥에 존재하면 true -> not이니까 바닥에 없는 상태
-    while not is_bottom(tx, ty, mino_en, r, matrix):
+    while not is_bottom1(tx, ty, mino_en, r, matrix):
         ty += 1  # 한칸 밑으로 하강
 
     # Draw ghost
@@ -1223,7 +1223,7 @@ def erase_mino(x, y, mino, r, matrix):
     grid = tetrimino.mino_map[mino - 1][r]
 
     # Erase ghost
-    for j in range(board_y):
+    for j in range(board_y+1):
         for i in range(board_x):
             if matrix[i][j] == 11:  # 테트리스 블록에서 해당 행렬위치에 ghost블록 존재하면
                 matrix[i][j] = 0  # 없애서 빈 곳으로 만들기
@@ -1239,7 +1239,7 @@ def erase1_mino(x, y, mino_en, r, matrix):
     grid = tetrimino.mino_map[mino_en - 1][r]
 
     # Erase ghost
-    for j in range(board_y):
+    for j in range(board_y+1):
         for i in range(board_x):
             if matrix[i][j] == 8:  # 테트리스 블록에서 해당 행렬위치에 ghost블록 존재하면
                 matrix[i][j] = 0  # 없애서 빈 곳으로 만들기
@@ -1258,7 +1258,7 @@ def is_bottom(x, y, mino, r, matrix):
     for i in range(mino_matrix_y):
         for j in range(mino_matrix_x):
             if grid[i][j] != 0:  # 테트리스 블록에서 해당 행렬위치에 블록 존재하면
-                if (y + i + 3) > board_y:  # 바닥의 y좌표에 있음(바닥에 닿음)
+                if (y + i + 1) > board_y:  # 바닥의 y좌표에 있음(바닥에 닿음)
                     return True
                 # 그 블록위치에 0, 8 아님(즉 블록 존재 함)
                 elif matrix[x + j][y + i + 1] != 0 and matrix[x + j][y + i + 1] != 11:
