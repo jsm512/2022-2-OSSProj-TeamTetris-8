@@ -1817,6 +1817,16 @@ while not done:
                     # Soft drop
                     if keys_pressed[K_DOWN]:
                         pygame.time.set_timer(pygame.USEREVENT, softdrop_speed)
+                    elif keys_pressed[K_LEFT]:
+                        pygame.time.set_timer(pygame.USEREVENT, game_speed)
+                        if not is_leftedge1(dx, dy, mino_en, rotation, matrix):
+                            ui_variables.move_sound.play()
+                            dx -= 1
+                    elif keys_pressed[K_RIGHT]:
+                        pygame.time.set_timer(pygame.USEREVENT, game_speed)
+                        if not is_rightedge1(dx, dy, mino_en, rotation, matrix):
+                            ui_variables.move_sound.play()
+                            dx += 1
                     else:
                         pygame.time.set_timer(pygame.USEREVENT, game_speed)
                 
