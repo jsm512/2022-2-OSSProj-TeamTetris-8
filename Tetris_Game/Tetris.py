@@ -630,45 +630,53 @@ def draw1_board(next1, next2, hold, score, level, goal):
     text_hold = ui_variables.h5.render("HOLD", 1, ui_variables.real_white)
     text_next = ui_variables.h5.render("NEXT", 1, ui_variables.real_white)
     text_score = ui_variables.h5.render("SCORE", 1, ui_variables.real_white)
-    score_value = ui_variables.h4.render(
+    score_value = ui_variables.h5.render(
         str(score), 1, ui_variables.real_white)
     text_level = ui_variables.h5.render("LEVEL", 1, ui_variables.real_white)
-    level_value = ui_variables.h4.render(
+    level_value = ui_variables.h5.render(
         str(level), 1, ui_variables.real_white)
     text_goal = ui_variables.h5.render("GOAL", 1, ui_variables.real_white)
-    goal_value = ui_variables.h4.render(str(goal), 1, ui_variables.real_white)
-    text_fever = ui_variables.h5.render("NEXT FEVER", 1, ui_variables.real_white)
-    next_fever_value = ui_variables.h4.render(str(next_fever), 1, ui_variables.real_white)
+    goal_value = ui_variables.h5.render(str(goal), 1, ui_variables.real_white)
+    text_fever = ui_variables.h5.render("FEVER", 1, ui_variables.real_white)
+    next_fever_value = ui_variables.h5.render(str(next_fever), 1, ui_variables.real_white)
 
     # Place texts
     screen.blit(text_hold, (int(board_width * 0.045) +
                 sidebar_width, int(board_height * 0.0374)))
     screen.blit(text_next, (int(board_width * 0.045) +
                 sidebar_width, int(board_height * 0.2780)))
-    screen.blit(text_score, (int(board_width * 0.045) +
+    screen.blit(text_score, (int(board_width * 0.07) +
                 sidebar_width, int(board_height * 0.5187)))
-    screen.blit(score_value, (int(board_width * 0.055) +
-                sidebar_width, int(board_height * 0.5614)))
-    screen.blit(text_level, (int(board_width * 0.045) +
+    screen.blit(score_value, (int(board_width * 0.08) +
+                sidebar_width, int(board_height * 0.575)))
+    screen.blit(text_level, (int(board_width * 0.07) +
                 sidebar_width, int(board_height * 0.6791)))
-    screen.blit(level_value, (int(board_width * 0.055) +
-                sidebar_width, int(board_height * 0.7219)))
-    screen.blit(text_goal, (int(board_width * 0.045) +
+    screen.blit(level_value, (int(board_width * 0.08) +
+                sidebar_width, int(board_height * 0.75)))
+    screen.blit(text_goal, (int(board_width * 0.02) +
                 sidebar_width, int(board_height * 0.8400)))
-    screen.blit(goal_value, (int(board_width * 0.055) +
-                sidebar_width, int(board_height * 0.8823)))
+    screen.blit(goal_value, (int(board_width * 0.04) +
+                sidebar_width, int(board_height * 0.92)))
     screen.blit(text_fever, (int(board_width * 0.12) + 
                 sidebar_width, int(board_height * 0.8395)))
     screen.blit(next_fever_value, (int(board_width * 0.13) + 
-                sidebar_width, int(board_height * 0.8823)))            
+                sidebar_width, int(board_height * 0.92)))            
 
     # Draw board
     # 테트리스 블록이 들어갈 공간? 그리기 ..맞나?
+    ratio = 0
+    if width == 10 or width == 7:
+        height_ratio = 0.13
+        width_ratio = 0.25
+    else:
+        height_ratio = 0.02
+        width_ratio = 0.15
+    
     for x in range(width):
         for y in range(height):
-            dx = int(board_width * 0.25) + block_size * \
+            dx = int(board_width * width_ratio) + block_size * \
                 x  # 위치비율 고정, board 가로길이에 원하는 비율을 곱해줌#
-            dy = int(board_height * 0.055) + block_size * \
+            dy = int(board_height * height_ratio) + block_size * \
                 y  # 위치비율 고정, board 세로길이에 원하는 비율을 곱해줌#
             draw_block_image(dx, dy, ui_variables.t_block_1[matrix[x][y + 1]])
 
@@ -1202,7 +1210,7 @@ def draw1_mino(x, y, mino_en, r, matrix):  # mino는 모양, r은 회전된 모�
 
     tx, ty = x, y
     # 테트리스가 바닥에 존재하면 true -> not이니까 바닥에 없는 상태
-    while not is_bottom(tx, ty, mino_en, r, matrix):
+    while not is_bottom1(tx, ty, mino_en, r, matrix):
         ty += 1  # 한칸 밑으로 하강
 
     # Draw ghost
@@ -1223,7 +1231,7 @@ def erase_mino(x, y, mino, r, matrix):
     grid = tetrimino.mino_map[mino - 1][r]
 
     # Erase ghost
-    for j in range(board_y):
+    for j in range(board_y+1):
         for i in range(board_x):
             if matrix[i][j] == 11:  # 테트리스 블록에서 해당 행렬위치에 ghost블록 존재하면
                 matrix[i][j] = 0  # 없애서 빈 곳으로 만들기
@@ -1239,7 +1247,7 @@ def erase1_mino(x, y, mino_en, r, matrix):
     grid = tetrimino.mino_map[mino_en - 1][r]
 
     # Erase ghost
-    for j in range(board_y):
+    for j in range(board_y+1):
         for i in range(board_x):
             if matrix[i][j] == 8:  # 테트리스 블록에서 해당 행렬위치에 ghost블록 존재하면
                 matrix[i][j] = 0  # 없애서 빈 곳으로 만들기
@@ -1258,7 +1266,7 @@ def is_bottom(x, y, mino, r, matrix):
     for i in range(mino_matrix_y):
         for j in range(mino_matrix_x):
             if grid[i][j] != 0:  # 테트리스 블록에서 해당 행렬위치에 블록 존재하면
-                if (y + i + 3) > board_y:  # 바닥의 y좌표에 있음(바닥에 닿음)
+                if (y + i + 1) > board_y:  # 바닥의 y좌표에 있음(바닥에 닿음)
                     return True
                 # 그 블록위치에 0, 8 아님(즉 블록 존재 함)
                 elif matrix[x + j][y + i + 1] != 0 and matrix[x + j][y + i + 1] != 11:
@@ -1586,8 +1594,8 @@ def set_initial_values():
     leaders_hard = sorted(leaders_hard.items(),
                         key=operator.itemgetter(1), reverse=True)
 
-    matrix = [[0 for y in range(height + 1)]
-            for x in range(width)]  # Board matrix
+    matrix = [[0 for y in range(29)]
+            for x in range(14)]  # Board matrix
     matrix_2P = [[0 for y in range(height + 1)]
                 for x in range(width)]  # Board matrix
 
