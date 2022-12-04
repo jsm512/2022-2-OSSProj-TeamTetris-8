@@ -630,45 +630,53 @@ def draw1_board(next1, next2, hold, score, level, goal):
     text_hold = ui_variables.h5.render("HOLD", 1, ui_variables.real_white)
     text_next = ui_variables.h5.render("NEXT", 1, ui_variables.real_white)
     text_score = ui_variables.h5.render("SCORE", 1, ui_variables.real_white)
-    score_value = ui_variables.h4.render(
+    score_value = ui_variables.h5.render(
         str(score), 1, ui_variables.real_white)
     text_level = ui_variables.h5.render("LEVEL", 1, ui_variables.real_white)
-    level_value = ui_variables.h4.render(
+    level_value = ui_variables.h5.render(
         str(level), 1, ui_variables.real_white)
     text_goal = ui_variables.h5.render("GOAL", 1, ui_variables.real_white)
-    goal_value = ui_variables.h4.render(str(goal), 1, ui_variables.real_white)
-    text_fever = ui_variables.h5.render("NEXT FEVER", 1, ui_variables.real_white)
-    next_fever_value = ui_variables.h4.render(str(next_fever), 1, ui_variables.real_white)
+    goal_value = ui_variables.h5.render(str(goal), 1, ui_variables.real_white)
+    text_fever = ui_variables.h5.render("FEVER", 1, ui_variables.real_white)
+    next_fever_value = ui_variables.h5.render(str(next_fever), 1, ui_variables.real_white)
 
     # Place texts
     screen.blit(text_hold, (int(board_width * 0.045) +
                 sidebar_width, int(board_height * 0.0374)))
     screen.blit(text_next, (int(board_width * 0.045) +
                 sidebar_width, int(board_height * 0.2780)))
-    screen.blit(text_score, (int(board_width * 0.045) +
+    screen.blit(text_score, (int(board_width * 0.07) +
                 sidebar_width, int(board_height * 0.5187)))
-    screen.blit(score_value, (int(board_width * 0.055) +
-                sidebar_width, int(board_height * 0.5614)))
-    screen.blit(text_level, (int(board_width * 0.045) +
+    screen.blit(score_value, (int(board_width * 0.08) +
+                sidebar_width, int(board_height * 0.575)))
+    screen.blit(text_level, (int(board_width * 0.07) +
                 sidebar_width, int(board_height * 0.6791)))
-    screen.blit(level_value, (int(board_width * 0.055) +
-                sidebar_width, int(board_height * 0.7219)))
-    screen.blit(text_goal, (int(board_width * 0.045) +
+    screen.blit(level_value, (int(board_width * 0.08) +
+                sidebar_width, int(board_height * 0.75)))
+    screen.blit(text_goal, (int(board_width * 0.02) +
                 sidebar_width, int(board_height * 0.8400)))
-    screen.blit(goal_value, (int(board_width * 0.055) +
-                sidebar_width, int(board_height * 0.8823)))
+    screen.blit(goal_value, (int(board_width * 0.04) +
+                sidebar_width, int(board_height * 0.92)))
     screen.blit(text_fever, (int(board_width * 0.12) + 
                 sidebar_width, int(board_height * 0.8395)))
     screen.blit(next_fever_value, (int(board_width * 0.13) + 
-                sidebar_width, int(board_height * 0.8823)))            
+                sidebar_width, int(board_height * 0.92)))            
 
     # Draw board
     # 테트리스 블록이 들어갈 공간? 그리기 ..맞나?
+    ratio = 0
+    if width == 10 or width == 7:
+        height_ratio = 0.13
+        width_ratio = 0.25
+    else:
+        height_ratio = 0.02
+        width_ratio = 0.15
+    
     for x in range(width):
         for y in range(height):
-            dx = int(board_width * 0.25) + block_size * \
+            dx = int(board_width * width_ratio) + block_size * \
                 x  # 위치비율 고정, board 가로길이에 원하는 비율을 곱해줌#
-            dy = int(board_height * 0.055) + block_size * \
+            dy = int(board_height * height_ratio) + block_size * \
                 y  # 위치비율 고정, board 세로길이에 원하는 비율을 곱해줌#
             draw_block_image(dx, dy, ui_variables.t_block_1[matrix[x][y + 1]])
 
@@ -1586,8 +1594,8 @@ def set_initial_values():
     leaders_hard = sorted(leaders_hard.items(),
                         key=operator.itemgetter(1), reverse=True)
 
-    matrix = [[0 for y in range(height + 1)]
-            for x in range(width)]  # Board matrix
+    matrix = [[0 for y in range(29)]
+            for x in range(14)]  # Board matrix
     matrix_2P = [[0 for y in range(height + 1)]
                 for x in range(width)]  # Board matrix
 
