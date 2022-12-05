@@ -1668,11 +1668,12 @@ while not done:
         volume_icon = button(board_width, board_height, 0.3, 0.5, 0.12, 0.23, volume_vector)
         screen_icon = button(board_width, board_height, 0.7, 0.5, 0.12, 0.23, screen_vector)
         size_icon = button(board_width, board_height, 0.5, 0.5, 0.12, 0.23, size_vector)
-        
+
         width = width_big
         height = height_big
         board_x = width_big
         board_y = height_big
+        block_size = 28
     # 게임안에서 Pause 눌렀을 때 screen
     if pause:
         pygame.mixer.music.pause()
@@ -2108,10 +2109,12 @@ while not done:
                 # Set speed
                 if not game_over:
                     keys_pressed = pygame.key.get_pressed()
-                    if keys_pressed[K_DOWN]:
-                        pygame.time.set_timer(pygame.USEREVENT, softdrop_speed)
-                    else:
-                        pygame.time.set_timer(pygame.USEREVENT, normal_speed)
+                    pygame.time.set_timer(pygame.USEREVENT, normal_speed)
+
+                    # if keys_pressed[K_DOWN]:
+                    #     pygame.time.set_timer(pygame.USEREVENT, softdrop_speed)
+                    # else:
+                    #     pygame.time.set_timer(pygame.USEREVENT, normal_speed)
 
                 # Draw a mino
                 draw1_mino(dx, dy, mino_en, rotation, matrix)
@@ -2374,10 +2377,11 @@ while not done:
                 # Set speed
                 if not game_over:
                     keys_pressed = pygame.key.get_pressed()
-                    if keys_pressed[K_DOWN]:
-                        pygame.time.set_timer(pygame.USEREVENT, softdrop_speed)
-                    else:
-                        pygame.time.set_timer(pygame.USEREVENT, normal_speed)
+                    pygame.time.set_timer(pygame.USEREVENT, normal_speed)
+                    # if keys_pressed[K_DOWN]:
+                    #     pygame.time.set_timer(pygame.USEREVENT, softdrop_speed)
+                    # else:
+                    #     pygame.time.set_timer(pygame.USEREVENT, normal_speed)
 
                 # Draw a mino
                 draw_mino(dx, dy, mino, rotation, matrix)
