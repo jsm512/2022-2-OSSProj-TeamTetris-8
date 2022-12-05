@@ -1631,6 +1631,7 @@ while not done:
         height = height_small
         board_x = width_small
         board_y = height_small
+        
     elif (board_width>600 and board_width<=1200):
         select_mode_button = button(board_width, board_height, 0.125, 0.4, 0.22, 0.2, select_mode_button_image)
         setting_button = button(board_width, board_height, 0.375,0.4, 0.22, 0.2, setting_button_image)
@@ -2075,8 +2076,8 @@ while not done:
                             hold_mino, score, level, goal)
 
             elif event.type == VIDEORESIZE:
-                board_width = event.w
-                board_height = event.h
+                board_width = board_width
+                board_height = board_height
                 if board_width < min_width or board_height < min_height:  # 최소 너비 또는 높이를 설정하려는 경우
                     board_width = min_width
                     board_height = min_height
@@ -2093,7 +2094,7 @@ while not done:
 
                 block_size = int(board_height * 0.045)
                 screen = pygame.display.set_mode(
-                    (board_width, board_height), pygame.RESIZABLE)
+                    (board_width, board_height),pygame.RESIZABLE)
 
                 for i in range(len(button_list)):
                     button_list[i].change(board_width, board_height)
@@ -2342,8 +2343,8 @@ while not done:
                         dx += 1
 
             elif event.type == VIDEORESIZE:
-                board_width = event.w
-                board_height = event.h
+                board_width = board_width
+                board_height = board_height
                 if board_width < min_width or board_height < min_height:  # 최소 너비 또는 높이를 설정하려는 경우
                     board_width = min_width
                     board_height = min_height
@@ -2654,8 +2655,8 @@ while not done:
                         pygame.display.update()
 
             elif event.type == VIDEORESIZE:
-                board_width = event.w
-                board_height = event.h
+                board_width = board_width
+                board_height = board_height
                 if board_width < min_width or board_height < min_height:  # 최소 너비 또는 높이를 설정하려는 경우
                     board_width = min_width
                     board_height = min_height
@@ -2681,7 +2682,6 @@ while not done:
         
 
     elif pvp:
-
         for event in pygame.event.get():
             change_1P = combo_count_2P // 3
             change_2P = combo_count // 3
