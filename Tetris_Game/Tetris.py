@@ -8,34 +8,31 @@ import operator
 from mino import *
 from random import *
 from pygame.locals import *
+from number import *
 
 
 # Define
-block_size = 17  # Height, width of single block
-width = 10  # Board에 가로로 들어갈 칸의 개수
-width_big = 14
-width_normal = 10
-width_small = 7
-height = 20  # Board에 세로로 들어갈 칸의 개수
-height_big = 28
-height_normal = 20
-height_small=14
-framerate = 30  # Bigger -> Slower
+block_size = init_block_size
+width = init_width
+width_big = big_size_width
+width_normal = init_width
+width_small = small_size_width
+height = init_height
+height_big = big_size_height
+height_normal = init_height
+height_small=small_size_height
+framerate = init_framerate  # Bigger -> Slower
 board_x = width
 board_y = height
 
 
-
-total_time = 60  # 타임 어택 시간
-speed_change = 2  # 레벨별 블록 하강 속도 상승 정도
-
-board_width = 800  # 전체 창의 가로 길이
-board_height = 450  # 전체 창의 세로 길이
-board_rate = 0.5625  # 가로세로비율 16:9
-max_level = 15
-goal_achieve = 1
-increase_level = 1
-increase_goal = 5
+board_width = init_board_width  
+board_height = init_board_height
+board_rate = window_rate
+max_level = single_max_level
+goal_achieve = single_goal_achieve
+increase_level = single_increase_level
+increase_goal = single_increase_goal
 levelup_img_width = 0.28
 levelup_img_height = 0.1
 increase_easy_speed = 0.6
@@ -44,16 +41,16 @@ increase_hard_speed = 0.8
 img_upload_delay = 400
 
 
-min_width = 400
-min_height = 225
-mid_width = 1200
+min_width = min_board_width
+min_height = min_board_height
+mid_width = mid_board_width
 
 # 기본 볼륨
-music_volume = 5
-effect_volume = 5
+music_volume = init_music_volume
+effect_volume = init_effect_volume
 
-mino_matrix_x = 4  # mino는 4*4 배열이어서 이를 for문에 사용
-mino_matrix_y = 4  # mino는 4*4 배열이어서 이를 for문에 사용
+mino_matrix_x = mino_arr_x_size
+mino_matrix_y = mino_arr_y_size
 
 
 
@@ -76,22 +73,22 @@ class ui_variables: #UI
     font_path_b = "Tetris_Game/assets/fonts/a옛날사진관3.ttf"
     font_path_i = "Tetris_Game/assets/fonts/a옛날사진관3.ttf"
 
-    h1 = pygame.font.Font(font_path, 50)
-    h2 = pygame.font.Font(font_path, 30)
-    h3 = pygame.font.Font(font_path, 25)
-    h4 = pygame.font.Font(font_path, 20)
-    h5 = pygame.font.Font(font_path, 13)
-    h6 = pygame.font.Font(font_path, 7)
+    h1 = pygame.font.Font(font_path, h1_size)
+    h2 = pygame.font.Font(font_path, h2_size)
+    h3 = pygame.font.Font(font_path, h3_size)
+    h4 = pygame.font.Font(font_path, h4_size)
+    h5 = pygame.font.Font(font_path, h5_size)
+    h6 = pygame.font.Font(font_path, h6_size)
 
-    h1_b = pygame.font.Font(font_path_b, 50)
-    h2_b = pygame.font.Font(font_path_b, 30)
+    h1_b = pygame.font.Font(font_path_b, h1_b_size)
+    h2_b = pygame.font.Font(font_path_b, h2_b_size)
 
-    h2_i = pygame.font.Font(font_path_i, 30)
-    h5_i = pygame.font.Font(font_path_i, 13)
+    h2_i = pygame.font.Font(font_path_i, h2_i_size)
+    h5_i = pygame.font.Font(font_path_i, h5_i_size)
 
     # Sounds
     pygame.mixer.music.load("Tetris_Game/assets/sounds/BGM1.wav")  # 음악 불러옴
-    pygame.mixer.music.set_volume(0.5)  # 이 부분도 필요 없음, set_volume에 추가해야 함
+    # pygame.mixer.music.set_volume(0.5)  # 이 부분도 필요 없음, set_volume에 추가해야 함
     intro_sound = pygame.mixer.Sound("Tetris_Game/assets/sounds/intro.wav")
     fall_sound = pygame.mixer.Sound("Tetris_Game/assets/sounds/SFX_Fall.wav")
     break_sound = pygame.mixer.Sound("Tetris_Game/assets/sounds/SFX_Break.wav")
@@ -114,26 +111,26 @@ class ui_variables: #UI
     # 피버 이미지
     fever_image = pygame.image.load("Tetris_Game/assets/images/fever.png")
 
-    black = (10, 10, 10)  # rgb(10, 10, 10)
-    black_pause = (0, 0, 0, 127)
-    real_white = (255, 255, 255)  # rgb(255, 255, 255)
-    white = (211, 211, 211)  # rgb(211, 211, 211) ##연회색
-    grey_1 = (26, 26, 26)  # rgb(26, 26, 26)
-    grey_2 = (35, 35, 35)  # rgb(35, 35, 35)
-    grey_3 = (55, 55, 55)  # rgb(55, 55, 55)
-    pinkpurple = (250, 165, 255)  # rgb(250, 165, 255) 핑크+보라#
+    black = black_color
+    black_pause = pause_color
+    real_white = real_white_color
+    white = white_color
+    grey_1 = grey_1_color
+    grey_2 = grey_2_color
+    grey_3 = grey_3_color
+    pinkpurple = pinkpurple_color
 
     # Tetrimino colors
-    cyan = (69, 206, 204)  # rgb(69, 206, 204) # I
-    blue = (64, 111, 249)  # rgb(64, 111, 249) # J
-    orange = (253, 189, 53)  # rgb(253, 189, 53) # L
-    yellow = (246, 227, 90)  # rgb(246, 227, 90) # O
-    green = (98, 190, 68)  # rgb(98, 190, 68) # S
-    pink = (242, 64, 235)  # rgb(242, 64, 235) # T
-    red = (225, 13, 27)  # rgb(225, 13, 27) # Z
-    lightgreen = (192,237,112) # rgb(192,237,112) # +
-    gold = (255,215,0) # rgb(255,215,0)
-    brown = (139,69,19) # rgb(139,69,19)
+    cyan = cyan_color
+    blue = blue_color
+    orange = orange_color
+    yellow = yellow_color
+    green = green_color
+    pink = pink_color
+    red = red_color
+    lightgreen = lightgreen_color
+    gold = gold_color
+    brown = brown_color
     
     t_color = [grey_2, cyan, blue, orange, yellow, green, pink, red, lightgreen, gold, brown, grey_3]
     cyan_image = 'Tetris_Game/assets/block_images/cyan.png'
@@ -664,7 +661,6 @@ def draw1_board(next1, next2, hold, score, level, goal):
 
     # Draw board
     # 테트리스 블록이 들어갈 공간? 그리기 ..맞나?
-    ratio = 0
     if width == 10 or width == 7:
         height_ratio = 0.13
         width_ratio = 0.25
@@ -3559,9 +3555,6 @@ while not done:
         screen.blit(pause_surface, (0, 0))
 
         single_button.draw(screen, (0, 0, 0))
-        # easy_button.draw(screen, (0, 0, 0)) #easy mode
-        # hard_button.draw(screen, (0, 0, 0)) #hard mode
-        # normal_button.draw(screen, (0, 0, 0))
         pvp_button.draw(screen, (0, 0, 0)) #multi mode
         back_button.draw(screen, (0, 0, 0))
         
@@ -3579,20 +3572,11 @@ while not done:
                     single_button.image = clicked_single_button_image
                 else:
                     single_button.image = single_button_image
-                # if easy_button.isOver_2(pos):
-                #     easy_button.image = clicked_easy_button_image
-                # else:
-                #     easy_button.image = easy_button_image
 
                 if pvp_button.isOver_2(pos):
                     pvp_button.image = clicked_pvp_button_image
                 else:
                     pvp_button.image = pvp_button_image
-
-                # if hard_button.isOver_2(pos):
-                #     hard_button.image = clicked_hard_button_image
-                # else:
-                #     hard_button.image = hard_button_image
 
                 if back_button.isOver(pos):
                     back_button.image = clicked_back_button_image
@@ -3608,14 +3592,6 @@ while not done:
                     initialize = True
                     select_mode = False
 
-                # if easy_button.isOver_2(pos):
-                #     ui_variables.click_sound.play()
-                #     previous_time = pygame.time.get_ticks()
-                #     ui_variables.intro_sound.stop()
-                #     pygame.mixer.music.play(-1)
-                #     start = True
-                #     initialize = True
-                #     select_mode = False
                 if pvp_button.isOver_2(pos):
                     ui_variables.click_sound.play()
                     ui_variables.intro_sound.stop()
@@ -3623,14 +3599,6 @@ while not done:
                     pvp = True
                     initialize = True
                     select_mode = False
-                    
-                # if hard_button.isOver_2(pos):
-                #     ui_variables.click_sound.play()
-                #     ui_variables.intro_sound.stop()
-                #     pygame.mixer.music.play(-1)
-                #     hard = True
-                #     initialize = True
-                #     select_mode = False
                     
                 if back_button.isOver(pos):
                     ui_variables.click_sound.play()
