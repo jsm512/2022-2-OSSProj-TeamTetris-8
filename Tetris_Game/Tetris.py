@@ -336,76 +336,71 @@ class button():  # 버튼객체
 # (self, board_width, board_height,   0.2,   0.2,     0.22,        0.2,      img='')
 
 
-select_mode_button = button(board_width, board_height, 0.125, 0.4, 0.22, 0.2, select_mode_button_image)
-setting_button = button(board_width, board_height, 0.375,0.4, 0.22, 0.2, setting_button_image)
-quit_button = button(board_width, board_height, 0.625,0.4, 0.22, 0.2, quit_button_image)
-score_board_button = button(board_width, board_height, 0.875, 0.4, 0.22, 0.2, score_board_button_image)
+select_mode_button = button(board_width, board_height, select_mode_button_x_rate, select_mode_button_y_rate, select_mode_button_width_rate, select_mode_button_height_rate, select_mode_button_image)
+setting_button = button(board_width, board_height, setting_button_x_rate,setting_button_y_rate,setting_button_width_rate,setting_button_heigth_rate, setting_button_image)
+quit_button = button(board_width, board_height,quit_button_x_rate,quit_button_y_rate,quit_button_width_rate,quit_button_height_rate, quit_button_image)
+score_board_button = button(board_width, board_height,score_board_button_x_rate,score_board_button_y_rate,score_board_button_width_rate,score_board_button_height_rate, score_board_button_image)
 
-single_button = button(board_width, board_height, 0.35, 0.35, 0.22, 0.2, single_button_image)
-pvp_button = button(board_width, board_height, 0.65,0.35, 0.22, 0.2, pvp_button_image)
+single_button = button(board_width, board_height,single_button_x_rate,single_button_y_rate,single_button_width_rate,single_button_height_rate, single_button_image)
+pvp_button = button(board_width, board_height,pvp_button_x_rate,pvp_button_y_rate,pvp_button_width_rate,pvp_button_height_rate, pvp_button_image)
 
-easy_button = button(board_width, board_height, 0.25,0.35, 0.22, 0.2, easy_button_image)
-normal_button = button(board_width, board_height, 0.5, 0.35, 0.22 , 0.2, normal_button_image)
-hard_button = button(board_width, board_height, 0.75,0.35, 0.22, 0.2, hard_button_image)
-pvp_button = button(board_width, board_height, 0.65,0.35, 0.22, 0.2, pvp_button_image)
+easy_button = button(board_width, board_height,easy_button_x_rate,easy_button_y_rate,easy_button_width_rate,easy_button_height_rate, easy_button_image)
+normal_button = button(board_width, board_height,normal_button_x_rate,normal_button_y_rate,normal_button_width_rate,normal_button_height_rate, normal_button_image)
+hard_button = button(board_width, board_height,hard_button_x_rate,hard_button_y_rate,hard_button_width_rate,hard_button_height_rate, hard_button_image)
+pvp_button = button(board_width, board_height,pvp_button_x_rate,pvp_button_y_rate,pvp_button_width_rate,pvp_button_height_rate, pvp_button_image)
 
-resume_button = button(board_width, board_height, 0.5,0.23, 0.17, 0.2, resume_button_image)
-menu_button2 = button(board_width, board_height, 0.5,0.43, 0.17, 0.2, menu_button_image)
-help_button = button(board_width, board_height, 0.5,0.63, 0.17, 0.2, help_button_image)
-training_help_button = button(board_width, board_height, 0.68,0.6, 0.17, 0.2, help_button_image)
+resume_button = button(board_width, board_height,resume_buttone_x_rate,resume_buttone_y_rate,resume_buttone_width_rate,resume_buttone_height_rate, resume_button_image)
+menu_button2 = button(board_width, board_height,menu_button2_x_rate,menu_button2_y_rate,menu_button2_width_rate,menu_button2_height_rate, menu_button_image)
+help_button = button(board_width, board_height,help_button_x_rate,help_button_y_rate,help_button_width_rate,help_button_height_rate, help_button_image)
 
-pause_quit_button = button(board_width, board_height,0.5, 0.83, 0.17, 0.2, quit_button_image)
-pause_setting_button = button(board_width, board_height, 0.5, 0.63, 0.17, 0.2, pause_setting_button_image)
+pause_quit_button = button(board_width, board_height,pause_quit_button_x_rate,pause_quit_button_y_rate,pause_quit_button_width_rate,pause_quit_button_height_rate, quit_button_image)
+pause_setting_button = button(board_width, board_height,pause_setting_button_x_rate,pause_setting_button_y_rate,pause_setting_button_width_rate,pause_setting_button_height_rate, pause_setting_button_image)
 
-leaderboard_icon = button(board_width, board_height,0.77, 0.85, 0.15, 0.2, leaderboard_vector)
-mute_button = button(board_width, board_height, 0.58, 0.715, 0.06, 0.11, mute_button_image)
-default_button = button(board_width, board_height, 0.5,0.27, 0.15, 0.2, default_button_image)
+leaderboard_icon = button(board_width, board_height,leaderboard_icon_x_rate,leaderboard_icon_y_rate,leaderboard_icon_width_rate,leaderboard_icon_height_rate, leaderboard_vector)
+mute_button = button(board_width, board_height,mute_button_x_rate,mute_button_y_rate,mute_button_width_rate,mute_button_height_rate, mute_button_image)
+default_button = button(board_width, board_height,default_button_x_rate,default_button_y_rate,default_button_width_rate,default_button_height_rate, default_button_image)
 
 
-restart_button = button(board_width, board_height, 0.5,0.23, 0.17, 0.2, restart_button_image)
-back_button = button(board_width, board_height, 0.5,0.85, 0.1, 0.12, back_button_image)
-back_button2 = button(board_width, board_height, 0.2,0.85, 0.1, 0.12, back_button_image)
-ok_button = button(board_width, board_height, 0.5,0.83, 0.15, 0.2, ok_button_image)
+restart_button = button(board_width, board_height,restart_button_x_rate,restart_button_y_rate,restart_button_width_rate,restart_button_height_rate, restart_button_image)
+back_button = button(board_width, board_height,back_button_x_rate,back_button_y_rate,back_button_width_rate,back_button_height_rate, back_button_image)
+back_button2 = button(board_width, board_height,back_button2_x_rate,back_button2_y_rate,back_button2_width_rate,back_button2_height_rate, back_button_image)
+ok_button = button(board_width, board_height,ok_button_x_rate,ok_button_y_rate,ok_button_width_rate,ok_button_height_rate, ok_button_image)
 
 # 멀티모드 게임오버화면 버튼
-multi_menu_button = button(board_width, board_height,0.35, 0.8, 0.2, 0.2, menu_button_image)
-multi_restart_button = button(board_width, board_height, 0.65, 0.8, 0.2, 0.2, restart_button_image)
-# 트레이닝 게임오버 화면 버튼
-training_restart_button = button(board_width, board_height, 0.35, 0.8, 0.2, 0.2, restart_button_image)
-training_multi_start_button = button(board_width, board_height, 0.65, 0.8, 0.2, 0.2, pvp_button_image)
-training_hard_start_button = button(board_width, board_height, 0.65, 0.8, 0.2, 0.2, hard_button_image)
+multi_menu_button = button(board_width, board_height,multi_menu_button_x_rate,multi_menu_button_y_rate,multi_menu_button_width_rate,multi_menu_button_height_rate, menu_button_image)
+multi_restart_button = button(board_width, board_height,multi_restart_button_x_rate,multi_restart_button_y_rate,multi_restart_button_width_rate,multi_restart_button_height_rate, restart_button_image)
 
-effect_minus_button = button(board_width, board_height, 0.13, 0.73, 0.0625, 0.1111, minus_button_image)
-effect_plus_button = button(board_width, board_height, 0.28, 0.73, 0.0625, 0.1111, plus_button_image)
+effect_minus_button = button(board_width, board_height,effect_minus_button_x_rate,effect_minus_button_y_rate,effect_minus_button_width_rate,effect_minus_button_height_rate, minus_button_image)
+effect_plus_button = button(board_width, board_height,effect_plus_button_x_rate,effect_plus_button_y_rate,effect_plus_button_width_rate,effect_plus_button_height_rate, plus_button_image)
 
-sound_minus_button = button(board_width, board_height, 0.13, 0.4, 0.0625, 0.1111, minus_button_image)
-sound_plus_button = button(board_width, board_height, 0.28, 0.4, 0.0625, 0.1111, plus_button_image)
+sound_minus_button = button(board_width, board_height,sound_minus_button_x_rate,sound_minus_button_y_rate,sound_minus_button_width_rate,sound_minus_button_height_rate, minus_button_image)
+sound_plus_button = button(board_width, board_height,sound_plus_button_x_rate,sound_plus_button_y_rate,sound_plus_button_width_rate,sound_plus_button_height_rate, plus_button_image)
 
 mute_check_button = button(board_width, board_height,0.2, 0.4, 0.0625, 0.1111, check_button_image)
 
-background1_check_button = button(board_width, board_height, 0.5, 0.25, 0.1875, 0.1444, background1_image)  # hongkong
-background2_check_button = button(board_width, board_height, 0.5, 0.45, 0.1875, 0.1444, clicked_background2_image)  # nyc (default background)
-background3_check_button = button(board_width, board_height, 0.5, 0.65, 0.1875, 0.1444, background3_image)  # uk
+background1_check_button = button(board_width, board_height,background_check_x_rate,background1_check_y_rate,background_check_width_rate,background_check_height_rate, background1_image)  # hongkong
+background2_check_button = button(board_width, board_height,background_check_x_rate,background2_check_y_rate,background_check_width_rate,background_check_height_rate, clicked_background2_image)  # nyc (default background)
+background3_check_button = button(board_width, board_height,background_check_x_rate,background3_check_y_rate,background_check_width_rate,background_check_height_rate, background3_image)  # uk
 
-size1_check_button = button(board_width, board_height, 0.3, 0.5, 0.1875, 0.1444, size1_image)
-size2_check_button = button(board_width, board_height, 0.51, 0.5, 0.1875, 0.1444, size2_image)
-size3_check_button = button(board_width, board_height, 0.7, 0.5, 0.1875, 0.1444, size3_image)
+size1_check_button = button(board_width, board_height,size1_check_x_rate,size_check_y_rate,size_check_width_rate,size_check_height_rate, size1_image)
+size2_check_button = button(board_width, board_height,size2_check_x_rate,size_check_y_rate,size_check_width_rate,size_check_height_rate, size2_image)
+size3_check_button = button(board_width, board_height,size3_check_x_rate,size_check_y_rate,size_check_width_rate,size_check_height_rate, size3_image)
 
-volume_icon = button(board_width, board_height, 0.3, 0.5, 0.12, 0.23, volume_vector)
-screen_icon = button(board_width, board_height, 0.7, 0.5, 0.12, 0.23, screen_vector)
-size_icon = button(board_width, board_height, 0.5, 0.5, 0.12, 0.23, size_vector)
+volume_icon = button(board_width, board_height,volume_icon_x_rate,icon_y_rate,icon_width_rate,icon_height_rate, volume_vector)
+screen_icon = button(board_width, board_height,screen_icon_x_rate,icon_y_rate,icon_width_rate,icon_height_rate, screen_vector)
+size_icon = button(board_width, board_height,size_icon_x_rate,icon_y_rate,icon_width_rate,icon_height_rate, size_vector)
 
 
 #음소거 추가#
-effect_sound_off_button = button(board_width, board_height, 0.4, 0.73, 0.0625, 0.1111, sound_off_button_image)
-music_sound_off_button = button(board_width, board_height, 0.4, 0.4, 0.0625, 0.1111, sound_off_button_image)
-effect_sound_on_button = button(board_width, board_height, 0.4, 0.73, 0.0625, 0.1111, sound_on_button_image)
-music_sound_on_button = button(board_width, board_height, 0.4, 0.4, 0.0625, 0.1111, sound_on_button_image)
+effect_sound_off_button = button(board_width, board_height,on_off_x_rate,effect_sound_button_y_rate,on_off_width_rate,on_off_height_rate, sound_off_button_image)
+music_sound_off_button = button(board_width, board_height,on_off_x_rate,music_sound_button_y_rate,on_off_width_rate,on_off_height_rate, sound_off_button_image)
+effect_sound_on_button = button(board_width, board_height,on_off_x_rate,effect_sound_button_y_rate,on_off_width_rate,on_off_height_rate, sound_on_button_image)
+music_sound_on_button = button(board_width, board_height,on_off_x_rate,music_sound_button_y_rate,on_off_width_rate,on_off_height_rate, sound_on_button_image)
 
 #BGM 선택 추가#
-BGM1_sound_on_button = button(board_width, board_height, 0.57, 0.37, 0.08, 0.15, clicked_backgroundmusic_select_image)  # default bgm: BGM1
-BGM2_sound_on_button = button(board_width, board_height, 0.69, 0.37, 0.08, 0.15, backgroundmusic_select_image)
-BGM3_sound_on_button = button(board_width, board_height, 0.81, 0.37, 0.08, 0.15, backgroundmusic_select_image)
+BGM1_sound_on_button = button(board_width, board_height,BGM1_x_rate,BGM_button_y_rate,BGM_button_width_rate,BGM_button_height_rate, clicked_backgroundmusic_select_image)  # default bgm: BGM1
+BGM2_sound_on_button = button(board_width, board_height,BGM2_x_rate,BGM_button_y_rate,BGM_button_width_rate,BGM_button_height_rate, backgroundmusic_select_image)
+BGM3_sound_on_button = button(board_width, board_height,BGM3_x_rate,BGM_button_y_rate,BGM_button_width_rate,BGM_button_height_rate, backgroundmusic_select_image)
 
 # 선택된 BGM
 selected_bgm = "Tetris_Game/assets/sounds/BGM1.wav"
@@ -419,7 +414,7 @@ button_list = [
     leaderboard_icon, mute_button, default_button, restart_button, back_button, ok_button, effect_plus_button, effect_minus_button,  size1_check_button, size2_check_button, size3_check_button, 
     sound_plus_button, sound_minus_button, mute_check_button, background1_check_button, background2_check_button, background3_check_button,
     volume_icon, screen_icon, size_icon, effect_sound_off_button, music_sound_off_button, effect_sound_on_button, music_sound_on_button,
-    BGM1_sound_on_button, BGM2_sound_on_button, BGM3_sound_on_button, multi_restart_button, multi_menu_button, back_button2, training_restart_button, training_multi_start_button, training_hard_start_button]
+    BGM1_sound_on_button, BGM2_sound_on_button, BGM3_sound_on_button, multi_restart_button, multi_menu_button, back_button2]
 
 
 def set_volume():
