@@ -4,6 +4,7 @@
 from contextlib import nullcontext
 import pygame
 import operator
+import pygame.freetype
 
 from mino import *
 from random import *
@@ -75,14 +76,18 @@ class ui_variables: #UI
     font_path_b = "Tetris_Game/assets/fonts/a옛날사진관3.ttf"
     font_path_i = "Tetris_Game/assets/fonts/a옛날사진관3.ttf"
 
+    screen_height = screen.get_height()
+
     h1 = pygame.font.Font(font_path, 50)
     h2 = pygame.font.Font(font_path, 30)
-    h3 = pygame.font.Font(font_path, 25)
+    h3 = pygame.font.Font(font_path, int(25*screen_height/300))
     h4 = pygame.font.Font(font_path, 20)
     h5 = pygame.font.Font(font_path, 13)
     h6 = pygame.font.Font(font_path, 7)
 
     s1 = pygame.font.Font(font_path, 16)
+
+    font_re = pygame.freetype.Font(font_path)
 
     h1_b = pygame.font.Font(font_path_b, 50)
     h2_b = pygame.font.Font(font_path_b, 30)
@@ -1444,7 +1449,7 @@ def multi_reverse_key(rev, player):
             return keys_2P_reverse
 
 def set_initial_values():
-    global attack_point, attack_point_2P, combo_count, combo_count_2P, line_count, score, level, goal, next_fever, fever_score, fever_interval, max_score, fever, combo_fever, score_2P, level_2P, goal_2P, bottom_count, bottom_count_2P, hard_drop, hard_drop_2P, attack_point, attack_point_2P, dx, dy, dx_2P, dy_2P, rotation, rotation_2P, mino,mino_en, mino_2P, next_mino1,next_mino1_en, next_mino2,next_mino2_en, next_mino1_2P, hold, hold_2P, hold_mino, hold_mino_2P, framerate, framerate_2P, matrix, matrix_2P, Change_RATE, blink, start, pause, done, game_over, leader_board, setting, volume_setting, size_setting, screen_setting, pvp, help, gravity_mode, debug, d, e, b, u, g, start_ticks, textsize, CHANNELS, swidth, name_location, name, previous_time, current_time, pause_time, lines, leaders, leaders_hard, game_status, framerate_blockmove, framerate_2P_blockmove, game_speed, game_speed_2P, normal_speed, softdrop_speed, select_mode, single, normal, hard, hard_time_setting, winner, key1, key2, key_reverse, key_reverse_2P, current_key, current_key_2P, help_status, remaining_time
+    global attack_point, attack_point_2P, combo_count, combo_count_2P, line_count, score, level, goal, next_fever, fever_score, fever_interval, max_score, fever, combo_fever, score_2P, level_2P, goal_2P, bottom_count, bottom_count_2P, hard_drop, hard_drop_2P, attack_point, attack_point_2P, dx, dy, dx_2P, dy_2P, rotation, rotation_2P, mino,mino_en, mino_2P, next_mino1,next_mino1_en, next_mino2,next_mino2_en, next_mino1_2P, hold, hold_2P, hold_mino, hold_mino_2P, framerate, framerate_2P, matrix, matrix_2P, Change_RATE, blink, start, pause, done, game_over, leader_board, setting, volume_setting, size_setting, screen_setting, pvp, help, gravity_mode, debug, d, e, b, u, g, start_ticks, textsize, CHANNELS, swidth, name_location, name, previous_time, current_time, pause_time, lines, leaders, leaders_hard, game_status, framerate_blockmove, framerate_2P_blockmove, game_speed, game_speed_2P, normal_speed, softdrop_speed, select_mode, single, normal, hard, hard_time_setting, winner, key1, key2, key_reverse, key_reverse_2P, current_key, current_key_2P, help_status, remaining_time, screen_height, font_re, font_path
 
     framerate = 30  # Bigger -> Slower  기본 블록 하강 속도, 2도 할만 함, 0 또는 음수 이상이어야 함
     framerate_blockmove = framerate * 3  # 블록 이동 시 속도
@@ -1454,6 +1459,9 @@ def set_initial_values():
     game_speed_2P = framerate_2P * 20  # 2P 게임 기본 속도
     normal_speed = framerate * 17 # 노말모드, 하드모드 속도 빠르게
     softdrop_speed = 150  # 소프트 드랍 시 게임 속도 빠르게
+    screen_height = screen.get_height()
+    font_path = "Tetris_Game/assets/fonts/a옛날사진관3.ttf"
+    font_re = pygame.freetype.Font(font_path)
 
     help_status = False
     # Initial values
@@ -4006,14 +4014,15 @@ while not done:
         screen.blit(mute_all_text, (board_width *
                     0.54, board_height * 0.55))  # 위치 비율 고정
 
-        music_volume_size_text = ui_variables.h3.render(
-            str(music_volume), 1, ui_variables.white)
-        effect_volume_size_text = ui_variables.h3.render(
-            str(effect_volume), 1, ui_variables.white)
-        screen.blit(music_volume_size_text, (board_width *
-                    0.19, board_height * 0.37))  # 위치 비율 고정
-        screen.blit(effect_volume_size_text, (board_width *
-                    0.19, board_height * 0.7))  # 위치 비율 고정
+        # music_volume_size_text = ui_variables.h3.render(
+        #     str(music_volume), 1, ui_variables.white)
+        # effect_volume_size_text = ui_variables.h3.render(
+        #     str(effect_volume), 1, ui_variables.white)
+
+        # screen.blit(music_volume_size_text, (board_width *
+        #             0.19, board_height * 0.37))  # 위치 비율 고정
+        # screen.blit(effect_volume_size_text, (board_width *
+        #             0.19, board_height * 0.7))  # 위치 비율 고정
 
         BGM1_text = ui_variables.h5.render('BGM1', 1, ui_variables.white)
         BGM2_text = ui_variables.h5.render('BGM2', 1, ui_variables.white)
@@ -4173,6 +4182,18 @@ while not done:
 
                 for i in range(len(button_list)):
                     button_list[i].change(board_width, board_height)
+
+                # font_re.render_to(screen, (100, 100), 'text', (255, 255, 255) , size=int(450*screen_height/768))
+
+                music_volume_size_text = ui_variables.h3.render(
+                    str(music_volume), 1, ui_variables.white)
+                effect_volume_size_text = ui_variables.h3.render(
+                    str(effect_volume), 1, ui_variables.white)
+
+                screen.blit(music_volume_size_text, (board_width *
+                            0.19, board_height * 0.37))  # 위치 비율 고정
+                screen.blit(effect_volume_size_text, (board_width *
+                            0.19, board_height * 0.7))  # 위치 비율 고정
 
     elif size_setting:
         screen.fill(ui_variables.pinkpurple)
