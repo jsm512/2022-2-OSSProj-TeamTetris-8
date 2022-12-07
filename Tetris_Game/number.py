@@ -1,3 +1,6 @@
+#frequency value
+half = 0.5
+
 #font_size
 h1_size = 50
 h2_size = 30
@@ -65,12 +68,13 @@ init_music_volume = 5
 init_effect_volume = 5
 
 
-#Single
+# Single
 single_max_level = 15
 single_increase_level = 1
 single_increase_goal = 5
 single_goal_achieve = 1
 
+# 버튼 위치 
 select_mode_button_x_rate = 0.125
 select_mode_button_y_rate = 0.4
 select_mode_button_width_rate = 0.22
@@ -211,4 +215,68 @@ sound_plus_button_y_rate = 0.4
 sound_plus_button_width_rate = 0.0625
 sound_plus_button_height_rate = 0.1111
 
-#377까지
+mute_check_x_rate = 0.2
+mute_check_x_rate = 0.4
+mute_check_x_rate = 0.0625
+mute_check_x_rate = 0.1111
+
+background_check_x_rate = 0.5
+background_check_width_rate = 0.1875
+background_check_height_rate = 0.1444
+
+background1_check_y_rate = 0.25
+background2_check_y_rate = 0.45
+background3_check_y_rate = 0.65
+
+size_check_y_rate = 0.5
+size_check_width_rate = 0.1875
+size_check_height_rate = 0.1444
+
+size1_check_x_rate = 0.3
+size2_check_x_rate = 0.51
+size3_check_x_rate = 0.7
+
+icon_y_rate = 0.5
+icon_width_rate = 0.12
+icon_height_rate = 0.23
+
+volume_icon_x_rate = 0.3
+screen_icon_x_rate = 0.7
+size_icon_x_rate = 0.5
+
+on_off_x_rate = 0.4
+on_off_width_rate = 0.0625
+on_off_height_rate = 0.1111
+
+effect_sound_button_y_rate = 0.73
+music_sound_button_y_rate = 0.4
+
+BGM_button_y_rate = 0.37
+BGM_button_width_rate = 0.08
+BGM_button_height_rate = 0.15
+
+BGM1_x_rate = 0.57
+BGM2_x_rate = 0.69
+BGM3_x_rate = 0.81
+
+##### def draw_board()
+sidebar_rate = 0.5312
+sidebar_width_rate = 0.2375
+dx1_rate = 0.025
+dy1_rate = 0.3743
+dx2_rate = 0.145
+dy2_rate = 0.3743
+dx_rate = 0.045
+dy_rate = 0.1336
+dx_matrix_rate = 0.25
+dy_matrix_rate = 0.055
+
+single_sidebar_rate = 0.6
+player1_sidebar_rate = 0.31
+player1_sidebar_width_rate = 0.1875
+player1_dx_matrix_rate = 0.05
+
+player2_sidebar_rate = 0.82
+player2_dx_rate = 0.05
+player2_dy_rate = 0.3743
+player2_dx_matrix_rate = 0.54

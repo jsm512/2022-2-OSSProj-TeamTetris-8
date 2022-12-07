@@ -468,14 +468,14 @@ def draw_block_image(x, y, image):
 # Draw game screen
 def draw_board(next1, next2, hold, score, level, goal):
     # 크기 비율 고정, 전체 board 가로길이에서 원하는 비율을 곱해줌
-    sidebar_width = int(board_width * 0.5312)
+    sidebar_width = int(board_width * sidebar_rate)
     # screen.fill(ui_variables.grey_1)
 
     # Draw sidebar
     pygame.draw.rect(
         screen,
         ui_variables.grey_1,
-        Rect(sidebar_width, 0, int(board_width * 0.2375), board_height)  # 크기 비율 고정
+        Rect(sidebar_width, 0, int(board_width * sidebar_width_rate), board_height)  # 크기 비율 고정
     )
 
     # Draw 2 next minos
@@ -484,18 +484,18 @@ def draw_board(next1, next2, hold, score, level, goal):
 
     for i in range(mino_matrix_y):
         for j in range(mino_matrix_x):
-            dx1 = int(board_width * 0.025) + sidebar_width + \
+            dx1 = int(board_width * dx1_rate) + sidebar_width + \
                 block_size * j  # 위치 비율 고정, 전체 board 가로 길이에서 원하는 비율을 곱해줌
-            dy1 = int(board_height * 0.3743) + block_size * \
+            dy1 = int(board_height * dy1_rate) + block_size * \
                 i  # 위치 비율 고정, 전체 board 세로 길이에서 원하는 비율을 곱해줌#
             if grid_n1[i][j] != 0:
                 draw_block_image(dx1, dy1, ui_variables.t_block[grid_n1[i][j]])
 
     for i in range(mino_matrix_y):
         for j in range(mino_matrix_x):
-            dx2 = int(board_width * 0.145) + sidebar_width + \
+            dx2 = int(board_width * dx2_rate) + sidebar_width + \
                 block_size * j  # 위치 비율 고정, 전체 board 가로길이에서 원하는 비율을 곱해줌#
-            dy2 = int(board_height * 0.3743) + block_size * \
+            dy2 = int(board_height * dy2_rate) + block_size * \
                 i  # 위치 비율 고정, 전체 board 세로길이에서 원하는 비율을 곱해줌#
             if grid_n2[i][j] != 0:
                 draw_block_image(dx2, dy2, ui_variables.t_block[grid_n2[i][j]])
@@ -506,9 +506,9 @@ def draw_board(next1, next2, hold, score, level, goal):
     if hold_mino != -1:  # hold 존재X
         for i in range(mino_matrix_y):
             for j in range(mino_matrix_x):
-                dx = int(board_width * 0.045) + sidebar_width + \
+                dx = int(board_width * dx_rate) + sidebar_width + \
                     block_size * j  # 위치 비율 고정
-                dy = int(board_height * 0.1336) + block_size * i  # 위치 비율 고정
+                dy = int(board_height * dy_rate) + block_size * i  # 위치 비율 고정
                 if grid_h[i][j] != 0:  # 해당 부분에 블록이 존재하면
                     draw_block_image(
                         dx, dy, ui_variables.t_block[grid_h[i][j]])  # hold 블록 출력
@@ -557,15 +557,15 @@ def draw_board(next1, next2, hold, score, level, goal):
     # 테트리스 블록이 들어갈 공간? 그리기 ..맞나?
     for x in range(width):
         for y in range(height):
-            dx = int(board_width * 0.25) + block_size * \
+            dx = int(board_width * dx_matrix_rate) + block_size * \
                 x  # 위치비율 고정, board 가로길이에 원하는 비율을 곱해줌#
-            dy = int(board_height * 0.055) + block_size * \
+            dy = int(board_height * dy_matrix_rate) + block_size * \
                 y  # 위치비율 고정, board 세로길이에 원하는 비율을 곱해줌#
             draw_block_image(dx, dy, ui_variables.t_block[matrix[x][y + 1]])
 
 def draw1_board(next1, next2, hold, score, level, goal):
     # 크기 비율 고정, 전체 board 가로길이에서 원하는 비율을 곱해줌
-    sidebar_width = int(board_width * 0.6)
+    sidebar_width = int(board_width * single_sidebar_rate)
     # screen.fill(ui_variables.grey_1)
 
     # Draw sidebar
@@ -581,18 +581,18 @@ def draw1_board(next1, next2, hold, score, level, goal):
 
     for i in range(mino_matrix_y):
         for j in range(mino_matrix_x):
-            dx1 = int(board_width * 0.025) + sidebar_width + \
+            dx1 = int(board_width * dx1_rate) + sidebar_width + \
                 block_size * j  # 위치 비율 고정, 전체 board 가로 길이에서 원하는 비율을 곱해줌
-            dy1 = int(board_height * 0.3743) + block_size * \
+            dy1 = int(board_height * dy1_rate) + block_size * \
                 i  # 위치 비율 고정, 전체 board 세로 길이에서 원하는 비율을 곱해줌#
             if grid_n1[i][j] != 0:
                 draw_block_image(dx1, dy1, ui_variables.t_block_1[grid_n1[i][j]])
 
     for i in range(mino_matrix_y):
         for j in range(mino_matrix_x):
-            dx2 = int(board_width * 0.145) + sidebar_width + \
+            dx2 = int(board_width * dx2_rate) + sidebar_width + \
                 block_size * j  # 위치 비율 고정, 전체 board 가로길이에서 원하는 비율을 곱해줌#
-            dy2 = int(board_height * 0.3743) + block_size * \
+            dy2 = int(board_height * dy2_rate) + block_size * \
                 i  # 위치 비율 고정, 전체 board 세로길이에서 원하는 비율을 곱해줌#
             if grid_n2[i][j] != 0:
                 draw_block_image(dx2, dy2, ui_variables.t_block_1[grid_n2[i][j]])
@@ -603,9 +603,9 @@ def draw1_board(next1, next2, hold, score, level, goal):
     if hold_mino != -1:  # hold 존재X
         for i in range(mino_matrix_y):
             for j in range(mino_matrix_x):
-                dx = int(board_width * 0.045) + sidebar_width + \
+                dx = int(board_width * dx_rate) + sidebar_width + \
                     block_size * j  # 위치 비율 고정
-                dy = int(board_height * 0.1336) + block_size * i  # 위치 비율 고정
+                dy = int(board_height * dy_rate) + block_size * i  # 위치 비율 고정
                 if grid_h[i][j] != 0:  # 해당 부분에 블록이 존재하면
                     draw_block_image(
                         dx, dy, ui_variables.t_block_1[grid_h[i][j]])  # hold 블록 출력
@@ -673,7 +673,7 @@ def draw1_board(next1, next2, hold, score, level, goal):
 # 블록 뒤집기 코드~
 def draw_hardboard_change(next1, next2, hold, score, level, goal):
   # 크기 비율 고정, 전체 board 가로길이에서 원하는 비율을 곱해줌
-    sidebar_width = int(board_width * 0.5312)
+    sidebar_width = int(board_width * sidebar_rate)
 
     # screen.fill(ui_variables.grey_1)
 
@@ -681,7 +681,7 @@ def draw_hardboard_change(next1, next2, hold, score, level, goal):
     pygame.draw.rect(
         screen,
         ui_variables.grey_1,
-        Rect(sidebar_width, 0, int(board_width * 0.2375), board_height)  # 크기 비율 고정
+        Rect(sidebar_width, 0, int(board_width * sidebar_width_rate), board_height)  # 크기 비율 고정
     )
 
     # Draw 2 next minos
@@ -690,18 +690,18 @@ def draw_hardboard_change(next1, next2, hold, score, level, goal):
 
     for i in range(mino_matrix_y):
         for j in range(mino_matrix_x):
-            dx1 = int(board_width * 0.025) + sidebar_width + \
+            dx1 = int(board_width * dx1_rate) + sidebar_width + \
                 block_size * j  # 위치 비율 고정, 전체 board 가로 길이에서 원하는 비율을 곱해줌
-            dy1 = int(board_height * 0.3743) + block_size * \
+            dy1 = int(board_height * dy1_rate) + block_size * \
                 i  # 위치 비율 고정, 전체 board 세로 길이에서 원하는 비율을 곱해줌#
             if grid_n1[i][j] != 0:
                 draw_block_image(dx1, dy1, ui_variables.t_block[grid_n1[i][j]])
 
     for i in range(mino_matrix_y):
         for j in range(mino_matrix_x):
-            dx2 = int(board_width * 0.145) + sidebar_width + \
+            dx2 = int(board_width * dx2_rate) + sidebar_width + \
                 block_size * j  # 위치 비율 고정, 전체 board 가로길이에서 원하는 비율을 곱해줌#
-            dy2 = int(board_height * 0.3743) + block_size * \
+            dy2 = int(board_height * dy2_rate) + block_size * \
                 i  # 위치 비율 고정, 전체 board 세로길이에서 원하는 비율을 곱해줌#
             if grid_n2[i][j] != 0:
                 draw_block_image(dx2, dy2, ui_variables.t_block[grid_n2[i][j]])
@@ -712,9 +712,9 @@ def draw_hardboard_change(next1, next2, hold, score, level, goal):
     if hold_mino != -1:  # hold 존재X
         for i in range(mino_matrix_y):
             for j in range(mino_matrix_x):
-                dx = int(board_width * 0.045) + sidebar_width + \
+                dx = int(board_width * dx_rate) + sidebar_width + \
                     block_size * j  # 위치 비율 고정
-                dy = int(board_height * 0.1336) + block_size * i  # 위치 비율 고정
+                dy = int(board_height * dy_rate) + block_size * i  # 위치 비율 고정
                 if grid_h[i][j] != 0:  # 해당 부분에 블록이 존재하면
                     draw_block_image(
                         dx, dy, ui_variables.t_block[grid_h[i][j]])  # hold 블록 출력
@@ -756,9 +756,9 @@ def draw_hardboard_change(next1, next2, hold, score, level, goal):
     # Draw board
     for x in range(width):
         for y in range(height):
-            dx = int(board_width * 0.25) + block_size * \
+            dx = int(board_width * dx_matrix_rate) + block_size * \
                 x  # 위치비율 고정, board 가로길이에 원하는 비율을 곱해줌#
-            dy = int(board_height * 0.055) + block_size * \
+            dy = int(board_height * dy_matrix_rate) + block_size * \
                 y  # 위치비율 고정, board 세로길이에 원하는 비율을 곱해줌#
             # draw_block_image(dx, dy, ui_variables.t_block[matrix[x][y + 1]])
             draw_block_image(
@@ -767,13 +767,13 @@ def draw_hardboard_change(next1, next2, hold, score, level, goal):
 
 def draw_1Pboard(next, hold, current_key):
     # 위치비율 고정, board 가로길이에 원하는 비율을 곱해줌#
-    sidebar_width = int(board_width * 0.31)
+    sidebar_width = int(board_width * player1_sidebar_rate)
 
     # Draw sidebar
     pygame.draw.rect(
         screen,
         ui_variables.grey_1,
-        Rect(sidebar_width, 0, int(board_width * 0.1875),
+        Rect(sidebar_width, 0, int(board_width * player1_sidebar_width_rate),
              board_height)  # 크기비율 고정, board 가로길이에 원하는 비율을 곱해줌#
     )
 
@@ -782,9 +782,9 @@ def draw_1Pboard(next, hold, current_key):
 
     for i in range(mino_matrix_y):
         for j in range(mino_matrix_x):
-            dx = int(board_width * 0.045) + sidebar_width + \
+            dx = int(board_width * dx_rate) + sidebar_width + \
                 block_size * j  # 위치비율 고정, board 가로길이에 원하는 비율을 곱해줌#
-            dy = int(board_height * 0.3743) + block_size * \
+            dy = int(board_height * dy1_rate) + block_size * \
                 i  # 위치비율 고정, board 세로길이에 원하는 비율을 곱해줌#
             if grid_n[i][j] != 0:
                 draw_block_image(dx, dy, ui_variables.t_block[grid_n[i][j]])
@@ -795,9 +795,9 @@ def draw_1Pboard(next, hold, current_key):
     if hold_mino != -1:  # 기본값이 -1. 즉 hold블록 존재할 떄
         for i in range(mino_matrix_y):
             for j in range(mino_matrix_x):
-                dx = int(board_width * 0.045) + sidebar_width + \
+                dx = int(board_width * dx_rate) + sidebar_width + \
                     block_size * j  # 위치비율 고정, board 가로길이에 원하는 비율을 곱해줌#
-                dy = int(board_height * 0.1336) + block_size * \
+                dy = int(board_height * dy_rate) + block_size * \
                     i  # 위치비율 고정, board 세로길이에 원하는 비율을 곱해줌#
                 if grid_h[i][j] != 0:
                     draw_block_image(
@@ -855,21 +855,21 @@ def draw_1Pboard(next, hold, current_key):
     # Draw board
     for x in range(width):
         for y in range(height):
-            dx = int(board_width * 0.05) + block_size * \
+            dx = int(board_width * player1_dx_matrix_rate) + block_size * \
                 x  # 위치 비율 고정, board의 가로길이에 원하는 비율을 곱해줌
-            dy = int(board_height * 0.055) + block_size * \
+            dy = int(board_height * dy_matrix_rate) + block_size * \
                 y  # 위치 비율 고정, board의 세로길이에 원하는 비율을 곱해줌
             draw_block_image(dx, dy, ui_variables.t_block[matrix[x][y + 1]])
             
 def draw_1Pboard_change(next, hold, current_key):
     # 위치비율 고정, board 가로길이에 원하는 비율을 곱해줌#
-    sidebar_width = int(board_width * 0.31)
+    sidebar_width = int(board_width * player1_sidebar_rate)
 
     # Draw sidebar
     pygame.draw.rect(
         screen,
         ui_variables.grey_1,
-        Rect(sidebar_width, 0, int(board_width * 0.1875),
+        Rect(sidebar_width, 0, int(board_width * player1_sidebar_width_rate),
              board_height)  # 크기비율 고정, board 가로길이에 원하는 비율을 곱해줌#
     )
 
@@ -878,9 +878,9 @@ def draw_1Pboard_change(next, hold, current_key):
 
     for i in range(mino_matrix_y):
         for j in range(mino_matrix_x):
-            dx = int(board_width * 0.045) + sidebar_width + \
+            dx = int(board_width * dx_rate) + sidebar_width + \
                 block_size * j  # 위치비율 고정, board 가로길이에 원하는 비율을 곱해줌#
-            dy = int(board_height * 0.3743) + block_size * \
+            dy = int(board_height * dy1_rate) + block_size * \
                 i  # 위치비율 고정, board 세로길이에 원하는 비율을 곱해줌#
             if grid_n[i][j] != 0:
                 draw_block_image(dx, dy, ui_variables.t_block[grid_n[i][j]])
@@ -891,9 +891,9 @@ def draw_1Pboard_change(next, hold, current_key):
     if hold_mino != -1:  # 기본값이 -1. 즉 hold블록 존재할 떄
         for i in range(mino_matrix_y):
             for j in range(mino_matrix_x):
-                dx = int(board_width * 0.045) + sidebar_width + \
+                dx = int(board_width * dx_rate) + sidebar_width + \
                     block_size * j  # 위치비율 고정, board 가로길이에 원하는 비율을 곱해줌#
-                dy = int(board_height * 0.1336) + block_size * \
+                dy = int(board_height * dy_rate) + block_size * \
                     i  # 위치비율 고정, board 세로길이에 원하는 비율을 곱해줌#
                 if grid_h[i][j] != 0:
                     draw_block_image(
@@ -951,9 +951,9 @@ def draw_1Pboard_change(next, hold, current_key):
     # Draw board
     for x in range(width):
         for y in range(height):
-            dx = int(board_width * 0.05) + block_size * \
+            dx = int(board_width * player1_dx_matrix_rate) + block_size * \
                 x  # 위치 비율 고정, board의 가로길이에 원하는 비율을 곱해줌
-            dy = int(board_height * 0.055) + block_size * \
+            dy = int(board_height * dy_matrix_rate) + block_size * \
                 y  # 위치 비율 고정, board의 세로길이에 원하는 비율을 곱해줌
             draw_block_image(
                 dx, dy, ui_variables.t_block[matrix[x][(height-1)-y+1]])
@@ -961,14 +961,14 @@ def draw_1Pboard_change(next, hold, current_key):
 
 def draw_2Pboard(next, hold, current_key_2P):
     # 위치 비율 고정, , board의 가로길이에 원하는 비율을 곱해줌
-    sidebar_width = int(board_width * 0.82)
+    sidebar_width = int(board_width * player2_sidebar_rate)
 
     # Draw sidebar
     pygame.draw.rect(
         screen,
         ui_variables.grey_1,
         # 크기 비율 고정, , board의 가로길이에 원하는 비율을 곱해줌, Rect(x축, y축, 가로길이, 세로길이)#
-        Rect(sidebar_width, 0, int(board_width * 0.1875), board_height)
+        Rect(sidebar_width, 0, int(board_width * player1_sidebar_width_rate), board_height)
     )
 
     # Draw next mino
@@ -976,9 +976,9 @@ def draw_2Pboard(next, hold, current_key_2P):
 
     for i in range(mino_matrix_y):  # 16개의 그리드 칸에서 true인 값만 뽑아서 draw.rect
         for j in range(mino_matrix_x):
-            dx = int(board_width * 0.05) + sidebar_width + \
+            dx = int(board_width * player2_dx_rate) + sidebar_width + \
                 block_size * j  # 위치 비율 고정, board의 가로길이에 원하는 비율을 곱해줌
-            dy = int(board_height * 0.3743) + block_size * \
+            dy = int(board_height * player2_dy_rate) + block_size * \
                 i  # 위치 비율 고정, board의 세로길이에 원하는 비율을 곱해줌
             if grid_n[i][j] != 0:
                 draw_block_image(dx, dy, ui_variables.t_block[grid_n[i][j]])
@@ -989,9 +989,9 @@ def draw_2Pboard(next, hold, current_key_2P):
     if hold_mino_2P != -1:  # 기본값이 -1. 즉 hold블록 존재할 떄
         for i in range(mino_matrix_y):
             for j in range(mino_matrix_x):
-                dx = int(board_width * 0.045) + sidebar_width + \
+                dx = int(board_width * dx_rate) + sidebar_width + \
                     block_size * j  # 위치 비율 고정, board의 가로길이에 원하는 비율을 곱해줌
-                dy = int(board_height * 0.1336) + block_size * \
+                dy = int(board_height * dy_rate) + block_size * \
                     i  # 위치 비율 고정, board의 세로길이에 원하는 비율을 곱해줌
                 if grid_h[i][j] != 0:
                     draw_block_image(
@@ -1047,20 +1047,20 @@ def draw_2Pboard(next, hold, current_key_2P):
 
     for x in range(width):
         for y in range(height):
-            dx = int(board_width * 0.54) + block_size * x  # 위치비율 고정
-            dy = int(board_height * 0.055) + block_size * y  # 위치비율 고정
+            dx = int(board_width * player2_dx_matrix_rate) + block_size * x  # 위치비율 고정
+            dy = int(board_height * dy_matrix_rate) + block_size * y  # 위치비율 고정
             draw_block_image(dx, dy, ui_variables.t_block[matrix_2P[x][y + 1]])
 
 def draw_2Pboard_change(next, hold, current_key_2P):
     # 위치 비율 고정, , board의 가로길이에 원하는 비율을 곱해줌
-    sidebar_width = int(board_width * 0.82)
+    sidebar_width = int(board_width * player2_sidebar_rate)
 
     # Draw sidebar
     pygame.draw.rect(
         screen,
         ui_variables.grey_1,
         # 크기 비율 고정, , board의 가로길이에 원하는 비율을 곱해줌, Rect(x축, y축, 가로길이, 세로길이)#
-        Rect(sidebar_width, 0, int(board_width * 0.1875), board_height)
+        Rect(sidebar_width, 0, int(board_width * player1_sidebar_width_rate), board_height)
     )
 
     # Draw next mino
@@ -1068,9 +1068,9 @@ def draw_2Pboard_change(next, hold, current_key_2P):
 
     for i in range(mino_matrix_y):  # 16개의 그리드 칸에서 true인 값만 뽑아서 draw.rect
         for j in range(mino_matrix_x):
-            dx = int(board_width * 0.05) + sidebar_width + \
+            dx = int(board_width * player2_dx_rate) + sidebar_width + \
                 block_size * j  # 위치 비율 고정, board의 가로길이에 원하는 비율을 곱해줌
-            dy = int(board_height * 0.3743) + block_size * \
+            dy = int(board_height * player2_dy_rate) + block_size * \
                 i  # 위치 비율 고정, board의 세로길이에 원하는 비율을 곱해줌
             if grid_n[i][j] != 0:
                 draw_block_image(dx, dy, ui_variables.t_block[grid_n[i][j]])
@@ -1081,9 +1081,9 @@ def draw_2Pboard_change(next, hold, current_key_2P):
     if hold_mino_2P != -1:  # 기본값이 -1. 즉 hold블록 존재할 떄
         for i in range(mino_matrix_y):
             for j in range(mino_matrix_x):
-                dx = int(board_width * 0.045) + sidebar_width + \
+                dx = int(board_width * dx_rate) + sidebar_width + \
                     block_size * j  # 위치 비율 고정, board의 가로길이에 원하는 비율을 곱해줌
-                dy = int(board_height * 0.1336) + block_size * \
+                dy = int(board_height * dy_rate) + block_size * \
                     i  # 위치 비율 고정, board의 세로길이에 원하는 비율을 곱해줌
                 if grid_h[i][j] != 0:
                     draw_block_image(
@@ -1139,30 +1139,30 @@ def draw_2Pboard_change(next, hold, current_key_2P):
 
     for x in range(width):
         for y in range(height):
-            dx = int(board_width * 0.54) + block_size * x  # 위치비율 고정
-            dy = int(board_height * 0.055) + block_size * y  # 위치비율 고정
+            dx = int(board_width * player2_dx_matrix_rate) + block_size * x  # 위치비율 고정
+            dy = int(board_height * dy_matrix_rate) + block_size * y  # 위치비율 고정
             draw_block_image(
                 dx, dy, ui_variables.t_block[matrix[x][(height-1)-y+1]])
 
 #PvP board 생성
 def draw_multiboard(next_1P, hold_1P, next_2P, hold_2P, current_key, current_key_2P):
     screen.fill(ui_variables.real_white)
-    draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
-               0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+    draw_image(screen, gamebackground_image, board_width * half, board_height *
+               half, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
     draw_1Pboard(next_1P, hold_1P, current_key)
     draw_2Pboard(next_2P, hold_2P, current_key_2P)
     
 def draw_multiboard_1p_change(next_1P, hold_1P, next_2P, hold_2P, current_key, current_key_2P):
     screen.fill(ui_variables.real_white)
-    draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
-               0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+    draw_image(screen, gamebackground_image, board_width * half, board_height *
+               half, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
     draw_1Pboard_change(next_1P, hold_1P, current_key)
     draw_2Pboard(next_2P, hold_2P, current_key_2P)
 
 def draw_multiboard_2p_change(next_1P, hold_1P, next_2P, hold_2P, current_key, current_key_2P):
     screen.fill(ui_variables.real_white)
-    draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
-               0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+    draw_image(screen, gamebackground_image, board_width * half, board_height *
+               half, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
     draw_1Pboard(next_1P, hold_1P, current_key)
     draw_2Pboard_change(next_2P, hold_2P, current_key_2P)
     
@@ -1606,21 +1606,21 @@ pygame.time.set_timer(pygame.USEREVENT, 500)
 
 while not done:
     if board_width<=600:
-        select_mode_button = button(board_width, board_height, 0.5, 0.125, 0.22, 0.2, select_mode_button_image)
-        setting_button = button(board_width, board_height, 0.5,0.375, 0.22, 0.2, setting_button_image)
-        quit_button = button(board_width, board_height, 0.5,0.625, 0.22, 0.2, quit_button_image)
-        score_board_button = button(board_width, board_height, 0.5, 0.875, 0.22, 0.2, score_board_button_image)
+        select_mode_button = button(board_width, board_height, half, 0.125, 0.22, 0.2, select_mode_button_image)
+        setting_button = button(board_width, board_height, half,0.375, 0.22, 0.2, setting_button_image)
+        quit_button = button(board_width, board_height, half,0.625, 0.22, 0.2, quit_button_image)
+        score_board_button = button(board_width, board_height, half, 0.875, 0.22, 0.2, score_board_button_image)
 
-        easy_button = button(board_width, board_height, 0.5,0.125, 0.22, 0.2, easy_button_image)
-        normal_button = button(board_width, board_height, 0.5, 0.375, 0.22 , 0.2, normal_button_image)
-        hard_button = button(board_width, board_height, 0.5,0.625, 0.22, 0.2, hard_button_image)
+        easy_button = button(board_width, board_height, half,0.125, 0.22, 0.2, easy_button_image)
+        normal_button = button(board_width, board_height, half, 0.375, 0.22 , 0.2, normal_button_image)
+        hard_button = button(board_width, board_height, half,0.625, 0.22, 0.2, hard_button_image)
         
-        single_button = button(board_width, board_height, 0.5, 0.25, 0.22, 0.2, single_button_image)
-        pvp_button = button(board_width, board_height, 0.5,0.5, 0.22, 0.2, pvp_button_image)
+        single_button = button(board_width, board_height, half, 0.25, 0.22, 0.2, single_button_image)
+        pvp_button = button(board_width, board_height, half,0.5, 0.22, 0.2, pvp_button_image)
 
-        volume_icon = button(board_width, board_height, 0.5, 0.25, 0.06, 0.12, volume_vector)
-        screen_icon = button(board_width, board_height, 0.5, 0.41, 0.06, 0.12, screen_vector)
-        size_icon = button(board_width, board_height, 0.5, 0.6, 0.06, 0.12, size_vector)
+        volume_icon = button(board_width, board_height, half, 0.25, 0.06, 0.12, volume_vector)
+        screen_icon = button(board_width, board_height, half, 0.41, 0.06, 0.12, screen_vector)
+        size_icon = button(board_width, board_height, half, 0.6, 0.06, 0.12, size_vector)
 
         width = width_small
         height = height_small
