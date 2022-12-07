@@ -1566,10 +1566,10 @@ def set_initial_values():
     pause_time = pygame.time.get_ticks()
 
     # easy mode 스코어보드 leaders 배열에 저장
-    with open('Tetris_Game/leaderboard.txt') as f:
+    with open('leaderboard.txt') as f:
         lines = f.readlines()
     lines = [line.rstrip('\n') for line in open(
-        'Tetris_Game/leaderboard.txt')]  # leaderboard.txt 한줄씩 읽어옴
+        'leaderboard.txt')]  # leaderboard.txt 한줄씩 읽어옴
 
     leaders = {'AAA': 0, 'BBB': 0, 'CCC': 0}
     for i in lines:
@@ -1577,10 +1577,10 @@ def set_initial_values():
     leaders = sorted(leaders.items(), key=operator.itemgetter(1), reverse=True)
 
     # hard mode 스코어보드 leaders_hard 배열에 저장
-    with open('Tetris_Game/leaderboard_hard.txt') as h:
+    with open('leaderboard_hard.txt') as h:
         lines = h.readlines()
     lines = [line.rstrip('\n') for line in open(
-        'Tetris_Game/leaderboard_hard.txt')]  # leaderboard.txt 한줄씩 읽어옴
+        'leaderboard_hard.txt')]  # leaderboard.txt 한줄씩 읽어옴
 
     leaders_hard = {'AAA': 0, 'BBB': 0, 'CCC': 0}
     for i in lines:
