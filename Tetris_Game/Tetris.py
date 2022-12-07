@@ -80,6 +80,8 @@ class ui_variables: #UI
     h5 = pygame.font.Font(font_path, h5_size)
     h6 = pygame.font.Font(font_path, h6_size)
 
+    s1 = pygame.font.Font(font_path, 16)
+
     h1_b = pygame.font.Font(font_path_b, h1_b_size)
     h2_b = pygame.font.Font(font_path_b, h2_b_size)
 
