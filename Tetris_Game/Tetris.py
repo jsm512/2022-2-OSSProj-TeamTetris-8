@@ -82,8 +82,8 @@ class ui_variables: #UI
     h5 = pygame.font.Font(font_path, h5_size)
     h6 = pygame.font.Font(font_path, h6_size)
     h7 = pygame.font.Font(font_path, h7_size)
+    h8 = pygame.font.Font(font_path, h8_size)
 
-    s1 = pygame.font.Font(font_path, 16)
 
     h1_b = pygame.font.Font(font_path_b, h1_b_size)
     h2_b = pygame.font.Font(font_path_b, h2_b_size)
@@ -3983,26 +3983,25 @@ while not done:
         back_button.draw(screen, (0, 0, 0))
 
         # render("텍스트이름", 안티에일리어싱 적용, 색깔), 즉 아래의 코드에서 숫자 1=안티에일리어싱 적용에 관한 코드
-        music_volume_text = ui_variables.s1.render(
-            'l 배경음', 1, ui_variables.white)
-        effect_volume_text = ui_variables.s1.render(
-            'l 효과음', 1, ui_variables.white)
-        bgm_volume_text = ui_variables.s1.render(
-            'l 배경음악 선택', 1, ui_variables.white)
-        mute_all_text = ui_variables.s1.render(
-            'l 전체 음소거', 1, ui_variables.white)
-        screen.blit(music_volume_text, (board_width *
-                    0.1, board_height * 0.2))  # 위치 비율 고정
-        screen.blit(effect_volume_text, (board_width *
-                    0.1, board_height * 0.55))  # 위치 비율 고정
-        screen.blit(bgm_volume_text, (board_width *
-                    0.54, board_height * 0.2))  # 위치 비율 고정
-        screen.blit(mute_all_text, (board_width *
-                    0.54, board_height * 0.55))  # 위치 비율 고정
-
-        # 배경음, 효과음 현재 수치
-
+        #폰트가 깨지지 않도록 창 크기에 따라 폰트 크기 변경
         if board_width < 500 :
+            music_volume_text = ui_variables.h8.render(
+                'l 배경음', 1, ui_variables.white)
+            effect_volume_text = ui_variables.h8.render(
+                'l 효과음', 1, ui_variables.white)
+            bgm_volume_text = ui_variables.h8.render(
+                'l 배경음악 선택', 1, ui_variables.white)
+            mute_all_text = ui_variables.h8.render(
+                'l 전체 음소거', 1, ui_variables.white)
+            screen.blit(music_volume_text, (board_width *
+                        0.1, board_height * 0.2))  # 위치 비율 고정
+            screen.blit(effect_volume_text, (board_width *
+                        0.1, board_height * 0.55))  # 위치 비율 고정
+            screen.blit(bgm_volume_text, (board_width *
+                        0.54, board_height * 0.2))  # 위치 비율 고정
+            screen.blit(mute_all_text, (board_width *
+                        0.54, board_height * 0.55))  # 위치 비율 고정
+
             music_volume_size_text = ui_variables.h6.render(
                 str(music_volume), 1, ui_variables.white)
             effect_volume_size_text = ui_variables.h6.render(
@@ -4013,6 +4012,23 @@ while not done:
                         0.19, board_height * 0.7))  # 위치 비율 고정 
 
         elif 500 <= board_width < 600 :
+            music_volume_text = ui_variables.h7.render(
+                'l 배경음', 1, ui_variables.white)
+            effect_volume_text = ui_variables.h7.render(
+                'l 효과음', 1, ui_variables.white)
+            bgm_volume_text = ui_variables.h7.render(
+                'l 배경음악 선택', 1, ui_variables.white)
+            mute_all_text = ui_variables.h7.render(
+                'l 전체 음소거', 1, ui_variables.white)
+            screen.blit(music_volume_text, (board_width *
+                        0.1, board_height * 0.2))  # 위치 비율 고정
+            screen.blit(effect_volume_text, (board_width *
+                        0.1, board_height * 0.55))  # 위치 비율 고정
+            screen.blit(bgm_volume_text, (board_width *
+                        0.54, board_height * 0.2))  # 위치 비율 고정
+            screen.blit(mute_all_text, (board_width *
+                        0.54, board_height * 0.55))  # 위치 비율 고정
+
             music_volume_size_text = ui_variables.h5.render(
                 str(music_volume), 1, ui_variables.white)
             effect_volume_size_text = ui_variables.h5.render(
@@ -4023,6 +4039,23 @@ while not done:
                         0.19, board_height * 0.7))  # 위치 비율 고정
         
         elif 600 <= board_width < 800 :
+            music_volume_text = ui_variables.h6.render(
+                'l 배경음', 1, ui_variables.white)
+            effect_volume_text = ui_variables.h6.render(
+                'l 효과음', 1, ui_variables.white)
+            bgm_volume_text = ui_variables.h6.render(
+                'l 배경음악 선택', 1, ui_variables.white)
+            mute_all_text = ui_variables.h6.render(
+                'l 전체 음소거', 1, ui_variables.white)
+            screen.blit(music_volume_text, (board_width *
+                        0.1, board_height * 0.2))  # 위치 비율 고정
+            screen.blit(effect_volume_text, (board_width *
+                        0.1, board_height * 0.55))  # 위치 비율 고정
+            screen.blit(bgm_volume_text, (board_width *
+                        0.54, board_height * 0.2))  # 위치 비율 고정
+            screen.blit(mute_all_text, (board_width *
+                        0.54, board_height * 0.55))  # 위치 비율 고정
+
             music_volume_size_text = ui_variables.h4.render(
                 str(music_volume), 1, ui_variables.white)
             effect_volume_size_text = ui_variables.h4.render(
@@ -4031,7 +4064,25 @@ while not done:
                         0.19, board_height * 0.37))  # 위치 비율 고정
             screen.blit(effect_volume_size_text, (board_width *
                         0.19, board_height * 0.7))  # 위치 비율 고정
+
         elif 800 <= board_width < 1000 :
+            music_volume_text = ui_variables.h4.render(
+                'l 배경음', 1, ui_variables.white)
+            effect_volume_text = ui_variables.h4.render(
+                'l 효과음', 1, ui_variables.white)
+            bgm_volume_text = ui_variables.h4.render(
+                'l 배경음악 선택', 1, ui_variables.white)
+            mute_all_text = ui_variables.h4.render(
+                'l 전체 음소거', 1, ui_variables.white)
+            screen.blit(music_volume_text, (board_width *
+                        0.1, board_height * 0.2))  # 위치 비율 고정
+            screen.blit(effect_volume_text, (board_width *
+                        0.1, board_height * 0.55))  # 위치 비율 고정
+            screen.blit(bgm_volume_text, (board_width *
+                        0.54, board_height * 0.2))  # 위치 비율 고정
+            screen.blit(mute_all_text, (board_width *
+                        0.54, board_height * 0.55))  # 위치 비율 고정
+
             music_volume_size_text = ui_variables.h3.render(
                 str(music_volume), 1, ui_variables.white)
             effect_volume_size_text = ui_variables.h3.render(
@@ -4040,7 +4091,25 @@ while not done:
                         0.19, board_height * 0.37))  # 위치 비율 고정
             screen.blit(effect_volume_size_text, (board_width *
                         0.19, board_height * 0.7))  # 위치 비율 고정
+
         elif 1000 <= board_width < 1200 :
+            music_volume_text = ui_variables.h3.render(
+                'l 배경음', 1, ui_variables.white)
+            effect_volume_text = ui_variables.h3.render(
+                'l 효과음', 1, ui_variables.white)
+            bgm_volume_text = ui_variables.h3.render(
+                'l 배경음악 선택', 1, ui_variables.white)
+            mute_all_text = ui_variables.h3.render(
+                'l 전체 음소거', 1, ui_variables.white)
+            screen.blit(music_volume_text, (board_width *
+                        0.1, board_height * 0.2))  # 위치 비율 고정
+            screen.blit(effect_volume_text, (board_width *
+                        0.1, board_height * 0.55))  # 위치 비율 고정
+            screen.blit(bgm_volume_text, (board_width *
+                        0.54, board_height * 0.2))  # 위치 비율 고정
+            screen.blit(mute_all_text, (board_width *
+                        0.54, board_height * 0.55))  # 위치 비율 고정
+
             music_volume_size_text = ui_variables.h2.render(
                 str(music_volume), 1, ui_variables.white)
             effect_volume_size_text = ui_variables.h2.render(
@@ -4049,7 +4118,25 @@ while not done:
                         0.19, board_height * 0.37))  # 위치 비율 고정
             screen.blit(effect_volume_size_text, (board_width *
                         0.19, board_height * 0.7))  # 위치 비율 고정
+
         elif 1200 <= board_width :
+            music_volume_text = ui_variables.h2.render(
+                'l 배경음', 1, ui_variables.white)
+            effect_volume_text = ui_variables.h2.render(
+                'l 효과음', 1, ui_variables.white)
+            bgm_volume_text = ui_variables.h2.render(
+                'l 배경음악 선택', 1, ui_variables.white)
+            mute_all_text = ui_variables.h2.render(
+                'l 전체 음소거', 1, ui_variables.white)
+            screen.blit(music_volume_text, (board_width *
+                        0.1, board_height * 0.2))  # 위치 비율 고정
+            screen.blit(effect_volume_text, (board_width *
+                        0.1, board_height * 0.55))  # 위치 비율 고정
+            screen.blit(bgm_volume_text, (board_width *
+                        0.54, board_height * 0.2))  # 위치 비율 고정
+            screen.blit(mute_all_text, (board_width *
+                        0.54, board_height * 0.55))  # 위치 비율 고정
+
             music_volume_size_text = ui_variables.h1.render(
                 str(music_volume), 1, ui_variables.white)
             effect_volume_size_text = ui_variables.h1.render(
