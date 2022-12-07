@@ -1588,8 +1588,8 @@ def set_initial_values():
 
     matrix = [[0 for y in range(29)]
             for x in range(14)]  # Board matrix
-    matrix_2P = [[0 for y in range(height + 1)]
-                for x in range(width)]  # Board matrix
+    matrix_2P = [[0 for y in range(29)]
+                for x in range(14)]  # Board matrix
 
     pygame.mixer.init()
     ui_variables.click_sound.set_volume(effect_volume / 10)
@@ -1674,7 +1674,7 @@ while not done:
         height = height_big
         board_x = width_big
         board_y = height_big
-        block_size = 28
+        block_size = 26
     # 게임안에서 Pause 눌렀을 때 screen
     if pause:
         pygame.mixer.music.pause()
