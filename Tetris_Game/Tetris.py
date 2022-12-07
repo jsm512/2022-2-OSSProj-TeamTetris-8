@@ -83,8 +83,8 @@ class ui_variables: #UI
     h5 = pygame.font.Font(font_path, 13)
     h6 = pygame.font.Font(font_path, 7)
 
-    h1_b = pygame.font.Font(font_path_b, 50)
-    h2_b = pygame.font.Font(font_path_b, 30)
+    h1_b = pygame.font.Font(font_path_b, h1_b_size)
+    h2_b = pygame.font.Font(font_path_b, h2_b_size)
 
     h2_i = pygame.font.Font(font_path_i, 30)
     h5_i = pygame.font.Font(font_path_i, 13)
@@ -1573,8 +1573,8 @@ def set_initial_values():
     leaders_hard = sorted(leaders_hard.items(),
                         key=operator.itemgetter(1), reverse=True)
 
-    matrix = [[0 for y in range(height + 1)]
-            for x in range(width)]  # Board matrix
+    matrix = [[0 for y in range(29)]
+            for x in range(14)]  # Board matrix
     matrix_2P = [[0 for y in range(height + 1)]
                 for x in range(width)]  # Board matrix
 
@@ -1660,6 +1660,7 @@ while not done:
         height = height_big
         board_x = width_big
         board_y = height_big
+        block_size = 28
     # 게임안에서 Pause 눌렀을 때 screen
     if pause:
         pygame.mixer.music.pause()
