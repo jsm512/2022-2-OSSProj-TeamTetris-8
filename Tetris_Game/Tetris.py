@@ -496,7 +496,7 @@ def draw_board(next1, next2, hold, score, level, goal):
         for j in range(mino_matrix_x):
             dx1 = int(board_width * 0.025) + sidebar_width + \
                 block_size * j  # 위치 비율 고정, 전체 board 가로 길이에서 원하는 비율을 곱해줌
-            dy1 = int(board_height * 0.3743) + block_size * \
+            dy1 = int(board_height * 0.35) + block_size * \
                 i  # 위치 비율 고정, 전체 board 세로 길이에서 원하는 비율을 곱해줌#
             if grid_n1[i][j] != 0:
                 draw_block_image(dx1, dy1, ui_variables.t_block[grid_n1[i][j]])
@@ -505,7 +505,7 @@ def draw_board(next1, next2, hold, score, level, goal):
         for j in range(mino_matrix_x):
             dx2 = int(board_width * 0.145) + sidebar_width + \
                 block_size * j  # 위치 비율 고정, 전체 board 가로길이에서 원하는 비율을 곱해줌#
-            dy2 = int(board_height * 0.3743) + block_size * \
+            dy2 = int(board_height * 0.35) + block_size * \
                 i  # 위치 비율 고정, 전체 board 세로길이에서 원하는 비율을 곱해줌#
             if grid_n2[i][j] != 0:
                 draw_block_image(dx2, dy2, ui_variables.t_block[grid_n2[i][j]])
@@ -539,7 +539,7 @@ def draw_board(next1, next2, hold, score, level, goal):
     text_goal = ui_variables.h5.render("GOAL", 1, ui_variables.real_white)
     goal_value = ui_variables.h4.render(str(goal), 1, ui_variables.real_white)
     text_fever = ui_variables.h5.render("NEXT FEVER", 1, ui_variables.real_white)
-    next_fever_value = ui_variables.h4.render(str(next_fever), 1, ui_variables.real_white)
+    next_fever_value = ui_variables.h4.render(str(next_fever), 1, ui_variables.real_white) 
 
     # Place texts
     screen.blit(text_hold, (int(board_width * 0.045) +
@@ -591,18 +591,18 @@ def draw1_board(next1, next2, hold, score, level, goal):
 
     for i in range(mino_matrix_y):
         for j in range(mino_matrix_x):
-            dx1 = int(board_width * 0.025) + sidebar_width + \
+            dx1 = int(board_width * 0.05) + sidebar_width + \
                 block_size * j  # 위치 비율 고정, 전체 board 가로 길이에서 원하는 비율을 곱해줌
-            dy1 = int(board_height * 0.3743) + block_size * \
+            dy1 = int(board_height * 0.3) + block_size * \
                 i  # 위치 비율 고정, 전체 board 세로 길이에서 원하는 비율을 곱해줌#
             if grid_n1[i][j] != 0:
                 draw_block_image(dx1, dy1, ui_variables.t_block_1[grid_n1[i][j]])
 
     for i in range(mino_matrix_y):
         for j in range(mino_matrix_x):
-            dx2 = int(board_width * 0.145) + sidebar_width + \
+            dx2 = int(board_width * 0.15) + sidebar_width + \
                 block_size * j  # 위치 비율 고정, 전체 board 가로길이에서 원하는 비율을 곱해줌#
-            dy2 = int(board_height * 0.3743) + block_size * \
+            dy2 = int(board_height * 0.3) + block_size * \
                 i  # 위치 비율 고정, 전체 board 세로길이에서 원하는 비율을 곱해줌#
             if grid_n2[i][j] != 0:
                 draw_block_image(dx2, dy2, ui_variables.t_block_1[grid_n2[i][j]])
@@ -625,39 +625,111 @@ def draw1_board(next1, next2, hold, score, level, goal):
         score = 999999
 
     # Draw texts
-    text_hold = ui_variables.h5.render("HOLD", 1, ui_variables.real_white)
-    text_next = ui_variables.h5.render("NEXT", 1, ui_variables.real_white)
-    text_score = ui_variables.h5.render("SCORE", 1, ui_variables.real_white)
-    score_value = ui_variables.h5.render(
-        str(score), 1, ui_variables.real_white)
-    text_level = ui_variables.h5.render("LEVEL", 1, ui_variables.real_white)
-    level_value = ui_variables.h5.render(
-        str(level), 1, ui_variables.real_white)
-    text_goal = ui_variables.h5.render("GOAL", 1, ui_variables.real_white)
-    goal_value = ui_variables.h5.render(str(goal), 1, ui_variables.real_white)
-    text_fever = ui_variables.h5.render("FEVER", 1, ui_variables.real_white)
-    next_fever_value = ui_variables.h5.render(str(next_fever), 1, ui_variables.real_white)
+    # 폰트가 깨지지 않도록 창 크기에 따라 폰트 크기 변경
+    if board_width <500 :
+        text_hold = ui_variables.h8.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h8.render("NEXT", 1, ui_variables.real_white)
+        text_score = ui_variables.h8.render("SCORE", 1, ui_variables.real_white)
+        score_value = ui_variables.h7.render(
+            str(score), 1, ui_variables.real_white)
+        text_level = ui_variables.h8.render("LEVEL", 1, ui_variables.real_white)
+        level_value = ui_variables.h7.render(
+            str(level), 1, ui_variables.real_white)
+        text_goal = ui_variables.h8.render("GOAL", 1, ui_variables.real_white)
+        goal_value = ui_variables.h7.render(str(goal), 1, ui_variables.real_white)
+        text_fever = ui_variables.h8.render("NEXT FEVER", 1, ui_variables.real_white)
+        next_fever_value = ui_variables.h7.render(str(next_fever), 1, ui_variables.real_white)
+
+    elif 500 <= board_width < 600 : 
+        text_hold = ui_variables.h7.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h7.render("NEXT", 1, ui_variables.real_white)
+        text_score = ui_variables.h7.render("SCORE", 1, ui_variables.real_white)
+        score_value = ui_variables.h6.render(
+            str(score), 1, ui_variables.real_white)
+        text_level = ui_variables.h7.render("LEVEL", 1, ui_variables.real_white)
+        level_value = ui_variables.h6.render(
+            str(level), 1, ui_variables.real_white)
+        text_goal = ui_variables.h7.render("GOAL", 1, ui_variables.real_white)
+        goal_value = ui_variables.h6.render(str(goal), 1, ui_variables.real_white)
+        text_fever = ui_variables.h7.render("NEXT FEVER", 1, ui_variables.real_white)
+        next_fever_value = ui_variables.h6.render(str(next_fever), 1, ui_variables.real_white)
+
+    elif 600 <= board_width < 800 : 
+        text_hold = ui_variables.h6.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h6.render("NEXT", 1, ui_variables.real_white)
+        text_score = ui_variables.h6.render("SCORE", 1, ui_variables.real_white)
+        score_value = ui_variables.h5.render(
+            str(score), 1, ui_variables.real_white)
+        text_level = ui_variables.h6.render("LEVEL", 1, ui_variables.real_white)
+        level_value = ui_variables.h5.render(
+            str(level), 1, ui_variables.real_white)
+        text_goal = ui_variables.h6.render("GOAL", 1, ui_variables.real_white)
+        goal_value = ui_variables.h5.render(str(goal), 1, ui_variables.real_white)
+        text_fever = ui_variables.h6.render("NEXT FEVER", 1, ui_variables.real_white)
+        next_fever_value = ui_variables.h5.render(str(next_fever), 1, ui_variables.real_white)
+
+    elif 800 <= board_width < 1000 : 
+        text_hold = ui_variables.h5.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h5.render("NEXT", 1, ui_variables.real_white)
+        text_score = ui_variables.h5.render("SCORE", 1, ui_variables.real_white)
+        score_value = ui_variables.h4.render(
+            str(score), 1, ui_variables.real_white)
+        text_level = ui_variables.h5.render("LEVEL", 1, ui_variables.real_white)
+        level_value = ui_variables.h4.render(
+            str(level), 1, ui_variables.real_white)
+        text_goal = ui_variables.h5.render("GOAL", 1, ui_variables.real_white)
+        goal_value = ui_variables.h4.render(str(goal), 1, ui_variables.real_white)
+        text_fever = ui_variables.h5.render("NEXT FEVER", 1, ui_variables.real_white)
+        next_fever_value = ui_variables.h4.render(str(next_fever), 1, ui_variables.real_white)
+
+    elif 1000 <= board_width < 1200 :
+        text_hold = ui_variables.h4.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h4.render("NEXT", 1, ui_variables.real_white)
+        text_score = ui_variables.h4.render("SCORE", 1, ui_variables.real_white)
+        score_value = ui_variables.h3.render(
+            str(score), 1, ui_variables.real_white)
+        text_level = ui_variables.h4.render("LEVEL", 1, ui_variables.real_white)
+        level_value = ui_variables.h3.render(
+            str(level), 1, ui_variables.real_white)
+        text_goal = ui_variables.h4.render("GOAL", 1, ui_variables.real_white)
+        goal_value = ui_variables.h3.render(str(goal), 1, ui_variables.real_white)
+        text_fever = ui_variables.h4.render("NEXT FEVER", 1, ui_variables.real_white)
+        next_fever_value = ui_variables.h3.render(str(next_fever), 1, ui_variables.real_white)
+
+    elif 1200 < board_width :
+        text_hold = ui_variables.h3.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h3.render("NEXT", 1, ui_variables.real_white)
+        text_score = ui_variables.h3.render("SCORE", 1, ui_variables.real_white)
+        score_value = ui_variables.h2.render(
+            str(score), 1, ui_variables.real_white)
+        text_level = ui_variables.h3.render("LEVEL", 1, ui_variables.real_white)
+        level_value = ui_variables.h2.render(
+            str(level), 1, ui_variables.real_white)
+        text_goal = ui_variables.h3.render("GOAL", 1, ui_variables.real_white)
+        goal_value = ui_variables.h2.render(str(goal), 1, ui_variables.real_white)
+        text_fever = ui_variables.h3.render("NEXT FEVER", 1, ui_variables.real_white)
+        next_fever_value = ui_variables.h2.render(str(next_fever), 1, ui_variables.real_white)  
 
     # Place texts
-    screen.blit(text_hold, (int(board_width * 0.045) +
+    screen.blit(text_hold, (int(board_width * 0.096) +
                 sidebar_width, int(board_height * 0.0374)))
-    screen.blit(text_next, (int(board_width * 0.045) +
-                sidebar_width, int(board_height * 0.2780)))
-    screen.blit(text_score, (int(board_width * 0.07) +
-                sidebar_width, int(board_height * 0.5187)))
-    screen.blit(score_value, (int(board_width * 0.08) +
-                sidebar_width, int(board_height * 0.575)))
-    screen.blit(text_level, (int(board_width * 0.07) +
-                sidebar_width, int(board_height * 0.6791)))
-    screen.blit(level_value, (int(board_width * 0.08) +
-                sidebar_width, int(board_height * 0.75)))
-    screen.blit(text_goal, (int(board_width * 0.02) +
-                sidebar_width, int(board_height * 0.8400)))
-    screen.blit(goal_value, (int(board_width * 0.04) +
-                sidebar_width, int(board_height * 0.92)))
-    screen.blit(text_fever, (int(board_width * 0.12) + 
-                sidebar_width, int(board_height * 0.8395)))
-    screen.blit(next_fever_value, (int(board_width * 0.13) + 
+    screen.blit(text_next, (int(board_width * 0.096) +
+                sidebar_width, int(board_height * 0.1978)))
+    screen.blit(text_score, (int(board_width * 0.09) +
+                sidebar_width, int(board_height * 0.41)))
+    screen.blit(score_value, (int(board_width * 0.11) +
+                sidebar_width, int(board_height * 0.47)))
+    screen.blit(text_level, (int(board_width * 0.0965) +
+                sidebar_width, int(board_height * 0.565)))
+    screen.blit(level_value, (int(board_width * 0.123) +
+                sidebar_width, int(board_height * 0.625)))
+    screen.blit(text_goal, (int(board_width * 0.0975) +
+                sidebar_width, int(board_height * 0.715)))
+    screen.blit(goal_value, (int(board_width * 0.123) +
+                sidebar_width, int(board_height * 0.765)))
+    screen.blit(text_fever, (int(board_width * 0.07) + 
+                sidebar_width, int(board_height * 0.85)))
+    screen.blit(next_fever_value, (int(board_width * 0.11) + 
                 sidebar_width, int(board_height * 0.92)))            
 
     # Draw board
