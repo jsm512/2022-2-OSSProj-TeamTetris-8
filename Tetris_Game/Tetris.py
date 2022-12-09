@@ -2178,7 +2178,34 @@ def set_initial_values():
     start_ticks = pygame.time.get_ticks()
     textsize = False
     
-    
+    # 게임 음악 속도 조절 관련 변수
+    CHANNELS = 1
+    swidth = 2
+    Change_RATE = 2
+
+    fever_score = 500
+    next_fever = 500
+    fever_interval = 3
+    max_score = 99999
+    fever = 0
+
+    combo_fever = 1
+
+    line_count = 0
+    score = 0
+    level = 1
+    goal = level * 5
+    score_2P = 0
+    level_2P = 1
+    goal_2P = level_2P * 5
+    bottom_count = 0
+    bottom_count_2P = 0
+    hard_drop = False
+    hard_drop_2P = False
+    attack_point = 0
+    attack_point_2P = 0
+    combo_count = 0
+    combo_count_2P = 0
     key1 = {'hardDrop': K_e, 'softDrop': K_s, 'turnRight': K_w,
             'turnLeft': K_q, 'moveRight': K_d, 'moveLeft': K_a}
     key2 = {'hardDrop': K_SPACE, 'softDrop': K_DOWN, 'turnRight': K_UP,
