@@ -283,18 +283,10 @@ hard_flipped_image = 'Tetris_Game/assets/vector/flipped.png'
 
 multi_1P_break_image = 'Tetris_Game/assets/images/multi_1p_break.png'
 multi_2P_break_image = 'Tetris_Game/assets/images/multi_2p_break.png'
-training_box_image = 'Tetris_Game/assets/vector/box.png'
 
 line_message_multi_break_image = 'Tetris_Game/assets/vector/line_message_multi_tutorial_break.png'
 line_message_multi_win_image = 'Tetris_Game/assets/vector/line_message_multi_tutorial_win.png'
 
-training_completed_image = 'Tetris_Game/assets/images/training_completed.png'
-training_incomplete_image = 'Tetris_Game/assets/images/training_incomplete.png'
-
-# 트레이닝모드 중간 이벤트 발생 시 나오는 설명 이미지
-hard_3line_image = 'Tetris_Game/assets/images/hard_3line.png'  # 하드트레이닝 3줄 제거시 등장
-hard_10s_image = 'Tetris_Game/assets/images/hard_10s.png'  # 하드트레이닝 10초 경과시 등장
-hard_line_message = 'Tetris_Game/assets/vector/line_message_hard_tutorial.png'  # 하드트레이닝 시작하자마자 메시지 등장
 
 
 class button():  # 버튼객체
@@ -2761,8 +2753,9 @@ while not done:
                             hold_mino, score, level, goal)
 
             elif event.type == VIDEORESIZE:
-                board_width = board_width
-                board_height = board_height
+                board_width = event.w
+                board_height = event.h
+                
                 if board_width < min_width or board_height < min_height:  # 최소 너비 또는 높이를 설정하려는 경우
                     board_width = min_width
                     board_height = min_height
