@@ -1,5 +1,37 @@
 #frequency value
 half = 0.5
+playing_image_x_rate = 0.3
+playing_image_y_rate = 0.2
+playing_image_width_rate = 0.01
+playing_image_height_rate = 0.1
+winner_image_height_rate= 0.25
+name_height_rate = 0.55
+name1_width_rate = 0.434
+name2_width_rate = 0.494
+name3_width_rate = 0.545
+underbar_height_rate = 0.56
+underbar1_width_rate = 0.437
+underbar2_width_rate = 0.497
+underbar3_width_rate = 0.557
+
+background_width_rate = 0.47
+background1_height_rate = 0.33
+background2_height_rate = 0.52
+background3_height_rate = 0.73
+
+video_lower_rate = 0.1
+video_upper_rate = 0.05
+
+volume_width_rate = 1.3
+
+music_width_rate = 0.19
+music_height_rate = 0.37
+effect_volum_rate = 0.7
+
+BGM_height_rate = 0.45
+BGM2_width_rate = 0.67
+BGM3_width_rate = 0.79
+
 
 #font_size
 h0_size = 50
@@ -219,9 +251,9 @@ sound_plus_button_width_rate = 0.0625
 sound_plus_button_height_rate = 0.1111
 
 mute_check_x_rate = 0.2
-mute_check_x_rate = 0.4
-mute_check_x_rate = 0.0625
-mute_check_x_rate = 0.1111
+mute_check_y_rate = 0.4
+mute_check_width_rate = 0.0625
+mute_check_height_rate = 0.1111
 
 background_check_x_rate = 0.5
 background_check_width_rate = 0.1875
@@ -283,3 +315,51 @@ player2_sidebar_rate = 0.82
 player2_dx_rate = 0.05
 player2_dy_rate = 0.3743
 player2_dx_matrix_rate = 0.54
+
+#text_board rate
+speed_value_rate = 0.015
+text_width_rate = 0.045
+text2_width_rate = 0.055
+hold_height_rate = 0.0374
+next_height_rate = 0.2780
+score_height_rate = 0.5187
+score_value_height_rate = 0.5614
+level_height_rate = 0.6791
+value_height_rate = 0.7219
+goal_height_rate = 0.8400
+goal_value_height_rate = 0.8823
+fever_width_rate = 0.12
+fever_height_rate = 0.8395
+next_fever_width_rate = 0.13
+next_fever_height_rate = 0.8823
+
+#place text rate
+place_hold_width = 0.096
+place_hold_height = 0.0374
+place_next_width = 0.096
+place_next_height = 0.1978
+place_score_width = 0.09
+place_score_height = 0.41
+place_value_width = 0.11
+place_value_height = 0.47
+place_level_width = 0.0965
+place_level_height = 0.565
+place_level_value_width = 0.123
+place_level_value_height = 0.625
+place_goal_width = 0.0975
+place_goal_height = 0.715
+place_goal_value_width = 0.123
+place_goal_value_height = 0.765
+place_fever_width = 0.07
+place_fever_height = 0.85
+place_fever_value_width = 0.11
+place_fever_value_height = 0.92
+
+#board_width <= 600
+vertical_width_rate = 0.06
+vertical_height_rate = 0.12
+vertical_volume_rate = 0.25
+vertical_screen_rate = 0.41
+vertical_size_rate = 0.6
+
+
