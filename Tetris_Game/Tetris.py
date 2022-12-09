@@ -1680,12 +1680,12 @@ while not done:
             pygame.draw.rect(pause_surface, (ui_variables.black_pause), [0, 0, int(
                 board_width), int(board_height)])  # (screen, 색깔, 위치 x, y좌표, 너비, 높이)
 
-            draw_image(screen, help_board_image, board_width * 0.5, board_height * 0.5,
+            draw_image(screen, help_board_image, board_width * half, board_height * half,
                        int(board_width * 0.8), int(board_height * 0.9))  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
             back_button2.draw(screen, (0, 0, 0))
 
         if help_status == False:
-            draw_image(screen, pause_board_image, board_width * 0.5, board_height * 0.5,
+            draw_image(screen, pause_board_image, board_width * half, board_height * half,
                        int(board_height * 1), board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
             resume_button.draw(screen, (0, 0, 0))  # rgb(0,0,0) = 검정색
 
