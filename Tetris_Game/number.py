@@ -2,12 +2,15 @@
 half = 0.5
 
 #font_size
-h1_size = 50
+h0_size = 50
+h1_size = 40
 h2_size = 30
 h3_size = 25
 h4_size = 20
-h5_size = 13
-h6_size = 7
+h5_size = 16
+h6_size = 13
+h7_size = 10
+h8_size = 9
 h1_b_size = 50
 h2_b_size = 30
 h2_i_size = 30
