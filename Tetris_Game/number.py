@@ -1,3 +1,6 @@
+#frequency value
+half = 0.5
+
 #font_size
 h0_size = 50
 h1_size = 40
@@ -68,10 +71,215 @@ init_music_volume = 5
 init_effect_volume = 5
 
 
-#Single
+# Single
 single_max_level = 15
 single_increase_level = 1
 single_increase_goal = 5
 single_goal_achieve = 1
 
+# 버튼 위치 
+select_mode_button_x_rate = 0.125
+select_mode_button_y_rate = 0.4
+select_mode_button_width_rate = 0.22
+select_mode_button_height_rate = 0.2
 
+setting_button_x_rate = 0.375
+setting_button_y_rate = 0.4
+setting_button_width_rate = 0.22
+setting_button_heigth_rate = 0.2
+
+quit_button_x_rate = 0.625
+quit_button_y_rate = 0.4
+quit_button_width_rate = 0.22
+quit_button_height_rate = 0.2
+
+score_board_button_x_rate = 0.875
+score_board_button_y_rate = 0.4
+score_board_button_width_rate = 0.22
+score_board_button_height_rate = 0.2
+
+single_button_x_rate = 0.35
+single_button_y_rate = 0.35
+single_button_width_rate = 0.22
+single_button_height_rate = 0.2
+
+pvp_button_x_rate = 0.65
+pvp_button_y_rate = 0.35
+pvp_button_width_rate = 0.22
+pvp_button_height_rate = 0.2
+
+easy_button_x_rate = 0.25
+easy_button_y_rate = 0.35
+easy_button_width_rate = 0.22
+easy_button_height_rate = 0.2
+
+normal_button_x_rate = 0.5
+normal_button_y_rate = 0.35
+normal_button_width_rate = 0.22
+normal_button_height_rate = 0.2
+
+hard_button_x_rate = 0.75
+hard_button_y_rate = 0.35
+hard_button_width_rate = 0.22
+hard_button_height_rate = 0.2
+
+pvp_button_x_rate = 0.65
+pvp_button_y_rate = 0.35
+pvp_button_width_rate = 0.22
+pvp_button_height_rate = 0.2
+
+resume_buttone_x_rate = 0.5
+resume_buttone_y_rate = 0.23
+resume_buttone_width_rate = 0.17
+resume_buttone_height_rate = 0.2
+
+menu_button2_x_rate = 0.5
+menu_button2_y_rate = 0.43
+menu_button2_width_rate = 0.17
+menu_button2_height_rate = 0.2
+
+help_button_x_rate = 0.5
+help_button_y_rate = 0.63
+help_button_width_rate = 0.17
+help_button_height_rate = 0.2
+
+pause_quit_button_x_rate = 0.5
+pause_quit_button_y_rate = 0.83
+pause_quit_button_width_rate = 0.17
+pause_quit_button_height_rate = 0.2
+
+pause_setting_button_x_rate = 0.5
+pause_setting_button_y_rate = 0.63
+pause_setting_button_width_rate = 0.17
+pause_setting_button_height_rate = 0.2
+
+leaderboard_icon_x_rate = 0.77
+leaderboard_icon_y_rate = 0.85
+leaderboard_icon_width_rate = 0.15
+leaderboard_icon_height_rate = 0.2
+
+mute_button_x_rate = 0.58
+mute_button_y_rate = 0.715
+mute_button_width_rate = 0.06
+mute_button_height_rate = 0.11
+
+default_button_x_rate = 0.5
+default_button_y_rate = 0.27
+default_button_width_rate = 0.15
+default_button_height_rate = 0.2
+
+restart_button_x_rate = 0.5
+restart_button_y_rate = 0.23
+restart_button_width_rate = 0.17
+restart_button_height_rate = 0.2
+
+back_button_x_rate = 0.5
+back_button_y_rate = 0.85
+back_button_width_rate = 0.1
+back_button_height_rate = 0.12
+
+back_button2_x_rate = 0.2
+back_button2_y_rate = 0.85
+back_button2_width_rate = 0.1
+back_button2_height_rate = 0.12
+
+ok_button_x_rate = 0.5
+ok_button_y_rate = 0.83
+ok_button_width_rate = 0.15
+ok_button_height_rate = 0.2
+
+multi_menu_button_x_rate = 0.35
+multi_menu_button_y_rate = 0.8
+multi_menu_button_width_rate = 0.2
+multi_menu_button_height_rate = 0.2
+
+multi_restart_button_x_rate = 0.65
+multi_restart_button_y_rate = 0.8
+multi_restart_button_width_rate = 0.2
+multi_restart_button_height_rate = 0.2
+
+effect_minus_button_x_rate = 0.13
+effect_minus_button_y_rate = 0.73
+effect_minus_button_width_rate = 0.0625
+effect_minus_button_height_rate = 0.1111
+
+effect_plus_button_x_rate = 0.28
+effect_plus_button_y_rate = 0.73
+effect_plus_button_width_rate = 0.0625
+effect_plus_button_height_rate = 0.1111
+
+sound_minus_button_x_rate = 0.13
+sound_minus_button_y_rate = 0.4
+sound_minus_button_width_rate = 0.0625
+sound_minus_button_height_rate = 0.1111
+
+sound_plus_button_x_rate = 0.28
+sound_plus_button_y_rate = 0.4
+sound_plus_button_width_rate = 0.0625
+sound_plus_button_height_rate = 0.1111
+
+mute_check_x_rate = 0.2
+mute_check_x_rate = 0.4
+mute_check_x_rate = 0.0625
+mute_check_x_rate = 0.1111
+
+background_check_x_rate = 0.5
+background_check_width_rate = 0.1875
+background_check_height_rate = 0.1444
+
+background1_check_y_rate = 0.25
+background2_check_y_rate = 0.45
+background3_check_y_rate = 0.65
+
+size_check_y_rate = 0.5
+size_check_width_rate = 0.1875
+size_check_height_rate = 0.1444
+
+size1_check_x_rate = 0.3
+size2_check_x_rate = 0.51
+size3_check_x_rate = 0.7
+
+icon_y_rate = 0.5
+icon_width_rate = 0.12
+icon_height_rate = 0.23
+
+volume_icon_x_rate = 0.3
+screen_icon_x_rate = 0.7
+size_icon_x_rate = 0.5
+
+on_off_x_rate = 0.4
+on_off_width_rate = 0.0625
+on_off_height_rate = 0.1111
+
+effect_sound_button_y_rate = 0.73
+music_sound_button_y_rate = 0.4
+
+BGM_button_y_rate = 0.37
+BGM_button_width_rate = 0.08
+BGM_button_height_rate = 0.15
+
+BGM1_x_rate = 0.57
+BGM2_x_rate = 0.69
+BGM3_x_rate = 0.81
+
+##### def draw_board()
+sidebar_rate = 0.5312
+sidebar_width_rate = 0.2375
+dx1_rate = 0.025
+dy1_rate = 0.3743
+dx2_rate = 0.145
+dy2_rate = 0.3743
+dx_rate = 0.045
+dy_rate = 0.1336
+dx_matrix_rate = 0.25
+dy_matrix_rate = 0.055
+
+single_sidebar_rate = 0.6
+player1_sidebar_rate = 0.31
+player1_sidebar_width_rate = 0.1875
+player1_dx_matrix_rate = 0.05
+
+player2_sidebar_rate = 0.82
+player2_dx_rate = 0.05
+player2_dy_rate = 0.3743
+player2_dx_matrix_rate = 0.54
