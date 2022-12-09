@@ -888,33 +888,186 @@ def draw_1Pboard(next, hold, current_key):
     # Draw texts
     # render("텍스트이름", 안티에일리어싱 적용, 색깔), 즉 아래의 코드에서 숫자 1=안티에일리어싱 적용에 관한 코드
     if textsize == False:
-        text_hold = ui_variables.h5.render("HOLD", 1, ui_variables.real_white)
-        text_next = ui_variables.h5.render("NEXT", 1, ui_variables.real_white)
-        text_reverse = ui_variables.h5.render(
-            "REVERSE", 1, ui_variables.real_white)
-        if current_key:
-            reverse_value = ui_variables.h4.render(
-                "O", 1, ui_variables.real_white)
-        elif not current_key:
-            reverse_value = ui_variables.h4.render(
-                "X", 1, ui_variables.real_white)
-        text_combo = ui_variables.h5.render("COMBO", 1, ui_variables.real_white)
-        combo_value = ui_variables.h4.render(
-            str(combo_count), 1, ui_variables.real_white)
+        if board_width <500 :
+            text_hold = ui_variables.h8.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h8.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h8.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h7.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h7.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h8.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h7.render(
+                str(combo_count), 1, ui_variables.real_white)
+        
+        elif 500 <= board_width <600 :
+            text_hold = ui_variables.h7.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h7.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h7.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h6.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h6.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h7.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h6.render(
+                str(combo_count), 1, ui_variables.real_white)
+
+        elif 600 <= board_width <800 :
+            text_hold = ui_variables.h6.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h6.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h6.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h5.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h5.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h6.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h5.render(
+                str(combo_count), 1, ui_variables.real_white)
+
+        elif 800 <= board_width <1000 :
+            text_hold = ui_variables.h5.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h5.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h5.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h4.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h4.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h5.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h4.render(
+                str(combo_count), 1, ui_variables.real_white)
+        
+        elif 1000 <= board_width <1200 :
+            text_hold = ui_variables.h4.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h4.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h4.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h3.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h3.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h4.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h3.render(
+                str(combo_count), 1, ui_variables.real_white)
+            
+        elif 1200 <= board_width :
+            text_hold = ui_variables.h3.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h3.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h3.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h2.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h2.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h3.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h2.render(
+                str(combo_count), 1, ui_variables.real_white)
+
     if textsize == True:
-        text_hold = ui_variables.h3.render("HOLD", 1, ui_variables.real_white)
-        text_next = ui_variables.h3.render("NEXT", 1, ui_variables.real_white)
-        text_reverse = ui_variables.h3.render(
-            "REVERSE", 1, ui_variables.real_white)
-        if current_key:
-            reverse_value = ui_variables.h2.render(
-                "O", 1, ui_variables.real_white)
-        elif not current_key:
-            reverse_value = ui_variables.h2.render(
-                "X", 1, ui_variables.real_white)
-        text_combo = ui_variables.h3.render("COMBO", 1, ui_variables.real_white)
-        combo_value = ui_variables.h2.render(
-            str(combo_count), 1, ui_variables.real_white)
+        if board_width <500 :
+            text_hold = ui_variables.h8.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h8.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h8.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h7.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h7.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h8.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h7.render(
+                str(combo_count), 1, ui_variables.real_white)
+        
+        elif 500 <= board_width <600 :
+            text_hold = ui_variables.h7.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h7.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h7.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h6.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h6.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h7.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h6.render(
+                str(combo_count), 1, ui_variables.real_white)
+
+        elif 600 <= board_width <800 :
+            text_hold = ui_variables.h6.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h6.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h6.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h5.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h5.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h6.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h5.render(
+                str(combo_count), 1, ui_variables.real_white)
+
+        elif 800 <= board_width <1000 :
+            text_hold = ui_variables.h5.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h5.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h5.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h4.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h4.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h5.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h4.render(
+                str(combo_count), 1, ui_variables.real_white)
+        
+        elif 1000 <= board_width <1200 :
+            text_hold = ui_variables.h4.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h4.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h4.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h3.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h3.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h4.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h3.render(
+                str(combo_count), 1, ui_variables.real_white)
+            
+        elif 1200 <= board_width :
+            text_hold = ui_variables.h3.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h3.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h3.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h2.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h2.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h3.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h2.render(
+                str(combo_count), 1, ui_variables.real_white)
     if debug:
         # speed를 알려주는 framerate(기본값 30. 빨라질 수록 숫자 작아짐)
         speed_value = ui_variables.h5.render(
@@ -984,33 +1137,185 @@ def draw_1Pboard_change(next, hold, current_key):
     # Draw texts
     # render("텍스트이름", 안티에일리어싱 적용, 색깔), 즉 아래의 코드에서 숫자 1=안티에일리어싱 적용에 관한 코드
     if textsize == False:
-        text_hold = ui_variables.h5.render("HOLD", 1, ui_variables.real_white)
-        text_next = ui_variables.h5.render("NEXT", 1, ui_variables.real_white)
-        text_reverse = ui_variables.h5.render(
-            "REVERSE", 1, ui_variables.real_white)
-        if current_key:
-            reverse_value = ui_variables.h4.render(
-                "O", 1, ui_variables.real_white)
-        elif not current_key:
-            reverse_value = ui_variables.h4.render(
-                "X", 1, ui_variables.real_white)
-        text_combo = ui_variables.h5.render("COMBO", 1, ui_variables.real_white)
-        combo_value = ui_variables.h4.render(
-            str(combo_count), 1, ui_variables.real_white)
+        if board_width <500 :
+            text_hold = ui_variables.h8.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h8.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h8.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h7.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h7.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h8.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h7.render(
+                str(combo_count), 1, ui_variables.real_white)
+        
+        elif 500 <= board_width <600 :
+            text_hold = ui_variables.h7.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h7.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h7.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h6.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h6.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h7.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h6.render(
+                str(combo_count), 1, ui_variables.real_white)
+
+        elif 600 <= board_width <800 :
+            text_hold = ui_variables.h6.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h6.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h6.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h5.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h5.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h6.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h5.render(
+                str(combo_count), 1, ui_variables.real_white)
+
+        elif 800 <= board_width <1000 :
+            text_hold = ui_variables.h5.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h5.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h5.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h4.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h4.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h5.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h4.render(
+                str(combo_count), 1, ui_variables.real_white)
+        
+        elif 1000 <= board_width <1200 :
+            text_hold = ui_variables.h4.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h4.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h4.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h3.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h3.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h4.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h3.render(
+                str(combo_count), 1, ui_variables.real_white)
+            
+        elif 1200 <= board_width :
+            text_hold = ui_variables.h3.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h3.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h3.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h2.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h2.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h3.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h2.render(
+                str(combo_count), 1, ui_variables.real_white)
     if textsize == True:
-        text_hold = ui_variables.h3.render("HOLD", 1, ui_variables.real_white)
-        text_next = ui_variables.h3.render("NEXT", 1, ui_variables.real_white)
-        text_reverse = ui_variables.h3.render(
-            "REVERSE", 1, ui_variables.real_white)
-        if current_key:
-            reverse_value = ui_variables.h2.render(
-                "O", 1, ui_variables.real_white)
-        elif not current_key:
-            reverse_value = ui_variables.h2.render(
-                "X", 1, ui_variables.real_white)
-        text_combo = ui_variables.h3.render("COMBO", 1, ui_variables.real_white)
-        combo_value = ui_variables.h2.render(
-            str(combo_count), 1, ui_variables.real_white)
+        if board_width <500 :
+            text_hold = ui_variables.h8.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h8.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h8.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h7.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h7.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h8.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h7.render(
+                str(combo_count), 1, ui_variables.real_white)
+        
+        elif 500 <= board_width <600 :
+            text_hold = ui_variables.h7.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h7.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h7.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h6.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h6.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h7.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h6.render(
+                str(combo_count), 1, ui_variables.real_white)
+
+        elif 600 <= board_width <800 :
+            text_hold = ui_variables.h6.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h6.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h6.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h5.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h5.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h6.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h5.render(
+                str(combo_count), 1, ui_variables.real_white)
+
+        elif 800 <= board_width <1000 :
+            text_hold = ui_variables.h5.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h5.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h5.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h4.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h4.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h5.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h4.render(
+                str(combo_count), 1, ui_variables.real_white)
+        
+        elif 1000 <= board_width <1200 :
+            text_hold = ui_variables.h4.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h4.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h4.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h3.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h3.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h4.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h3.render(
+                str(combo_count), 1, ui_variables.real_white)
+            
+        elif 1200 <= board_width :
+            text_hold = ui_variables.h3.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h3.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h3.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h2.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h2.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h3.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h2.render(
+                str(combo_count), 1, ui_variables.real_white)
     if debug:
         # speed를 알려주는 framerate(기본값 30. 빨라질 수록 숫자 작아짐)
         speed_value = ui_variables.h5.render(
@@ -1081,33 +1386,187 @@ def draw_2Pboard(next, hold, current_key_2P):
 
     # render("텍스트이름", 안티에일리어싱 적용, 색깔), 즉 아래 코드의 숫자 1=안티에일리어싱 적용에 대한 코드
     if textsize == False:
-        text_hold = ui_variables.h5.render("HOLD", 1, ui_variables.real_white)
-        text_next = ui_variables.h5.render("NEXT", 1, ui_variables.real_white)
-        text_reverse = ui_variables.h5.render(
-            "REVERSE", 1, ui_variables.real_white)
-        if current_key_2P:
-            reverse_value = ui_variables.h4.render(
-                "O", 1, ui_variables.real_white)
-        elif not current_key_2P:
-            reverse_value = ui_variables.h4.render(
-                "X", 1, ui_variables.real_white)
-        text_combo = ui_variables.h5.render("COMBO", 1, ui_variables.real_white)
-        combo_value = ui_variables.h4.render(
-            str(combo_count_2P), 1, ui_variables.real_white)
+        if board_width <500 :
+            text_hold = ui_variables.h8.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h8.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h8.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h7.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h7.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h8.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h7.render(
+                str(combo_count), 1, ui_variables.real_white)
+        
+        elif 500 <= board_width <600 :
+            text_hold = ui_variables.h7.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h7.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h7.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h6.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h6.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h7.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h6.render(
+                str(combo_count), 1, ui_variables.real_white)
+
+        elif 600 <= board_width <800 :
+            text_hold = ui_variables.h6.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h6.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h6.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h5.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h5.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h6.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h5.render(
+                str(combo_count), 1, ui_variables.real_white)
+
+        elif 800 <= board_width <1000 :
+            text_hold = ui_variables.h5.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h5.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h5.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h4.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h4.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h5.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h4.render(
+                str(combo_count), 1, ui_variables.real_white)
+        
+        elif 1000 <= board_width <1200 :
+            text_hold = ui_variables.h4.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h4.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h4.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h3.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h3.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h4.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h3.render(
+                str(combo_count), 1, ui_variables.real_white)
+            
+        elif 1200 <= board_width :
+            text_hold = ui_variables.h3.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h3.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h3.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h2.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h2.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h3.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h2.render(
+                str(combo_count), 1, ui_variables.real_white)
+
     if textsize == True:
-        text_hold = ui_variables.h4.render("HOLD", 1, ui_variables.real_white)
-        text_next = ui_variables.h4.render("NEXT", 1, ui_variables.real_white)
-        text_reverse = ui_variables.h4.render(
-            "REVERSE", 1, ui_variables.real_white)
-        if current_key_2P:
-            reverse_value = ui_variables.h3.render(
-                "O", 1, ui_variables.real_white)
-        elif not current_key_2P:
-            reverse_value = ui_variables.h3.render(
-                "X", 1, ui_variables.real_white)
-        text_combo = ui_variables.h4.render("COMBO", 1, ui_variables.real_white)
-        combo_value = ui_variables.h3.render(
-            str(combo_count_2P), 1, ui_variables.real_white)
+        if board_width <500 :
+            text_hold = ui_variables.h8.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h8.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h8.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h7.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h7.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h8.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h7.render(
+                str(combo_count), 1, ui_variables.real_white)
+        
+        elif 500 <= board_width <600 :
+            text_hold = ui_variables.h7.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h7.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h7.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h6.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h6.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h7.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h6.render(
+                str(combo_count), 1, ui_variables.real_white)
+
+        elif 600 <= board_width <800 :
+            text_hold = ui_variables.h6.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h6.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h6.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h5.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h5.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h6.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h5.render(
+                str(combo_count), 1, ui_variables.real_white)
+
+        elif 800 <= board_width <1000 :
+            text_hold = ui_variables.h5.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h5.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h5.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h4.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h4.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h5.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h4.render(
+                str(combo_count), 1, ui_variables.real_white)
+        
+        elif 1000 <= board_width <1200 :
+            text_hold = ui_variables.h4.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h4.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h4.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h3.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h3.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h4.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h3.render(
+                str(combo_count), 1, ui_variables.real_white)
+            
+        elif 1200 <= board_width :
+            text_hold = ui_variables.h3.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h3.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h3.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h2.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h2.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h3.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h2.render(
+                str(combo_count), 1, ui_variables.real_white)
+
     if debug:
         # speed를 알려주는 framerate(기본값 30. 빨라질 수록 숫자 작아짐)
         speed_value = ui_variables.h5.render(
@@ -1173,33 +1632,187 @@ def draw_2Pboard_change(next, hold, current_key_2P):
 
     # render("텍스트이름", 안티에일리어싱 적용, 색깔), 즉 아래 코드의 숫자 1=안티에일리어싱 적용에 대한 코드
     if textsize == False:
-        text_hold = ui_variables.h5.render("HOLD", 1, ui_variables.real_white)
-        text_next = ui_variables.h5.render("NEXT", 1, ui_variables.real_white)
-        text_reverse = ui_variables.h5.render(
-            "REVERSE", 1, ui_variables.real_white)
-        if current_key_2P:
-            reverse_value = ui_variables.h4.render(
-                "O", 1, ui_variables.real_white)
-        elif not current_key_2P:
-            reverse_value = ui_variables.h4.render(
-                "X", 1, ui_variables.real_white)
-        text_combo = ui_variables.h5.render("COMBO", 1, ui_variables.real_white)
-        combo_value = ui_variables.h4.render(
-            str(combo_count_2P), 1, ui_variables.real_white)
+        if board_width <500 :
+            text_hold = ui_variables.h8.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h8.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h8.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h7.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h7.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h8.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h7.render(
+                str(combo_count), 1, ui_variables.real_white)
+        
+        elif 500 <= board_width <600 :
+            text_hold = ui_variables.h7.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h7.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h7.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h6.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h6.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h7.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h6.render(
+                str(combo_count), 1, ui_variables.real_white)
+
+        elif 600 <= board_width <800 :
+            text_hold = ui_variables.h6.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h6.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h6.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h5.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h5.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h6.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h5.render(
+                str(combo_count), 1, ui_variables.real_white)
+
+        elif 800 <= board_width <1000 :
+            text_hold = ui_variables.h5.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h5.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h5.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h4.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h4.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h5.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h4.render(
+                str(combo_count), 1, ui_variables.real_white)
+        
+        elif 1000 <= board_width <1200 :
+            text_hold = ui_variables.h4.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h4.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h4.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h3.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h3.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h4.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h3.render(
+                str(combo_count), 1, ui_variables.real_white)
+            
+        elif 1200 <= board_width :
+            text_hold = ui_variables.h3.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h3.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h3.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h2.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h2.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h3.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h2.render(
+                str(combo_count), 1, ui_variables.real_white)
+
     if textsize == True:
-        text_hold = ui_variables.h4.render("HOLD", 1, ui_variables.real_white)
-        text_next = ui_variables.h4.render("NEXT", 1, ui_variables.real_white)
-        text_reverse = ui_variables.h4.render(
-            "REVERSE", 1, ui_variables.real_white)
-        if current_key_2P:
-            reverse_value = ui_variables.h3.render(
-                "O", 1, ui_variables.real_white)
-        elif not current_key_2P:
-            reverse_value = ui_variables.h3.render(
-                "X", 1, ui_variables.real_white)
-        text_combo = ui_variables.h4.render("COMBO", 1, ui_variables.real_white)
-        combo_value = ui_variables.h3.render(
-            str(combo_count_2P), 1, ui_variables.real_white)
+        if board_width <500 :
+            text_hold = ui_variables.h8.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h8.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h8.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h7.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h7.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h8.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h7.render(
+                str(combo_count), 1, ui_variables.real_white)
+        
+        elif 500 <= board_width <600 :
+            text_hold = ui_variables.h7.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h7.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h7.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h6.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h6.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h7.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h6.render(
+                str(combo_count), 1, ui_variables.real_white)
+
+        elif 600 <= board_width <800 :
+            text_hold = ui_variables.h6.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h6.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h6.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h5.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h5.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h6.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h5.render(
+                str(combo_count), 1, ui_variables.real_white)
+
+        elif 800 <= board_width <1000 :
+            text_hold = ui_variables.h5.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h5.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h5.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h4.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h4.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h5.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h4.render(
+                str(combo_count), 1, ui_variables.real_white)
+        
+        elif 1000 <= board_width <1200 :
+            text_hold = ui_variables.h4.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h4.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h4.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h3.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h3.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h4.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h3.render(
+                str(combo_count), 1, ui_variables.real_white)
+            
+        elif 1200 <= board_width :
+            text_hold = ui_variables.h3.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h3.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h3.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key:
+                reverse_value = ui_variables.h2.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key:
+                reverse_value = ui_variables.h2.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h3.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h2.render(
+                str(combo_count), 1, ui_variables.real_white)
+                
     if debug:
         # speed를 알려주는 framerate(기본값 30. 빨라질 수록 숫자 작아짐)
         speed_value = ui_variables.h5.render(
