@@ -853,7 +853,7 @@ def draw_1Pboard(next, hold, current_key):
         for j in range(mino_matrix_x):
             dx = int(board_width * dx_rate) + sidebar_width + \
                 block_size * j  # 위치비율 고정, board 가로길이에 원하는 비율을 곱해줌#
-            dy = int(board_height * dy1_rate) + block_size * \
+            dy = int(board_height * player2_dy_rate) + block_size * \
                 i  # 위치비율 고정, board 세로길이에 원하는 비율을 곱해줌#
             if grid_n[i][j] != 0:
                 draw_block_image(dx, dy, ui_variables.t_block[grid_n[i][j]])
@@ -1102,7 +1102,7 @@ def draw_1Pboard_change(next, hold, current_key):
         for j in range(mino_matrix_x):
             dx = int(board_width * dx_rate) + sidebar_width + \
                 block_size * j  # 위치비율 고정, board 가로길이에 원하는 비율을 곱해줌#
-            dy = int(board_height * dy1_rate) + block_size * \
+            dy = int(board_height * player2_dy_rate) + block_size * \
                 i  # 위치비율 고정, board 세로길이에 원하는 비율을 곱해줌#
             if grid_n[i][j] != 0:
                 draw_block_image(dx, dy, ui_variables.t_block[grid_n[i][j]])
@@ -4689,11 +4689,11 @@ while not done:
             BGM3_text = ui_variables.h8.render('BGM3', 1, ui_variables.white)
 
             screen.blit(BGM1_text, (board_width * name_height_rate,
-                    board_height * BGM_height_rate))  # 위치 비율 고정
-            screen.blit(BGM2_text, (board_width * BGM2_width_rate,
-                    board_height * BGM_height_rate))  # 위치 비율 고정
-            screen.blit(BGM3_text, (board_width * BGM3_width_rate,
-                    board_height * BGM_height_rate))  # 위치 비율 고정
+                    board_height * 0.45))  # 위치 비율 고정
+            screen.blit(BGM2_text, (board_width * 0.67,
+                    board_height * 0.45))  # 위치 비율 고정
+            screen.blit(BGM3_text, (board_width * 0.79,
+                    board_height * 0.45))  # 위치 비율 고정
 
         elif 500 <= board_width < 600 :
             music_volume_text = ui_variables.h7.render(
@@ -4727,11 +4727,11 @@ while not done:
             BGM3_text = ui_variables.h7.render('BGM3', 1, ui_variables.white)
 
             screen.blit(BGM1_text, (board_width * name_height_rate,
-                    board_height * BGM_height_rate))  # 위치 비율 고정
-            screen.blit(BGM2_text, (board_width * BGM2_width_rate,
-                    board_height * BGM_height_rate))  # 위치 비율 고정
-            screen.blit(BGM3_text, (board_width * BGM3_width_rate,
-                    board_height * BGM_height_rate))  # 위치 비율 고정
+                    board_height * 0.45))  # 위치 비율 고정
+            screen.blit(BGM2_text, (board_width * 0.67,
+                    board_height * 0.45))  # 위치 비율 고정
+            screen.blit(BGM3_text, (board_width * 0.79,
+                    board_height * 0.45))  # 위치 비율 고정
         
         elif 600 <= board_width < 800 :
             music_volume_text = ui_variables.h6.render(
@@ -4765,11 +4765,11 @@ while not done:
             BGM3_text = ui_variables.h6.render('BGM3', 1, ui_variables.white)
 
             screen.blit(BGM1_text, (board_width * name_height_rate,
-                    board_height * BGM_height_rate))  # 위치 비율 고정
-            screen.blit(BGM2_text, (board_width * BGM2_width_rate,
-                    board_height * BGM_height_rate))  # 위치 비율 고정
-            screen.blit(BGM3_text, (board_width * BGM3_width_rate,
-                    board_height * BGM_height_rate))  # 위치 비율 고정
+                    board_height * 0.45))  # 위치 비율 고정
+            screen.blit(BGM2_text, (board_width * 0.67,
+                    board_height * 0.45))  # 위치 비율 고정
+            screen.blit(BGM3_text, (board_width * 0.79,
+                    board_height * 0.45))  # 위치 비율 고정
 
         elif 800 <= board_width < 1000 :
             music_volume_text = ui_variables.h4.render(
@@ -4803,11 +4803,11 @@ while not done:
             BGM3_text = ui_variables.h5.render('BGM3', 1, ui_variables.white)
 
             screen.blit(BGM1_text, (board_width * name_height_rate,
-                    board_height * BGM_height_rate))  # 위치 비율 고정
-            screen.blit(BGM2_text, (board_width * BGM2_width_rate,
-                    board_height * BGM_height_rate))  # 위치 비율 고정
-            screen.blit(BGM3_text, (board_width * BGM3_width_rate,
-                    board_height * BGM_height_rate))  # 위치 비율 고정
+                    board_height * 0.45))  # 위치 비율 고정
+            screen.blit(BGM2_text, (board_width * 0.67,
+                    board_height * 0.45))  # 위치 비율 고정
+            screen.blit(BGM3_text, (board_width * 0.79,
+                    board_height * 0.45))  # 위치 비율 고정
 
         elif 1000 <= board_width < 1200 :
             music_volume_text = ui_variables.h3.render(
@@ -4841,11 +4841,11 @@ while not done:
             BGM3_text = ui_variables.h4.render('BGM3', 1, ui_variables.white)
 
             screen.blit(BGM1_text, (board_width * name_height_rate,
-                    board_height * BGM_height_rate))  # 위치 비율 고정
-            screen.blit(BGM2_text, (board_width * BGM2_width_rate,
-                    board_height * BGM_height_rate))  # 위치 비율 고정
-            screen.blit(BGM3_text, (board_width * BGM3_width_rate,
-                    board_height * BGM_height_rate))  # 위치 비율 고정
+                    board_height * 0.45))  # 위치 비율 고정
+            screen.blit(BGM2_text, (board_width * 0.67,
+                    board_height * 0.45))  # 위치 비율 고정
+            screen.blit(BGM3_text, (board_width * 0.79,
+                    board_height * 0.45))  # 위치 비율 고정
 
         elif 1200 <= board_width :
             music_volume_text = ui_variables.h2.render(
@@ -4879,11 +4879,11 @@ while not done:
             BGM3_text = ui_variables.h3.render('BGM3', 1, ui_variables.white)
 
             screen.blit(BGM1_text, (board_width * name_height_rate,
-                    board_height * BGM_height_rate))  # 위치 비율 고정
-            screen.blit(BGM2_text, (board_width * BGM2_width_rate,
-                    board_height * BGM_height_rate))  # 위치 비율 고정
-            screen.blit(BGM3_text, (board_width * BGM3_width_rate,
-                    board_height * BGM_height_rate))  # 위치 비율 고정
+                    board_height * 0.45))  # 위치 비율 고정
+            screen.blit(BGM2_text, (board_width * 0.67,
+                    board_height * 0.45))  # 위치 비율 고정
+            screen.blit(BGM3_text, (board_width * 0.79,
+                    board_height * 0.45))  # 위치 비율 고정
 
         for event in pygame.event.get():
             pos = pygame.mouse.get_pos()

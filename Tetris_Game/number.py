@@ -297,11 +297,11 @@ BGM3_x_rate = 0.81
 ##### def draw_board()
 sidebar_rate = 0.5312
 sidebar_width_rate = 0.2375
-dx1_rate = 0.025
-dy1_rate = 0.3743
+dx1_rate = 0.05
+dy1_rate = 0.3
 dx2_rate = 0.145
-dy2_rate = 0.3743
-dx_rate = 0.045
+dy2_rate = 0.3
+dx_rate = 0.08
 dy_rate = 0.1336
 dx_matrix_rate = 0.25
 dy_matrix_rate = 0.055
@@ -313,7 +313,7 @@ player1_dx_matrix_rate = 0.05
 
 player2_sidebar_rate = 0.82
 player2_dx_rate = 0.05
-player2_dy_rate = 0.3743
+player2_dy_rate = 0.4
 player2_dx_matrix_rate = 0.54
 
 #text_board rate
