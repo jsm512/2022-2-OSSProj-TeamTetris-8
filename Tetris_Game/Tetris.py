@@ -373,7 +373,7 @@ effect_plus_button = button(board_width, board_height,effect_plus_button_x_rate,
 sound_minus_button = button(board_width, board_height,sound_minus_button_x_rate,sound_minus_button_y_rate,sound_minus_button_width_rate,sound_minus_button_height_rate, minus_button_image)
 sound_plus_button = button(board_width, board_height,sound_plus_button_x_rate,sound_plus_button_y_rate,sound_plus_button_width_rate,sound_plus_button_height_rate, plus_button_image)
 
-mute_check_button = button(board_width, board_height,0.2, 0.4, 0.0625, 0.1111, check_button_image)
+mute_check_button = button(board_width, board_height,mute_check_x_rate, mute_check_y_rate,mute_check_width_rate,mute_check_height_rate, check_button_image)
 
 background1_check_button = button(board_width, board_height,background_check_x_rate,background1_check_y_rate,background_check_width_rate,background_check_height_rate, background1_image)  # hongkong
 background2_check_button = button(board_width, board_height,background_check_x_rate,background2_check_y_rate,background_check_width_rate,background_check_height_rate, clicked_background2_image)  # nyc (default background)
@@ -529,26 +529,26 @@ def draw_board(next1, next2, hold, score, level, goal):
     next_fever_value = ui_variables.h4.render(str(next_fever), 1, ui_variables.real_white) 
 
     # Place texts
-    screen.blit(text_hold, (int(board_width * 0.045) +
-                sidebar_width, int(board_height * 0.0374)))
-    screen.blit(text_next, (int(board_width * 0.045) +
-                sidebar_width, int(board_height * 0.2780)))
-    screen.blit(text_score, (int(board_width * 0.045) +
-                sidebar_width, int(board_height * 0.5187)))
-    screen.blit(score_value, (int(board_width * 0.055) +
-                sidebar_width, int(board_height * 0.5614)))
-    screen.blit(text_level, (int(board_width * 0.045) +
-                sidebar_width, int(board_height * 0.6791)))
-    screen.blit(level_value, (int(board_width * 0.055) +
-                sidebar_width, int(board_height * 0.7219)))
-    screen.blit(text_goal, (int(board_width * 0.045) +
-                sidebar_width, int(board_height * 0.8400)))
-    screen.blit(goal_value, (int(board_width * 0.055) +
-                sidebar_width, int(board_height * 0.8823)))
-    screen.blit(text_fever, (int(board_width * 0.12) + 
-                sidebar_width, int(board_height * 0.8395)))
-    screen.blit(next_fever_value, (int(board_width * 0.13) + 
-                sidebar_width, int(board_height * 0.8823)))
+    screen.blit(text_hold, (int(board_width * text_width_rate) +
+                sidebar_width, int(board_height * hold_height_rate)))
+    screen.blit(text_next, (int(board_width * text_width_rate) +
+                sidebar_width, int(board_height * next_height_rate)))
+    screen.blit(text_score, (int(board_width * text_width_rate) +
+                sidebar_width, int(board_height * score_height_rate)))
+    screen.blit(score_value, (int(board_width * text2_width_rate) +
+                sidebar_width, int(board_height * score_value_height_rate)))
+    screen.blit(text_level, (int(board_width * text_width_rate) +
+                sidebar_width, int(board_height * level_height_rate)))
+    screen.blit(level_value, (int(board_width * text2_width_rate) +
+                sidebar_width, int(board_height * value_height_rate)))
+    screen.blit(text_goal, (int(board_width * text_width_rate) +
+                sidebar_width, int(board_height * goal_height_rate)))
+    screen.blit(goal_value, (int(board_width * text2_width_rate) +
+                sidebar_width, int(board_height * goal_value_height_rate)))
+    screen.blit(text_fever, (int(board_width * fever_width_rate) + 
+                sidebar_width, int(board_height * fever_height_rate)))
+    screen.blit(next_fever_value, (int(board_width * next_fever_width_rate) + 
+                sidebar_width, int(board_height * next_fever_height_rate)))
 
     # Draw board
     # 테트리스 블록이 들어갈 공간? 그리기 ..맞나?
@@ -698,30 +698,30 @@ def draw1_board(next1, next2, hold, score, level, goal):
         next_fever_value = ui_variables.h2.render(str(next_fever), 1, ui_variables.real_white)  
 
     # Place texts
-    screen.blit(text_hold, (int(board_width * 0.096) +
-                sidebar_width, int(board_height * 0.0374)))
-    screen.blit(text_next, (int(board_width * 0.096) +
-                sidebar_width, int(board_height * 0.1978)))
-    screen.blit(text_score, (int(board_width * 0.09) +
-                sidebar_width, int(board_height * 0.41)))
-    screen.blit(score_value, (int(board_width * 0.11) +
-                sidebar_width, int(board_height * 0.47)))
-    screen.blit(text_level, (int(board_width * 0.0965) +
-                sidebar_width, int(board_height * 0.565)))
-    screen.blit(level_value, (int(board_width * 0.123) +
-                sidebar_width, int(board_height * 0.625)))
-    screen.blit(text_goal, (int(board_width * 0.0975) +
-                sidebar_width, int(board_height * 0.715)))
-    screen.blit(goal_value, (int(board_width * 0.123) +
-                sidebar_width, int(board_height * 0.765)))
-    screen.blit(text_fever, (int(board_width * 0.07) + 
-                sidebar_width, int(board_height * 0.85)))
-    screen.blit(next_fever_value, (int(board_width * 0.11) + 
-                sidebar_width, int(board_height * 0.92)))            
+    screen.blit(text_hold, (int(board_width * place_hold_width) +
+                sidebar_width, int(board_height * place_hold_height)))
+    screen.blit(text_next, (int(board_width * place_next_width) +
+                sidebar_width, int(board_height *place_next_height)))
+    screen.blit(text_score, (int(board_width * place_score_width) +
+                sidebar_width, int(board_height * place_score_height)))
+    screen.blit(score_value, (int(board_width * place_value_width) +
+                sidebar_width, int(board_height * place_value_height)))
+    screen.blit(text_level, (int(board_width * place_level_width) +
+                sidebar_width, int(board_height * place_level_height)))
+    screen.blit(level_value, (int(board_width * place_level_value_width) +
+                sidebar_width, int(board_height * place_level_value_height)))
+    screen.blit(text_goal, (int(board_width * place_goal_width) +
+                sidebar_width, int(board_height * place_goal_height)))
+    screen.blit(goal_value, (int(board_width * place_goal_value_width) +
+                sidebar_width, int(board_height * place_goal_value_height)))
+    screen.blit(text_fever, (int(board_width * place_fever_width) + 
+                sidebar_width, int(board_height * place_fever_height)))
+    screen.blit(next_fever_value, (int(board_width * place_fever_value_width) + 
+                sidebar_width, int(board_height * place_fever_value_height)))            
 
     # Draw board
     # 테트리스 블록이 들어갈 공간? 그리기 ..맞나?
-    if width == 10 or width == 7:
+    if width == init_width or width == small_size_width:
         height_ratio = 0.13
         width_ratio = 0.25
     else:
@@ -2753,8 +2753,8 @@ while not done:
                             hold_mino, score, level, goal)
 
             elif event.type == VIDEORESIZE:
-                board_width = event.w
-                board_height = event.h
+                board_width = board_width
+                board_height = board_height
                 
                 if board_width < min_width or board_height < min_height:  # 최소 너비 또는 높이를 설정하려는 경우
                     board_width = min_width
