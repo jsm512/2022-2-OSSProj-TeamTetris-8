@@ -1812,7 +1812,7 @@ def draw_2Pboard_change(next, hold, current_key_2P):
             text_combo = ui_variables.h3.render("COMBO", 1, ui_variables.real_white)
             combo_value = ui_variables.h2.render(
                 str(combo_count), 1, ui_variables.real_white)
-                
+
     if debug:
         # speed를 알려주는 framerate(기본값 30. 빨라질 수록 숫자 작아짐)
         speed_value = ui_variables.h5.render(
@@ -2639,7 +2639,7 @@ while not done:
                         # fever time시 이미지 깜빡거리게
                         if blink:
                             screen.blit(pygame.transform.scale(ui_variables.fever_image,
-                                                               (int(board_width * 0.3), int(board_height * 0.2))),
+                                                               (int(board_width * 0.22), int(board_height * 0.2))),
                                         (board_width * 0.01, board_height * 0.1))
                             blink = False
                         else:
@@ -3457,13 +3457,13 @@ while not done:
                         bottom_count_2P = 0
                         draw_mino(dx_2P, dy_2P, mino_2P,
                                 rotation_2P, matrix_2P)
-                        if attack_point_2P == 2:
-                            if change_1P % 2 == 1:
-                                draw_multiboard_1p_change(next_mino1, hold_mino, next_mino1_2P,
-                                    hold_mino_2P, current_key, current_key_2P)
-                            else:
-                                draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
-                                    hold_mino_2P, current_key, current_key_2P)
+                        # if attack_point_2P == 2:
+                        #     if change_1P % 2 == 1:
+                        #         draw_multiboard_1p_change(next_mino1, hold_mino, next_mino1_2P,
+                        #             hold_mino_2P, current_key, current_key_2P)
+                        #     else:
+                        #         draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
+                        #             hold_mino_2P, current_key, current_key_2P)
 
                         if is_stackable(next_mino1_2P, matrix_2P):
                             mino_2P = next_mino1_2P
@@ -3588,7 +3588,7 @@ while not done:
                             blink = True
                 #2P
                 for i in range(1, max_score, fever_interval):
-                    if combo_count_2P > i * combo_fever and combo_count_2P < (i + 1) * combo_fever:  # 500~1000,2000~2500.3500~4000
+                    if combo_count_2P > i * combo_fever and combo_count_2P < (i + 1) * combo_fever:  # 2n의콤보에 따라 발생
                         mino = randint(8, 10)
                         next_mino1 = randint(8, 10)
                         next_fever = (i + fever_interval) * combo_fever
