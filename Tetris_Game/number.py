@@ -361,5 +361,3 @@ vertical_height_rate = 0.12
 vertical_volume_rate = 0.25
 vertical_screen_rate = 0.41
 vertical_size_rate = 0.6
-
-
