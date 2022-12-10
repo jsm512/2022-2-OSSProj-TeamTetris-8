@@ -34,9 +34,9 @@ goal_achieve = single_goal_achieve
 increase_level = single_increase_level
 increase_goal = single_increase_goal
 levelup_img_width = 0.28
-levelup_img_height = 0.1
+levelup_img_height = playing_image_height_rate
 increase_easy_speed = 0.6
-increase_noraml_speed = 0.7
+increase_noraml_speed = effect_volum_rate
 increase_hard_speed = 0.8
 img_upload_delay = 400
 
@@ -93,7 +93,7 @@ class ui_variables: #UI
 
     # Sounds
     pygame.mixer.music.load("Tetris_Game/assets/sounds/BGM1.wav")  # 음악 불러옴
-    # pygame.mixer.music.set_volume(0.5)  # 이 부분도 필요 없음, set_volume에 추가해야 함
+    # pygame.mixer.music.set_volume(half)  # 이 부분도 필요 없음, set_volume에 추가해야 함
     intro_sound = pygame.mixer.Sound("Tetris_Game/assets/sounds/intro.wav")
     fall_sound = pygame.mixer.Sound("Tetris_Game/assets/sounds/SFX_Fall.wav")
     break_sound = pygame.mixer.Sound("Tetris_Game/assets/sounds/SFX_Break.wav")
@@ -284,18 +284,10 @@ hard_flipped_image = 'Tetris_Game/assets/vector/flipped.png'
 
 multi_1P_break_image = 'Tetris_Game/assets/images/multi_1p_break.png'
 multi_2P_break_image = 'Tetris_Game/assets/images/multi_2p_break.png'
-training_box_image = 'Tetris_Game/assets/vector/box.png'
 
 line_message_multi_break_image = 'Tetris_Game/assets/vector/line_message_multi_tutorial_break.png'
 line_message_multi_win_image = 'Tetris_Game/assets/vector/line_message_multi_tutorial_win.png'
 
-training_completed_image = 'Tetris_Game/assets/images/training_completed.png'
-training_incomplete_image = 'Tetris_Game/assets/images/training_incomplete.png'
-
-# 트레이닝모드 중간 이벤트 발생 시 나오는 설명 이미지
-hard_3line_image = 'Tetris_Game/assets/images/hard_3line.png'  # 하드트레이닝 3줄 제거시 등장
-hard_10s_image = 'Tetris_Game/assets/images/hard_10s.png'  # 하드트레이닝 10초 경과시 등장
-hard_line_message = 'Tetris_Game/assets/vector/line_message_hard_tutorial.png'  # 하드트레이닝 시작하자마자 메시지 등장
 
 
 class button():  # 버튼객체
@@ -339,79 +331,74 @@ class button():  # 버튼객체
 # 메뉴 버튼
 
 # (self, board_width, board_height, x_rate, y_rate, width_rate, height_rate, img='')
-# (self, board_width, board_height,   0.2,   0.2,     0.22,        0.2,      img='')
+# (self, board_width, board_height,   playing_image_y_rate,   playing_image_y_rate,     0.22,        playing_image_y_rate,      img='')
 
 
-select_mode_button = button(board_width, board_height, 0.125, 0.4, 0.22, 0.2, select_mode_button_image)
-setting_button = button(board_width, board_height, 0.375,0.4, 0.22, 0.2, setting_button_image)
-quit_button = button(board_width, board_height, 0.625,0.4, 0.22, 0.2, quit_button_image)
-score_board_button = button(board_width, board_height, 0.875, 0.4, 0.22, 0.2, score_board_button_image)
+select_mode_button = button(board_width, board_height, select_mode_button_x_rate, select_mode_button_y_rate, select_mode_button_width_rate, select_mode_button_height_rate, select_mode_button_image)
+setting_button = button(board_width, board_height, setting_button_x_rate,setting_button_y_rate,setting_button_width_rate,setting_button_heigth_rate, setting_button_image)
+quit_button = button(board_width, board_height,quit_button_x_rate,quit_button_y_rate,quit_button_width_rate,quit_button_height_rate, quit_button_image)
+score_board_button = button(board_width, board_height,score_board_button_x_rate,score_board_button_y_rate,score_board_button_width_rate,score_board_button_height_rate, score_board_button_image)
 
-single_button = button(board_width, board_height, 0.35, 0.35, 0.22, 0.2, single_button_image)
-pvp_button = button(board_width, board_height, 0.65,0.35, 0.22, 0.2, pvp_button_image)
+single_button = button(board_width, board_height,single_button_x_rate,single_button_y_rate,single_button_width_rate,single_button_height_rate, single_button_image)
+pvp_button = button(board_width, board_height,pvp_button_x_rate,pvp_button_y_rate,pvp_button_width_rate,pvp_button_height_rate, pvp_button_image)
 
-easy_button = button(board_width, board_height, 0.25,0.35, 0.22, 0.2, easy_button_image)
-normal_button = button(board_width, board_height, 0.5, 0.35, 0.22 , 0.2, normal_button_image)
-hard_button = button(board_width, board_height, 0.75,0.35, 0.22, 0.2, hard_button_image)
-pvp_button = button(board_width, board_height, 0.65,0.35, 0.22, 0.2, pvp_button_image)
+easy_button = button(board_width, board_height,easy_button_x_rate,easy_button_y_rate,easy_button_width_rate,easy_button_height_rate, easy_button_image)
+normal_button = button(board_width, board_height,normal_button_x_rate,normal_button_y_rate,normal_button_width_rate,normal_button_height_rate, normal_button_image)
+hard_button = button(board_width, board_height,hard_button_x_rate,hard_button_y_rate,hard_button_width_rate,hard_button_height_rate, hard_button_image)
+pvp_button = button(board_width, board_height,pvp_button_x_rate,pvp_button_y_rate,pvp_button_width_rate,pvp_button_height_rate, pvp_button_image)
 
-resume_button = button(board_width, board_height, 0.5,0.23, 0.17, 0.2, resume_button_image)
-menu_button2 = button(board_width, board_height, 0.5,0.43, 0.17, 0.2, menu_button_image)
-help_button = button(board_width, board_height, 0.5,0.63, 0.17, 0.2, help_button_image)
-training_help_button = button(board_width, board_height, 0.68,0.6, 0.17, 0.2, help_button_image)
+resume_button = button(board_width, board_height,resume_buttone_x_rate,resume_buttone_y_rate,resume_buttone_width_rate,resume_buttone_height_rate, resume_button_image)
+menu_button2 = button(board_width, board_height,menu_button2_x_rate,menu_button2_y_rate,menu_button2_width_rate,menu_button2_height_rate, menu_button_image)
+help_button = button(board_width, board_height,help_button_x_rate,help_button_y_rate,help_button_width_rate,help_button_height_rate, help_button_image)
 
-pause_quit_button = button(board_width, board_height,0.5, 0.83, 0.17, 0.2, quit_button_image)
-pause_setting_button = button(board_width, board_height, 0.5, 0.63, 0.17, 0.2, pause_setting_button_image)
+pause_quit_button = button(board_width, board_height,pause_quit_button_x_rate,pause_quit_button_y_rate,pause_quit_button_width_rate,pause_quit_button_height_rate, quit_button_image)
+pause_setting_button = button(board_width, board_height,pause_setting_button_x_rate,pause_setting_button_y_rate,pause_setting_button_width_rate,pause_setting_button_height_rate, pause_setting_button_image)
 
-leaderboard_icon = button(board_width, board_height,0.77, 0.85, 0.15, 0.2, leaderboard_vector)
-mute_button = button(board_width, board_height, 0.58, 0.715, 0.06, 0.11, mute_button_image)
-default_button = button(board_width, board_height, 0.5,0.27, 0.15, 0.2, default_button_image)
+leaderboard_icon = button(board_width, board_height,leaderboard_icon_x_rate,leaderboard_icon_y_rate,leaderboard_icon_width_rate,leaderboard_icon_height_rate, leaderboard_vector)
+mute_button = button(board_width, board_height,mute_button_x_rate,mute_button_y_rate,mute_button_width_rate,mute_button_height_rate, mute_button_image)
+default_button = button(board_width, board_height,default_button_x_rate,default_button_y_rate,default_button_width_rate,default_button_height_rate, default_button_image)
 
 
-restart_button = button(board_width, board_height, 0.5,0.23, 0.17, 0.2, restart_button_image)
-back_button = button(board_width, board_height, 0.5,0.85, 0.1, 0.12, back_button_image)
-back_button2 = button(board_width, board_height, 0.2,0.85, 0.1, 0.12, back_button_image)
-ok_button = button(board_width, board_height, 0.5,0.83, 0.15, 0.2, ok_button_image)
+restart_button = button(board_width, board_height,restart_button_x_rate,restart_button_y_rate,restart_button_width_rate,restart_button_height_rate, restart_button_image)
+back_button = button(board_width, board_height,back_button_x_rate,back_button_y_rate,back_button_width_rate,back_button_height_rate, back_button_image)
+back_button2 = button(board_width, board_height,back_button2_x_rate,back_button2_y_rate,back_button2_width_rate,back_button2_height_rate, back_button_image)
+ok_button = button(board_width, board_height,ok_button_x_rate,ok_button_y_rate,ok_button_width_rate,ok_button_height_rate, ok_button_image)
 
 # 멀티모드 게임오버화면 버튼
-multi_menu_button = button(board_width, board_height,0.35, 0.8, 0.2, 0.2, menu_button_image)
-multi_restart_button = button(board_width, board_height, 0.65, 0.8, 0.2, 0.2, restart_button_image)
-# 트레이닝 게임오버 화면 버튼
-training_restart_button = button(board_width, board_height, 0.35, 0.8, 0.2, 0.2, restart_button_image)
-training_multi_start_button = button(board_width, board_height, 0.65, 0.8, 0.2, 0.2, pvp_button_image)
-training_hard_start_button = button(board_width, board_height, 0.65, 0.8, 0.2, 0.2, hard_button_image)
+multi_menu_button = button(board_width, board_height,multi_menu_button_x_rate,multi_menu_button_y_rate,multi_menu_button_width_rate,multi_menu_button_height_rate, menu_button_image)
+multi_restart_button = button(board_width, board_height,multi_restart_button_x_rate,multi_restart_button_y_rate,multi_restart_button_width_rate,multi_restart_button_height_rate, restart_button_image)
 
-effect_minus_button = button(board_width, board_height, 0.13, 0.73, 0.0625, 0.1111, minus_button_image)
-effect_plus_button = button(board_width, board_height, 0.28, 0.73, 0.0625, 0.1111, plus_button_image)
+effect_minus_button = button(board_width, board_height,effect_minus_button_x_rate,effect_minus_button_y_rate,effect_minus_button_width_rate,effect_minus_button_height_rate, minus_button_image)
+effect_plus_button = button(board_width, board_height,effect_plus_button_x_rate,effect_plus_button_y_rate,effect_plus_button_width_rate,effect_plus_button_height_rate, plus_button_image)
 
-sound_minus_button = button(board_width, board_height, 0.13, 0.4, 0.0625, 0.1111, minus_button_image)
-sound_plus_button = button(board_width, board_height, 0.28, 0.4, 0.0625, 0.1111, plus_button_image)
+sound_minus_button = button(board_width, board_height,sound_minus_button_x_rate,sound_minus_button_y_rate,sound_minus_button_width_rate,sound_minus_button_height_rate, minus_button_image)
+sound_plus_button = button(board_width, board_height,sound_plus_button_x_rate,sound_plus_button_y_rate,sound_plus_button_width_rate,sound_plus_button_height_rate, plus_button_image)
 
-mute_check_button = button(board_width, board_height,0.2, 0.4, 0.0625, 0.1111, check_button_image)
+mute_check_button = button(board_width, board_height,mute_check_x_rate, mute_check_y_rate,mute_check_width_rate,mute_check_height_rate, check_button_image)
 
-background1_check_button = button(board_width, board_height, 0.5, 0.25, 0.1875, 0.1444, background1_image)  # hongkong
-background2_check_button = button(board_width, board_height, 0.5, 0.45, 0.1875, 0.1444, clicked_background2_image)  # nyc (default background)
-background3_check_button = button(board_width, board_height, 0.5, 0.65, 0.1875, 0.1444, background3_image)  # uk
+background1_check_button = button(board_width, board_height,background_check_x_rate,background1_check_y_rate,background_check_width_rate,background_check_height_rate, background1_image)  # hongkong
+background2_check_button = button(board_width, board_height,background_check_x_rate,background2_check_y_rate,background_check_width_rate,background_check_height_rate, clicked_background2_image)  # nyc (default background)
+background3_check_button = button(board_width, board_height,background_check_x_rate,background3_check_y_rate,background_check_width_rate,background_check_height_rate, background3_image)  # uk
 
-size1_check_button = button(board_width, board_height, 0.3, 0.5, 0.1875, 0.1444, size1_image)
-size2_check_button = button(board_width, board_height, 0.51, 0.5, 0.1875, 0.1444, size2_image)
-size3_check_button = button(board_width, board_height, 0.7, 0.5, 0.1875, 0.1444, size3_image)
+size1_check_button = button(board_width, board_height,size1_check_x_rate,size_check_y_rate,size_check_width_rate,size_check_height_rate, size1_image)
+size2_check_button = button(board_width, board_height,size2_check_x_rate,size_check_y_rate,size_check_width_rate,size_check_height_rate, size2_image)
+size3_check_button = button(board_width, board_height,size3_check_x_rate,size_check_y_rate,size_check_width_rate,size_check_height_rate, size3_image)
 
-volume_icon = button(board_width, board_height, 0.3, 0.5, 0.12, 0.23, volume_vector)
-screen_icon = button(board_width, board_height, 0.7, 0.5, 0.12, 0.23, screen_vector)
-size_icon = button(board_width, board_height, 0.5, 0.5, 0.12, 0.23, size_vector)
+volume_icon = button(board_width, board_height,volume_icon_x_rate,icon_y_rate,icon_width_rate,icon_height_rate, volume_vector)
+screen_icon = button(board_width, board_height,screen_icon_x_rate,icon_y_rate,icon_width_rate,icon_height_rate, screen_vector)
+size_icon = button(board_width, board_height,size_icon_x_rate,icon_y_rate,icon_width_rate,icon_height_rate, size_vector)
 
 
 #음소거 추가#
-effect_sound_off_button = button(board_width, board_height, 0.4, 0.73, 0.0625, 0.1111, sound_off_button_image)
-music_sound_off_button = button(board_width, board_height, 0.4, 0.4, 0.0625, 0.1111, sound_off_button_image)
-effect_sound_on_button = button(board_width, board_height, 0.4, 0.73, 0.0625, 0.1111, sound_on_button_image)
-music_sound_on_button = button(board_width, board_height, 0.4, 0.4, 0.0625, 0.1111, sound_on_button_image)
+effect_sound_off_button = button(board_width, board_height,on_off_x_rate,effect_sound_button_y_rate,on_off_width_rate,on_off_height_rate, sound_off_button_image)
+music_sound_off_button = button(board_width, board_height,on_off_x_rate,music_sound_button_y_rate,on_off_width_rate,on_off_height_rate, sound_off_button_image)
+effect_sound_on_button = button(board_width, board_height,on_off_x_rate,effect_sound_button_y_rate,on_off_width_rate,on_off_height_rate, sound_on_button_image)
+music_sound_on_button = button(board_width, board_height,on_off_x_rate,music_sound_button_y_rate,on_off_width_rate,on_off_height_rate, sound_on_button_image)
 
 #BGM 선택 추가#
-BGM1_sound_on_button = button(board_width, board_height, 0.57, 0.37, 0.08, 0.15, clicked_backgroundmusic_select_image)  # default bgm: BGM1
-BGM2_sound_on_button = button(board_width, board_height, 0.69, 0.37, 0.08, 0.15, backgroundmusic_select_image)
-BGM3_sound_on_button = button(board_width, board_height, 0.81, 0.37, 0.08, 0.15, backgroundmusic_select_image)
+BGM1_sound_on_button = button(board_width, board_height,BGM1_x_rate,BGM_button_y_rate,BGM_button_width_rate,BGM_button_height_rate, clicked_backgroundmusic_select_image)  # default bgm: BGM1
+BGM2_sound_on_button = button(board_width, board_height,BGM2_x_rate,BGM_button_y_rate,BGM_button_width_rate,BGM_button_height_rate, backgroundmusic_select_image)
+BGM3_sound_on_button = button(board_width, board_height,BGM3_x_rate,BGM_button_y_rate,BGM_button_width_rate,BGM_button_height_rate, backgroundmusic_select_image)
 
 # 선택된 BGM
 selected_bgm = "Tetris_Game/assets/sounds/BGM1.wav"
@@ -425,7 +412,7 @@ button_list = [
     leaderboard_icon, mute_button, default_button, restart_button, back_button, ok_button, effect_plus_button, effect_minus_button,  size1_check_button, size2_check_button, size3_check_button, 
     sound_plus_button, sound_minus_button, mute_check_button, background1_check_button, background2_check_button, background3_check_button,
     volume_icon, screen_icon, size_icon, effect_sound_off_button, music_sound_off_button, effect_sound_on_button, music_sound_on_button,
-    BGM1_sound_on_button, BGM2_sound_on_button, BGM3_sound_on_button, multi_restart_button, multi_menu_button, back_button2, training_restart_button, training_multi_start_button, training_hard_start_button]
+    BGM1_sound_on_button, BGM2_sound_on_button, BGM3_sound_on_button, multi_restart_button, multi_menu_button, back_button2]
 
 
 def set_volume():
@@ -479,14 +466,14 @@ def draw_block_image(x, y, image):
 # Draw game screen
 def draw_board(next1, next2, hold, score, level, goal):
     # 크기 비율 고정, 전체 board 가로길이에서 원하는 비율을 곱해줌
-    sidebar_width = int(board_width * 0.5312)
+    sidebar_width = int(board_width * sidebar_rate)
     # screen.fill(ui_variables.grey_1)
 
     # Draw sidebar
     pygame.draw.rect(
         screen,
         ui_variables.grey_1,
-        Rect(sidebar_width, 0, int(board_width * 0.2375), board_height)  # 크기 비율 고정
+        Rect(sidebar_width, 0, int(board_width * sidebar_width_rate), board_height)  # 크기 비율 고정
     )
 
     # Draw 2 next minos
@@ -495,18 +482,18 @@ def draw_board(next1, next2, hold, score, level, goal):
 
     for i in range(mino_matrix_y):
         for j in range(mino_matrix_x):
-            dx1 = int(board_width * 0.025) + sidebar_width + \
+            dx1 = int(board_width * dx1_rate) + sidebar_width + \
                 block_size * j  # 위치 비율 고정, 전체 board 가로 길이에서 원하는 비율을 곱해줌
-            dy1 = int(board_height * 0.35) + block_size * \
+            dy1 = int(board_height * dy1_rate) + block_size * \
                 i  # 위치 비율 고정, 전체 board 세로 길이에서 원하는 비율을 곱해줌#
             if grid_n1[i][j] != 0:
                 draw_block_image(dx1, dy1, ui_variables.t_block[grid_n1[i][j]])
 
     for i in range(mino_matrix_y):
         for j in range(mino_matrix_x):
-            dx2 = int(board_width * 0.145) + sidebar_width + \
+            dx2 = int(board_width * dx2_rate) + sidebar_width + \
                 block_size * j  # 위치 비율 고정, 전체 board 가로길이에서 원하는 비율을 곱해줌#
-            dy2 = int(board_height * 0.35) + block_size * \
+            dy2 = int(board_height * dy2_rate) + block_size * \
                 i  # 위치 비율 고정, 전체 board 세로길이에서 원하는 비율을 곱해줌#
             if grid_n2[i][j] != 0:
                 draw_block_image(dx2, dy2, ui_variables.t_block[grid_n2[i][j]])
@@ -517,9 +504,9 @@ def draw_board(next1, next2, hold, score, level, goal):
     if hold_mino != -1:  # hold 존재X
         for i in range(mino_matrix_y):
             for j in range(mino_matrix_x):
-                dx = int(board_width * 0.045) + sidebar_width + \
+                dx = int(board_width * dx_rate) + sidebar_width + \
                     block_size * j  # 위치 비율 고정
-                dy = int(board_height * 0.1336) + block_size * i  # 위치 비율 고정
+                dy = int(board_height * dy_rate) + block_size * i  # 위치 비율 고정
                 if grid_h[i][j] != 0:  # 해당 부분에 블록이 존재하면
                     draw_block_image(
                         dx, dy, ui_variables.t_block[grid_h[i][j]])  # hold 블록 출력
@@ -543,40 +530,40 @@ def draw_board(next1, next2, hold, score, level, goal):
     next_fever_value = ui_variables.h4.render(str(next_fever), 1, ui_variables.real_white) 
 
     # Place texts
-    screen.blit(text_hold, (int(board_width * 0.045) +
-                sidebar_width, int(board_height * 0.0374)))
-    screen.blit(text_next, (int(board_width * 0.045) +
-                sidebar_width, int(board_height * 0.2780)))
-    screen.blit(text_score, (int(board_width * 0.045) +
-                sidebar_width, int(board_height * 0.5187)))
-    screen.blit(score_value, (int(board_width * 0.055) +
-                sidebar_width, int(board_height * 0.5614)))
-    screen.blit(text_level, (int(board_width * 0.045) +
-                sidebar_width, int(board_height * 0.6791)))
-    screen.blit(level_value, (int(board_width * 0.055) +
-                sidebar_width, int(board_height * 0.7219)))
-    screen.blit(text_goal, (int(board_width * 0.045) +
-                sidebar_width, int(board_height * 0.8400)))
-    screen.blit(goal_value, (int(board_width * 0.055) +
-                sidebar_width, int(board_height * 0.8823)))
-    screen.blit(text_fever, (int(board_width * 0.12) + 
-                sidebar_width, int(board_height * 0.8395)))
-    screen.blit(next_fever_value, (int(board_width * 0.13) + 
-                sidebar_width, int(board_height * 0.8823)))
+    screen.blit(text_hold, (int(board_width * place_hold_width) +
+                sidebar_width, int(board_height * place_hold_height)))
+    screen.blit(text_next, (int(board_width * place_next_width) +
+                sidebar_width, int(board_height * place_next_height)))
+    screen.blit(text_score, (int(board_width * place_score_width) +
+                sidebar_width, int(board_height * place_score_height)))
+    screen.blit(score_value, (int(board_width * place_value_width) +
+                sidebar_width, int(board_height * place_value_height)))
+    screen.blit(text_level, (int(board_width * place_level_width) +
+                sidebar_width, int(board_height * place_level_height)))
+    screen.blit(level_value, (int(board_width * place_level_value_width) +
+                sidebar_width, int(board_height * place_level_value_height)))
+    screen.blit(text_goal, (int(board_width * place_goal_width) +
+                sidebar_width, int(board_height * place_goal_height)))
+    screen.blit(goal_value, (int(board_width * place_goal_value_width) +
+                sidebar_width, int(board_height * place_goal_value_height)))
+    screen.blit(text_fever, (int(board_width * place_fever_width) + 
+                sidebar_width, int(board_height * place_fever_height)))
+    screen.blit(next_fever_value, (int(board_width * place_fever_value_width) + 
+                sidebar_width, int(board_height * place_fever_value_height)))
 
     # Draw board
     # 테트리스 블록이 들어갈 공간? 그리기 ..맞나?
     for x in range(width):
         for y in range(height):
-            dx = int(board_width * 0.25) + block_size * \
+            dx = int(board_width * dx_matrix_rate) + block_size * \
                 x  # 위치비율 고정, board 가로길이에 원하는 비율을 곱해줌#
-            dy = int(board_height * 0.055) + block_size * \
+            dy = int(board_height * dy_matrix_rate) + block_size * \
                 y  # 위치비율 고정, board 세로길이에 원하는 비율을 곱해줌#
             draw_block_image(dx, dy, ui_variables.t_block[matrix[x][y + 1]])
 
 def draw1_board(next1, next2, hold, score, level, goal):
     # 크기 비율 고정, 전체 board 가로길이에서 원하는 비율을 곱해줌
-    sidebar_width = int(board_width * 0.6)
+    sidebar_width = int(board_width * single_sidebar_rate)
     # screen.fill(ui_variables.grey_1)
 
     # Draw sidebar
@@ -592,18 +579,18 @@ def draw1_board(next1, next2, hold, score, level, goal):
 
     for i in range(mino_matrix_y):
         for j in range(mino_matrix_x):
-            dx1 = int(board_width * 0.05) + sidebar_width + \
+            dx1 = int(board_width * dx1_rate) + sidebar_width + \
                 block_size * j  # 위치 비율 고정, 전체 board 가로 길이에서 원하는 비율을 곱해줌
-            dy1 = int(board_height * 0.3) + block_size * \
+            dy1 = int(board_height * dy1_rate) + block_size * \
                 i  # 위치 비율 고정, 전체 board 세로 길이에서 원하는 비율을 곱해줌#
             if grid_n1[i][j] != 0:
                 draw_block_image(dx1, dy1, ui_variables.t_block_1[grid_n1[i][j]])
 
     for i in range(mino_matrix_y):
         for j in range(mino_matrix_x):
-            dx2 = int(board_width * 0.15) + sidebar_width + \
+            dx2 = int(board_width * dx2_rate) + sidebar_width + \
                 block_size * j  # 위치 비율 고정, 전체 board 가로길이에서 원하는 비율을 곱해줌#
-            dy2 = int(board_height * 0.3) + block_size * \
+            dy2 = int(board_height * dy2_rate) + block_size * \
                 i  # 위치 비율 고정, 전체 board 세로길이에서 원하는 비율을 곱해줌#
             if grid_n2[i][j] != 0:
                 draw_block_image(dx2, dy2, ui_variables.t_block_1[grid_n2[i][j]])
@@ -614,9 +601,9 @@ def draw1_board(next1, next2, hold, score, level, goal):
     if hold_mino != -1:  # hold 존재X
         for i in range(mino_matrix_y):
             for j in range(mino_matrix_x):
-                dx = int(board_width * 0.045) + sidebar_width + \
+                dx = int(board_width * dx_rate) + sidebar_width + \
                     block_size * j  # 위치 비율 고정
-                dy = int(board_height * 0.1336) + block_size * i  # 위치 비율 고정
+                dy = int(board_height * dy_rate) + block_size * i  # 위치 비율 고정
                 if grid_h[i][j] != 0:  # 해당 부분에 블록이 존재하면
                     draw_block_image(
                         dx, dy, ui_variables.t_block_1[grid_h[i][j]])  # hold 블록 출력
@@ -712,32 +699,32 @@ def draw1_board(next1, next2, hold, score, level, goal):
         next_fever_value = ui_variables.h2.render(str(next_fever), 1, ui_variables.real_white)  
 
     # Place texts
-    screen.blit(text_hold, (int(board_width * 0.096) +
-                sidebar_width, int(board_height * 0.0374)))
-    screen.blit(text_next, (int(board_width * 0.096) +
-                sidebar_width, int(board_height * 0.1978)))
-    screen.blit(text_score, (int(board_width * 0.09) +
-                sidebar_width, int(board_height * 0.41)))
-    screen.blit(score_value, (int(board_width * 0.11) +
-                sidebar_width, int(board_height * 0.47)))
-    screen.blit(text_level, (int(board_width * 0.0965) +
-                sidebar_width, int(board_height * 0.565)))
-    screen.blit(level_value, (int(board_width * 0.123) +
-                sidebar_width, int(board_height * 0.625)))
-    screen.blit(text_goal, (int(board_width * 0.0975) +
-                sidebar_width, int(board_height * 0.715)))
-    screen.blit(goal_value, (int(board_width * 0.123) +
-                sidebar_width, int(board_height * 0.765)))
-    screen.blit(text_fever, (int(board_width * 0.07) + 
-                sidebar_width, int(board_height * 0.85)))
-    screen.blit(next_fever_value, (int(board_width * 0.11) + 
-                sidebar_width, int(board_height * 0.92)))            
+    screen.blit(text_hold, (int(board_width * place_hold_width) +
+                sidebar_width, int(board_height * place_hold_height)))
+    screen.blit(text_next, (int(board_width * place_next_width) +
+                sidebar_width, int(board_height *place_next_height)))
+    screen.blit(text_score, (int(board_width * place_score_width) +
+                sidebar_width, int(board_height * place_score_height)))
+    screen.blit(score_value, (int(board_width * place_value_width) +
+                sidebar_width, int(board_height * place_value_height)))
+    screen.blit(text_level, (int(board_width * place_level_width) +
+                sidebar_width, int(board_height * place_level_height)))
+    screen.blit(level_value, (int(board_width * place_level_value_width) +
+                sidebar_width, int(board_height * place_level_value_height)))
+    screen.blit(text_goal, (int(board_width * place_goal_width) +
+                sidebar_width, int(board_height * place_goal_height)))
+    screen.blit(goal_value, (int(board_width * place_goal_value_width) +
+                sidebar_width, int(board_height * place_goal_value_height)))
+    screen.blit(text_fever, (int(board_width * place_fever_width) + 
+                sidebar_width, int(board_height * place_fever_height)))
+    screen.blit(next_fever_value, (int(board_width * place_fever_value_width) + 
+                sidebar_width, int(board_height * place_fever_value_height)))            
 
     # Draw board
     # 테트리스 블록이 들어갈 공간? 그리기 ..맞나?
-    if width == 10 or width == 7:
+    if width == init_width or width == small_size_width:
         height_ratio = 0.13
-        width_ratio = 0.25
+        width_ratio = winner_image_height_rate
     else:
         height_ratio = 0.02
         width_ratio = 0.15
@@ -756,7 +743,7 @@ def draw1_board(next1, next2, hold, score, level, goal):
 # 블록 뒤집기 코드~
 def draw_hardboard_change(next1, next2, hold, score, level, goal):
   # 크기 비율 고정, 전체 board 가로길이에서 원하는 비율을 곱해줌
-    sidebar_width = int(board_width * 0.5312)
+    sidebar_width = int(board_width * sidebar_rate)
 
     # screen.fill(ui_variables.grey_1)
 
@@ -764,7 +751,7 @@ def draw_hardboard_change(next1, next2, hold, score, level, goal):
     pygame.draw.rect(
         screen,
         ui_variables.grey_1,
-        Rect(sidebar_width, 0, int(board_width * 0.2375), board_height)  # 크기 비율 고정
+        Rect(sidebar_width, 0, int(board_width * sidebar_width_rate), board_height)  # 크기 비율 고정
     )
 
     # Draw 2 next minos
@@ -773,18 +760,18 @@ def draw_hardboard_change(next1, next2, hold, score, level, goal):
 
     for i in range(mino_matrix_y):
         for j in range(mino_matrix_x):
-            dx1 = int(board_width * 0.025) + sidebar_width + \
+            dx1 = int(board_width * dx1_rate) + sidebar_width + \
                 block_size * j  # 위치 비율 고정, 전체 board 가로 길이에서 원하는 비율을 곱해줌
-            dy1 = int(board_height * 0.3743) + block_size * \
+            dy1 = int(board_height * dy1_rate) + block_size * \
                 i  # 위치 비율 고정, 전체 board 세로 길이에서 원하는 비율을 곱해줌#
             if grid_n1[i][j] != 0:
                 draw_block_image(dx1, dy1, ui_variables.t_block[grid_n1[i][j]])
 
     for i in range(mino_matrix_y):
         for j in range(mino_matrix_x):
-            dx2 = int(board_width * 0.145) + sidebar_width + \
+            dx2 = int(board_width * dx2_rate) + sidebar_width + \
                 block_size * j  # 위치 비율 고정, 전체 board 가로길이에서 원하는 비율을 곱해줌#
-            dy2 = int(board_height * 0.3743) + block_size * \
+            dy2 = int(board_height * dy2_rate) + block_size * \
                 i  # 위치 비율 고정, 전체 board 세로길이에서 원하는 비율을 곱해줌#
             if grid_n2[i][j] != 0:
                 draw_block_image(dx2, dy2, ui_variables.t_block[grid_n2[i][j]])
@@ -795,9 +782,9 @@ def draw_hardboard_change(next1, next2, hold, score, level, goal):
     if hold_mino != -1:  # hold 존재X
         for i in range(mino_matrix_y):
             for j in range(mino_matrix_x):
-                dx = int(board_width * 0.045) + sidebar_width + \
+                dx = int(board_width * dx_rate) + sidebar_width + \
                     block_size * j  # 위치 비율 고정
-                dy = int(board_height * 0.1336) + block_size * i  # 위치 비율 고정
+                dy = int(board_height * dy_rate) + block_size * i  # 위치 비율 고정
                 if grid_h[i][j] != 0:  # 해당 부분에 블록이 존재하면
                     draw_block_image(
                         dx, dy, ui_variables.t_block[grid_h[i][j]])  # hold 블록 출력
@@ -817,31 +804,37 @@ def draw_hardboard_change(next1, next2, hold, score, level, goal):
         str(level), 1, ui_variables.real_white)
     text_goal = ui_variables.h5.render("GOAL", 1, ui_variables.real_white)
     goal_value = ui_variables.h4.render(str(goal), 1, ui_variables.real_white)
+    text_fever = ui_variables.h5.render("NEXT FEVER", 1, ui_variables.real_white)
+    next_fever_value = ui_variables.h4.render(str(next_fever), 1, ui_variables.real_white) 
 
     # Place texts
-    screen.blit(text_hold, (int(board_width * 0.045) +
-                sidebar_width, int(board_height * 0.0374)))
-    screen.blit(text_next, (int(board_width * 0.045) +
-                sidebar_width, int(board_height * 0.2780)))
-    screen.blit(text_score, (int(board_width * 0.045) +
-                sidebar_width, int(board_height * 0.5187)))
-    screen.blit(score_value, (int(board_width * 0.055) +
-                sidebar_width, int(board_height * 0.5614)))
-    screen.blit(text_level, (int(board_width * 0.045) +
-                sidebar_width, int(board_height * 0.6791)))
-    screen.blit(level_value, (int(board_width * 0.055) +
-                sidebar_width, int(board_height * 0.7219)))
-    screen.blit(text_goal, (int(board_width * 0.045) +
-                sidebar_width, int(board_height * 0.8400)))
-    screen.blit(goal_value, (int(board_width * 0.055) +
-                sidebar_width, int(board_height * 0.8823)))
+    screen.blit(text_hold, (int(board_width * place_hold_width) +
+                sidebar_width, int(board_height * place_hold_height)))
+    screen.blit(text_next, (int(board_width * place_next_width) +
+                sidebar_width, int(board_height * place_next_height)))
+    screen.blit(text_score, (int(board_width * place_score_width) +
+                sidebar_width, int(board_height * place_score_height)))
+    screen.blit(score_value, (int(board_width * place_value_width) +
+                sidebar_width, int(board_height * place_value_height)))
+    screen.blit(text_level, (int(board_width * place_level_width) +
+                sidebar_width, int(board_height * place_level_height)))
+    screen.blit(level_value, (int(board_width * place_level_value_width) +
+                sidebar_width, int(board_height * place_level_value_height)))
+    screen.blit(text_goal, (int(board_width * place_goal_width) +
+                sidebar_width, int(board_height * place_goal_height)))
+    screen.blit(goal_value, (int(board_width * place_goal_value_width) +
+                sidebar_width, int(board_height * place_goal_value_height)))
+    screen.blit(text_fever, (int(board_width * place_fever_width) + 
+                sidebar_width, int(board_height * place_fever_height)))
+    screen.blit(next_fever_value, (int(board_width * place_fever_value_width) + 
+                sidebar_width, int(board_height * place_fever_value_height)))
 
     # Draw board
     for x in range(width):
         for y in range(height):
-            dx = int(board_width * 0.25) + block_size * \
+            dx = int(board_width * dx_matrix_rate) + block_size * \
                 x  # 위치비율 고정, board 가로길이에 원하는 비율을 곱해줌#
-            dy = int(board_height * 0.055) + block_size * \
+            dy = int(board_height * dy_matrix_rate) + block_size * \
                 y  # 위치비율 고정, board 세로길이에 원하는 비율을 곱해줌#
             # draw_block_image(dx, dy, ui_variables.t_block[matrix[x][y + 1]])
             draw_block_image(
@@ -850,13 +843,13 @@ def draw_hardboard_change(next1, next2, hold, score, level, goal):
 
 def draw_1Pboard(next, hold, current_key):
     # 위치비율 고정, board 가로길이에 원하는 비율을 곱해줌#
-    sidebar_width = int(board_width * 0.31)
+    sidebar_width = int(board_width * player1_sidebar_rate)
 
     # Draw sidebar
     pygame.draw.rect(
         screen,
         ui_variables.grey_1,
-        Rect(sidebar_width, 0, int(board_width * 0.1875),
+        Rect(sidebar_width, 0, int(board_width * player1_sidebar_width_rate),
              board_height)  # 크기비율 고정, board 가로길이에 원하는 비율을 곱해줌#
     )
 
@@ -865,9 +858,9 @@ def draw_1Pboard(next, hold, current_key):
 
     for i in range(mino_matrix_y):
         for j in range(mino_matrix_x):
-            dx = int(board_width * 0.045) + sidebar_width + \
+            dx = int(board_width * dx_rate) + sidebar_width + \
                 block_size * j  # 위치비율 고정, board 가로길이에 원하는 비율을 곱해줌#
-            dy = int(board_height * 0.3743) + block_size * \
+            dy = int(board_height * player2_dy_rate) + block_size * \
                 i  # 위치비율 고정, board 세로길이에 원하는 비율을 곱해줌#
             if grid_n[i][j] != 0:
                 draw_block_image(dx, dy, ui_variables.t_block[grid_n[i][j]])
@@ -878,9 +871,9 @@ def draw_1Pboard(next, hold, current_key):
     if hold_mino != -1:  # 기본값이 -1. 즉 hold블록 존재할 떄
         for i in range(mino_matrix_y):
             for j in range(mino_matrix_x):
-                dx = int(board_width * 0.045) + sidebar_width + \
+                dx = int(board_width * dx_rate) + sidebar_width + \
                     block_size * j  # 위치비율 고정, board 가로길이에 원하는 비율을 곱해줌#
-                dy = int(board_height * 0.1336) + block_size * \
+                dy = int(board_height * dy_rate) + block_size * \
                     i  # 위치비율 고정, board 세로길이에 원하는 비율을 곱해줌#
                 if grid_h[i][j] != 0:
                     draw_block_image(
@@ -1074,39 +1067,39 @@ def draw_1Pboard(next, hold, current_key):
         # speed를 알려주는 framerate(기본값 30. 빨라질 수록 숫자 작아짐)
         speed_value = ui_variables.h5.render(
             "SPEED : "+str(framerate), 1, ui_variables.real_white)
-        screen.blit(speed_value, (int(board_width * 0.045) + sidebar_width,
-                    int(board_height * 0.015)))  # 각각 전체 board 가로길이, 세로길이에 원하는 비율을 곱해줌
-    screen.blit(text_hold, (int(board_width * 0.045) +
-                sidebar_width, int(board_height * 0.0374)))
-    screen.blit(text_next, (int(board_width * 0.045) +
-                sidebar_width, int(board_height * 0.2780)))
-    screen.blit(text_reverse, (int(board_width*0.045) +
-                sidebar_width, int(board_height*0.6791)))
-    screen.blit(reverse_value, (int(board_width*0.055) +
-                sidebar_width, int(board_height*0.7219)))
-    screen.blit(text_combo, (int(board_width*0.045) +
-                sidebar_width, int(board_height*0.8395)))
-    screen.blit(combo_value, (int(board_width*0.055) +
-                sidebar_width, int(board_height*0.8823)))
+        screen.blit(speed_value, (int(board_width * text_width_rate) + sidebar_width,
+                    int(board_height * speed_value_rate)))  # 각각 전체 board 가로길이, 세로길이에 원하는 비율을 곱해줌
+    screen.blit(text_hold, (int(board_width * text_width_rate) +
+                sidebar_width, int(board_height * hold_height_rate)))
+    screen.blit(text_next, (int(board_width * text_width_rate) +
+                sidebar_width, int(board_height * next_height_rate)))
+    screen.blit(text_reverse, (int(board_width*text_width_rate) +
+                sidebar_width, int(board_height*level_height_rate)))
+    screen.blit(reverse_value, (int(board_width*text2_width_rate) +
+                sidebar_width, int(board_height*value_height_rate)))
+    screen.blit(text_combo, (int(board_width*text_width_rate) +
+                sidebar_width, int(board_height*fever_height_rate)))
+    screen.blit(combo_value, (int(board_width*text2_width_rate) +
+                sidebar_width, int(board_height*goal_value_height_rate)))
 
     # Draw board
     for x in range(width):
         for y in range(height):
-            dx = int(board_width * 0.05) + block_size * \
+            dx = int(board_width * player1_dx_matrix_rate) + block_size * \
                 x  # 위치 비율 고정, board의 가로길이에 원하는 비율을 곱해줌
-            dy = int(board_height * 0.055) + block_size * \
+            dy = int(board_height * dy_matrix_rate) + block_size * \
                 y  # 위치 비율 고정, board의 세로길이에 원하는 비율을 곱해줌
             draw_block_image(dx, dy, ui_variables.t_block[matrix[x][y + 1]])
             
 def draw_1Pboard_change(next, hold, current_key):
     # 위치비율 고정, board 가로길이에 원하는 비율을 곱해줌#
-    sidebar_width = int(board_width * 0.31)
+    sidebar_width = int(board_width * player1_sidebar_rate)
 
     # Draw sidebar
     pygame.draw.rect(
         screen,
         ui_variables.grey_1,
-        Rect(sidebar_width, 0, int(board_width * 0.1875),
+        Rect(sidebar_width, 0, int(board_width * player1_sidebar_width_rate),
              board_height)  # 크기비율 고정, board 가로길이에 원하는 비율을 곱해줌#
     )
 
@@ -1115,9 +1108,9 @@ def draw_1Pboard_change(next, hold, current_key):
 
     for i in range(mino_matrix_y):
         for j in range(mino_matrix_x):
-            dx = int(board_width * 0.045) + sidebar_width + \
+            dx = int(board_width * dx_rate) + sidebar_width + \
                 block_size * j  # 위치비율 고정, board 가로길이에 원하는 비율을 곱해줌#
-            dy = int(board_height * 0.3743) + block_size * \
+            dy = int(board_height * player2_dy_rate) + block_size * \
                 i  # 위치비율 고정, board 세로길이에 원하는 비율을 곱해줌#
             if grid_n[i][j] != 0:
                 draw_block_image(dx, dy, ui_variables.t_block[grid_n[i][j]])
@@ -1128,9 +1121,9 @@ def draw_1Pboard_change(next, hold, current_key):
     if hold_mino != -1:  # 기본값이 -1. 즉 hold블록 존재할 떄
         for i in range(mino_matrix_y):
             for j in range(mino_matrix_x):
-                dx = int(board_width * 0.045) + sidebar_width + \
+                dx = int(board_width * dx_rate) + sidebar_width + \
                     block_size * j  # 위치비율 고정, board 가로길이에 원하는 비율을 곱해줌#
-                dy = int(board_height * 0.1336) + block_size * \
+                dy = int(board_height * dy_rate) + block_size * \
                     i  # 위치비율 고정, board 세로길이에 원하는 비율을 곱해줌#
                 if grid_h[i][j] != 0:
                     draw_block_image(
@@ -1324,27 +1317,27 @@ def draw_1Pboard_change(next, hold, current_key):
         # speed를 알려주는 framerate(기본값 30. 빨라질 수록 숫자 작아짐)
         speed_value = ui_variables.h5.render(
             "SPEED : "+str(framerate), 1, ui_variables.real_white)
-        screen.blit(speed_value, (int(board_width * 0.045) + sidebar_width,
-                    int(board_height * 0.015)))  # 각각 전체 board 가로길이, 세로길이에 원하는 비율을 곱해줌
-    screen.blit(text_hold, (int(board_width * 0.045) +
-                sidebar_width, int(board_height * 0.0374)))
-    screen.blit(text_next, (int(board_width * 0.045) +
-                sidebar_width, int(board_height * 0.2780)))
-    screen.blit(text_reverse, (int(board_width*0.045) +
-                sidebar_width, int(board_height*0.6791)))
-    screen.blit(reverse_value, (int(board_width*0.055) +
-                sidebar_width, int(board_height*0.7219)))
-    screen.blit(text_combo, (int(board_width*0.045) +
-                sidebar_width, int(board_height*0.8395)))
-    screen.blit(combo_value, (int(board_width*0.055) +
-                sidebar_width, int(board_height*0.8823)))
+        screen.blit(speed_value, (int(board_width * text_width_rate) + sidebar_width,
+                    int(board_height * speed_value_rate)))  # 각각 전체 board 가로길이, 세로길이에 원하는 비율을 곱해줌
+    screen.blit(text_hold, (int(board_width * text_width_rate) +
+                sidebar_width, int(board_height * hold_height_rate)))
+    screen.blit(text_next, (int(board_width * text_width_rate) +
+                sidebar_width, int(board_height * next_height_rate)))
+    screen.blit(text_reverse, (int(board_width*text_width_rate) +
+                sidebar_width, int(board_height*level_height_rate)))
+    screen.blit(reverse_value, (int(board_width*text2_width_rate) +
+                sidebar_width, int(board_height*value_height_rate)))
+    screen.blit(text_combo, (int(board_width*text_width_rate) +
+                sidebar_width, int(board_height*fever_height_rate)))
+    screen.blit(combo_value, (int(board_width*text2_width_rate) +
+                sidebar_width, int(board_height*goal_value_height_rate)))
 
     # Draw board
     for x in range(width):
         for y in range(height):
-            dx = int(board_width * 0.05) + block_size * \
+            dx = int(board_width * player1_dx_matrix_rate) + block_size * \
                 x  # 위치 비율 고정, board의 가로길이에 원하는 비율을 곱해줌
-            dy = int(board_height * 0.055) + block_size * \
+            dy = int(board_height * dy_matrix_rate) + block_size * \
                 y  # 위치 비율 고정, board의 세로길이에 원하는 비율을 곱해줌
             draw_block_image(
                 dx, dy, ui_variables.t_block[matrix[x][(height-1)-y+1]])
@@ -1352,14 +1345,14 @@ def draw_1Pboard_change(next, hold, current_key):
 
 def draw_2Pboard(next, hold, current_key_2P):
     # 위치 비율 고정, , board의 가로길이에 원하는 비율을 곱해줌
-    sidebar_width = int(board_width * 0.82)
+    sidebar_width = int(board_width * player2_sidebar_rate)
 
     # Draw sidebar
     pygame.draw.rect(
         screen,
         ui_variables.grey_1,
         # 크기 비율 고정, , board의 가로길이에 원하는 비율을 곱해줌, Rect(x축, y축, 가로길이, 세로길이)#
-        Rect(sidebar_width, 0, int(board_width * 0.1875), board_height)
+        Rect(sidebar_width, 0, int(board_width * player1_sidebar_width_rate), board_height)
     )
 
     # Draw next mino
@@ -1367,9 +1360,9 @@ def draw_2Pboard(next, hold, current_key_2P):
 
     for i in range(mino_matrix_y):  # 16개의 그리드 칸에서 true인 값만 뽑아서 draw.rect
         for j in range(mino_matrix_x):
-            dx = int(board_width * 0.05) + sidebar_width + \
+            dx = int(board_width * player2_dx_rate) + sidebar_width + \
                 block_size * j  # 위치 비율 고정, board의 가로길이에 원하는 비율을 곱해줌
-            dy = int(board_height * 0.3743) + block_size * \
+            dy = int(board_height * player2_dy_rate) + block_size * \
                 i  # 위치 비율 고정, board의 세로길이에 원하는 비율을 곱해줌
             if grid_n[i][j] != 0:
                 draw_block_image(dx, dy, ui_variables.t_block[grid_n[i][j]])
@@ -1380,9 +1373,9 @@ def draw_2Pboard(next, hold, current_key_2P):
     if hold_mino_2P != -1:  # 기본값이 -1. 즉 hold블록 존재할 떄
         for i in range(mino_matrix_y):
             for j in range(mino_matrix_x):
-                dx = int(board_width * 0.045) + sidebar_width + \
+                dx = int(board_width * dx_rate) + sidebar_width + \
                     block_size * j  # 위치 비율 고정, board의 가로길이에 원하는 비율을 곱해줌
-                dy = int(board_height * 0.1336) + block_size * \
+                dy = int(board_height * dy_rate) + block_size * \
                     i  # 위치 비율 고정, board의 세로길이에 원하는 비율을 곱해줌
                 if grid_h[i][j] != 0:
                     draw_block_image(
@@ -1575,37 +1568,37 @@ def draw_2Pboard(next, hold, current_key_2P):
         # speed를 알려주는 framerate(기본값 30. 빨라질 수록 숫자 작아짐)
         speed_value = ui_variables.h5.render(
             "SPEED : "+str(framerate_2P), 1, ui_variables.real_white)
-        screen.blit(speed_value, (int(board_width * 0.045) + sidebar_width,
-                    int(board_height * 0.015)))  # 각각 전체 board의 가로길이, 세로길이에 대해 원하는 비율을 곱해줌
-    screen.blit(text_hold, (int(board_width * 0.045) +
-                sidebar_width, int(board_height * 0.0374)))
-    screen.blit(text_next, (int(board_width * 0.045) +
-                sidebar_width, int(board_height * 0.2780)))
-    screen.blit(text_reverse, (int(board_width*0.045) +
-                sidebar_width, int(board_height*0.6791)))
-    screen.blit(reverse_value, (int(board_width*0.055) +
-                sidebar_width, int(board_height*0.7219)))
-    screen.blit(text_combo, (int(board_width*0.045) +
-                sidebar_width, int(board_height*0.8395)))
-    screen.blit(combo_value, (int(board_width*0.055) +
-                sidebar_width, int(board_height*0.8823)))
+        screen.blit(speed_value, (int(board_width * text_width_rate) + sidebar_width,
+                    int(board_height * speed_value_rate)))  # 각각 전체 board의 가로길이, 세로길이에 대해 원하는 비율을 곱해줌
+    screen.blit(text_hold, (int(board_width * text_width_rate) +
+                sidebar_width, int(board_height * hold_height_rate)))
+    screen.blit(text_next, (int(board_width * text_width_rate) +
+                sidebar_width, int(board_height * next_height_rate)))
+    screen.blit(text_reverse, (int(board_width*text_width_rate) +
+                sidebar_width, int(board_height*level_height_rate)))
+    screen.blit(reverse_value, (int(board_width*text2_width_rate) +
+                sidebar_width, int(board_height*value_height_rate)))
+    screen.blit(text_combo, (int(board_width*text_width_rate) +
+                sidebar_width, int(board_height*fever_height_rate)))
+    screen.blit(combo_value, (int(board_width*text2_width_rate) +
+                sidebar_width, int(board_height*goal_value_height_rate)))
 
     for x in range(width):
         for y in range(height):
-            dx = int(board_width * 0.54) + block_size * x  # 위치비율 고정
-            dy = int(board_height * 0.055) + block_size * y  # 위치비율 고정
+            dx = int(board_width * player2_dx_matrix_rate) + block_size * x  # 위치비율 고정
+            dy = int(board_height * dy_matrix_rate) + block_size * y  # 위치비율 고정
             draw_block_image(dx, dy, ui_variables.t_block[matrix_2P[x][y + 1]])
 
 def draw_2Pboard_change(next, hold, current_key_2P):
     # 위치 비율 고정, , board의 가로길이에 원하는 비율을 곱해줌
-    sidebar_width = int(board_width * 0.82)
+    sidebar_width = int(board_width * player2_sidebar_rate)
 
     # Draw sidebar
     pygame.draw.rect(
         screen,
         ui_variables.grey_1,
         # 크기 비율 고정, , board의 가로길이에 원하는 비율을 곱해줌, Rect(x축, y축, 가로길이, 세로길이)#
-        Rect(sidebar_width, 0, int(board_width * 0.1875), board_height)
+        Rect(sidebar_width, 0, int(board_width * player1_sidebar_width_rate), board_height)
     )
 
     # Draw next mino
@@ -1613,9 +1606,9 @@ def draw_2Pboard_change(next, hold, current_key_2P):
 
     for i in range(mino_matrix_y):  # 16개의 그리드 칸에서 true인 값만 뽑아서 draw.rect
         for j in range(mino_matrix_x):
-            dx = int(board_width * 0.05) + sidebar_width + \
+            dx = int(board_width * player2_dx_rate) + sidebar_width + \
                 block_size * j  # 위치 비율 고정, board의 가로길이에 원하는 비율을 곱해줌
-            dy = int(board_height * 0.3743) + block_size * \
+            dy = int(board_height * player2_dy_rate) + block_size * \
                 i  # 위치 비율 고정, board의 세로길이에 원하는 비율을 곱해줌
             if grid_n[i][j] != 0:
                 draw_block_image(dx, dy, ui_variables.t_block[grid_n[i][j]])
@@ -1626,9 +1619,9 @@ def draw_2Pboard_change(next, hold, current_key_2P):
     if hold_mino_2P != -1:  # 기본값이 -1. 즉 hold블록 존재할 떄
         for i in range(mino_matrix_y):
             for j in range(mino_matrix_x):
-                dx = int(board_width * 0.045) + sidebar_width + \
+                dx = int(board_width * dx_rate) + sidebar_width + \
                     block_size * j  # 위치 비율 고정, board의 가로길이에 원하는 비율을 곱해줌
-                dy = int(board_height * 0.1336) + block_size * \
+                dy = int(board_height * dy_rate) + block_size * \
                     i  # 위치 비율 고정, board의 세로길이에 원하는 비율을 곱해줌
                 if grid_h[i][j] != 0:
                     draw_block_image(
@@ -1821,47 +1814,47 @@ def draw_2Pboard_change(next, hold, current_key_2P):
         # speed를 알려주는 framerate(기본값 30. 빨라질 수록 숫자 작아짐)
         speed_value = ui_variables.h5.render(
             "SPEED : "+str(framerate_2P), 1, ui_variables.real_white)
-        screen.blit(speed_value, (int(board_width * 0.045) + sidebar_width,
-                    int(board_height * 0.015)))  # 각각 전체 board의 가로길이, 세로길이에 대해 원하는 비율을 곱해줌
-    screen.blit(text_hold, (int(board_width * 0.045) +
-                sidebar_width, int(board_height * 0.0374)))
-    screen.blit(text_next, (int(board_width * 0.045) +
-                sidebar_width, int(board_height * 0.2780)))
-    screen.blit(text_reverse, (int(board_width*0.045) +
-                sidebar_width, int(board_height*0.6791)))
-    screen.blit(reverse_value, (int(board_width*0.055) +
-                sidebar_width, int(board_height*0.7219)))
-    screen.blit(text_combo, (int(board_width*0.045) +
-                sidebar_width, int(board_height*0.8395)))
-    screen.blit(combo_value, (int(board_width*0.055) +
-                sidebar_width, int(board_height*0.8823)))
+        screen.blit(speed_value, (int(board_width * text_width_rate) + sidebar_width,
+                    int(board_height * speed_value_rate)))  # 각각 전체 board의 가로길이, 세로길이에 대해 원하는 비율을 곱해줌
+    screen.blit(text_hold, (int(board_width * text_width_rate) +
+                sidebar_width, int(board_height * hold_height_rate)))
+    screen.blit(text_next, (int(board_width * text_width_rate) +
+                sidebar_width, int(board_height * next_height_rate)))
+    screen.blit(text_reverse, (int(board_width*text_width_rate) +
+                sidebar_width, int(board_height*level_height_rate)))
+    screen.blit(reverse_value, (int(board_width*text2_width_rate) +
+                sidebar_width, int(board_height*value_height_rate)))
+    screen.blit(text_combo, (int(board_width*text_width_rate) +
+                sidebar_width, int(board_height*fever_height_rate)))
+    screen.blit(combo_value, (int(board_width*text2_width_rate) +
+                sidebar_width, int(board_height*goal_value_height_rate)))
 
     for x in range(width):
         for y in range(height):
-            dx = int(board_width * 0.54) + block_size * x  # 위치비율 고정
-            dy = int(board_height * 0.055) + block_size * y  # 위치비율 고정
+            dx = int(board_width * player2_dx_matrix_rate) + block_size * x  # 위치비율 고정
+            dy = int(board_height * dy_matrix_rate) + block_size * y  # 위치비율 고정
             draw_block_image(
                 dx, dy, ui_variables.t_block[matrix[x][(height-1)-y+1]])
 
 #PvP board 생성
 def draw_multiboard(next_1P, hold_1P, next_2P, hold_2P, current_key, current_key_2P):
     screen.fill(ui_variables.real_white)
-    draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
-               0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+    draw_image(screen, gamebackground_image, board_width * half, board_height *
+               half, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
     draw_1Pboard(next_1P, hold_1P, current_key)
     draw_2Pboard(next_2P, hold_2P, current_key_2P)
     
 def draw_multiboard_1p_change(next_1P, hold_1P, next_2P, hold_2P, current_key, current_key_2P):
     screen.fill(ui_variables.real_white)
-    draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
-               0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+    draw_image(screen, gamebackground_image, board_width * half, board_height *
+               half, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
     draw_1Pboard_change(next_1P, hold_1P, current_key)
     draw_2Pboard(next_2P, hold_2P, current_key_2P)
 
 def draw_multiboard_2p_change(next_1P, hold_1P, next_2P, hold_2P, current_key, current_key_2P):
     screen.fill(ui_variables.real_white)
-    draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
-               0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+    draw_image(screen, gamebackground_image, board_width * half, board_height *
+               half, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
     draw_1Pboard(next_1P, hold_1P, current_key)
     draw_2Pboard_change(next_2P, hold_2P, current_key_2P)
     
@@ -2258,10 +2251,10 @@ def set_initial_values():
     pause_time = pygame.time.get_ticks()
 
     # easy mode 스코어보드 leaders 배열에 저장
-    with open('Tetris_Game/leaderboard.txt') as f:
+    with open('leaderboard.txt') as f:
         lines = f.readlines()
     lines = [line.rstrip('\n') for line in open(
-        'Tetris_Game/leaderboard.txt')]  # leaderboard.txt 한줄씩 읽어옴
+        'leaderboard.txt')]  # leaderboard.txt 한줄씩 읽어옴
 
     leaders = {'AAA': 0, 'BBB': 0, 'CCC': 0}
     for i in lines:
@@ -2269,10 +2262,10 @@ def set_initial_values():
     leaders = sorted(leaders.items(), key=operator.itemgetter(1), reverse=True)
 
     # hard mode 스코어보드 leaders_hard 배열에 저장
-    with open('Tetris_Game/leaderboard_hard.txt') as h:
+    with open('leaderboard_hard.txt') as h:
         lines = h.readlines()
     lines = [line.rstrip('\n') for line in open(
-        'Tetris_Game/leaderboard_hard.txt')]  # leaderboard.txt 한줄씩 읽어옴
+        'leaderboard_hard.txt')]  # leaderboard.txt 한줄씩 읽어옴
 
     leaders_hard = {'AAA': 0, 'BBB': 0, 'CCC': 0}
     for i in lines:
@@ -2305,21 +2298,21 @@ pygame.time.set_timer(pygame.USEREVENT, 500)
 
 while not done:
     if board_width<=600:
-        select_mode_button = button(board_width, board_height, 0.5, 0.125, 0.22, 0.2, select_mode_button_image)
-        setting_button = button(board_width, board_height, 0.5,0.375, 0.22, 0.2, setting_button_image)
-        quit_button = button(board_width, board_height, 0.5,0.625, 0.22, 0.2, quit_button_image)
-        score_board_button = button(board_width, board_height, 0.5, 0.875, 0.22, 0.2, score_board_button_image)
+        select_mode_button = button(board_width, board_height, half,select_mode_button_x_rate,select_mode_button_width_rate,select_mode_button_height_rate, select_mode_button_image)
+        setting_button = button(board_width, board_height, half,setting_button_x_rate,setting_button_width_rate,setting_button_heigth_rate, setting_button_image)
+        quit_button = button(board_width, board_height, half,quit_button_x_rate,quit_button_width_rate,quit_button_height_rate, quit_button_image)
+        score_board_button = button(board_width, board_height, half,score_board_button_x_rate,score_board_button_width_rate,score_board_button_height_rate, score_board_button_image)
 
-        easy_button = button(board_width, board_height, 0.5,0.125, 0.22, 0.2, easy_button_image)
-        normal_button = button(board_width, board_height, 0.5, 0.375, 0.22 , 0.2, normal_button_image)
-        hard_button = button(board_width, board_height, 0.5,0.625, 0.22, 0.2, hard_button_image)
+        easy_button = button(board_width, board_height, half,select_mode_button_x_rate,select_mode_button_width_rate,select_mode_button_height_rate, easy_button_image)
+        normal_button = button(board_width, board_height, half,setting_button_x_rate,setting_button_width_rate,setting_button_heigth_rate, normal_button_image)
+        hard_button = button(board_width, board_height, half,quit_button_x_rate,quit_button_width_rate,quit_button_height_rate, hard_button_image)
         
-        single_button = button(board_width, board_height, 0.5, 0.25, 0.22, 0.2, single_button_image)
-        pvp_button = button(board_width, board_height, 0.5,0.5, 0.22, 0.2, pvp_button_image)
+        single_button = button(board_width, board_height, half,easy_button_x_rate,easy_button_width_rate,easy_button_height_rate, single_button_image)
+        pvp_button = button(board_width, board_height, half,normal_button_x_rate,normal_button_width_rate,normal_button_height_rate, pvp_button_image)
 
-        volume_icon = button(board_width, board_height, 0.5, 0.25, 0.06, 0.12, volume_vector)
-        screen_icon = button(board_width, board_height, 0.5, 0.41, 0.06, 0.12, screen_vector)
-        size_icon = button(board_width, board_height, 0.5, 0.6, 0.06, 0.12, size_vector)
+        volume_icon = button(board_width, board_height, half,vertical_volume_rate,vertical_width_rate,vertical_height_rate, volume_vector)
+        screen_icon = button(board_width, board_height, half, vertical_screen_rate,vertical_width_rate,vertical_height_rate, screen_vector)
+        size_icon = button(board_width, board_height, half,vertical_size_rate,vertical_width_rate,vertical_height_rate, size_vector)
 
         width = width_small
         height = height_small
@@ -2327,42 +2320,42 @@ while not done:
         board_y = height_small
         
     elif (board_width>600 and board_width<=1200):
-        select_mode_button = button(board_width, board_height, 0.125, 0.4, 0.22, 0.2, select_mode_button_image)
-        setting_button = button(board_width, board_height, 0.375,0.4, 0.22, 0.2, setting_button_image)
-        quit_button = button(board_width, board_height, 0.625,0.4, 0.22, 0.2, quit_button_image)
-        score_board_button = button(board_width, board_height, 0.875, 0.4, 0.22, 0.2, score_board_button_image)
+        select_mode_button = button(board_width, board_height,select_mode_button_x_rate,select_mode_button_y_rate,select_mode_button_width_rate,select_mode_button_height_rate, select_mode_button_image)
+        setting_button = button(board_width, board_height,setting_button_x_rate,setting_button_y_rate,setting_button_width_rate,setting_button_heigth_rate, setting_button_image)
+        quit_button = button(board_width, board_height,quit_button_x_rate,quit_button_y_rate,quit_button_width_rate,quit_button_height_rate, quit_button_image)
+        score_board_button = button(board_width, board_height,score_board_button_x_rate,score_board_button_y_rate,score_board_button_width_rate,score_board_button_height_rate, score_board_button_image)
         
-        easy_button = button(board_width, board_height, 0.25,0.35, 0.22, 0.2, easy_button_image)
-        normal_button = button(board_width, board_height, 0.5, 0.35, 0.22 , 0.2, normal_button_image)
-        hard_button = button(board_width, board_height, 0.75,0.35, 0.22, 0.2, hard_button_image)
+        easy_button = button(board_width, board_height,easy_button_x_rate,easy_button_y_rate,easy_button_width_rate,easy_button_height_rate, easy_button_image)
+        normal_button = button(board_width, board_height,normal_button_x_rate,normal_button_y_rate,normal_button_width_rate,normal_button_height_rate, normal_button_image)
+        hard_button = button(board_width, board_height,hard_button_x_rate,hard_button_y_rate,hard_button_width_rate,hard_button_height_rate, hard_button_image)
 
-        single_button = button(board_width, board_height, 0.35, 0.35, 0.22, 0.2, single_button_image)
-        pvp_button = button(board_width, board_height, 0.65,0.35, 0.22, 0.2, pvp_button_image)
+        single_button = button(board_width, board_height,single_button_x_rate,single_button_y_rate,single_button_width_rate,single_button_height_rate, single_button_image)
+        pvp_button = button(board_width, board_height,pvp_button_x_rate,pvp_button_y_rate,pvp_button_width_rate,pvp_button_height_rate, pvp_button_image)
         
-        volume_icon = button(board_width, board_height, 0.3, 0.5, 0.12, 0.23, volume_vector)
-        screen_icon = button(board_width, board_height, 0.7, 0.5, 0.12, 0.23, screen_vector)
-        size_icon = button(board_width, board_height, 0.5, 0.5, 0.12, 0.23, size_vector)
+        volume_icon = button(board_width, board_height,volume_icon_x_rate,icon_y_rate,icon_width_rate,icon_height_rate, volume_vector)
+        screen_icon = button(board_width, board_height,screen_icon_x_rate,icon_y_rate,icon_width_rate,icon_height_rate, screen_vector)
+        size_icon = button(board_width, board_height,size_icon_x_rate,icon_y_rate,icon_width_rate,icon_height_rate, size_vector)
         
         width = width_normal
         height = height_normal
         board_x = width_normal
         board_y = height_normal
     else:
-        select_mode_button = button(board_width, board_height, 0.125, 0.4, 0.22, 0.2, select_mode_button_image)
-        setting_button = button(board_width, board_height, 0.375,0.4, 0.22, 0.2, setting_button_image)
-        quit_button = button(board_width, board_height, 0.625,0.4, 0.22, 0.2, quit_button_image)
-        score_board_button = button(board_width, board_height, 0.875, 0.4, 0.22, 0.2, score_board_button_image)
+        select_mode_button = button(board_width, board_height,select_mode_button_x_rate,select_mode_button_y_rate,select_mode_button_width_rate,select_mode_button_height_rate, select_mode_button_image)
+        setting_button = button(board_width, board_height,setting_button_x_rate,setting_button_y_rate,setting_button_width_rate,setting_button_heigth_rate, setting_button_image)
+        quit_button = button(board_width, board_height,quit_button_x_rate,quit_button_y_rate,quit_button_width_rate,quit_button_height_rate, quit_button_image)
+        score_board_button = button(board_width, board_height,score_board_button_x_rate,score_board_button_y_rate,score_board_button_width_rate,score_board_button_height_rate, score_board_button_image)
         
-        easy_button = button(board_width, board_height, 0.25,0.35, 0.22, 0.2, easy_button_image)
-        normal_button = button(board_width, board_height, 0.5, 0.35, 0.22 , 0.2, normal_button_image)
-        hard_button = button(board_width, board_height, 0.75,0.35, 0.22, 0.2, hard_button_image)
+        easy_button = button(board_width, board_height,easy_button_x_rate,easy_button_y_rate,easy_button_width_rate,easy_button_height_rate, easy_button_image)
+        normal_button = button(board_width, board_height,normal_button_x_rate,normal_button_y_rate,normal_button_width_rate,normal_button_height_rate, normal_button_image)
+        hard_button = button(board_width, board_height,hard_button_x_rate,hard_button_y_rate,hard_button_width_rate,hard_button_height_rate, hard_button_image)
 
-        single_button = button(board_width, board_height, 0.35, 0.35, 0.22, 0.2, single_button_image)
-        pvp_button = button(board_width, board_height, 0.65,0.35, 0.22, 0.2, pvp_button_image)
+        single_button = button(board_width, board_height,single_button_x_rate,single_button_y_rate,single_button_width_rate,single_button_height_rate, single_button_image)
+        pvp_button = button(board_width, board_height,pvp_button_x_rate,pvp_button_y_rate,pvp_button_width_rate,pvp_button_height_rate, pvp_button_image)
         
-        volume_icon = button(board_width, board_height, 0.3, 0.5, 0.12, 0.23, volume_vector)
-        screen_icon = button(board_width, board_height, 0.7, 0.5, 0.12, 0.23, screen_vector)
-        size_icon = button(board_width, board_height, 0.5, 0.5, 0.12, 0.23, size_vector)
+        volume_icon = button(board_width, board_height,volume_icon_x_rate,icon_y_rate,icon_width_rate,icon_height_rate, volume_vector)
+        screen_icon = button(board_width, board_height,screen_icon_x_rate,icon_y_rate,icon_width_rate,icon_height_rate, screen_vector)
+        size_icon = button(board_width, board_height,size_icon_x_rate,icon_y_rate,icon_width_rate,icon_height_rate, size_vector)
 
         width = width_big
         height = height_big
@@ -2379,12 +2372,12 @@ while not done:
             pygame.draw.rect(pause_surface, (ui_variables.black_pause), [0, 0, int(
                 board_width), int(board_height)])  # (screen, 색깔, 위치 x, y좌표, 너비, 높이)
 
-            draw_image(screen, help_board_image, board_width * 0.5, board_height * 0.5,
+            draw_image(screen, help_board_image, board_width * half, board_height * half,
                        int(board_width * 0.8), int(board_height * 0.9))  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
             back_button2.draw(screen, (0, 0, 0))
 
         if help_status == False:
-            draw_image(screen, pause_board_image, board_width * 0.5, board_height * 0.5,
+            draw_image(screen, pause_board_image, board_width * half, board_height * half,
                        int(board_height * 1), board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
             resume_button.draw(screen, (0, 0, 0))  # rgb(0,0,0) = 검정색
 
@@ -2482,7 +2475,7 @@ while not done:
                     board_width = min_width
                     board_height = min_height
                 # 높이 또는 너비가 비율의 일정수준 이상을 넘어서게 되면
-                if not ((board_rate-0.1) < (board_height/board_width) < (board_rate+0.05)):
+                if not ((board_rate-playing_image_height_rate) < (board_height/board_width) < (board_rate+video_upper_rate)):
                     # 너비를 적정 비율로 바꿔줌
                     board_width = int(board_height / board_rate)
                     # 높이를 적정 비율로 바꿔줌
@@ -2492,7 +2485,7 @@ while not done:
                 if board_width < mid_width:  # 화면 사이즈가 작은 경우
                     textsize = False  # 작은 글자크기 사용
 
-                block_size = int(board_height * 0.045)  # 블록 크기 고정
+                block_size = int(board_height * text_width_rate)  # 블록 크기 고정
                 screen = pygame.display.set_mode(
                     (board_width, board_height), pygame.RESIZABLE)
 
@@ -2518,7 +2511,7 @@ while not done:
                         pygame.time.set_timer(pygame.USEREVENT, game_speed)
                 
                 draw1_mino(dx, dy, mino_en, rotation, matrix)
-                draw_image(screen, gamebackground_image, board_width * 0.5, board_height *0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                draw_image(screen, gamebackground_image, board_width * half, board_height *half, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
                 draw1_board(next_mino1_en, next_mino2_en,hold_mino, score, level, goal)
                 
                 # Erase a mino
@@ -2538,7 +2531,7 @@ while not done:
                         draw1_mino(dx, dy, mino_en, rotation, matrix)
                         screen.fill(ui_variables.real_white)
                         draw_image(screen, gamebackground_image, board_width *
-                                   0.5, board_height * 0.5, board_width, board_height)
+                                   half, board_height * half, board_width, board_height)
                         draw1_board(next_mino1_en, next_mino2_en,
                                 hold_mino, score, level, goal)
                         pygame.display.update()
@@ -2643,8 +2636,8 @@ while not done:
                         # fever time시 이미지 깜빡거리게
                         if blink:
                             screen.blit(pygame.transform.scale(ui_variables.fever_image,
-                                                               (int(board_width * 0.22), int(board_height * 0.2))),
-                                        (board_width * 0.01, board_height * 0.1))
+                                                               (int(board_width * playing_image_x_rate), int(board_height * playing_image_y_rate))),
+                                        (board_width * playing_image_width_rate, board_height * playing_image_height_rate))
                             blink = False
                         else:
                             blink = True
@@ -2772,11 +2765,12 @@ while not done:
             elif event.type == VIDEORESIZE:
                 board_width = board_width
                 board_height = board_height
+                
                 if board_width < min_width or board_height < min_height:  # 최소 너비 또는 높이를 설정하려는 경우
                     board_width = min_width
                     board_height = min_height
                 # 높이 또는 너비가 비율의 일정수준 이상을 넘어서게 되면
-                if not ((board_rate-0.1) < (board_height/board_width) < (board_rate+0.05)):
+                if not ((board_rate-playing_image_height_rate) < (board_height/board_width) < (board_rate+video_upper_rate)):
                     # 너비를 적정 비율로 바꿔줌
                     board_width = int(board_height / board_rate)
                     # 높이를 적정 비율로 바꿔줌
@@ -2786,7 +2780,7 @@ while not done:
                 if board_width < mid_width:  # 화면 사이즈가 작은 경우
                     textsize = False  # 작은 글자크기 사용
 
-                block_size = int(board_height * 0.045)
+                block_size = int(board_height * text_width_rate)
                 screen = pygame.display.set_mode(
                     (board_width, board_height),pygame.RESIZABLE)
 
@@ -2813,8 +2807,8 @@ while not done:
 
                 # Draw a mino
                 draw1_mino(dx, dy, mino_en, rotation, matrix)
-                draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
-                           0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                draw_image(screen, gamebackground_image, board_width * half, board_height *
+                           half, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
                 draw1_board(next_mino1_en, next_mino2_en,
                            hold_mino, score, level, goal)
 
@@ -2835,7 +2829,7 @@ while not done:
                         draw1_mino(dx, dy, mino_en, rotation, matrix)
                         screen.fill(ui_variables.real_white)
                         draw_image(screen, gamebackground_image, board_width *
-                                   0.5, board_height * 0.5, board_width, board_height)
+                                   half, board_height * half, board_width, board_height)
                         draw1_board(next_mino1_en, next_mino2_en,
                                 hold_mino, score, level, goal)
                         pygame.display.update()
@@ -2917,8 +2911,8 @@ while not done:
                         # fever time시 이미지 깜빡거리게
                         if blink:
                             screen.blit(pygame.transform.scale(ui_variables.fever_image,
-                                                               (int(board_width * 0.3), int(board_height * 0.2))),
-                                        (board_width * 0.01, board_height * 0.1))
+                                                               (int(board_width * playing_image_x_rate), int(board_height * playing_image_y_rate))),
+                                        (board_width * playing_image_width_rate, board_height * playing_image_height_rate))
                             blink = False
                         else:
                             blink = True    
@@ -3043,7 +3037,7 @@ while not done:
                     board_width = min_width
                     board_height = min_height
                 # 높이 또는 너비가 비율의 일정수준 이상을 넘어서게 되면
-                if not ((board_rate-0.1) < (board_height/board_width) < (board_rate+0.05)):
+                if not ((board_rate-playing_image_height_rate) < (board_height/board_width) < (board_rate+video_upper_rate)):
                     # 너비를 적정 비율로 바꿔줌
                     board_width = int(board_height / board_rate)
                     # 높이를 적정 비율로 바꿔줌
@@ -3053,7 +3047,7 @@ while not done:
                 if board_width < mid_width:  # 화면 사이즈가 작은 경우
                     textsize = False  # 작은 글자크기 사용
 
-                block_size = int(board_height * 0.045)
+                block_size = int(board_height * text_width_rate)
                 screen = pygame.display.set_mode(
                     (board_width, board_height), pygame.RESIZABLE)
 
@@ -3080,8 +3074,8 @@ while not done:
 
                 # Draw a mino
                 draw_mino(dx, dy, mino, rotation, matrix)
-                draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
-                           0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                draw_image(screen, gamebackground_image, board_width * half, board_height *
+                           half, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
                 # draw_board(next_mino1, next_mino2,
                 #            hold_mino, score, level, goal)
                 if change % 2 == 1:
@@ -3107,7 +3101,7 @@ while not done:
                         draw_mino(dx, dy, mino, rotation, matrix)
                         screen.fill(ui_variables.real_white)
                         draw_image(screen, gamebackground_image, board_width *
-                                   0.5, board_height * 0.5, board_width, board_height)
+                                   half, board_height * half, board_width, board_height)
                         
                         if change % 2 == 1:
                             draw_hardboard_change(next_mino1, next_mino2, hold_mino, score, level, goal)
@@ -3194,8 +3188,8 @@ while not done:
                         # fever time시 이미지 깜빡거리게
                         if blink:
                             screen.blit(pygame.transform.scale(ui_variables.fever_image,
-                                                               (int(board_width * 0.3), int(board_height * 0.2))),
-                                        (board_width * 0.01, board_height * 0.1))
+                                                               (int(board_width * playing_image_x_rate), int(board_height * playing_image_y_rate))),
+                                        (board_width * playing_image_width_rate, board_height * playing_image_height_rate))
                             blink = False
                         else:
                             blink = True
@@ -3355,7 +3349,7 @@ while not done:
                     board_width = min_width
                     board_height = min_height
                 # 높이 또는 너비가 비율의 일정수준 이상을 넘어서게 되면
-                if not ((board_rate-0.1) < (board_height/board_width) < (board_rate+0.05)):
+                if not ((board_rate-playing_image_height_rate) < (board_height/board_width) < (board_rate+video_upper_rate)):
                     # 너비를 적정 비율로 바꿔줌
                     board_width = int(board_height / board_rate)
                     # 높이를 적정 비율로 바꿔줌
@@ -3365,7 +3359,7 @@ while not done:
                 if board_width < mid_width:  # 화면 사이즈가 작은 경우
                     textsize = False  # 작은 글자크기 사용
 
-                block_size = int(board_height * 0.045)
+                block_size = int(board_height * text_width_rate)
                 screen = pygame.display.set_mode(
                     (board_width, board_height), pygame.RESIZABLE)
 
@@ -3552,26 +3546,26 @@ while not done:
                                 matrix_2P[i][k] = matrix_2P[i][k - 1]
                             k -= 1
                 while attack_stack >= 2:
-                    for j in range(20):
-                        for i in range(10):
+                    for j in range(height):
+                        for i in range(width):
                             matrix_2P[i][j] = matrix_2P[i][j + 1]
 
                             attack_stack -= 1
                     for i in range(10):
                         matrix_2P[i][20] = 9
-                    k = randint(1, 9)
+                    k = randint(0, 9)
                     matrix_2P[k][20] = 0
                     attack_point += 1
 
                 while attack_stack_2P >= 2:
-                    for j in range(20):
-                        for i in range(10):
+                    for j in range(height):
+                        for i in range(width):
                             matrix[i][j] = matrix[i][j + 1]
 
                             attack_stack_2P -= 1
                     for i in range(10):
                         matrix[i][20] = 9
-                    k = randint(1, 9)
+                    k = randint(0, 9)
                     matrix[k][20] = 0
                     attack_point_2P += 1
 
@@ -3585,8 +3579,8 @@ while not done:
                         # fever time시 이미지 깜빡거리게
                         if blink:
                             screen.blit(pygame.transform.scale(ui_variables.fever_image,
-                                                               (int(board_width * 0.3), int(board_height * 0.2))),
-                                        (board_width * 0.01, board_height * 0.1))
+                                                               (int(board_width * playing_image_x_rate), int(board_height * playing_image_y_rate))),
+                                        (board_width * playing_image_width_rate, board_height * playing_image_height_rate))
                             blink = False
                         else:
                             blink = True
@@ -3599,8 +3593,8 @@ while not done:
                         # fever time시 이미지 깜빡거리게
                         if blink:
                             screen.blit(pygame.transform.scale(ui_variables.fever_image,
-                                                               (int(board_width * 0.3), int(board_height * 0.2))),
-                                        (board_width * 0.01, board_height * 0.1))
+                                                               (int(board_width * playing_image_x_rate), int(board_height * playing_image_y_rate))),
+                                        (board_width * playing_image_width_rate, board_height * playing_image_height_rate))
                             blink = False
                         else:
                             blink = True
@@ -3982,13 +3976,13 @@ while not done:
                                     hold_mino_2P, current_key, current_key_2P)
 
             elif event.type == VIDEORESIZE:
-                board_width = event.w
-                board_height = event.h
+                board_width = board_width
+                board_height = board_height
                 if board_width < min_width or board_height < min_height:  # 최소 너비 또는 높이를 설정하려는 경우
                     board_width = min_width
                     board_height = min_height
-                if not ((board_rate - 0.1) < (board_height / board_width) < (
-                        board_rate + 0.05)):  # 높이 또는 너비가 비율의 일정수준 이상을 넘어서게 되면
+                if not ((board_rate - playing_image_height_rate) < (board_height / board_width) < (
+                        board_rate + video_upper_rate)):  # 높이 또는 너비가 비율의 일정수준 이상을 넘어서게 되면
                     # 너비를 적정 비율로 바꿔줌
                     board_width = int(board_height / board_rate)
                     # 높이를 적정 비율로 바꿔줌
@@ -3998,7 +3992,7 @@ while not done:
                 if board_width < mid_width:  # 화면 사이즈가 작은 경우
                     textsize = False  # 작은 글자크기 사용
 
-                block_size = int(board_height * 0.045)  # 블록 크기비율 고정
+                block_size = int(board_height * text_width_rate)  # 블록 크기비율 고정
                 screen = pygame.display.set_mode(
                     (board_width, board_height), pygame.RESIZABLE)
 
@@ -4024,8 +4018,8 @@ while not done:
 
                 if game_status == 'pvp':
                     # 기존 화면 약간 어둡게 처리
-                    draw_image(screen, gamebackground_image, board_width * 0.5, board_height *
-                            0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                    draw_image(screen, gamebackground_image, board_width * half, board_height *
+                            half, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
                     draw_multiboard(next_mino1, hold_mino, next_mino1_2P, hold_mino_2P,
                                     current_key, current_key_2P)
                     pause_surface = screen.convert_alpha()  # 투명 가능하도록
@@ -4035,24 +4029,24 @@ while not done:
                     screen.blit(pause_surface, (0, 0))
                     #
 
-                    draw_image(screen, multi_gameover_image, board_width * 0.5, board_height * 0.2,
-                               int(board_height * 0.7), int(board_height * 0.2))  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                    draw_image(screen, multi_gameover_image, board_width * half, board_height * playing_image_y_rate,
+                               int(board_height * effect_volum_rate), int(board_height * playing_image_y_rate))  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
                     if winner == 1:  # 1P가 이기면
-                        draw_image(screen, multi_win_image, board_width * 0.2, board_height * 0.5,
-                                   int(board_height * 0.3), int(board_height * 0.25))  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
-                        draw_image(screen, multi_lose_image, board_width * 0.8, board_height * 0.5,
-                                   int(board_height * 0.3), int(board_height * 0.25))  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                        draw_image(screen, multi_win_image, board_width * playing_image_y_rate, board_height * half,
+                                   int(board_height * playing_image_x_rate), int(board_height * winner_image_height_rate))  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                        draw_image(screen, multi_lose_image, board_width * 0.8, board_height * half,
+                                   int(board_height * playing_image_x_rate), int(board_height * winner_image_height_rate))  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
                     elif winner == 2:  # 2P가 이기면
-                        draw_image(screen, multi_win_image, board_width * 0.8, board_height * 0.5,
-                                   int(board_height * 0.3), int(board_height * 0.25))  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
-                        draw_image(screen, multi_lose_image, board_width * 0.2, board_height * 0.5,
-                                   int(board_height * 0.3), int(board_height * 0.25))  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                        draw_image(screen, multi_win_image, board_width * 0.8, board_height * half,
+                                   int(board_height * playing_image_x_rate), int(board_height * winner_image_height_rate))  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+                        draw_image(screen, multi_lose_image, board_width * playing_image_y_rate, board_height * half,
+                                   int(board_height * playing_image_x_rate), int(board_height * winner_image_height_rate))  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
 
                     multi_menu_button.draw(screen, (0, 0, 0))
                     multi_restart_button.draw(screen, (0, 0, 0))
 
                 elif game_status != 'pvp':
-                    draw_image(screen, gameover_board_image, board_width * 0.5, board_height * 0.5,
+                    draw_image(screen, gameover_board_image, board_width * half, board_height * half,
                                int(board_height * 1), board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
                     menu_button2.draw(screen, (0, 0, 0))  # rgb(0,0,0) = 검정색
                     restart_button.draw(screen, (0, 0, 0))
@@ -4074,12 +4068,12 @@ while not done:
                         "_", 1, ui_variables.white)
 
                     # blit(요소, 위치), 각각 전체 board의 가로길이, 세로길이에다가 원하는 비율을 곱해줌
-                    screen.blit(name_1, (int(board_width * 0.434),
-                                int(board_height * 0.55)))
-                    screen.blit(name_2, (int(board_width * 0.494),
-                                int(board_height * 0.55)))  # blit(요소, 위치)
-                    screen.blit(name_3, (int(board_width * 0.545),
-                                int(board_height * 0.55)))  # blit(요소, 위치)
+                    screen.blit(name_1, (int(board_width * name1_width_rate),
+                                int(board_height * name_height_rate)))
+                    screen.blit(name_2, (int(board_width * name2_width_rate),
+                                int(board_height * name_height_rate)))  # blit(요소, 위치)
+                    screen.blit(name_3, (int(board_width * name3_width_rate),
+                                int(board_height * name_height_rate)))  # blit(요소, 위치)
 
                     if blink:
                         blink = False
@@ -4087,15 +4081,15 @@ while not done:
                         if name_location == 0:
                             # 위치 비율 고정
                             screen.blit(
-                                underbar_1, ((int(board_width * 0.437), int(board_height * 0.56))))
+                                underbar_1, ((int(board_width * underbar1_width_rate), int(board_height * underbar_height_rate))))
                         elif name_location == 1:
                             # 위치 비율 고정
                             screen.blit(
-                                underbar_2, ((int(board_width * 0.497), int(board_height * 0.56))))
+                                underbar_2, ((int(board_width * underbar2_width_rate), int(board_height * underbar_height_rate))))
                         elif name_location == 2:
                             # 위치 비율 고정
                             screen.blit(
-                                underbar_3, ((int(board_width * 0.557), int(board_height * 0.56))))
+                                underbar_3, ((int(board_width * underbar3_width_rate), int(board_height * underbar_height_rate))))
                         blink = True
 
                 pygame.display.update()
@@ -4237,7 +4231,7 @@ while not done:
                     board_width = min_width
                     board_height = min_height
                 # 높이 또는 너비가 비율의 일정수준 이상을 넘어서게 되면
-                if not ((board_rate-0.1) < (board_height/board_width) < (board_rate + 0.05)):
+                if not ((board_rate-playing_image_height_rate) < (board_height/board_width) < (board_rate + video_upper_rate)):
                     # 너비를 적정 비율로 바꿔줌
                     board_width = int(board_height / board_rate)
                     # 높이를 적정 비율로 바꿔줌
@@ -4247,7 +4241,7 @@ while not done:
                 if board_width < mid_width:  # 화면 사이즈가 작은 경우
                     textsize = False  # 작은 글자크기 사용
 
-                block_size = int(board_height * 0.045)  # 블록 크기비율 고정
+                block_size = int(board_height * text_width_rate)  # 블록 크기비율 고정
                 screen = pygame.display.set_mode(
                     (board_width, board_height), pygame.RESIZABLE)
 
@@ -4256,8 +4250,8 @@ while not done:
 
     elif select_mode:
         screen.fill(ui_variables.real_white)
-        draw_image(screen, background_image, board_width * 0.5, board_height *
-                0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+        draw_image(screen, background_image, board_width * half, board_height *
+                half, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
         pause_surface = screen.convert_alpha()  # 투명 가능하도록
         pause_surface.fill((0, 0, 0, 0))  # 투명한 검정색으로 덮기
         pygame.draw.rect(pause_surface, (ui_variables.black_pause), [0, 0, int(
@@ -4323,7 +4317,7 @@ while not done:
                     board_width = min_width
                     board_height = min_height
                 # 높이 또는 너비가 비율의 일정수준 이상을 넘어서게 되면
-                if not ((board_rate - 0.1) < (board_height / board_width) < (board_rate + 0.05)):
+                if not ((board_rate - playing_image_height_rate) < (board_height / board_width) < (board_rate + video_upper_rate)):
                     # 너비를 적정 비율로 바꿔줌
                     board_width = int(board_height / board_rate)
                     # 높이를 적정 비율로 바꿔줌
@@ -4333,7 +4327,7 @@ while not done:
                 if board_width < mid_width:  # 화면 사이즈가 작은 경우
                     textsize = False  # 작은 글자크기 사용
 
-                block_size = int(board_height * 0.045)  # 블록 크기 고정
+                block_size = int(board_height * text_width_rate)  # 블록 크기 고정
                 screen = pygame.display.set_mode(
                     (board_width, board_height), pygame.RESIZABLE)
 
@@ -4341,8 +4335,8 @@ while not done:
                     button_list[i].change(board_width, board_height)
     elif single:
         screen.fill(ui_variables.real_white)
-        draw_image(screen, background_image, board_width * 0.5, board_height *
-                0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+        draw_image(screen, background_image, board_width * half, board_height *
+                half, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
         pause_surface = screen.convert_alpha()  # 투명 가능하도록
         pause_surface.fill((0, 0, 0, 0))  # 투명한 검정색으로 덮기
         pygame.draw.rect(pause_surface, (ui_variables.black_pause), [0, 0, int(
@@ -4428,7 +4422,7 @@ while not done:
                     board_width = min_width
                     board_height = min_height
                 # 높이 또는 너비가 비율의 일정수준 이상을 넘어서게 되면
-                if not ((board_rate - 0.1) < (board_height / board_width) < (board_rate + 0.05)):
+                if not ((board_rate - playing_image_height_rate) < (board_height / board_width) < (board_rate + video_upper_rate)):
                     # 너비를 적정 비율로 바꿔줌
                     board_width = int(board_height / board_rate)
                     # 높이를 적정 비율로 바꿔줌
@@ -4438,7 +4432,7 @@ while not done:
                 if board_width < mid_width:  # 화면 사이즈가 작은 경우
                     textsize = False  # 작은 글자크기 사용
 
-                block_size = int(board_height * 0.045)  # 블록 크기 고정
+                block_size = int(board_height * text_width_rate)  # 블록 크기 고정
                 screen = pygame.display.set_mode(
                     (board_width, board_height), pygame.RESIZABLE)
 
@@ -4448,23 +4442,23 @@ while not done:
 # score_board 셋팅
     elif leader_board:
         screen.fill(ui_variables.real_white)
-        draw_image(screen, background_image, board_width * 0.5, board_height *
-                0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+        draw_image(screen, background_image, board_width * half, board_height *
+                half, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
         pause_surface = screen.convert_alpha()  # 투명 가능하도록
         pause_surface.fill((0, 0, 0, 0))  # 투명한 검정색으로 덮기
         pygame.draw.rect(pause_surface, (ui_variables.black_pause), [0, 0, int(
             board_width), int(board_height)])  # (screen, 색깔, 위치 x, y좌표, 너비, 높이)
         screen.blit(pause_surface, (0, 0))
 
-        draw_image(screen, scoreboard_board_image, board_width * 0.5, board_height * 0.5,
-                   int(board_height * 1.3), board_height)
+        draw_image(screen, scoreboard_board_image, board_width * half, board_height * half,
+                   int(board_height * volume_width_rate), board_height)
 
         easy_mode_text = ui_variables.h2_b.render(
             "EASY MODE:", 1, ui_variables.yellow)
         hard_mode_text = ui_variables.h2_b.render(
             "HARD MODE:", 1, ui_variables.yellow)
-        screen.blit(easy_mode_text, (board_width * 0.2, board_height * 0.2))
-        screen.blit(hard_mode_text, (board_width * 0.55, board_height * 0.2))
+        screen.blit(easy_mode_text, (board_width * playing_image_y_rate, board_height * playing_image_y_rate))
+        screen.blit(hard_mode_text, (board_width * name_height_rate, board_height * playing_image_y_rate))
 
         back_button.draw(screen, (0, 0, 0))
 
@@ -4476,11 +4470,11 @@ while not done:
             '2nd ' + leaders[1][0] + ' ' + str(leaders[1][1]), 1, ui_variables.white)
         leader_3 = ui_variables.h2_b.render(
             '3rd ' + leaders[2][0] + ' ' + str(leaders[2][1]), 1, ui_variables.white)
-        screen.blit(leader_1, (board_width * 0.2,
+        screen.blit(leader_1, (board_width * playing_image_y_rate,
                     board_height * 0.35))  # 위치 비율 고정
-        screen.blit(leader_2, (board_width * 0.2,
-                    board_height * 0.5))  # 위치 비율 고정
-        screen.blit(leader_3, (board_width * 0.2,
+        screen.blit(leader_2, (board_width * playing_image_y_rate,
+                    board_height * half))  # 위치 비율 고정
+        screen.blit(leader_3, (board_width * playing_image_y_rate,
                     board_height * 0.65))  # 위치 비율 고정
 
         # hard mode
@@ -4490,11 +4484,11 @@ while not done:
             '2nd ' + leaders_hard[1][0] + ' ' + str(leaders_hard[1][1]), 1, ui_variables.white)
         leader_3 = ui_variables.h2_b.render(
             '3rd ' + leaders_hard[2][0] + ' ' + str(leaders_hard[2][1]), 1, ui_variables.white)
-        screen.blit(leader_1, (board_width * 0.55,
+        screen.blit(leader_1, (board_width * name_height_rate,
                     board_height * 0.35))  # 위치 비율 고정
-        screen.blit(leader_2, (board_width * 0.55,
-                    board_height * 0.5))  # 위치 비율 고정
-        screen.blit(leader_3, (board_width * 0.55,
+        screen.blit(leader_2, (board_width * name_height_rate,
+                    board_height * half))  # 위치 비율 고정
+        screen.blit(leader_3, (board_width * name_height_rate,
                     board_height * 0.65))  # 위치 비율 고정
 
         pygame.display.update()
@@ -4521,7 +4515,7 @@ while not done:
                     board_width = min_width
                     board_height = min_height
                 # 높이 또는 너비가 비율의 일정수준 이상을 넘어서게 되면
-                if not ((board_rate-0.1) < (board_height/board_width) < (board_rate+0.05)):
+                if not ((board_rate-playing_image_height_rate) < (board_height/board_width) < (board_rate+video_upper_rate)):
                     # 너비를 적정 비율로 바꿔줌
                     board_width = int(board_height / board_rate)
                     # 높이를 적정 비율로 바꿔줌
@@ -4531,7 +4525,7 @@ while not done:
                 if board_width < mid_width:  # 화면 사이즈가 작은 경우
                     textsize = False  # 작은 글자크기 사용
 
-                block_size = int(board_height * 0.045)
+                block_size = int(board_height * text_width_rate)
                 screen = pygame.display.set_mode(
                     (board_width, board_height), pygame.RESIZABLE)
 
@@ -4541,8 +4535,8 @@ while not done:
 #셋팅 페이지 
     elif screen_setting:
         screen.fill(ui_variables.pinkpurple)
-        draw_image(screen, background_image, board_width * 0.5, board_height *
-                0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+        draw_image(screen, background_image, board_width * half, board_height *
+                half, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
         select_mode_button.draw(screen, (0, 0, 0))
         setting_button.draw(screen, (0, 0, 0))
         score_board_button.draw(screen, (0, 0, 0))
@@ -4556,8 +4550,8 @@ while not done:
 
         screen.blit(pause_surface, (0, 0))
 
-        draw_image(screen, setting_board_image, board_width * 0.5, board_height * 0.5,
-                   int(board_height * 1.3), board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+        draw_image(screen, setting_board_image, board_width * half, board_height * half,
+                   int(board_height * volume_width_rate), board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
 
         background1_check_button.draw(screen, (0, 0, 0))
         background2_check_button.draw(screen, (0, 0, 0))
@@ -4570,12 +4564,12 @@ while not done:
             'NewYork', 1, ui_variables.white)
         Background3_text = ui_variables.h5.render(
             'London', 1, ui_variables.white)
-        screen.blit(Background1_text, (board_width * 0.47,
-                    board_height * 0.33))  # 위치 비율 고정
-        screen.blit(Background2_text, (board_width * 0.47,
-                    board_height * 0.52))  # 위치 비율 고정
-        screen.blit(Background3_text, (board_width * 0.47,
-                    board_height * 0.73))  # 위치 비율 고정
+        screen.blit(Background1_text, (board_width * background_width_rate,
+                    board_height * background1_height_rate))  # 위치 비율 고정
+        screen.blit(Background2_text, (board_width * background_width_rate,
+                    board_height * background2_height_rate))  # 위치 비율 고정
+        screen.blit(Background3_text, (board_width * background_width_rate,
+                    board_height * background3_height_rate))  # 위치 비율 고정
 
         for event in pygame.event.get():
             pos = pygame.mouse.get_pos()
@@ -4626,7 +4620,7 @@ while not done:
                     board_width = min_width
                     board_height = min_height
                 # 높이 또는 너비가 비율의 일정수준 이상을 넘어서게 되면
-                if not ((board_rate - 0.1) < (board_height / board_width) < (board_rate + 0.05)):
+                if not ((board_rate - playing_image_height_rate) < (board_height / board_width) < (board_rate + video_upper_rate)):
                     # 너비를 적정 비율로 바꿔줌
                     board_width = int(board_height / board_rate)
                     # 높이를 적정 비율로 바꿔줌
@@ -4636,7 +4630,7 @@ while not done:
                 if board_width < mid_width:  # 화면 사이즈가 작은 경우
                     textsize = False  # 작은 글자크기 사용
 
-                block_size = int(board_height * 0.045)  # 블록 크기 고정
+                block_size = int(board_height * text_width_rate)  # 블록 크기 고정
                 screen = pygame.display.set_mode(
                     (board_width, board_height), pygame.RESIZABLE)
 
@@ -4653,8 +4647,8 @@ while not done:
         screen.blit(pause_surface, (0, 0))  # 위치 비율 고정
 
         # draw_image(window, 이미지주소, x좌표, y좌표, 너비, 높이)
-        draw_image(screen, setting_board_image, board_width * 0.5,
-                   board_height * 0.5, int(board_height * 1.3), board_height)
+        draw_image(screen, setting_board_image, board_width * half,
+                   board_height * half, int(board_height * volume_width_rate), board_height)
         mute_button.draw(screen, (0, 0, 0))  # rgb(0,0,0) = 검정색#
 
         effect_plus_button.draw(screen, (0, 0, 0))
@@ -4683,28 +4677,28 @@ while not done:
             mute_all_text = ui_variables.h8.render(
                 'l 전체 음소거', 1, ui_variables.white)
             screen.blit(music_volume_text, (board_width *
-                        0.1, board_height * 0.2))  # 위치 비율 고정
+                        playing_image_height_rate, board_height * playing_image_y_rate))  # 위치 비율 고정
             screen.blit(effect_volume_text, (board_width *
-                        0.1, board_height * 0.55))  # 위치 비율 고정
+                        playing_image_height_rate, board_height * name_height_rate))  # 위치 비율 고정
             screen.blit(bgm_volume_text, (board_width *
-                        0.54, board_height * 0.2))  # 위치 비율 고정
+                        0.54, board_height * playing_image_y_rate))  # 위치 비율 고정
             screen.blit(mute_all_text, (board_width *
-                        0.54, board_height * 0.55))  # 위치 비율 고정
+                        0.54, board_height * name_height_rate))  # 위치 비율 고정
 
             music_volume_size_text = ui_variables.h6.render(
                 str(music_volume), 1, ui_variables.white)
             effect_volume_size_text = ui_variables.h6.render(
                 str(effect_volume), 1, ui_variables.white)
             screen.blit(music_volume_size_text, (board_width *
-                        0.19, board_height * 0.37))  # 위치 비율 고정
+                        music_width_rate, board_height * music_height_rate))  # 위치 비율 고정
             screen.blit(effect_volume_size_text, (board_width *
-                        0.19, board_height * 0.7))  # 위치 비율 고정 
+                        music_width_rate, board_height * effect_volum_rate))  # 위치 비율 고정 
 
             BGM1_text = ui_variables.h8.render('BGM1', 1, ui_variables.white)
             BGM2_text = ui_variables.h8.render('BGM2', 1, ui_variables.white)
             BGM3_text = ui_variables.h8.render('BGM3', 1, ui_variables.white)
 
-            screen.blit(BGM1_text, (board_width * 0.55,
+            screen.blit(BGM1_text, (board_width * name_height_rate,
                     board_height * 0.45))  # 위치 비율 고정
             screen.blit(BGM2_text, (board_width * 0.67,
                     board_height * 0.45))  # 위치 비율 고정
@@ -4721,28 +4715,28 @@ while not done:
             mute_all_text = ui_variables.h7.render(
                 'l 전체 음소거', 1, ui_variables.white)
             screen.blit(music_volume_text, (board_width *
-                        0.1, board_height * 0.2))  # 위치 비율 고정
+                        playing_image_height_rate, board_height * playing_image_y_rate))  # 위치 비율 고정
             screen.blit(effect_volume_text, (board_width *
-                        0.1, board_height * 0.55))  # 위치 비율 고정
+                        playing_image_height_rate, board_height * name_height_rate))  # 위치 비율 고정
             screen.blit(bgm_volume_text, (board_width *
-                        0.54, board_height * 0.2))  # 위치 비율 고정
+                        0.54, board_height * playing_image_y_rate))  # 위치 비율 고정
             screen.blit(mute_all_text, (board_width *
-                        0.54, board_height * 0.55))  # 위치 비율 고정
+                        0.54, board_height * name_height_rate))  # 위치 비율 고정
 
             music_volume_size_text = ui_variables.h5.render(
                 str(music_volume), 1, ui_variables.white)
             effect_volume_size_text = ui_variables.h5.render(
                 str(effect_volume), 1, ui_variables.white)
             screen.blit(music_volume_size_text, (board_width *
-                        0.19, board_height * 0.37))  # 위치 비율 고정
+                        music_width_rate, board_height * music_height_rate))  # 위치 비율 고정
             screen.blit(effect_volume_size_text, (board_width *
-                        0.19, board_height * 0.7))  # 위치 비율 고정
+                        music_width_rate, board_height * effect_volum_rate))  # 위치 비율 고정
 
             BGM1_text = ui_variables.h7.render('BGM1', 1, ui_variables.white)
             BGM2_text = ui_variables.h7.render('BGM2', 1, ui_variables.white)
             BGM3_text = ui_variables.h7.render('BGM3', 1, ui_variables.white)
 
-            screen.blit(BGM1_text, (board_width * 0.55,
+            screen.blit(BGM1_text, (board_width * name_height_rate,
                     board_height * 0.45))  # 위치 비율 고정
             screen.blit(BGM2_text, (board_width * 0.67,
                     board_height * 0.45))  # 위치 비율 고정
@@ -4759,28 +4753,28 @@ while not done:
             mute_all_text = ui_variables.h6.render(
                 'l 전체 음소거', 1, ui_variables.white)
             screen.blit(music_volume_text, (board_width *
-                        0.1, board_height * 0.2))  # 위치 비율 고정
+                        playing_image_height_rate, board_height * playing_image_y_rate))  # 위치 비율 고정
             screen.blit(effect_volume_text, (board_width *
-                        0.1, board_height * 0.55))  # 위치 비율 고정
+                        playing_image_height_rate, board_height * name_height_rate))  # 위치 비율 고정
             screen.blit(bgm_volume_text, (board_width *
-                        0.54, board_height * 0.2))  # 위치 비율 고정
+                        0.54, board_height * playing_image_y_rate))  # 위치 비율 고정
             screen.blit(mute_all_text, (board_width *
-                        0.54, board_height * 0.55))  # 위치 비율 고정
+                        0.54, board_height * name_height_rate))  # 위치 비율 고정
 
             music_volume_size_text = ui_variables.h4.render(
                 str(music_volume), 1, ui_variables.white)
             effect_volume_size_text = ui_variables.h4.render(
                 str(effect_volume), 1, ui_variables.white)
             screen.blit(music_volume_size_text, (board_width *
-                        0.19, board_height * 0.37))  # 위치 비율 고정
+                        music_width_rate, board_height * music_height_rate))  # 위치 비율 고정
             screen.blit(effect_volume_size_text, (board_width *
-                        0.19, board_height * 0.7))  # 위치 비율 고정
+                        music_width_rate, board_height * effect_volum_rate))  # 위치 비율 고정
 
             BGM1_text = ui_variables.h6.render('BGM1', 1, ui_variables.white)
             BGM2_text = ui_variables.h6.render('BGM2', 1, ui_variables.white)
             BGM3_text = ui_variables.h6.render('BGM3', 1, ui_variables.white)
 
-            screen.blit(BGM1_text, (board_width * 0.55,
+            screen.blit(BGM1_text, (board_width * name_height_rate,
                     board_height * 0.45))  # 위치 비율 고정
             screen.blit(BGM2_text, (board_width * 0.67,
                     board_height * 0.45))  # 위치 비율 고정
@@ -4797,28 +4791,28 @@ while not done:
             mute_all_text = ui_variables.h4.render(
                 'l 전체 음소거', 1, ui_variables.white)
             screen.blit(music_volume_text, (board_width *
-                        0.1, board_height * 0.2))  # 위치 비율 고정
+                        playing_image_height_rate, board_height * playing_image_y_rate))  # 위치 비율 고정
             screen.blit(effect_volume_text, (board_width *
-                        0.1, board_height * 0.55))  # 위치 비율 고정
+                        playing_image_height_rate, board_height * name_height_rate))  # 위치 비율 고정
             screen.blit(bgm_volume_text, (board_width *
-                        0.54, board_height * 0.2))  # 위치 비율 고정
+                        0.54, board_height * playing_image_y_rate))  # 위치 비율 고정
             screen.blit(mute_all_text, (board_width *
-                        0.54, board_height * 0.55))  # 위치 비율 고정
+                        0.54, board_height * name_height_rate))  # 위치 비율 고정
 
             music_volume_size_text = ui_variables.h3.render(
                 str(music_volume), 1, ui_variables.white)
             effect_volume_size_text = ui_variables.h3.render(
                 str(effect_volume), 1, ui_variables.white)
             screen.blit(music_volume_size_text, (board_width *
-                        0.19, board_height * 0.37))  # 위치 비율 고정
+                        music_width_rate, board_height * music_height_rate))  # 위치 비율 고정
             screen.blit(effect_volume_size_text, (board_width *
-                        0.19, board_height * 0.7))  # 위치 비율 고정
+                        music_width_rate, board_height * effect_volum_rate))  # 위치 비율 고정
 
             BGM1_text = ui_variables.h5.render('BGM1', 1, ui_variables.white)
             BGM2_text = ui_variables.h5.render('BGM2', 1, ui_variables.white)
             BGM3_text = ui_variables.h5.render('BGM3', 1, ui_variables.white)
 
-            screen.blit(BGM1_text, (board_width * 0.55,
+            screen.blit(BGM1_text, (board_width * name_height_rate,
                     board_height * 0.45))  # 위치 비율 고정
             screen.blit(BGM2_text, (board_width * 0.67,
                     board_height * 0.45))  # 위치 비율 고정
@@ -4835,28 +4829,28 @@ while not done:
             mute_all_text = ui_variables.h3.render(
                 'l 전체 음소거', 1, ui_variables.white)
             screen.blit(music_volume_text, (board_width *
-                        0.1, board_height * 0.2))  # 위치 비율 고정
+                        playing_image_height_rate, board_height * playing_image_y_rate))  # 위치 비율 고정
             screen.blit(effect_volume_text, (board_width *
-                        0.1, board_height * 0.55))  # 위치 비율 고정
+                        playing_image_height_rate, board_height * name_height_rate))  # 위치 비율 고정
             screen.blit(bgm_volume_text, (board_width *
-                        0.54, board_height * 0.2))  # 위치 비율 고정
+                        0.54, board_height * playing_image_y_rate))  # 위치 비율 고정
             screen.blit(mute_all_text, (board_width *
-                        0.54, board_height * 0.55))  # 위치 비율 고정
+                        0.54, board_height * name_height_rate))  # 위치 비율 고정
 
             music_volume_size_text = ui_variables.h2.render(
                 str(music_volume), 1, ui_variables.white)
             effect_volume_size_text = ui_variables.h2.render(
                 str(effect_volume), 1, ui_variables.white)
             screen.blit(music_volume_size_text, (board_width *
-                        0.19, board_height * 0.37))  # 위치 비율 고정
+                        music_width_rate, board_height * music_height_rate))  # 위치 비율 고정
             screen.blit(effect_volume_size_text, (board_width *
-                        0.19, board_height * 0.7))  # 위치 비율 고정
+                        music_width_rate, board_height * effect_volum_rate))  # 위치 비율 고정
 
             BGM1_text = ui_variables.h4.render('BGM1', 1, ui_variables.white)
             BGM2_text = ui_variables.h4.render('BGM2', 1, ui_variables.white)
             BGM3_text = ui_variables.h4.render('BGM3', 1, ui_variables.white)
 
-            screen.blit(BGM1_text, (board_width * 0.55,
+            screen.blit(BGM1_text, (board_width * name_height_rate,
                     board_height * 0.45))  # 위치 비율 고정
             screen.blit(BGM2_text, (board_width * 0.67,
                     board_height * 0.45))  # 위치 비율 고정
@@ -4873,28 +4867,28 @@ while not done:
             mute_all_text = ui_variables.h2.render(
                 'l 전체 음소거', 1, ui_variables.white)
             screen.blit(music_volume_text, (board_width *
-                        0.1, board_height * 0.2))  # 위치 비율 고정
+                        playing_image_height_rate, board_height * playing_image_y_rate))  # 위치 비율 고정
             screen.blit(effect_volume_text, (board_width *
-                        0.1, board_height * 0.55))  # 위치 비율 고정
+                        playing_image_height_rate, board_height * name_height_rate))  # 위치 비율 고정
             screen.blit(bgm_volume_text, (board_width *
-                        0.54, board_height * 0.2))  # 위치 비율 고정
+                        0.54, board_height * playing_image_y_rate))  # 위치 비율 고정
             screen.blit(mute_all_text, (board_width *
-                        0.54, board_height * 0.55))  # 위치 비율 고정
+                        0.54, board_height * name_height_rate))  # 위치 비율 고정
 
             music_volume_size_text = ui_variables.h1.render(
                 str(music_volume), 1, ui_variables.white)
             effect_volume_size_text = ui_variables.h1.render(
                 str(effect_volume), 1, ui_variables.white)
             screen.blit(music_volume_size_text, (board_width *
-                        0.19, board_height * 0.37))  # 위치 비율 고정
+                        music_width_rate, board_height * music_height_rate))  # 위치 비율 고정
             screen.blit(effect_volume_size_text, (board_width *
-                        0.19, board_height * 0.7))  # 위치 비율 고정
+                        music_width_rate, board_height * effect_volum_rate))  # 위치 비율 고정
 
             BGM1_text = ui_variables.h3.render('BGM1', 1, ui_variables.white)
             BGM2_text = ui_variables.h3.render('BGM2', 1, ui_variables.white)
             BGM3_text = ui_variables.h3.render('BGM3', 1, ui_variables.white)
 
-            screen.blit(BGM1_text, (board_width * 0.55,
+            screen.blit(BGM1_text, (board_width * name_height_rate,
                     board_height * 0.45))  # 위치 비율 고정
             screen.blit(BGM2_text, (board_width * 0.67,
                     board_height * 0.45))  # 위치 비율 고정
@@ -5032,7 +5026,7 @@ while not done:
                     board_width = min_width
                     board_height = min_height
                 # 높이 또는 너비가 비율의 일정수준 이상을 넘어서게 되면
-                if not ((board_rate - 0.1) < (board_height / board_width) < (board_rate + 0.05)):
+                if not ((board_rate - playing_image_height_rate) < (board_height / board_width) < (board_rate + video_upper_rate)):
                     # 너비를 적정 비율로 바꿔줌
                     board_width = int(board_height / board_rate)
                     # 높이를 적정 비율로 바꿔줌
@@ -5050,8 +5044,8 @@ while not done:
 
     elif size_setting:
         screen.fill(ui_variables.pinkpurple)
-        draw_image(screen, background_image, board_width * 0.5, board_height *
-                0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+        draw_image(screen, background_image, board_width * half, board_height *
+                half, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
         select_mode_button.draw(screen, (0, 0, 0))
         setting_button.draw(screen, (0, 0, 0))
         score_board_button.draw(screen, (0, 0, 0))
@@ -5065,7 +5059,7 @@ while not done:
 
         screen.blit(pause_surface, (0, 0))
 
-        draw_image(screen, setting_board_image, board_width * 0.5, board_height * 0.5, int(board_height * 1.3),
+        draw_image(screen, setting_board_image, board_width * half, board_height * half, int(board_height * volume_width_rate),
                    board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
         size1_check_button.draw(screen, (0, 0, 0))
         size2_check_button.draw(screen, (0, 0, 0))
@@ -5098,7 +5092,7 @@ while not done:
                     ui_variables.click_sound.play()
                     board_width = 800
                     board_height = 450
-                    block_size = int(board_height * 0.045)  # 블록 크기 비율 고정
+                    block_size = int(board_height * text_width_rate)  # 블록 크기 비율 고정
                     screen = pygame.display.set_mode((board_width, board_height), pygame.RESIZABLE)
                     textsize = False
 
@@ -5110,7 +5104,7 @@ while not done:
                     ui_variables.click_sound.play()
                     board_width = 1200
                     board_height = 675
-                    block_size = int(board_height * 0.045)  # 블록 크기 비율 고정
+                    block_size = int(board_height * text_width_rate)  # 블록 크기 비율 고정
                     screen = pygame.display.set_mode((board_width, board_height), pygame.RESIZABLE)
                     textsize = True
 
@@ -5123,7 +5117,7 @@ while not done:
                     ui_variables.click_sound.play()
                     board_width = 1600
                     board_height = 900
-                    block_size = int(board_height * 0.045)  # 블록 크기 비율 고정
+                    block_size = int(board_height * text_width_rate)  # 블록 크기 비율 고정
                     screen = pygame.display.set_mode((board_width, board_height), pygame.RESIZABLE)
                     textsize = True
 
@@ -5144,8 +5138,8 @@ while not done:
             board_width), int(board_height)])  # (screen, 색깔, 위치 x, y좌표, 너비, 높이)
         screen.blit(pause_surface, (0, 0))
 
-        draw_image(screen, setting_board_image, board_width * 0.5, board_height * 0.5,
-                   int(board_height * 1.3), board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+        draw_image(screen, setting_board_image, board_width * half, board_height * half,
+                   int(board_height * volume_width_rate), board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
 
         screen_icon.draw(screen, (0, 0, 0))  # rgb(0,0,0) = 검정색
         volume_icon.draw(screen, (0, 0, 0))
@@ -5208,7 +5202,7 @@ while not done:
                     board_width = min_width
                     board_height = min_height
                 # 높이 또는 너비가 비율의 일정수준 이상을 넘어서게 되면
-                if not ((board_rate-0.1) < (board_height/board_width) < (board_rate+0.05)):
+                if not ((board_rate-playing_image_height_rate) < (board_height/board_width) < (board_rate+video_upper_rate)):
                     # 너비를 적정 비율로 바꿔줌
                     board_width = int(board_height / board_rate)
                     # 높이를 적정 비율로 바꿔줌
@@ -5218,7 +5212,7 @@ while not done:
                 if board_width < mid_width:  # 화면 사이즈가 작은 경우
                     textsize = False  # 작은 글자크기 사용
 
-                block_size = int(board_height * 0.045)  # 블록 크기 고정
+                block_size = int(board_height * text_width_rate)  # 블록 크기 고정
                 screen = pygame.display.set_mode(
                     (board_width, board_height), pygame.RESIZABLE)
 
@@ -5286,7 +5280,7 @@ while not done:
                     board_width = min_width
                     board_height = min_height
                 # 높이 또는 너비가 비율의 일정수준 이상을 넘어서게 되면
-                if not ((board_rate - 0.1) < (board_height / board_width) < (board_rate + 0.05)):
+                if not ((board_rate - playing_image_height_rate) < (board_height / board_width) < (board_rate + video_upper_rate)):
                     # 너비를 적정 비율로 바꿔줌
                     board_width = int(board_height / board_rate)
                     # 높이를 적정 비율로 바꿔줌
@@ -5296,7 +5290,7 @@ while not done:
                 if board_width < mid_width:  # 화면 사이즈가 작은 경우
                     textsize = False  # 작은 글자크기 사용
 
-                block_size = int(board_height * 0.045)  # 블록 크기 고정
+                block_size = int(board_height * text_width_rate)  # 블록 크기 고정
                 screen = pygame.display.set_mode(
                     (board_width, board_height), pygame.RESIZABLE)
 
@@ -5304,8 +5298,8 @@ while not done:
                     button_list[i].change(board_width, board_height)
 
         # 메인화면 배경
-        draw_image(screen, background_image, board_width * 0.5, board_height *
-                0.5, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
+        draw_image(screen, background_image, board_width * half, board_height *
+                half, board_width, board_height)  # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
 
         # 버튼그리기
         select_mode_button.draw(screen, (0, 0, 0))
