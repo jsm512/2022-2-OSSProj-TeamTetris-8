@@ -529,26 +529,26 @@ def draw_board(next1, next2, hold, score, level, goal):
     next_fever_value = ui_variables.h4.render(str(next_fever), 1, ui_variables.real_white) 
 
     # Place texts
-    screen.blit(text_hold, (int(board_width * text_width_rate) +
-                sidebar_width, int(board_height * hold_height_rate)))
-    screen.blit(text_next, (int(board_width * text_width_rate) +
-                sidebar_width, int(board_height * next_height_rate)))
-    screen.blit(text_score, (int(board_width * text_width_rate) +
-                sidebar_width, int(board_height * score_height_rate)))
-    screen.blit(score_value, (int(board_width * text2_width_rate) +
-                sidebar_width, int(board_height * score_value_height_rate)))
-    screen.blit(text_level, (int(board_width * text_width_rate) +
-                sidebar_width, int(board_height * level_height_rate)))
-    screen.blit(level_value, (int(board_width * text2_width_rate) +
-                sidebar_width, int(board_height * value_height_rate)))
-    screen.blit(text_goal, (int(board_width * text_width_rate) +
-                sidebar_width, int(board_height * goal_height_rate)))
-    screen.blit(goal_value, (int(board_width * text2_width_rate) +
-                sidebar_width, int(board_height * goal_value_height_rate)))
-    screen.blit(text_fever, (int(board_width * fever_width_rate) + 
-                sidebar_width, int(board_height * fever_height_rate)))
-    screen.blit(next_fever_value, (int(board_width * next_fever_width_rate) + 
-                sidebar_width, int(board_height * next_fever_height_rate)))
+    screen.blit(text_hold, (int(board_width * place_hold_width) +
+                sidebar_width, int(board_height * place_hold_height)))
+    screen.blit(text_next, (int(board_width * place_next_width) +
+                sidebar_width, int(board_height * place_next_height)))
+    screen.blit(text_score, (int(board_width * place_score_width) +
+                sidebar_width, int(board_height * place_score_height)))
+    screen.blit(score_value, (int(board_width * place_value_width) +
+                sidebar_width, int(board_height * place_value_height)))
+    screen.blit(text_level, (int(board_width * place_level_width) +
+                sidebar_width, int(board_height * place_level_height)))
+    screen.blit(level_value, (int(board_width * place_level_value_width) +
+                sidebar_width, int(board_height * place_level_value_height)))
+    screen.blit(text_goal, (int(board_width * place_goal_width) +
+                sidebar_width, int(board_height * place_goal_height)))
+    screen.blit(goal_value, (int(board_width * place_goal_value_width) +
+                sidebar_width, int(board_height * place_goal_value_height)))
+    screen.blit(text_fever, (int(board_width * place_fever_width) + 
+                sidebar_width, int(board_height * place_fever_height)))
+    screen.blit(next_fever_value, (int(board_width * place_fever_value_width) + 
+                sidebar_width, int(board_height * place_fever_value_height)))
 
     # Draw board
     # 테트리스 블록이 들어갈 공간? 그리기 ..맞나?
@@ -803,24 +803,30 @@ def draw_hardboard_change(next1, next2, hold, score, level, goal):
         str(level), 1, ui_variables.real_white)
     text_goal = ui_variables.h5.render("GOAL", 1, ui_variables.real_white)
     goal_value = ui_variables.h4.render(str(goal), 1, ui_variables.real_white)
+    text_fever = ui_variables.h5.render("NEXT FEVER", 1, ui_variables.real_white)
+    next_fever_value = ui_variables.h4.render(str(next_fever), 1, ui_variables.real_white) 
 
     # Place texts
-    screen.blit(text_hold, (int(board_width * text_width_rate) +
-                sidebar_width, int(board_height * hold_height_rate)))
-    screen.blit(text_next, (int(board_width * text_width_rate) +
-                sidebar_width, int(board_height * next_height_rate)))
-    screen.blit(text_score, (int(board_width * text_width_rate) +
-                sidebar_width, int(board_height * score_height_rate)))
-    screen.blit(score_value, (int(board_width * text2_width_rate) +
-                sidebar_width, int(board_height * score_value_height_rate)))
-    screen.blit(text_level, (int(board_width * text_width_rate) +
-                sidebar_width, int(board_height * level_height_rate)))
-    screen.blit(level_value, (int(board_width * text2_width_rate) +
-                sidebar_width, int(board_height * value_height_rate)))
-    screen.blit(text_goal, (int(board_width * text_width_rate) +
-                sidebar_width, int(board_height * goal_height_rate)))
-    screen.blit(goal_value, (int(board_width * text2_width_rate) +
-                sidebar_width, int(board_height * goal_value_height_rate)))
+    screen.blit(text_hold, (int(board_width * place_hold_width) +
+                sidebar_width, int(board_height * place_hold_height)))
+    screen.blit(text_next, (int(board_width * place_next_width) +
+                sidebar_width, int(board_height * place_next_height)))
+    screen.blit(text_score, (int(board_width * place_score_width) +
+                sidebar_width, int(board_height * place_score_height)))
+    screen.blit(score_value, (int(board_width * place_value_width) +
+                sidebar_width, int(board_height * place_value_height)))
+    screen.blit(text_level, (int(board_width * place_level_width) +
+                sidebar_width, int(board_height * place_level_height)))
+    screen.blit(level_value, (int(board_width * place_level_value_width) +
+                sidebar_width, int(board_height * place_level_value_height)))
+    screen.blit(text_goal, (int(board_width * place_goal_width) +
+                sidebar_width, int(board_height * place_goal_height)))
+    screen.blit(goal_value, (int(board_width * place_goal_value_width) +
+                sidebar_width, int(board_height * place_goal_value_height)))
+    screen.blit(text_fever, (int(board_width * place_fever_width) + 
+                sidebar_width, int(board_height * place_fever_height)))
+    screen.blit(next_fever_value, (int(board_width * place_fever_value_width) + 
+                sidebar_width, int(board_height * place_fever_value_height)))
 
     # Draw board
     for x in range(width):
@@ -3536,27 +3542,27 @@ while not done:
                                 matrix_2P[i][k] = matrix_2P[i][k - 1]
                             k -= 1
                 while attack_stack >= 2:
-                    for j in range(20):
-                        for i in range(10):
+                    for j in range(height):
+                        for i in range(width):
                             matrix_2P[i][j] = matrix_2P[i][j + 1]
 
                             attack_stack -= 1
-                    for i in range(10):
-                        matrix_2P[i][20] = 9
+                    for i in range(height):
+                        matrix_2P[i][height] = 12
                     k = randint(0, 9)
-                    matrix_2P[k][20] = 0
+                    matrix_2P[k][height] = 0
                     attack_point += 1
 
                 while attack_stack_2P >= 2:
-                    for j in range(20):
-                        for i in range(10):
+                    for j in range(height):
+                        for i in range(width):
                             matrix[i][j] = matrix[i][j + 1]
 
                             attack_stack_2P -= 1
-                    for i in range(10):
-                        matrix[i][20] = 9
+                    for i in range(width):
+                        matrix[i][height] = 12
                     k = randint(0, 9)
-                    matrix[k][20] = 0
+                    matrix[k][height] = 0
                     attack_point_2P += 1
 
                 # 피버타임일 경우 상대방에게 변종블록 생성
