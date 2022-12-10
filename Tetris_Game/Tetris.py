@@ -3542,27 +3542,27 @@ while not done:
                                 matrix_2P[i][k] = matrix_2P[i][k - 1]
                             k -= 1
                 while attack_stack >= 2:
-                    for j in range(board_height+1):
-                        for i in range(board_width):
+                    for j in range(height):
+                        for i in range(width):
                             matrix_2P[i][j] = matrix_2P[i][j + 1]
 
                             attack_stack -= 1
-                    for i in range(board_width):
-                        matrix_2P[i][board_height] = 9
+                    for i in range(height):
+                        matrix_2P[i][height] = 12
                     k = randint(0, 9)
-                    matrix_2P[k][board_height] = 0
+                    matrix_2P[k][height] = 0
                     attack_point += 1
 
                 while attack_stack_2P >= 2:
-                    for j in range(board_height+1):
-                        for i in range(board_width):
+                    for j in range(height):
+                        for i in range(width):
                             matrix[i][j] = matrix[i][j + 1]
 
                             attack_stack_2P -= 1
-                    for i in range(board_width):
-                        matrix[i][board_height] = 9
+                    for i in range(width):
+                        matrix[i][height] = 12
                     k = randint(0, 9)
-                    matrix[k][board_height] = 0
+                    matrix[k][height] = 0
                     attack_point_2P += 1
 
                 # 피버타임일 경우 상대방에게 변종블록 생성
