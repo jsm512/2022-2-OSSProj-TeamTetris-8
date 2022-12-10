@@ -22,6 +22,7 @@ grey_1_color = (26,26,26) # rgb(26, 26, 26)
 grey_2_color = (35,35,35) # rgb(35, 35, 35)
 grey_3_color = (55,55,55) # rgb(55, 55, 55)
 pinkpurple_color = (250,165,255) # rgb(250, 165, 255) 핑크+보라
+dark_blue_color = (14,31,49) # rgb(14,31,49)
 
 #tetrismino_colors
 cyan_color = (69,206,204) # rgb(69, 206, 204) # I
