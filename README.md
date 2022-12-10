@@ -1,5 +1,5 @@
 # 2022-2-OSSProj-TeamTetris-8
-<img alt="MIT" src ="https://img.shields.io/badge/license-MIT-salmon"> <img alt="" src ="https://img.shields.io/badge/pygame-2.0.2-lightsalmon"> <img alt="" src ="https://img.shields.io/badge/OS-ubuntu-coral"> <img alt="" src ="https://img.shields.io/badge/IDE-VSCode-indianred"><br>
+<img alt="MIT" src ="https://img.shields.io/badge/license-MIT-salmon"> <img alt="" src ="https://img.shields.io/badge/pygame-2.1.2-lightsalmon"> <img alt="" src ="https://img.shields.io/badge/OS-ubuntu-coral"> <img alt="" src ="https://img.shields.io/badge/IDE-VSCode-indianred"><br>
 
 <br>
 
