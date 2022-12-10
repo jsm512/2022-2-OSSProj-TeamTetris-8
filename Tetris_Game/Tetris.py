@@ -2636,7 +2636,7 @@ while not done:
                         # fever time시 이미지 깜빡거리게
                         if blink:
                             screen.blit(pygame.transform.scale(ui_variables.fever_image,
-                                                               (int(board_width * playing_image_x_rate), int(board_height * playing_image_y_rate))),
+                                                               (int(board_width * playing_fever_image_x_rate), int(board_height * playing_image_y_rate))),
                                         (board_width * playing_image_width_rate, board_height * playing_image_height_rate))
                             blink = False
                         else:
@@ -2911,7 +2911,7 @@ while not done:
                         # fever time시 이미지 깜빡거리게
                         if blink:
                             screen.blit(pygame.transform.scale(ui_variables.fever_image,
-                                                               (int(board_width * playing_image_x_rate), int(board_height * playing_image_y_rate))),
+                                                               (int(board_width * playing_fever_image_x_rate), int(board_height * playing_image_y_rate))),
                                         (board_width * playing_image_width_rate, board_height * playing_image_height_rate))
                             blink = False
                         else:
@@ -3188,7 +3188,7 @@ while not done:
                         # fever time시 이미지 깜빡거리게
                         if blink:
                             screen.blit(pygame.transform.scale(ui_variables.fever_image,
-                                                               (int(board_width * playing_image_x_rate), int(board_height * playing_image_y_rate))),
+                                                               (int(board_width * playing_fever_image_x_rate), int(board_height * playing_image_y_rate))),
                                         (board_width * playing_image_width_rate, board_height * playing_image_height_rate))
                             blink = False
                         else:

@@ -1,7 +1,9 @@
 #frequency value
 half = 0.5
 playing_image_x_rate = 0.3
+playing_fever_image_x_rate = 0.2
 playing_image_y_rate = 0.2
+playing_fever_image_y_rate = 0.1
 playing_image_width_rate = 0.01
 playing_image_height_rate = 0.1
 winner_image_height_rate= 0.25
