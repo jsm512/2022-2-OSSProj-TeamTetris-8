@@ -2800,10 +2800,10 @@ while not done:
                     keys_pressed = pygame.key.get_pressed()
                     pygame.time.set_timer(pygame.USEREVENT, normal_speed)
 
-                    # if keys_pressed[K_DOWN]:
-                    #     pygame.time.set_timer(pygame.USEREVENT, softdrop_speed)
-                    # else:
-                    #     pygame.time.set_timer(pygame.USEREVENT, normal_speed)
+                    if keys_pressed[K_DOWN]:
+                        pygame.time.set_timer(pygame.USEREVENT, softdrop_speed)
+                    else:
+                        pygame.time.set_timer(pygame.USEREVENT, normal_speed)
 
                 # Draw a mino
                 draw1_mino(dx, dy, mino_en, rotation, matrix)
@@ -3029,6 +3029,7 @@ while not done:
                     if not is_rightedge1(dx, dy, mino_en, rotation, matrix):
                         ui_variables.move_sound.play()
                         dx += 1
+                        s
 
             elif event.type == VIDEORESIZE:
                 board_width = board_width
