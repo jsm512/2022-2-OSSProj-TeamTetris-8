@@ -3317,8 +3317,8 @@ while not done:
                 for i in range(1, max_score, fever_interval):
                     if score > i * fever_score and score < (i + 1) * fever_score:  # 500~1000,2000~2500.3500~4000
                         mino = randint(1, 1)
-                        next_mino1_en = randint(1, 1)
-                        next_mino2_en = randint(1, 1)
+                        next_mino1 = randint(1, 1)
+                        next_mino2 = randint(1, 1)
                         next_fever = (i + fever_interval) * fever_score
                         if erase_count == 1:
                             ui_variables.single_sound.play()
