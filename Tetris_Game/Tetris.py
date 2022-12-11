@@ -4457,43 +4457,122 @@ while not done:
         draw_image(screen, scoreboard_board_image, board_width * half, board_height * half,
                    int(board_height * volume_width_rate), board_height)
 
-        easy_mode_text = ui_variables.h2_b.render(
-            "EASY MODE:", 1, ui_variables.yellow)
-        hard_mode_text = ui_variables.h2_b.render(
-            "HARD MODE:", 1, ui_variables.yellow)
-        screen.blit(easy_mode_text, (board_width * playing_image_y_rate, board_height * playing_image_y_rate))
-        screen.blit(hard_mode_text, (board_width * name_height_rate, board_height * playing_image_y_rate))
+        if board_width < 600 :
+            easy_mode_text = ui_variables.h5.render(
+                "EASY MODE:", 1, ui_variables.yellow)
+            hard_mode_text = ui_variables.h5.render(
+                "HARD MODE:", 1, ui_variables.yellow)
+            screen.blit(easy_mode_text, (board_width * playing_image_y_rate, board_height * playing_image_y_rate))
+            screen.blit(hard_mode_text, (board_width * name_height_rate, board_height * playing_image_y_rate))
 
-        back_button.draw(screen, (0, 0, 0))
+            back_button.draw(screen, (0, 0, 0))
+        
+        elif 600 <= board_width < 1200 :
+            easy_mode_text = ui_variables.h2_b.render(
+                "EASY MODE:", 1, ui_variables.yellow)
+            hard_mode_text = ui_variables.h2_b.render(
+                "HARD MODE:", 1, ui_variables.yellow)
+            screen.blit(easy_mode_text, (board_width * playing_image_y_rate, board_height * playing_image_y_rate))
+            screen.blit(hard_mode_text, (board_width * name_height_rate, board_height * playing_image_y_rate))
+
+            back_button.draw(screen, (0, 0, 0))
+
+        elif 1200 <= board_width :
+            easy_mode_text = ui_variables.h1_b.render(
+                "EASY MODE:", 1, ui_variables.yellow)
+            hard_mode_text = ui_variables.h1_b.render(
+                "HARD MODE:", 1, ui_variables.yellow)
+            screen.blit(easy_mode_text, (board_width * playing_image_y_rate, board_height * playing_image_y_rate))
+            screen.blit(hard_mode_text, (board_width * name_height_rate, board_height * playing_image_y_rate))
+
+            back_button.draw(screen, (0, 0, 0))
 
         # render("텍스트이름", 안티에일리어싱 적용, 색깔), 즉 아래의 코드에서 숫자 1=안티에일리어싱 적용에 관한 코드
         # easy mode
-        leader_1 = ui_variables.h2_b.render(
-            '1st ' + leaders[0][0] + ' ' + str(leaders[0][1]), 1, ui_variables.white)
-        leader_2 = ui_variables.h2_b.render(
-            '2nd ' + leaders[1][0] + ' ' + str(leaders[1][1]), 1, ui_variables.white)
-        leader_3 = ui_variables.h2_b.render(
-            '3rd ' + leaders[2][0] + ' ' + str(leaders[2][1]), 1, ui_variables.white)
-        screen.blit(leader_1, (board_width * playing_image_y_rate,
-                    board_height * 0.35))  # 위치 비율 고정
-        screen.blit(leader_2, (board_width * playing_image_y_rate,
-                    board_height * half))  # 위치 비율 고정
-        screen.blit(leader_3, (board_width * playing_image_y_rate,
-                    board_height * 0.65))  # 위치 비율 고정
+        if board_width < 600 :
+            leader_1 = ui_variables.h5.render(
+                '1st ' + leaders[0][0] + ' ' + str(leaders[0][1]), 1, ui_variables.white)
+            leader_2 = ui_variables.h5.render(
+                '2nd ' + leaders[1][0] + ' ' + str(leaders[1][1]), 1, ui_variables.white)
+            leader_3 = ui_variables.h5.render(
+                '3rd ' + leaders[2][0] + ' ' + str(leaders[2][1]), 1, ui_variables.white)
+            screen.blit(leader_1, (board_width * playing_image_y_rate,
+                        board_height * 0.35))  # 위치 비율 고정
+            screen.blit(leader_2, (board_width * playing_image_y_rate,
+                        board_height * half))  # 위치 비율 고정
+            screen.blit(leader_3, (board_width * playing_image_y_rate,
+                        board_height * 0.65))  # 위치 비율 고정
+
+        elif 600 <= board_width < 1200 :
+            leader_1 = ui_variables.h2_b.render(
+                '1st ' + leaders[0][0] + ' ' + str(leaders[0][1]), 1, ui_variables.white)
+            leader_2 = ui_variables.h2_b.render(
+                '2nd ' + leaders[1][0] + ' ' + str(leaders[1][1]), 1, ui_variables.white)
+            leader_3 = ui_variables.h2_b.render(
+                '3rd ' + leaders[2][0] + ' ' + str(leaders[2][1]), 1, ui_variables.white)
+            screen.blit(leader_1, (board_width * playing_image_y_rate,
+                        board_height * 0.35))  # 위치 비율 고정
+            screen.blit(leader_2, (board_width * playing_image_y_rate,
+                        board_height * half))  # 위치 비율 고정
+            screen.blit(leader_3, (board_width * playing_image_y_rate,
+                        board_height * 0.65))  # 위치 비율 고정
+
+        elif 1200 <= board_width :
+            leader_1 = ui_variables.h1_b.render(
+                '1st ' + leaders[0][0] + ' ' + str(leaders[0][1]), 1, ui_variables.white)
+            leader_2 = ui_variables.h1_b.render(
+                '2nd ' + leaders[1][0] + ' ' + str(leaders[1][1]), 1, ui_variables.white)
+            leader_3 = ui_variables.h1_b.render(
+                '3rd ' + leaders[2][0] + ' ' + str(leaders[2][1]), 1, ui_variables.white)
+            screen.blit(leader_1, (board_width * playing_image_y_rate,
+                        board_height * 0.35))  # 위치 비율 고정
+            screen.blit(leader_2, (board_width * playing_image_y_rate,
+                        board_height * half))  # 위치 비율 고정
+            screen.blit(leader_3, (board_width * playing_image_y_rate,
+                        board_height * 0.65))  # 위치 비율 고정
 
         # hard mode
-        leader_1 = ui_variables.h2_b.render(
-            '1st ' + leaders_hard[0][0] + ' ' + str(leaders_hard[0][1]), 1, ui_variables.white)
-        leader_2 = ui_variables.h2_b.render(
-            '2nd ' + leaders_hard[1][0] + ' ' + str(leaders_hard[1][1]), 1, ui_variables.white)
-        leader_3 = ui_variables.h2_b.render(
-            '3rd ' + leaders_hard[2][0] + ' ' + str(leaders_hard[2][1]), 1, ui_variables.white)
-        screen.blit(leader_1, (board_width * name_height_rate,
-                    board_height * 0.35))  # 위치 비율 고정
-        screen.blit(leader_2, (board_width * name_height_rate,
-                    board_height * half))  # 위치 비율 고정
-        screen.blit(leader_3, (board_width * name_height_rate,
-                    board_height * 0.65))  # 위치 비율 고정
+        if board_width < 600 :
+            leader_1 = ui_variables.h5.render(
+                '1st ' + leaders_hard[0][0] + ' ' + str(leaders_hard[0][1]), 1, ui_variables.white)
+            leader_2 = ui_variables.h5.render(
+                '2nd ' + leaders_hard[1][0] + ' ' + str(leaders_hard[1][1]), 1, ui_variables.white)
+            leader_3 = ui_variables.h5.render(
+                '3rd ' + leaders_hard[2][0] + ' ' + str(leaders_hard[2][1]), 1, ui_variables.white)
+            screen.blit(leader_1, (board_width * name_height_rate,
+                        board_height * 0.35))  # 위치 비율 고정
+            screen.blit(leader_2, (board_width * name_height_rate,
+                        board_height * half))  # 위치 비율 고정
+            screen.blit(leader_3, (board_width * name_height_rate,
+                        board_height * 0.65))  # 위치 비율 고정
+
+        elif 600 <= board_width < 1200 :
+            leader_1 = ui_variables.h2_b.render(
+                '1st ' + leaders_hard[0][0] + ' ' + str(leaders_hard[0][1]), 1, ui_variables.white)
+            leader_2 = ui_variables.h2_b.render(
+                '2nd ' + leaders_hard[1][0] + ' ' + str(leaders_hard[1][1]), 1, ui_variables.white)
+            leader_3 = ui_variables.h2_b.render(
+                '3rd ' + leaders_hard[2][0] + ' ' + str(leaders_hard[2][1]), 1, ui_variables.white)
+            screen.blit(leader_1, (board_width * name_height_rate,
+                        board_height * 0.35))  # 위치 비율 고정
+            screen.blit(leader_2, (board_width * name_height_rate,
+                        board_height * half))  # 위치 비율 고정
+            screen.blit(leader_3, (board_width * name_height_rate,
+                        board_height * 0.65))  # 위치 비율 고정
+
+        elif 1200 <= board_width :
+            leader_1 = ui_variables.h1_b.render(
+                '1st ' + leaders_hard[0][0] + ' ' + str(leaders_hard[0][1]), 1, ui_variables.white)
+            leader_2 = ui_variables.h1_b.render(
+                '2nd ' + leaders_hard[1][0] + ' ' + str(leaders_hard[1][1]), 1, ui_variables.white)
+            leader_3 = ui_variables.h1_b.render(
+                '3rd ' + leaders_hard[2][0] + ' ' + str(leaders_hard[2][1]), 1, ui_variables.white)
+            screen.blit(leader_1, (board_width * name_height_rate,
+                        board_height * 0.35))  # 위치 비율 고정
+            screen.blit(leader_2, (board_width * name_height_rate,
+                        board_height * half))  # 위치 비율 고정
+            screen.blit(leader_3, (board_width * name_height_rate,
+                        board_height * 0.65))  # 위치 비율 고정
 
         pygame.display.update()
 
