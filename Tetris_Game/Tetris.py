@@ -516,18 +516,89 @@ def draw_board(next1, next2, hold, score, level, goal):
         score = 999999
 
     # Draw texts
-    text_hold = ui_variables.h5.render("HOLD", 1, ui_variables.real_white)
-    text_next = ui_variables.h5.render("NEXT", 1, ui_variables.real_white)
-    text_score = ui_variables.h5.render("SCORE", 1, ui_variables.real_white)
-    score_value = ui_variables.h4.render(
-        str(score), 1, ui_variables.real_white)
-    text_level = ui_variables.h5.render("LEVEL", 1, ui_variables.real_white)
-    level_value = ui_variables.h4.render(
-        str(level), 1, ui_variables.real_white)
-    text_goal = ui_variables.h5.render("GOAL", 1, ui_variables.real_white)
-    goal_value = ui_variables.h4.render(str(goal), 1, ui_variables.real_white)
-    text_fever = ui_variables.h5.render("NEXT FEVER", 1, ui_variables.real_white)
-    next_fever_value = ui_variables.h4.render(str(next_fever), 1, ui_variables.real_white) 
+    if board_width < 500 :
+        text_hold = ui_variables.h8.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h8.render("NEXT", 1, ui_variables.real_white)
+        text_score = ui_variables.h8.render("SCORE", 1, ui_variables.real_white)
+        score_value = ui_variables.h7.render(
+            str(score), 1, ui_variables.real_white)
+        text_level = ui_variables.h8.render("LEVEL", 1, ui_variables.real_white)
+        level_value = ui_variables.h7.render(
+            str(level), 1, ui_variables.real_white)
+        text_goal = ui_variables.h8.render("GOAL", 1, ui_variables.real_white)
+        goal_value = ui_variables.h7.render(str(goal), 1, ui_variables.real_white)
+        text_fever = ui_variables.h8.render("NEXT FEVER", 1, ui_variables.real_white)
+        next_fever_value = ui_variables.h7.render(str(next_fever), 1, ui_variables.real_white) 
+    
+    elif 500 <= board_width < 600 :
+        text_hold = ui_variables.h7.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h7.render("NEXT", 1, ui_variables.real_white)
+        text_score = ui_variables.h7.render("SCORE", 1, ui_variables.real_white)
+        score_value = ui_variables.h6.render(
+            str(score), 1, ui_variables.real_white)
+        text_level = ui_variables.h7.render("LEVEL", 1, ui_variables.real_white)
+        level_value = ui_variables.h6.render(
+            str(level), 1, ui_variables.real_white)
+        text_goal = ui_variables.h7.render("GOAL", 1, ui_variables.real_white)
+        goal_value = ui_variables.h6.render(str(goal), 1, ui_variables.real_white)
+        text_fever = ui_variables.h7.render("NEXT FEVER", 1, ui_variables.real_white)
+        next_fever_value = ui_variables.h6.render(str(next_fever), 1, ui_variables.real_white) 
+
+    elif 600 <= board_width < 800 :
+        text_hold = ui_variables.h6.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h6.render("NEXT", 1, ui_variables.real_white)
+        text_score = ui_variables.h6.render("SCORE", 1, ui_variables.real_white)
+        score_value = ui_variables.h5.render(
+            str(score), 1, ui_variables.real_white)
+        text_level = ui_variables.h6.render("LEVEL", 1, ui_variables.real_white)
+        level_value = ui_variables.h5.render(
+            str(level), 1, ui_variables.real_white)
+        text_goal = ui_variables.h6.render("GOAL", 1, ui_variables.real_white)
+        goal_value = ui_variables.h5.render(str(goal), 1, ui_variables.real_white)
+        text_fever = ui_variables.h6.render("NEXT FEVER", 1, ui_variables.real_white)
+        next_fever_value = ui_variables.h5.render(str(next_fever), 1, ui_variables.real_white) 
+
+    elif 800 <= board_width < 1000 :
+        text_hold = ui_variables.h5.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h5.render("NEXT", 1, ui_variables.real_white)
+        text_score = ui_variables.h5.render("SCORE", 1, ui_variables.real_white)
+        score_value = ui_variables.h4.render(
+            str(score), 1, ui_variables.real_white)
+        text_level = ui_variables.h5.render("LEVEL", 1, ui_variables.real_white)
+        level_value = ui_variables.h4.render(
+            str(level), 1, ui_variables.real_white)
+        text_goal = ui_variables.h5.render("GOAL", 1, ui_variables.real_white)
+        goal_value = ui_variables.h4.render(str(goal), 1, ui_variables.real_white)
+        text_fever = ui_variables.h5.render("NEXT FEVER", 1, ui_variables.real_white)
+        next_fever_value = ui_variables.h4.render(str(next_fever), 1, ui_variables.real_white) 
+
+    elif 1000 <= board_width < 1200 :
+        text_hold = ui_variables.h4.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h4.render("NEXT", 1, ui_variables.real_white)
+        text_score = ui_variables.h4.render("SCORE", 1, ui_variables.real_white)
+        score_value = ui_variables.h3.render(
+            str(score), 1, ui_variables.real_white)
+        text_level = ui_variables.h4.render("LEVEL", 1, ui_variables.real_white)
+        level_value = ui_variables.h3.render(
+            str(level), 1, ui_variables.real_white)
+        text_goal = ui_variables.h4.render("GOAL", 1, ui_variables.real_white)
+        goal_value = ui_variables.h3.render(str(goal), 1, ui_variables.real_white)
+        text_fever = ui_variables.h4.render("NEXT FEVER", 1, ui_variables.real_white)
+        next_fever_value = ui_variables.h3.render(str(next_fever), 1, ui_variables.real_white) 
+
+    elif 1200 < board_width :
+        text_hold = ui_variables.h3.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h3.render("NEXT", 1, ui_variables.real_white)
+        text_score = ui_variables.h3.render("SCORE", 1, ui_variables.real_white)
+        score_value = ui_variables.h2.render(
+            str(score), 1, ui_variables.real_white)
+        text_level = ui_variables.h3.render("LEVEL", 1, ui_variables.real_white)
+        level_value = ui_variables.h2.render(
+            str(level), 1, ui_variables.real_white)
+        text_goal = ui_variables.h3.render("GOAL", 1, ui_variables.real_white)
+        goal_value = ui_variables.h2.render(str(goal), 1, ui_variables.real_white)
+        text_fever = ui_variables.h3.render("NEXT FEVER", 1, ui_variables.real_white)
+        next_fever_value = ui_variables.h2.render(str(next_fever), 1, ui_variables.real_white) 
 
     # Place texts
     screen.blit(text_hold, (int(board_width * place_hold_width) +
@@ -794,18 +865,90 @@ def draw_hardboard_change(next1, next2, hold, score, level, goal):
         score = 999999
 
     # Draw texts
-    text_hold = ui_variables.h5.render("HOLD", 1, ui_variables.real_white)
-    text_next = ui_variables.h5.render("NEXT", 1, ui_variables.real_white)
-    text_score = ui_variables.h5.render("SCORE", 1, ui_variables.real_white)
-    score_value = ui_variables.h4.render(
-        str(score), 1, ui_variables.real_white)
-    text_level = ui_variables.h5.render("LEVEL", 1, ui_variables.real_white)
-    level_value = ui_variables.h4.render(
-        str(level), 1, ui_variables.real_white)
-    text_goal = ui_variables.h5.render("GOAL", 1, ui_variables.real_white)
-    goal_value = ui_variables.h4.render(str(goal), 1, ui_variables.real_white)
-    text_fever = ui_variables.h5.render("NEXT FEVER", 1, ui_variables.real_white)
-    next_fever_value = ui_variables.h4.render(str(next_fever), 1, ui_variables.real_white) 
+    if board_width < 500 :
+        text_hold = ui_variables.h8.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h8.render("NEXT", 1, ui_variables.real_white)
+        text_score = ui_variables.h7.render("SCORE", 1, ui_variables.real_white)
+        score_value = ui_variables.h7.render(
+            str(score), 1, ui_variables.real_white)
+        text_level = ui_variables.h8.render("LEVEL", 1, ui_variables.real_white)
+        level_value = ui_variables.h7.render(
+            str(level), 1, ui_variables.real_white)
+        text_goal = ui_variables.h8.render("GOAL", 1, ui_variables.real_white)
+        goal_value = ui_variables.h7.render(str(goal), 1, ui_variables.real_white)
+        text_fever = ui_variables.h8.render("NEXT FEVER", 1, ui_variables.real_white)
+        next_fever_value = ui_variables.h4.render(str(next_fever), 1, ui_variables.real_white) 
+
+    elif 500 <= board_width < 600 :
+        text_hold = ui_variables.h7.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h7.render("NEXT", 1, ui_variables.real_white)
+        text_score = ui_variables.h7.render("SCORE", 1, ui_variables.real_white)
+        score_value = ui_variables.h6.render(
+            str(score), 1, ui_variables.real_white)
+        text_level = ui_variables.h7.render("LEVEL", 1, ui_variables.real_white)
+        level_value = ui_variables.h6.render(
+            str(level), 1, ui_variables.real_white)
+        text_goal = ui_variables.h7.render("GOAL", 1, ui_variables.real_white)
+        goal_value = ui_variables.h6.render(str(goal), 1, ui_variables.real_white)
+        text_fever = ui_variables.h7.render("NEXT FEVER", 1, ui_variables.real_white)
+        next_fever_value = ui_variables.h6.render(str(next_fever), 1, ui_variables.real_white) 
+
+    elif 600 <= board_width < 800 :
+        text_hold = ui_variables.h6.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h6.render("NEXT", 1, ui_variables.real_white)
+        text_score = ui_variables.h6.render("SCORE", 1, ui_variables.real_white)
+        score_value = ui_variables.h5.render(
+            str(score), 1, ui_variables.real_white)
+        text_level = ui_variables.h6.render("LEVEL", 1, ui_variables.real_white)
+        level_value = ui_variables.h5.render(
+            str(level), 1, ui_variables.real_white)
+        text_goal = ui_variables.h6.render("GOAL", 1, ui_variables.real_white)
+        goal_value = ui_variables.h5.render(str(goal), 1, ui_variables.real_white)
+        text_fever = ui_variables.h6.render("NEXT FEVER", 1, ui_variables.real_white)
+        next_fever_value = ui_variables.h5.render(str(next_fever), 1, ui_variables.real_white) 
+    
+    elif 800 <= board_width < 1000 :
+        text_hold = ui_variables.h5.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h5.render("NEXT", 1, ui_variables.real_white)
+        text_score = ui_variables.h5.render("SCORE", 1, ui_variables.real_white)
+        score_value = ui_variables.h4.render(
+            str(score), 1, ui_variables.real_white)
+        text_level = ui_variables.h5.render("LEVEL", 1, ui_variables.real_white)
+        level_value = ui_variables.h4.render(
+            str(level), 1, ui_variables.real_white)
+        text_goal = ui_variables.h5.render("GOAL", 1, ui_variables.real_white)
+        goal_value = ui_variables.h4.render(str(goal), 1, ui_variables.real_white)
+        text_fever = ui_variables.h5.render("NEXT FEVER", 1, ui_variables.real_white)
+        next_fever_value = ui_variables.h4.render(str(next_fever), 1, ui_variables.real_white) 
+
+    elif 1000 <= board_width < 1200 :
+        text_hold = ui_variables.h4.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h4.render("NEXT", 1, ui_variables.real_white)
+        text_score = ui_variables.h4.render("SCORE", 1, ui_variables.real_white)
+        score_value = ui_variables.h3.render(
+            str(score), 1, ui_variables.real_white)
+        text_level = ui_variables.h4.render("LEVEL", 1, ui_variables.real_white)
+        level_value = ui_variables.h3.render(
+            str(level), 1, ui_variables.real_white)
+        text_goal = ui_variables.h4.render("GOAL", 1, ui_variables.real_white)
+        goal_value = ui_variables.h3.render(str(goal), 1, ui_variables.real_white)
+        text_fever = ui_variables.h4.render("NEXT FEVER", 1, ui_variables.real_white)
+        next_fever_value = ui_variables.h3.render(str(next_fever), 1, ui_variables.real_white) 
+
+    elif 1200 < board_width :
+        text_hold = ui_variables.h3.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h3.render("NEXT", 1, ui_variables.real_white)
+        text_score = ui_variables.h3.render("SCORE", 1, ui_variables.real_white)
+        score_value = ui_variables.h2.render(
+            str(score), 1, ui_variables.real_white)
+        text_level = ui_variables.h3.render("LEVEL", 1, ui_variables.real_white)
+        level_value = ui_variables.h2.render(
+            str(level), 1, ui_variables.real_white)
+        text_goal = ui_variables.h3.render("GOAL", 1, ui_variables.real_white)
+        goal_value = ui_variables.h2.render(str(goal), 1, ui_variables.real_white)
+        text_fever = ui_variables.h3.render("NEXT FEVER", 1, ui_variables.real_white)
+        next_fever_value = ui_variables.h2.render(str(next_fever), 1, ui_variables.real_white) 
+
 
     # Place texts
     screen.blit(text_hold, (int(board_width * place_hold_width) +
