@@ -2318,6 +2318,7 @@ while not done:
         height = height_small
         board_x = width_small
         board_y = height_small
+        pygame.display.set_caption("TETRIS(작은화면)")
         
     elif (board_width>600 and board_width<=1200):
         select_mode_button = button(board_width, board_height,select_mode_button_x_rate,select_mode_button_y_rate,select_mode_button_width_rate,select_mode_button_height_rate, select_mode_button_image)
@@ -2340,6 +2341,7 @@ while not done:
         height = height_normal
         board_x = width_normal
         board_y = height_normal
+        pygame.display.set_caption("TETRIS")
     else:
         select_mode_button = button(board_width, board_height,select_mode_button_x_rate,select_mode_button_y_rate,select_mode_button_width_rate,select_mode_button_height_rate, select_mode_button_image)
         setting_button = button(board_width, board_height,setting_button_x_rate,setting_button_y_rate,setting_button_width_rate,setting_button_heigth_rate, setting_button_image)
@@ -2362,6 +2364,7 @@ while not done:
         board_x = width_big
         board_y = height_big
         block_size = 26
+        pygame.display.set_caption("TETRIS(큰 화면)")
     # 게임안에서 Pause 눌렀을 때 screen
     if pause:
         pygame.mixer.music.pause()
@@ -3552,10 +3555,10 @@ while not done:
                             matrix_2P[i][j] = matrix_2P[i][j + 1]
 
                             attack_stack -= 1
-                    for i in range(10):
-                        matrix_2P[i][20] = 9
-                    k = randint(0, 9)
-                    matrix_2P[k][20] = 0
+                    for i in range(width):
+                        matrix_2P[i][height] = 12
+                    k = randint(0, width-1)
+                    matrix_2P[k][height] = 0
                     attack_point += 1
 
                 while attack_stack_2P >= 2:
@@ -3564,10 +3567,10 @@ while not done:
                             matrix[i][j] = matrix[i][j + 1]
 
                             attack_stack_2P -= 1
-                    for i in range(10):
-                        matrix[i][20] = 9
-                    k = randint(0, 9)
-                    matrix[k][20] = 0
+                    for i in range(width):
+                        matrix[i][height] = 12
+                    k = randint(0, width-1)
+                    matrix[k][height] = 0
                     attack_point_2P += 1
 
                 # 피버타임일 경우 상대방에게 변종블록 생성
