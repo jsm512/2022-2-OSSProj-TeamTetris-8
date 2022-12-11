@@ -1223,7 +1223,7 @@ def draw_1Pboard_change(next, hold, current_key):
                 str(combo_count), 1, ui_variables.real_white)
 
     if textsize == True:
-        if baord_width < 500 :
+        if board_width < 500 :
             text_hold = ui_variables.h6.render("HOLD", 1, ui_variables.real_white)
             text_next = ui_variables.h6.render("NEXT", 1, ui_variables.real_white)
             text_reverse = ui_variables.h6.render(
@@ -3131,9 +3131,9 @@ while not done:
 
                 # Erase line
                 erase_count = 0
-                for j in range(21):
+                for j in range(height+1):
                     is_full = True
-                    for i in range(10):
+                    for i in range(width):
                         if matrix[i][j] == 0:
                             is_full = False
                     if is_full:
@@ -3141,7 +3141,7 @@ while not done:
                         line_count += 1
                         k = j
                         while k > 0:
-                            for i in range(10):
+                            for i in range(width):
                                 matrix[i][k] = matrix[i][k - 1]
                             k -= 1
                 if erase_count == 1:
