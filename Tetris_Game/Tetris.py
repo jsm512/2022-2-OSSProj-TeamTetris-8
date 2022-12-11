@@ -1223,7 +1223,7 @@ def draw_1Pboard_change(next, hold, current_key):
                 str(combo_count), 1, ui_variables.real_white)
 
     if textsize == True:
-        if baord_width < 500 :
+        if board_width < 500 :
             text_hold = ui_variables.h6.render("HOLD", 1, ui_variables.real_white)
             text_next = ui_variables.h6.render("NEXT", 1, ui_variables.real_white)
             text_reverse = ui_variables.h6.render(
@@ -5094,8 +5094,8 @@ while not done:
                     
                 if size1_check_button.isOver(pos):
                     ui_variables.click_sound.play()
-                    board_width = 800
-                    board_height = 450
+                    board_width = 400
+                    board_height = 225
                     block_size = int(board_height * text_width_rate)  # 블록 크기 비율 고정
                     screen = pygame.display.set_mode((board_width, board_height), pygame.RESIZABLE)
                     textsize = False
@@ -5106,8 +5106,8 @@ while not done:
 
                 if size2_check_button.isOver(pos):
                     ui_variables.click_sound.play()
-                    board_width = 1200
-                    board_height = 675
+                    board_width = 800
+                    board_height = 450
                     block_size = int(board_height * text_width_rate)  # 블록 크기 비율 고정
                     screen = pygame.display.set_mode((board_width, board_height), pygame.RESIZABLE)
                     textsize = True
