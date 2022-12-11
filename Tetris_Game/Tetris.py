@@ -2314,6 +2314,7 @@ while not done:
         height = height_small
         board_x = width_small
         board_y = height_small
+        pygame.display.set_caption("TETRIS(작은화면)")
         
     elif (board_width>600 and board_width<=1200):
         select_mode_button = button(board_width, board_height,select_mode_button_x_rate,select_mode_button_y_rate,select_mode_button_width_rate,select_mode_button_height_rate, select_mode_button_image)
@@ -2336,6 +2337,7 @@ while not done:
         height = height_normal
         board_x = width_normal
         board_y = height_normal
+        pygame.display.set_caption("TETRIS")
     else:
         select_mode_button = button(board_width, board_height,select_mode_button_x_rate,select_mode_button_y_rate,select_mode_button_width_rate,select_mode_button_height_rate, select_mode_button_image)
         setting_button = button(board_width, board_height,setting_button_x_rate,setting_button_y_rate,setting_button_width_rate,setting_button_heigth_rate, setting_button_image)
@@ -2358,6 +2360,7 @@ while not done:
         board_x = width_big
         board_y = height_big
         block_size = 26
+        pygame.display.set_caption("TETRIS(큰 화면)")
     # 게임안에서 Pause 눌렀을 때 screen
     if pause:
         pygame.mixer.music.pause()
