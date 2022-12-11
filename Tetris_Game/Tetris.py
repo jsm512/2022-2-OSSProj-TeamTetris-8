@@ -3323,27 +3323,27 @@ while not done:
                     if not is_leftedge(dx, dy, mino, rotation, matrix):
                         ui_variables.move_sound.play()
                         dx -= 1
-                    draw_mino(dx, dy, mino, rotation, matrix)
-                    draw_board(next_mino1, next_mino2,
-                            hold_mino, score, level, goal)
+                    # draw_mino(dx, dy, mino, rotation, matrix)
+                    # draw_board(next_mino1, next_mino2,
+                    #         hold_mino, score, level, goal)
                     if change % 2 == 1:
                         draw_hardboard_change(next_mino1, next_mino2, hold_mino, score, level, goal)
-                    else:
-                        draw_board(next_mino1, next_mino2, hold_mino, score, level, goal)
-                        pygame.display.update()
+                    # else:
+                    #     draw_board(next_mino1, next_mino2, hold_mino, score, level, goal)
+                    #     pygame.display.update()
                 # Move right
                 elif event.key == K_RIGHT:
                     if not is_rightedge(dx, dy, mino, rotation, matrix):
                         ui_variables.move_sound.play()
                         dx += 1
-                    draw_mino(dx, dy, mino, rotation, matrix)
-                    draw_board(next_mino1, next_mino2,
-                            hold_mino, score, level, goal)
+                    # draw_mino(dx, dy, mino, rotation, matrix)
+                    # draw_board(next_mino1, next_mino2,
+                    #         hold_mino, score, level, goal)
                     if change % 2 == 1:
                         draw_hardboard_change(next_mino1, next_mino2, hold_mino, score, level, goal)
-                    else:
-                        draw_board(next_mino1, next_mino2, hold_mino, score, level, goal)
-                        pygame.display.update()
+                    # else:
+                    #     draw_board(next_mino1, next_mino2, hold_mino, score, level, goal)
+                    #     pygame.display.update()
 
             elif event.type == VIDEORESIZE:
                 board_width = board_width
