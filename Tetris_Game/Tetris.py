@@ -115,6 +115,7 @@ class ui_variables: #UI
 
     # 피버 이미지
     fever_image = pygame.image.load("Tetris_Game/assets/images/fever.png")
+    fever_pvp_image = pygame.image.load("Tetris_Game/assets/images/fever_pvp.png")
 
     black = black_color
     black_pause = pause_color
@@ -163,6 +164,7 @@ gamebackground_image = 'Tetris_Game/assets/images/background_nyc.png'  # 게임 
 pause_board_image = 'Tetris_Game/assets/vector/pause_board.png'
 
 fever_image = 'Tetris_Game/assets/vector/fever.png'
+fever_pvp_image = 'Tetris_Game/assets/vector/fever.png'
 
 help_board_image = 'Tetris_Game/assets/vector/help_board.png'
 select_mode_button_image = 'Tetris_Game/assets/vector/Mode.png'
@@ -2342,7 +2344,7 @@ def set_initial_values():
     max_score = 99999
     fever = 0
 
-    combo_fever = 1
+    combo_fever = 3
 
     line_count = 0
     score = 0
@@ -3725,26 +3727,27 @@ while not done:
                         next_fever = (i + fever_interval) * combo_fever
                         # fever time시 이미지 깜빡거리게
                         if blink:
-                            screen.blit(pygame.transform.scale(ui_variables.fever_image,
+                            screen.blit(pygame.transform.scale(ui_variables.fever_pvp_image,
                                                                (int(board_width * playing_image_x_rate), int(board_height * playing_image_y_rate))),
-                                        (board_width * playing_image_width_rate, board_height * playing_image_height_rate))
+                                        (board_width * fever1_image_width_rate, board_height * playing_image_height_rate))
                             blink = False
                         else:
                             blink = True
                 #2P
                 for i in range(1, max_score, fever_interval):
-                    if combo_count_2P > i * combo_fever and combo_count_2P < (i + 1) * combo_fever:  # 2n의콤보에 따라 발생
+                    if combo_count_2P > i * combo_fever and combo_count_2P < (i + 1) * combo_fever:  # 500~1000,2000~2500.3500~4000
                         mino = randint(8, 10)
                         next_mino1 = randint(8, 10)
                         next_fever = (i + fever_interval) * combo_fever
                         # fever time시 이미지 깜빡거리게
                         if blink:
-                            screen.blit(pygame.transform.scale(ui_variables.fever_image,
+                            screen.blit(pygame.transform.scale(ui_variables.fever_pvp_image,
                                                                (int(board_width * playing_image_x_rate), int(board_height * playing_image_y_rate))),
-                                        (board_width * playing_image_width_rate, board_height * playing_image_height_rate))
+                                        (board_width * fever2_image_width_rate, board_height * playing_image_height_rate))
                             blink = False
                         else:
                             blink = True
+
 
                 if key_reverse:   # 키 반전 조건(상대가 몇 줄이든 깸)이 성립됐다면
                     # 방향키 반전 (최근 방향키가 어떤 것이었든 반대로)
