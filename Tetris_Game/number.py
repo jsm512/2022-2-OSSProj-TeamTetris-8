@@ -99,6 +99,12 @@ min_board_width = 400 # 창의 최소 가로 크기
 min_board_height = 225 # 창의 최소 세로 크기
 mid_board_width = 1200 # width가 1200넘어가면 글자 크기를 위한 변수
 
+text_rate_1 = 500
+text_rate_2 = 600
+text_rate_3 = 800
+text_rate_4 = 1000
+text_rate_5 = 1200
+
 window_rate = 0.5625
 
 mino_arr_x_size = 4
@@ -300,26 +306,34 @@ BGM2_x_rate = 0.69
 BGM3_x_rate = 0.81
 
 ##### def draw_board()
-sidebar_rate = 0.5312
-sidebar_width_rate = 0.2375
-dx1_rate = 0.02
-dy1_rate = 0.3
-dx2_rate = 0.14
-dy2_rate = 0.3
-dx_rate = 0.08
-dy_rate = 0.1
-dx_matrix_rate = 0.25
-dy_matrix_rate = 0.055
+sidebar_rate = 0.5312 #socre_board start rate
+sidebar_width_rate = 0.2375 #socre_board_width rate
+dx1_rate = 0.02 #next1 mino width rate
+dy1_rate = 0.3 #next1 mino height rate
+dx2_rate = 0.14 #next2 mino width rate
+dy2_rate = 0.3 #next2 mino height rate
+dx_rate = 0.08 #hold block width rate
+dy_rate = 0.1 #hold block height rate
+dx_matrix_rate = 0.25 #matrix_board width rate
+dy_matrix_rate = 0.055 #matrix_board height rate
 
-single_sidebar_rate = 0.6
-player1_sidebar_rate = 0.31
-player1_sidebar_width_rate = 0.1875
-player1_dx_matrix_rate = 0.05
+ 
+# hard_board matrix 비율
+hard_board_matrix_dx_rate = 0.15#hard mode matrix_board width rate
+hard_board_matrix_dy_rate = 0.055 #hrd mode matrix_board height rate
 
-player2_sidebar_rate = 0.82
-player2_dx_rate = 0.05
-player2_dy_rate = 0.4
-player2_dx_matrix_rate = 0.54
+player1_board_matrix_dx_rate = 0.11
+player1_board_matrix_dy_rate = 0.02
+player1_board_under_init_matrix_dy_rate = 0.11
+single_sidebar_rate = 0.6 # single mode score_board width rate
+player1_sidebar_rate = 0.31 # PvP mode 1P score_board start rate
+player1_sidebar_width_rate = 0.1875  #PvP mode 1P score_board score_boadr width rate
+player1_dx_matrix_rate = 0.05 #PvP mode 1P matrix start x rate
+
+player2_sidebar_rate = 0.82 # PvP mode 2P score_board start x rate
+player2_dx_rate = 0.05 # PvP mode 2P next mino x rate in score_board
+player2_dy_rate = 0.4 # PvP mode 2P next mino y rate in score_board
+player2_dx_matrix_rate = 0.54 # PvP mode 2P matrix start x rate
 
 #text_board rate
 speed_value_rate = 0.015
