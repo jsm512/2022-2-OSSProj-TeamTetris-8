@@ -189,7 +189,7 @@ clicked_help_button_image = 'Tetris_Game/assets/vector/clicked_Help.png'
 single_button_image = 'Tetris_Game/assets/vector/Single.png'
 clicked_single_button_image = 'Tetris_Game/assets/vector/clicked_Single.png'
 
-easy_button_image = 'Tetris_Game/assets/vector/easy.png'
+easy_button_image = 'Tetris_Game/assets/vector/Easy.png'
 clicked_easy_button_image = 'Tetris_Game/assets/vector/clicked_easy.png'
 
 normal_button_image='Tetris_Game/assets/vector/normal.png'
@@ -463,7 +463,7 @@ def draw_block_image(x, y, image):
     # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
     draw_image(screen, image, x, y, block_size, block_size)
 
-# Draw game screen
+# Draw game screen hard보드 위치
 def draw_board(next1, next2, hold, score, level, goal):
     # 크기 비율 고정, 전체 board 가로길이에서 원하는 비율을 곱해줌
     sidebar_width = int(board_width * sidebar_rate)
@@ -626,9 +626,9 @@ def draw_board(next1, next2, hold, score, level, goal):
     # 테트리스 블록이 들어갈 공간? 그리기 ..맞나?
     for x in range(width):
         for y in range(height):
-            dx = int(board_width * dx_matrix_rate) + block_size * \
+            dx = int(board_width * hard_board_matrix_dx_rate) + block_size * \
                 x  # 위치비율 고정, board 가로길이에 원하는 비율을 곱해줌#
-            dy = int(board_height * dy_matrix_rate) + block_size * \
+            dy = int(board_height * hard_board_matrix_dy_rate) + block_size * \
                 y  # 위치비율 고정, board 세로길이에 원하는 비율을 곱해줌#
             draw_block_image(dx, dy, ui_variables.t_block[matrix[x][y + 1]])
 
@@ -641,7 +641,7 @@ def draw1_board(next1, next2, hold, score, level, goal):
     pygame.draw.rect(
         screen,
         ui_variables.grey_1,
-        Rect(sidebar_width, 0, int(board_width * 0.2375), board_height)  # 크기 비율 고정
+        Rect(sidebar_width, 0, int(board_width * sidebar_width_rate ), board_height)  # 크기 비율 고정
     )
 
     # Draw 2 next minos
@@ -793,18 +793,18 @@ def draw1_board(next1, next2, hold, score, level, goal):
 
     # Draw board
     # 테트리스 블록이 들어갈 공간? 그리기 ..맞나?
-    if width == init_width or width == small_size_width:
-        height_ratio = 0.13
-        width_ratio = winner_image_height_rate
-    else:
-        height_ratio = 0.02
-        width_ratio = 0.15
+    # if width == init_width or width == small_size_width:
+    #     height_ratio = player1_board_under_init_matrix_dy_rate
+    #     width_ratio = winner_image_height_rate
+    # else:
+    #     height_ratio = player1_board_matrix_dy_rate
+    #     width_ratio = player1_board_matrix_dx_rate
     
     for x in range(width):
         for y in range(height):
-            dx = int(board_width * width_ratio) + block_size * \
+            dx = int(board_width * hard_board_matrix_dx_rate) + block_size * \
                 x  # 위치비율 고정, board 가로길이에 원하는 비율을 곱해줌#
-            dy = int(board_height * height_ratio) + block_size * \
+            dy = int(board_height * hard_board_matrix_dy_rate) + block_size * \
                 y  # 위치비율 고정, board 세로길이에 원하는 비율을 곱해줌#
             draw_block_image(dx, dy, ui_variables.t_block_1[matrix[x][y + 1]])
 
@@ -975,9 +975,9 @@ def draw_hardboard_change(next1, next2, hold, score, level, goal):
     # Draw board
     for x in range(width):
         for y in range(height):
-            dx = int(board_width * dx_matrix_rate) + block_size * \
+            dx = int(board_width * hard_board_matrix_dx_rate) + block_size * \
                 x  # 위치비율 고정, board 가로길이에 원하는 비율을 곱해줌#
-            dy = int(board_height * dy_matrix_rate) + block_size * \
+            dy = int(board_height * hard_board_matrix_dy_rate) + block_size * \
                 y  # 위치비율 고정, board 세로길이에 원하는 비율을 곱해줌#
             # draw_block_image(dx, dy, ui_variables.t_block[matrix[x][y + 1]])
             draw_block_image(
@@ -2506,7 +2506,7 @@ while not done:
         height = height_big
         board_x = width_big
         board_y = height_big
-        block_size = 26
+        block_size = 24
         pygame.display.set_caption("TETRIS(큰 화면)")
     # 게임안에서 Pause 눌렀을 때 screen
     if pause:
@@ -2762,7 +2762,7 @@ while not done:
                 
                 # 점수 구간에 따른 피버타임 #fever_interval=3
                 for i in range(1, max_score, fever_interval):
-                    if score > i * fever_score and score < (i + 1) * fever_score:  # 500~1000,2000~2500.3500~4000
+                    if score > i * fever_score and score < (i + 1) * fever_score:  # 500~1000,2000~2text_rate_1.3text_rate_1~4000
                         mino = randint(1, 1)
                         next_mino1_en = randint(1, 1)
                         next_mino2_en = randint(1, 1)
@@ -2998,16 +2998,16 @@ while not done:
 
                 # Erase line
                 erase_count = 0
-                for j in range(21):
+                for j in range(height+1):
                     is_full = True
-                    for i in range(10):
+                    for i in range(width):
                         if matrix[i][j] == 0:
                             is_full = False
                     if is_full:
                         erase_count += 1
                         k = j
                         while k > 0:
-                            for i in range(10):
+                            for i in range(width):
                                 matrix[i][k] = matrix[i][k - 1]
                             k -= 1
                 if erase_count == 1:
@@ -3037,7 +3037,7 @@ while not done:
 
                 # 점수 구간에 따른 피버타임 #fever_interval=3
                 for i in range(1, max_score, fever_interval):
-                    if score > i * fever_score and score < (i + 1) * fever_score:  # 500~1000,2000~2500.3500~4000
+                    if score > i * fever_score and score < (i + 1) * fever_score:  # 500~1000,2000~2text_rate_1.3text_rate_1~4000
                         mino = randint(1, 1)
                         next_mino1_en = randint(1, 1)
                         next_mino2_en = randint(1, 1)
@@ -3175,7 +3175,6 @@ while not done:
                     if not is_rightedge1(dx, dy, mino_en, rotation, matrix):
                         ui_variables.move_sound.play()
                         dx += 1
-                        s
 
             elif event.type == VIDEORESIZE:
                 board_width = board_width
@@ -3275,9 +3274,9 @@ while not done:
 
                 # Erase line
                 erase_count = 0
-                for j in range(21):
+                for j in range(height+1):
                     is_full = True
-                    for i in range(10):
+                    for i in range(width):
                         if matrix[i][j] == 0:
                             is_full = False
                     if is_full:
@@ -3285,7 +3284,7 @@ while not done:
                         line_count += 1
                         k = j
                         while k > 0:
-                            for i in range(10):
+                            for i in range(width):
                                 matrix[i][k] = matrix[i][k - 1]
                             k -= 1
                 if erase_count == 1:
@@ -3315,7 +3314,7 @@ while not done:
 
                 # 점수 구간에 따른 피버타임 #fever_interval=3
                 for i in range(1, max_score, fever_interval):
-                    if score > i * fever_score and score < (i + 1) * fever_score:  # 500~1000,2000~2500.3500~4000
+                    if score > i * fever_score and score < (i + 1) * fever_score:  # 500~1000,2000~2text_rate_1.3text_rate_1~4000
                         mino = randint(1, 1)
                         next_mino1 = randint(1, 1)
                         next_mino2 = randint(1, 1)
@@ -3354,8 +3353,6 @@ while not done:
                     hard_drop = True
                     pygame.time.set_timer(pygame.USEREVENT, framerate)
                     draw_mino(dx, dy, mino, rotation, matrix)
-                    draw_board(next_mino1, next_mino2,
-                            hold_mino, score, level, goal)
                     if change % 2 == 1:
                         draw_hardboard_change(next_mino1, next_mino2, hold_mino, score, level, goal)
                     else:
@@ -3376,8 +3373,8 @@ while not done:
                         rotation = 0
                         hold = True
                     draw_mino(dx, dy, mino, rotation, matrix)
-                    draw_board(next_mino1, next_mino2,
-                            hold_mino, score, level, goal)
+                    # draw_board(next_mino1, next_mino2,
+                    #         hold_mino, score, level, goal)
                     if change % 2 == 1:
                         draw_hardboard_change(next_mino1, next_mino2, hold_mino, score, level, goal)
                     else:
@@ -3416,8 +3413,6 @@ while not done:
                     if rotation == 4:
                         rotation = 0
                     draw_mino(dx, dy, mino, rotation, matrix)
-                    draw_board(next_mino1, next_mino2,
-                            hold_mino, score, level, goal)
                     if change % 2 == 1:
                         draw_hardboard_change(next_mino1, next_mino2, hold_mino, score, level, goal)
                     else:
@@ -3468,8 +3463,6 @@ while not done:
                         ui_variables.move_sound.play()
                         dx -= 1
                     draw_mino(dx, dy, mino, rotation, matrix)
-                    draw_board(next_mino1, next_mino2,
-                            hold_mino, score, level, goal)
                     if change % 2 == 1:
                         draw_hardboard_change(next_mino1, next_mino2, hold_mino, score, level, goal)
                     else:
@@ -3481,8 +3474,6 @@ while not done:
                         ui_variables.move_sound.play()
                         dx += 1
                     draw_mino(dx, dy, mino, rotation, matrix)
-                    draw_board(next_mino1, next_mino2,
-                            hold_mino, score, level, goal)
                     if change % 2 == 1:
                         draw_hardboard_change(next_mino1, next_mino2, hold_mino, score, level, goal)
                     else:
@@ -3524,7 +3515,7 @@ while not done:
                 done = True
 
             elif event.type == USEREVENT: #키보드,마우스 이벤트 
-                pygame.time.set_timer(pygame.USEREVENT, game_speed)  # 기본 게임속도 600으로 초기 설정
+                pygame.time.set_timer(pygame.USEREVENT, game_speed)  # 기본 게임속도 text_rate_2으로 초기 설정
                 draw_mino(dx, dy, mino, rotation, matrix)
                 draw_mino(dx_2P, dy_2P, mino_2P, rotation_2P, matrix_2P)
                 draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
