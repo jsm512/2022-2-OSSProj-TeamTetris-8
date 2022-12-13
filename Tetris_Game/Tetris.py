@@ -975,9 +975,9 @@ def draw_hardboard_change(next1, next2, hold, score, level, goal):
     # Draw board
     for x in range(width):
         for y in range(height):
-            dx = int(board_width * dx_matrix_rate) + block_size * \
+            dx = int(board_width * hard_board_matrix_dx_rate) + block_size * \
                 x  # 위치비율 고정, board 가로길이에 원하는 비율을 곱해줌#
-            dy = int(board_height * dy_matrix_rate) + block_size * \
+            dy = int(board_height * hard_board_matrix_dy_rate) + block_size * \
                 y  # 위치비율 고정, board 세로길이에 원하는 비율을 곱해줌#
             # draw_block_image(dx, dy, ui_variables.t_block[matrix[x][y + 1]])
             draw_block_image(
