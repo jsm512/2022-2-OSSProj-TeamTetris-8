@@ -322,7 +322,7 @@ hard_board_matrix_dy_rate = 0.055 #hrd mode matrix_board height rate
 
 player1_board_matrix_dx_rate = 0.11
 player1_board_matrix_dy_rate = 0.02
-player1_board_under_init_matrix_dy_rate = 0.12
+player1_board_under_init_matrix_dy_rate = 0.11
 single_sidebar_rate = 0.6 # single mode score_board width rate
 player1_sidebar_rate = 0.31 # PvP mode 1P score_board start rate
 player1_sidebar_width_rate = 0.1875  #PvP mode 1P score_board score_boadr width rate
