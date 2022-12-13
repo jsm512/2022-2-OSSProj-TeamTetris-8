@@ -3,9 +3,11 @@
 
 <br>
 
- 👿 [한규민](https://github.com/han-gyumin)    
- 👾 [진승민](https://github.com/jsm512)    
- 🤖 [임지훈](https://github.com/zhoon95)
+ 👿 [한규민](https://github.com/han-gyumin) hangm0820@naver.com 
+ 
+ 👾 [진승민](https://github.com/jsm512) wlstmdals12@naver.com 
+ 
+ 🤖 [임지훈](https://github.com/zhoon95) zhoon95@naver.com
 
 <br>
 
@@ -88,3 +90,7 @@ python3 Tetris.py
 - https://github.com/CSID-DGU/2021-1-OSSPC-Pint-9
 - https://github.com/CSID-DGU/2021-2-OSSProj-Kkanbu-5
 - https://github.com/hbseo/OSD_game
+
+## Video Link:
+- https://youtu.be/BavBCyprngQ
+
