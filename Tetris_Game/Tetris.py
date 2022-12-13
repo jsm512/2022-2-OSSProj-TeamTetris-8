@@ -115,6 +115,7 @@ class ui_variables: #UI
 
     # 피버 이미지
     fever_image = pygame.image.load("Tetris_Game/assets/images/fever.png")
+    fever_pvp_image = pygame.image.load("Tetris_Game/assets/images/fever_pvp.png")
 
     black = black_color
     black_pause = pause_color
@@ -163,6 +164,7 @@ gamebackground_image = 'Tetris_Game/assets/images/background_nyc.png'  # 게임 
 pause_board_image = 'Tetris_Game/assets/vector/pause_board.png'
 
 fever_image = 'Tetris_Game/assets/vector/fever.png'
+fever_pvp_image = 'Tetris_Game/assets/vector/fever.png'
 
 help_board_image = 'Tetris_Game/assets/vector/help_board.png'
 select_mode_button_image = 'Tetris_Game/assets/vector/Mode.png'
@@ -1192,18 +1194,18 @@ def draw_1Pboard(next, hold, current_key):
                 str(combo_count), 1, ui_variables.real_white)
 
         elif 1200 <= board_width :
-            text_hold = ui_variables.h1.render("HOLD", 1, ui_variables.real_white)
-            text_next = ui_variables.h1.render("NEXT", 1, ui_variables.real_white)
-            text_reverse = ui_variables.h1.render(
+            text_hold = ui_variables.h2.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h2.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h2.render(
                 "REVERSE", 1, ui_variables.real_white)
             if current_key:
-                reverse_value = ui_variables.h0.render(
+                reverse_value = ui_variables.h2.render(
                     "O", 1, ui_variables.real_white)
             elif not current_key:
-                reverse_value = ui_variables.h0.render(
+                reverse_value = ui_variables.h2.render(
                     "X", 1, ui_variables.real_white)
-            text_combo = ui_variables.h1.render("COMBO", 1, ui_variables.real_white)
-            combo_value = ui_variables.h0.render(
+            text_combo = ui_variables.h2.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h2.render(
                 str(combo_count), 1, ui_variables.real_white)
 
     if debug:
@@ -1442,18 +1444,18 @@ def draw_1Pboard_change(next, hold, current_key):
                 str(combo_count), 1, ui_variables.real_white)
 
         elif 1200 <= board_width :   
-            text_hold = ui_variables.h1.render("HOLD", 1, ui_variables.real_white)
-            text_next = ui_variables.h1.render("NEXT", 1, ui_variables.real_white)
-            text_reverse = ui_variables.h1.render(
+            text_hold = ui_variables.h2.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h2.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h2.render(
                 "REVERSE", 1, ui_variables.real_white)
             if current_key:
-                reverse_value = ui_variables.h0.render(
+                reverse_value = ui_variables.h2.render(
                     "O", 1, ui_variables.real_white)
             elif not current_key:
-                reverse_value = ui_variables.h0.render(
+                reverse_value = ui_variables.h2.render(
                     "X", 1, ui_variables.real_white)
-            text_combo = ui_variables.h1.render("COMBO", 1, ui_variables.real_white)
-            combo_value = ui_variables.h0.render(
+            text_combo = ui_variables.h2.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h2.render(
                 str(combo_count), 1, ui_variables.real_white) 
 
     if debug:
@@ -1618,21 +1620,6 @@ def draw_2Pboard(next, hold, current_key_2P):
 
     if textsize == True:
         if board_width < 500 :
-            text_hold = ui_variables.h7.render("HOLD", 1, ui_variables.real_white)
-            text_next = ui_variables.h7.render("NEXT", 1, ui_variables.real_white)
-            text_reverse = ui_variables.h7.render(
-                "REVERSE", 1, ui_variables.real_white)
-            if current_key_2P:
-                reverse_value = ui_variables.h6.render(
-                    "O", 1, ui_variables.real_white)
-            elif not current_key_2P:
-                reverse_value = ui_variables.h6.render(
-                    "X", 1, ui_variables.real_white)
-            text_combo = ui_variables.h7.render("COMBO", 1, ui_variables.real_white)
-            combo_value = ui_variables.h6.render(
-                str(combo_count_2P), 1, ui_variables.real_white)
-
-        elif 500 <= board_width < 600 :
             text_hold = ui_variables.h6.render("HOLD", 1, ui_variables.real_white)
             text_next = ui_variables.h6.render("NEXT", 1, ui_variables.real_white)
             text_reverse = ui_variables.h6.render(
@@ -1646,8 +1633,8 @@ def draw_2Pboard(next, hold, current_key_2P):
             text_combo = ui_variables.h6.render("COMBO", 1, ui_variables.real_white)
             combo_value = ui_variables.h5.render(
                 str(combo_count_2P), 1, ui_variables.real_white)
-        
-        elif 600 <= board_width < 800 :
+
+        elif 500 <= board_width < 600 :
             text_hold = ui_variables.h5.render("HOLD", 1, ui_variables.real_white)
             text_next = ui_variables.h5.render("NEXT", 1, ui_variables.real_white)
             text_reverse = ui_variables.h5.render(
@@ -1661,8 +1648,8 @@ def draw_2Pboard(next, hold, current_key_2P):
             text_combo = ui_variables.h5.render("COMBO", 1, ui_variables.real_white)
             combo_value = ui_variables.h4.render(
                 str(combo_count_2P), 1, ui_variables.real_white)
-
-        elif 800 <= board_width < 1000 :
+        
+        elif 600 <= board_width < 800 :
             text_hold = ui_variables.h4.render("HOLD", 1, ui_variables.real_white)
             text_next = ui_variables.h4.render("NEXT", 1, ui_variables.real_white)
             text_reverse = ui_variables.h4.render(
@@ -1677,7 +1664,7 @@ def draw_2Pboard(next, hold, current_key_2P):
             combo_value = ui_variables.h3.render(
                 str(combo_count_2P), 1, ui_variables.real_white)
 
-        elif 1000 <= board_width < 1200 :
+        elif 800 <= board_width < 1000 :
             text_hold = ui_variables.h3.render("HOLD", 1, ui_variables.real_white)
             text_next = ui_variables.h3.render("NEXT", 1, ui_variables.real_white)
             text_reverse = ui_variables.h3.render(
@@ -1692,7 +1679,7 @@ def draw_2Pboard(next, hold, current_key_2P):
             combo_value = ui_variables.h2.render(
                 str(combo_count_2P), 1, ui_variables.real_white)
 
-        elif 1200 <= board_width :
+        elif 1000 <= board_width < 1200 :
             text_hold = ui_variables.h2.render("HOLD", 1, ui_variables.real_white)
             text_next = ui_variables.h2.render("NEXT", 1, ui_variables.real_white)
             text_reverse = ui_variables.h2.render(
@@ -1705,6 +1692,21 @@ def draw_2Pboard(next, hold, current_key_2P):
                     "X", 1, ui_variables.real_white)
             text_combo = ui_variables.h2.render("COMBO", 1, ui_variables.real_white)
             combo_value = ui_variables.h1.render(
+                str(combo_count_2P), 1, ui_variables.real_white)
+
+        elif 1200 <= board_width :
+            text_hold = ui_variables.h2.render("HOLD", 1, ui_variables.real_white)
+            text_next = ui_variables.h2.render("NEXT", 1, ui_variables.real_white)
+            text_reverse = ui_variables.h2.render(
+                "REVERSE", 1, ui_variables.real_white)
+            if current_key_2P:
+                reverse_value = ui_variables.h2.render(
+                    "O", 1, ui_variables.real_white)
+            elif not current_key_2P:
+                reverse_value = ui_variables.h2.render(
+                    "X", 1, ui_variables.real_white)
+            text_combo = ui_variables.h2.render("COMBO", 1, ui_variables.real_white)
+            combo_value = ui_variables.h2.render(
                 str(combo_count_2P), 1, ui_variables.real_white)
 
     if debug:
@@ -2342,7 +2344,7 @@ def set_initial_values():
     max_score = 99999
     fever = 0
 
-    combo_fever = 1
+    combo_fever = 2
 
     line_count = 0
     score = 0
@@ -3716,26 +3718,27 @@ while not done:
                         next_fever = (i + fever_interval) * combo_fever
                         # fever time시 이미지 깜빡거리게
                         if blink:
-                            screen.blit(pygame.transform.scale(ui_variables.fever_image,
+                            screen.blit(pygame.transform.scale(ui_variables.fever_pvp_image,
                                                                (int(board_width * playing_image_x_rate), int(board_height * playing_image_y_rate))),
-                                        (board_width * playing_image_width_rate, board_height * playing_image_height_rate))
+                                        (board_width * fever1_image_width_rate, board_height * playing_image_height_rate))
                             blink = False
                         else:
                             blink = True
                 #2P
                 for i in range(1, max_score, fever_interval):
-                    if combo_count_2P > i * combo_fever and combo_count_2P < (i + 1) * combo_fever:  # 2n의콤보에 따라 발생
+                    if combo_count_2P > i * combo_fever and combo_count_2P < (i + 1) * combo_fever:  # 500~1000,2000~2500.3500~4000
                         mino = randint(8, 10)
                         next_mino1 = randint(8, 10)
                         next_fever = (i + fever_interval) * combo_fever
                         # fever time시 이미지 깜빡거리게
                         if blink:
-                            screen.blit(pygame.transform.scale(ui_variables.fever_image,
+                            screen.blit(pygame.transform.scale(ui_variables.fever_pvp_image,
                                                                (int(board_width * playing_image_x_rate), int(board_height * playing_image_y_rate))),
-                                        (board_width * playing_image_width_rate, board_height * playing_image_height_rate))
+                                        (board_width * fever2_image_width_rate, board_height * playing_image_height_rate))
                             blink = False
                         else:
                             blink = True
+
 
                 if key_reverse:   # 키 반전 조건(상대가 몇 줄이든 깸)이 성립됐다면
                     # 방향키 반전 (최근 방향키가 어떤 것이었든 반대로)
