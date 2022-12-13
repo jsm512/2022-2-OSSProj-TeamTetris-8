@@ -7,7 +7,7 @@
  
  👾 [진승민](https://github.com/jsm512) wlstmdals12@naver.com 
  
- 🤖 [임지훈](https://github.com/zhoon95) zhoon95@naver.com
+ 🤖 [임지훈](https://github.com/MontaKr) zhoon95@naver.com
 
 <br>
 
