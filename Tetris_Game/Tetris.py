@@ -2344,7 +2344,7 @@ def set_initial_values():
     max_score = 99999
     fever = 0
 
-    combo_fever = 3
+    combo_fever = 2
 
     line_count = 0
     score = 0
