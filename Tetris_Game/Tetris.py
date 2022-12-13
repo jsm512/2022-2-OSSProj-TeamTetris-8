@@ -516,18 +516,89 @@ def draw_board(next1, next2, hold, score, level, goal):
         score = 999999
 
     # Draw texts
-    text_hold = ui_variables.h5.render("HOLD", 1, ui_variables.real_white)
-    text_next = ui_variables.h5.render("NEXT", 1, ui_variables.real_white)
-    text_score = ui_variables.h5.render("SCORE", 1, ui_variables.real_white)
-    score_value = ui_variables.h4.render(
-        str(score), 1, ui_variables.real_white)
-    text_level = ui_variables.h5.render("LEVEL", 1, ui_variables.real_white)
-    level_value = ui_variables.h4.render(
-        str(level), 1, ui_variables.real_white)
-    text_goal = ui_variables.h5.render("GOAL", 1, ui_variables.real_white)
-    goal_value = ui_variables.h4.render(str(goal), 1, ui_variables.real_white)
-    text_fever = ui_variables.h5.render("NEXT FEVER", 1, ui_variables.real_white)
-    next_fever_value = ui_variables.h4.render(str(next_fever), 1, ui_variables.real_white) 
+    if board_width < 500 :
+        text_hold = ui_variables.h8.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h8.render("NEXT", 1, ui_variables.real_white)
+        text_score = ui_variables.h8.render("SCORE", 1, ui_variables.real_white)
+        score_value = ui_variables.h7.render(
+            str(score), 1, ui_variables.real_white)
+        text_level = ui_variables.h8.render("LEVEL", 1, ui_variables.real_white)
+        level_value = ui_variables.h7.render(
+            str(level), 1, ui_variables.real_white)
+        text_goal = ui_variables.h8.render("GOAL", 1, ui_variables.real_white)
+        goal_value = ui_variables.h7.render(str(goal), 1, ui_variables.real_white)
+        text_fever = ui_variables.h8.render("NEXT FEVER", 1, ui_variables.real_white)
+        next_fever_value = ui_variables.h7.render(str(next_fever), 1, ui_variables.real_white) 
+    
+    elif 500 <= board_width < 600 :
+        text_hold = ui_variables.h7.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h7.render("NEXT", 1, ui_variables.real_white)
+        text_score = ui_variables.h7.render("SCORE", 1, ui_variables.real_white)
+        score_value = ui_variables.h6.render(
+            str(score), 1, ui_variables.real_white)
+        text_level = ui_variables.h7.render("LEVEL", 1, ui_variables.real_white)
+        level_value = ui_variables.h6.render(
+            str(level), 1, ui_variables.real_white)
+        text_goal = ui_variables.h7.render("GOAL", 1, ui_variables.real_white)
+        goal_value = ui_variables.h6.render(str(goal), 1, ui_variables.real_white)
+        text_fever = ui_variables.h7.render("NEXT FEVER", 1, ui_variables.real_white)
+        next_fever_value = ui_variables.h6.render(str(next_fever), 1, ui_variables.real_white) 
+
+    elif 600 <= board_width < 800 :
+        text_hold = ui_variables.h6.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h6.render("NEXT", 1, ui_variables.real_white)
+        text_score = ui_variables.h6.render("SCORE", 1, ui_variables.real_white)
+        score_value = ui_variables.h5.render(
+            str(score), 1, ui_variables.real_white)
+        text_level = ui_variables.h6.render("LEVEL", 1, ui_variables.real_white)
+        level_value = ui_variables.h5.render(
+            str(level), 1, ui_variables.real_white)
+        text_goal = ui_variables.h6.render("GOAL", 1, ui_variables.real_white)
+        goal_value = ui_variables.h5.render(str(goal), 1, ui_variables.real_white)
+        text_fever = ui_variables.h6.render("NEXT FEVER", 1, ui_variables.real_white)
+        next_fever_value = ui_variables.h5.render(str(next_fever), 1, ui_variables.real_white) 
+
+    elif 800 <= board_width < 1000 :
+        text_hold = ui_variables.h5.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h5.render("NEXT", 1, ui_variables.real_white)
+        text_score = ui_variables.h5.render("SCORE", 1, ui_variables.real_white)
+        score_value = ui_variables.h4.render(
+            str(score), 1, ui_variables.real_white)
+        text_level = ui_variables.h5.render("LEVEL", 1, ui_variables.real_white)
+        level_value = ui_variables.h4.render(
+            str(level), 1, ui_variables.real_white)
+        text_goal = ui_variables.h5.render("GOAL", 1, ui_variables.real_white)
+        goal_value = ui_variables.h4.render(str(goal), 1, ui_variables.real_white)
+        text_fever = ui_variables.h5.render("NEXT FEVER", 1, ui_variables.real_white)
+        next_fever_value = ui_variables.h4.render(str(next_fever), 1, ui_variables.real_white) 
+
+    elif 1000 <= board_width < 1200 :
+        text_hold = ui_variables.h4.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h4.render("NEXT", 1, ui_variables.real_white)
+        text_score = ui_variables.h4.render("SCORE", 1, ui_variables.real_white)
+        score_value = ui_variables.h3.render(
+            str(score), 1, ui_variables.real_white)
+        text_level = ui_variables.h4.render("LEVEL", 1, ui_variables.real_white)
+        level_value = ui_variables.h3.render(
+            str(level), 1, ui_variables.real_white)
+        text_goal = ui_variables.h4.render("GOAL", 1, ui_variables.real_white)
+        goal_value = ui_variables.h3.render(str(goal), 1, ui_variables.real_white)
+        text_fever = ui_variables.h4.render("NEXT FEVER", 1, ui_variables.real_white)
+        next_fever_value = ui_variables.h3.render(str(next_fever), 1, ui_variables.real_white) 
+
+    elif 1200 < board_width :
+        text_hold = ui_variables.h3.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h3.render("NEXT", 1, ui_variables.real_white)
+        text_score = ui_variables.h3.render("SCORE", 1, ui_variables.real_white)
+        score_value = ui_variables.h2.render(
+            str(score), 1, ui_variables.real_white)
+        text_level = ui_variables.h3.render("LEVEL", 1, ui_variables.real_white)
+        level_value = ui_variables.h2.render(
+            str(level), 1, ui_variables.real_white)
+        text_goal = ui_variables.h3.render("GOAL", 1, ui_variables.real_white)
+        goal_value = ui_variables.h2.render(str(goal), 1, ui_variables.real_white)
+        text_fever = ui_variables.h3.render("NEXT FEVER", 1, ui_variables.real_white)
+        next_fever_value = ui_variables.h2.render(str(next_fever), 1, ui_variables.real_white) 
 
     # Place texts
     screen.blit(text_hold, (int(board_width * place_hold_width) +
@@ -794,18 +865,90 @@ def draw_hardboard_change(next1, next2, hold, score, level, goal):
         score = 999999
 
     # Draw texts
-    text_hold = ui_variables.h5.render("HOLD", 1, ui_variables.real_white)
-    text_next = ui_variables.h5.render("NEXT", 1, ui_variables.real_white)
-    text_score = ui_variables.h5.render("SCORE", 1, ui_variables.real_white)
-    score_value = ui_variables.h4.render(
-        str(score), 1, ui_variables.real_white)
-    text_level = ui_variables.h5.render("LEVEL", 1, ui_variables.real_white)
-    level_value = ui_variables.h4.render(
-        str(level), 1, ui_variables.real_white)
-    text_goal = ui_variables.h5.render("GOAL", 1, ui_variables.real_white)
-    goal_value = ui_variables.h4.render(str(goal), 1, ui_variables.real_white)
-    text_fever = ui_variables.h5.render("NEXT FEVER", 1, ui_variables.real_white)
-    next_fever_value = ui_variables.h4.render(str(next_fever), 1, ui_variables.real_white) 
+    if board_width < 500 :
+        text_hold = ui_variables.h8.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h8.render("NEXT", 1, ui_variables.real_white)
+        text_score = ui_variables.h7.render("SCORE", 1, ui_variables.real_white)
+        score_value = ui_variables.h7.render(
+            str(score), 1, ui_variables.real_white)
+        text_level = ui_variables.h8.render("LEVEL", 1, ui_variables.real_white)
+        level_value = ui_variables.h7.render(
+            str(level), 1, ui_variables.real_white)
+        text_goal = ui_variables.h8.render("GOAL", 1, ui_variables.real_white)
+        goal_value = ui_variables.h7.render(str(goal), 1, ui_variables.real_white)
+        text_fever = ui_variables.h8.render("NEXT FEVER", 1, ui_variables.real_white)
+        next_fever_value = ui_variables.h4.render(str(next_fever), 1, ui_variables.real_white) 
+
+    elif 500 <= board_width < 600 :
+        text_hold = ui_variables.h7.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h7.render("NEXT", 1, ui_variables.real_white)
+        text_score = ui_variables.h7.render("SCORE", 1, ui_variables.real_white)
+        score_value = ui_variables.h6.render(
+            str(score), 1, ui_variables.real_white)
+        text_level = ui_variables.h7.render("LEVEL", 1, ui_variables.real_white)
+        level_value = ui_variables.h6.render(
+            str(level), 1, ui_variables.real_white)
+        text_goal = ui_variables.h7.render("GOAL", 1, ui_variables.real_white)
+        goal_value = ui_variables.h6.render(str(goal), 1, ui_variables.real_white)
+        text_fever = ui_variables.h7.render("NEXT FEVER", 1, ui_variables.real_white)
+        next_fever_value = ui_variables.h6.render(str(next_fever), 1, ui_variables.real_white) 
+
+    elif 600 <= board_width < 800 :
+        text_hold = ui_variables.h6.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h6.render("NEXT", 1, ui_variables.real_white)
+        text_score = ui_variables.h6.render("SCORE", 1, ui_variables.real_white)
+        score_value = ui_variables.h5.render(
+            str(score), 1, ui_variables.real_white)
+        text_level = ui_variables.h6.render("LEVEL", 1, ui_variables.real_white)
+        level_value = ui_variables.h5.render(
+            str(level), 1, ui_variables.real_white)
+        text_goal = ui_variables.h6.render("GOAL", 1, ui_variables.real_white)
+        goal_value = ui_variables.h5.render(str(goal), 1, ui_variables.real_white)
+        text_fever = ui_variables.h6.render("NEXT FEVER", 1, ui_variables.real_white)
+        next_fever_value = ui_variables.h5.render(str(next_fever), 1, ui_variables.real_white) 
+    
+    elif 800 <= board_width < 1000 :
+        text_hold = ui_variables.h5.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h5.render("NEXT", 1, ui_variables.real_white)
+        text_score = ui_variables.h5.render("SCORE", 1, ui_variables.real_white)
+        score_value = ui_variables.h4.render(
+            str(score), 1, ui_variables.real_white)
+        text_level = ui_variables.h5.render("LEVEL", 1, ui_variables.real_white)
+        level_value = ui_variables.h4.render(
+            str(level), 1, ui_variables.real_white)
+        text_goal = ui_variables.h5.render("GOAL", 1, ui_variables.real_white)
+        goal_value = ui_variables.h4.render(str(goal), 1, ui_variables.real_white)
+        text_fever = ui_variables.h5.render("NEXT FEVER", 1, ui_variables.real_white)
+        next_fever_value = ui_variables.h4.render(str(next_fever), 1, ui_variables.real_white) 
+
+    elif 1000 <= board_width < 1200 :
+        text_hold = ui_variables.h4.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h4.render("NEXT", 1, ui_variables.real_white)
+        text_score = ui_variables.h4.render("SCORE", 1, ui_variables.real_white)
+        score_value = ui_variables.h3.render(
+            str(score), 1, ui_variables.real_white)
+        text_level = ui_variables.h4.render("LEVEL", 1, ui_variables.real_white)
+        level_value = ui_variables.h3.render(
+            str(level), 1, ui_variables.real_white)
+        text_goal = ui_variables.h4.render("GOAL", 1, ui_variables.real_white)
+        goal_value = ui_variables.h3.render(str(goal), 1, ui_variables.real_white)
+        text_fever = ui_variables.h4.render("NEXT FEVER", 1, ui_variables.real_white)
+        next_fever_value = ui_variables.h3.render(str(next_fever), 1, ui_variables.real_white) 
+
+    elif 1200 < board_width :
+        text_hold = ui_variables.h3.render("HOLD", 1, ui_variables.real_white)
+        text_next = ui_variables.h3.render("NEXT", 1, ui_variables.real_white)
+        text_score = ui_variables.h3.render("SCORE", 1, ui_variables.real_white)
+        score_value = ui_variables.h2.render(
+            str(score), 1, ui_variables.real_white)
+        text_level = ui_variables.h3.render("LEVEL", 1, ui_variables.real_white)
+        level_value = ui_variables.h2.render(
+            str(level), 1, ui_variables.real_white)
+        text_goal = ui_variables.h3.render("GOAL", 1, ui_variables.real_white)
+        goal_value = ui_variables.h2.render(str(goal), 1, ui_variables.real_white)
+        text_fever = ui_variables.h3.render("NEXT FEVER", 1, ui_variables.real_white)
+        next_fever_value = ui_variables.h2.render(str(next_fever), 1, ui_variables.real_white) 
+
 
     # Place texts
     screen.blit(text_hold, (int(board_width * place_hold_width) +
@@ -2803,10 +2946,10 @@ while not done:
                     keys_pressed = pygame.key.get_pressed()
                     pygame.time.set_timer(pygame.USEREVENT, normal_speed)
 
-                    # if keys_pressed[K_DOWN]:
-                    #     pygame.time.set_timer(pygame.USEREVENT, softdrop_speed)
-                    # else:
-                    #     pygame.time.set_timer(pygame.USEREVENT, normal_speed)
+                    if keys_pressed[K_DOWN]:
+                        pygame.time.set_timer(pygame.USEREVENT, softdrop_speed)
+                    else:
+                        pygame.time.set_timer(pygame.USEREVENT, normal_speed)
 
                 # Draw a mino
                 draw1_mino(dx, dy, mino_en, rotation, matrix)
@@ -3032,6 +3175,7 @@ while not done:
                     if not is_rightedge1(dx, dy, mino_en, rotation, matrix):
                         ui_variables.move_sound.play()
                         dx += 1
+                        s
 
             elif event.type == VIDEORESIZE:
                 board_width = board_width
@@ -3131,9 +3275,9 @@ while not done:
 
                 # Erase line
                 erase_count = 0
-                for j in range(height+1):
+                for j in range(21):
                     is_full = True
-                    for i in range(width):
+                    for i in range(10):
                         if matrix[i][j] == 0:
                             is_full = False
                     if is_full:
@@ -3141,7 +3285,7 @@ while not done:
                         line_count += 1
                         k = j
                         while k > 0:
-                            for i in range(width):
+                            for i in range(10):
                                 matrix[i][k] = matrix[i][k - 1]
                             k -= 1
                 if erase_count == 1:
@@ -3173,8 +3317,8 @@ while not done:
                 for i in range(1, max_score, fever_interval):
                     if score > i * fever_score and score < (i + 1) * fever_score:  # 500~1000,2000~2500.3500~4000
                         mino = randint(1, 1)
-                        next_mino1_en = randint(1, 1)
-                        next_mino2_en = randint(1, 1)
+                        next_mino1 = randint(1, 1)
+                        next_mino2 = randint(1, 1)
                         next_fever = (i + fever_interval) * fever_score
                         if erase_count == 1:
                             ui_variables.single_sound.play()
@@ -3323,27 +3467,27 @@ while not done:
                     if not is_leftedge(dx, dy, mino, rotation, matrix):
                         ui_variables.move_sound.play()
                         dx -= 1
-                    # draw_mino(dx, dy, mino, rotation, matrix)
-                    # draw_board(next_mino1, next_mino2,
-                    #         hold_mino, score, level, goal)
+                    draw_mino(dx, dy, mino, rotation, matrix)
+                    draw_board(next_mino1, next_mino2,
+                            hold_mino, score, level, goal)
                     if change % 2 == 1:
                         draw_hardboard_change(next_mino1, next_mino2, hold_mino, score, level, goal)
-                    # else:
-                    #     draw_board(next_mino1, next_mino2, hold_mino, score, level, goal)
-                    #     pygame.display.update()
+                    else:
+                        draw_board(next_mino1, next_mino2, hold_mino, score, level, goal)
+                        pygame.display.update()
                 # Move right
                 elif event.key == K_RIGHT:
                     if not is_rightedge(dx, dy, mino, rotation, matrix):
                         ui_variables.move_sound.play()
                         dx += 1
-                    # draw_mino(dx, dy, mino, rotation, matrix)
-                    # draw_board(next_mino1, next_mino2,
-                    #         hold_mino, score, level, goal)
+                    draw_mino(dx, dy, mino, rotation, matrix)
+                    draw_board(next_mino1, next_mino2,
+                            hold_mino, score, level, goal)
                     if change % 2 == 1:
                         draw_hardboard_change(next_mino1, next_mino2, hold_mino, score, level, goal)
-                    # else:
-                    #     draw_board(next_mino1, next_mino2, hold_mino, score, level, goal)
-                    #     pygame.display.update()
+                    else:
+                        draw_board(next_mino1, next_mino2, hold_mino, score, level, goal)
+                        pygame.display.update()
 
             elif event.type == VIDEORESIZE:
                 board_width = board_width
@@ -4456,43 +4600,122 @@ while not done:
         draw_image(screen, scoreboard_board_image, board_width * half, board_height * half,
                    int(board_height * volume_width_rate), board_height)
 
-        easy_mode_text = ui_variables.h2_b.render(
-            "EASY MODE:", 1, ui_variables.yellow)
-        hard_mode_text = ui_variables.h2_b.render(
-            "HARD MODE:", 1, ui_variables.yellow)
-        screen.blit(easy_mode_text, (board_width * playing_image_y_rate, board_height * playing_image_y_rate))
-        screen.blit(hard_mode_text, (board_width * name_height_rate, board_height * playing_image_y_rate))
+        if board_width < 600 :
+            easy_mode_text = ui_variables.h5.render(
+                "EASY MODE:", 1, ui_variables.yellow)
+            hard_mode_text = ui_variables.h5.render(
+                "HARD MODE:", 1, ui_variables.yellow)
+            screen.blit(easy_mode_text, (board_width * playing_image_y_rate, board_height * playing_image_y_rate))
+            screen.blit(hard_mode_text, (board_width * name_height_rate, board_height * playing_image_y_rate))
 
-        back_button.draw(screen, (0, 0, 0))
+            back_button.draw(screen, (0, 0, 0))
+        
+        elif 600 <= board_width < 1200 :
+            easy_mode_text = ui_variables.h2_b.render(
+                "EASY MODE:", 1, ui_variables.yellow)
+            hard_mode_text = ui_variables.h2_b.render(
+                "HARD MODE:", 1, ui_variables.yellow)
+            screen.blit(easy_mode_text, (board_width * playing_image_y_rate, board_height * playing_image_y_rate))
+            screen.blit(hard_mode_text, (board_width * name_height_rate, board_height * playing_image_y_rate))
+
+            back_button.draw(screen, (0, 0, 0))
+
+        elif 1200 <= board_width :
+            easy_mode_text = ui_variables.h1_b.render(
+                "EASY MODE:", 1, ui_variables.yellow)
+            hard_mode_text = ui_variables.h1_b.render(
+                "HARD MODE:", 1, ui_variables.yellow)
+            screen.blit(easy_mode_text, (board_width * playing_image_y_rate, board_height * playing_image_y_rate))
+            screen.blit(hard_mode_text, (board_width * name_height_rate, board_height * playing_image_y_rate))
+
+            back_button.draw(screen, (0, 0, 0))
 
         # render("텍스트이름", 안티에일리어싱 적용, 색깔), 즉 아래의 코드에서 숫자 1=안티에일리어싱 적용에 관한 코드
         # easy mode
-        leader_1 = ui_variables.h2_b.render(
-            '1st ' + leaders[0][0] + ' ' + str(leaders[0][1]), 1, ui_variables.white)
-        leader_2 = ui_variables.h2_b.render(
-            '2nd ' + leaders[1][0] + ' ' + str(leaders[1][1]), 1, ui_variables.white)
-        leader_3 = ui_variables.h2_b.render(
-            '3rd ' + leaders[2][0] + ' ' + str(leaders[2][1]), 1, ui_variables.white)
-        screen.blit(leader_1, (board_width * playing_image_y_rate,
-                    board_height * 0.35))  # 위치 비율 고정
-        screen.blit(leader_2, (board_width * playing_image_y_rate,
-                    board_height * half))  # 위치 비율 고정
-        screen.blit(leader_3, (board_width * playing_image_y_rate,
-                    board_height * 0.65))  # 위치 비율 고정
+        if board_width < 600 :
+            leader_1 = ui_variables.h5.render(
+                '1st ' + leaders[0][0] + ' ' + str(leaders[0][1]), 1, ui_variables.white)
+            leader_2 = ui_variables.h5.render(
+                '2nd ' + leaders[1][0] + ' ' + str(leaders[1][1]), 1, ui_variables.white)
+            leader_3 = ui_variables.h5.render(
+                '3rd ' + leaders[2][0] + ' ' + str(leaders[2][1]), 1, ui_variables.white)
+            screen.blit(leader_1, (board_width * playing_image_y_rate,
+                        board_height * 0.35))  # 위치 비율 고정
+            screen.blit(leader_2, (board_width * playing_image_y_rate,
+                        board_height * half))  # 위치 비율 고정
+            screen.blit(leader_3, (board_width * playing_image_y_rate,
+                        board_height * 0.65))  # 위치 비율 고정
+
+        elif 600 <= board_width < 1200 :
+            leader_1 = ui_variables.h2_b.render(
+                '1st ' + leaders[0][0] + ' ' + str(leaders[0][1]), 1, ui_variables.white)
+            leader_2 = ui_variables.h2_b.render(
+                '2nd ' + leaders[1][0] + ' ' + str(leaders[1][1]), 1, ui_variables.white)
+            leader_3 = ui_variables.h2_b.render(
+                '3rd ' + leaders[2][0] + ' ' + str(leaders[2][1]), 1, ui_variables.white)
+            screen.blit(leader_1, (board_width * playing_image_y_rate,
+                        board_height * 0.35))  # 위치 비율 고정
+            screen.blit(leader_2, (board_width * playing_image_y_rate,
+                        board_height * half))  # 위치 비율 고정
+            screen.blit(leader_3, (board_width * playing_image_y_rate,
+                        board_height * 0.65))  # 위치 비율 고정
+
+        elif 1200 <= board_width :
+            leader_1 = ui_variables.h1_b.render(
+                '1st ' + leaders[0][0] + ' ' + str(leaders[0][1]), 1, ui_variables.white)
+            leader_2 = ui_variables.h1_b.render(
+                '2nd ' + leaders[1][0] + ' ' + str(leaders[1][1]), 1, ui_variables.white)
+            leader_3 = ui_variables.h1_b.render(
+                '3rd ' + leaders[2][0] + ' ' + str(leaders[2][1]), 1, ui_variables.white)
+            screen.blit(leader_1, (board_width * playing_image_y_rate,
+                        board_height * 0.35))  # 위치 비율 고정
+            screen.blit(leader_2, (board_width * playing_image_y_rate,
+                        board_height * half))  # 위치 비율 고정
+            screen.blit(leader_3, (board_width * playing_image_y_rate,
+                        board_height * 0.65))  # 위치 비율 고정
 
         # hard mode
-        leader_1 = ui_variables.h2_b.render(
-            '1st ' + leaders_hard[0][0] + ' ' + str(leaders_hard[0][1]), 1, ui_variables.white)
-        leader_2 = ui_variables.h2_b.render(
-            '2nd ' + leaders_hard[1][0] + ' ' + str(leaders_hard[1][1]), 1, ui_variables.white)
-        leader_3 = ui_variables.h2_b.render(
-            '3rd ' + leaders_hard[2][0] + ' ' + str(leaders_hard[2][1]), 1, ui_variables.white)
-        screen.blit(leader_1, (board_width * name_height_rate,
-                    board_height * 0.35))  # 위치 비율 고정
-        screen.blit(leader_2, (board_width * name_height_rate,
-                    board_height * half))  # 위치 비율 고정
-        screen.blit(leader_3, (board_width * name_height_rate,
-                    board_height * 0.65))  # 위치 비율 고정
+        if board_width < 600 :
+            leader_1 = ui_variables.h5.render(
+                '1st ' + leaders_hard[0][0] + ' ' + str(leaders_hard[0][1]), 1, ui_variables.white)
+            leader_2 = ui_variables.h5.render(
+                '2nd ' + leaders_hard[1][0] + ' ' + str(leaders_hard[1][1]), 1, ui_variables.white)
+            leader_3 = ui_variables.h5.render(
+                '3rd ' + leaders_hard[2][0] + ' ' + str(leaders_hard[2][1]), 1, ui_variables.white)
+            screen.blit(leader_1, (board_width * name_height_rate,
+                        board_height * 0.35))  # 위치 비율 고정
+            screen.blit(leader_2, (board_width * name_height_rate,
+                        board_height * half))  # 위치 비율 고정
+            screen.blit(leader_3, (board_width * name_height_rate,
+                        board_height * 0.65))  # 위치 비율 고정
+
+        elif 600 <= board_width < 1200 :
+            leader_1 = ui_variables.h2_b.render(
+                '1st ' + leaders_hard[0][0] + ' ' + str(leaders_hard[0][1]), 1, ui_variables.white)
+            leader_2 = ui_variables.h2_b.render(
+                '2nd ' + leaders_hard[1][0] + ' ' + str(leaders_hard[1][1]), 1, ui_variables.white)
+            leader_3 = ui_variables.h2_b.render(
+                '3rd ' + leaders_hard[2][0] + ' ' + str(leaders_hard[2][1]), 1, ui_variables.white)
+            screen.blit(leader_1, (board_width * name_height_rate,
+                        board_height * 0.35))  # 위치 비율 고정
+            screen.blit(leader_2, (board_width * name_height_rate,
+                        board_height * half))  # 위치 비율 고정
+            screen.blit(leader_3, (board_width * name_height_rate,
+                        board_height * 0.65))  # 위치 비율 고정
+
+        elif 1200 <= board_width :
+            leader_1 = ui_variables.h1_b.render(
+                '1st ' + leaders_hard[0][0] + ' ' + str(leaders_hard[0][1]), 1, ui_variables.white)
+            leader_2 = ui_variables.h1_b.render(
+                '2nd ' + leaders_hard[1][0] + ' ' + str(leaders_hard[1][1]), 1, ui_variables.white)
+            leader_3 = ui_variables.h1_b.render(
+                '3rd ' + leaders_hard[2][0] + ' ' + str(leaders_hard[2][1]), 1, ui_variables.white)
+            screen.blit(leader_1, (board_width * name_height_rate,
+                        board_height * 0.35))  # 위치 비율 고정
+            screen.blit(leader_2, (board_width * name_height_rate,
+                        board_height * half))  # 위치 비율 고정
+            screen.blit(leader_3, (board_width * name_height_rate,
+                        board_height * 0.65))  # 위치 비율 고정
 
         pygame.display.update()
 
@@ -5093,8 +5316,8 @@ while not done:
                     
                 if size1_check_button.isOver(pos):
                     ui_variables.click_sound.play()
-                    board_width = 800
-                    board_height = 450
+                    board_width = 400
+                    board_height = 225
                     block_size = int(board_height * text_width_rate)  # 블록 크기 비율 고정
                     screen = pygame.display.set_mode((board_width, board_height), pygame.RESIZABLE)
                     textsize = False
@@ -5105,8 +5328,8 @@ while not done:
 
                 if size2_check_button.isOver(pos):
                     ui_variables.click_sound.play()
-                    board_width = 1200
-                    board_height = 675
+                    board_width = 800
+                    board_height = 450
                     block_size = int(board_height * text_width_rate)  # 블록 크기 비율 고정
                     screen = pygame.display.set_mode((board_width, board_height), pygame.RESIZABLE)
                     textsize = True
