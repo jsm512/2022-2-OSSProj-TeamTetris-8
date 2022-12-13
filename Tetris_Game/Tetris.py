@@ -463,7 +463,7 @@ def draw_block_image(x, y, image):
     # (window, 이미지주소, x좌표, y좌표, 너비, 높이)
     draw_image(screen, image, x, y, block_size, block_size)
 
-# Draw game screen
+# Draw game screen hard보드 위치
 def draw_board(next1, next2, hold, score, level, goal):
     # 크기 비율 고정, 전체 board 가로길이에서 원하는 비율을 곱해줌
     sidebar_width = int(board_width * sidebar_rate)
@@ -626,9 +626,9 @@ def draw_board(next1, next2, hold, score, level, goal):
     # 테트리스 블록이 들어갈 공간? 그리기 ..맞나?
     for x in range(width):
         for y in range(height):
-            dx = int(board_width * dx_matrix_rate) + block_size * \
+            dx = int(board_width * hard_board_matrix_dx_rate) + block_size * \
                 x  # 위치비율 고정, board 가로길이에 원하는 비율을 곱해줌#
-            dy = int(board_height * dy_matrix_rate) + block_size * \
+            dy = int(board_height * hard_board_matrix_dy_rate) + block_size * \
                 y  # 위치비율 고정, board 세로길이에 원하는 비율을 곱해줌#
             draw_block_image(dx, dy, ui_variables.t_block[matrix[x][y + 1]])
 
@@ -641,7 +641,7 @@ def draw1_board(next1, next2, hold, score, level, goal):
     pygame.draw.rect(
         screen,
         ui_variables.grey_1,
-        Rect(sidebar_width, 0, int(board_width * 0.2375), board_height)  # 크기 비율 고정
+        Rect(sidebar_width, 0, int(board_width * sidebar_width_rate ), board_height)  # 크기 비율 고정
     )
 
     # Draw 2 next minos
@@ -794,11 +794,11 @@ def draw1_board(next1, next2, hold, score, level, goal):
     # Draw board
     # 테트리스 블록이 들어갈 공간? 그리기 ..맞나?
     if width == init_width or width == small_size_width:
-        height_ratio = 0.13
+        height_ratio = player1_board_under_init_matrix_dy_rate
         width_ratio = winner_image_height_rate
     else:
-        height_ratio = 0.02
-        width_ratio = 0.15
+        height_ratio = player1_board_matrix_dy_rate
+        width_ratio = player1_board_matrix_dx_rate
     
     for x in range(width):
         for y in range(height):
@@ -2394,10 +2394,10 @@ def set_initial_values():
     pause_time = pygame.time.get_ticks()
 
     # easy mode 스코어보드 leaders 배열에 저장
-    with open('leaderboard.txt') as f:
+    with open('/home/jsm/2022-2-OSSProj-TeamTetris-8/leaderboard.txt') as f:
         lines = f.readlines()
     lines = [line.rstrip('\n') for line in open(
-        'leaderboard.txt')]  # leaderboard.txt 한줄씩 읽어옴
+        '/home/jsm/2022-2-OSSProj-TeamTetris-8/leaderboard.txt')]  # /home/jsm/2022-2-OSSProj-TeamTetris-8/leaderboard.txt 한줄씩 읽어옴
 
     leaders = {'AAA': 0, 'BBB': 0, 'CCC': 0}
     for i in lines:
@@ -2405,10 +2405,10 @@ def set_initial_values():
     leaders = sorted(leaders.items(), key=operator.itemgetter(1), reverse=True)
 
     # hard mode 스코어보드 leaders_hard 배열에 저장
-    with open('leaderboard_hard.txt') as h:
+    with open('/home/jsm/2022-2-OSSProj-TeamTetris-8/leaderboard_hard.txt') as h:
         lines = h.readlines()
     lines = [line.rstrip('\n') for line in open(
-        'leaderboard_hard.txt')]  # leaderboard.txt 한줄씩 읽어옴
+        '/home/jsm/2022-2-OSSProj-TeamTetris-8/leaderboard_hard.txt')]  # /home/jsm/2022-2-OSSProj-TeamTetris-8/leaderboard.txt 한줄씩 읽어옴
 
     leaders_hard = {'AAA': 0, 'BBB': 0, 'CCC': 0}
     for i in lines:
@@ -2762,7 +2762,7 @@ while not done:
                 
                 # 점수 구간에 따른 피버타임 #fever_interval=3
                 for i in range(1, max_score, fever_interval):
-                    if score > i * fever_score and score < (i + 1) * fever_score:  # 500~1000,2000~2500.3500~4000
+                    if score > i * fever_score and score < (i + 1) * fever_score:  # 500~1000,2000~2text_rate_1.3text_rate_1~4000
                         mino = randint(1, 1)
                         next_mino1_en = randint(1, 1)
                         next_mino2_en = randint(1, 1)
@@ -2998,16 +2998,16 @@ while not done:
 
                 # Erase line
                 erase_count = 0
-                for j in range(21):
+                for j in range(height+1):
                     is_full = True
-                    for i in range(10):
+                    for i in range(width):
                         if matrix[i][j] == 0:
                             is_full = False
                     if is_full:
                         erase_count += 1
                         k = j
                         while k > 0:
-                            for i in range(10):
+                            for i in range(width):
                                 matrix[i][k] = matrix[i][k - 1]
                             k -= 1
                 if erase_count == 1:
@@ -3037,7 +3037,7 @@ while not done:
 
                 # 점수 구간에 따른 피버타임 #fever_interval=3
                 for i in range(1, max_score, fever_interval):
-                    if score > i * fever_score and score < (i + 1) * fever_score:  # 500~1000,2000~2500.3500~4000
+                    if score > i * fever_score and score < (i + 1) * fever_score:  # 500~1000,2000~2text_rate_1.3text_rate_1~4000
                         mino = randint(1, 1)
                         next_mino1_en = randint(1, 1)
                         next_mino2_en = randint(1, 1)
@@ -3275,9 +3275,9 @@ while not done:
 
                 # Erase line
                 erase_count = 0
-                for j in range(21):
+                for j in range(height+1):
                     is_full = True
-                    for i in range(10):
+                    for i in range(width):
                         if matrix[i][j] == 0:
                             is_full = False
                     if is_full:
@@ -3285,7 +3285,7 @@ while not done:
                         line_count += 1
                         k = j
                         while k > 0:
-                            for i in range(10):
+                            for i in range(width):
                                 matrix[i][k] = matrix[i][k - 1]
                             k -= 1
                 if erase_count == 1:
@@ -3315,7 +3315,7 @@ while not done:
 
                 # 점수 구간에 따른 피버타임 #fever_interval=3
                 for i in range(1, max_score, fever_interval):
-                    if score > i * fever_score and score < (i + 1) * fever_score:  # 500~1000,2000~2500.3500~4000
+                    if score > i * fever_score and score < (i + 1) * fever_score:  # 500~1000,2000~2text_rate_1.3text_rate_1~4000
                         mino = randint(1, 1)
                         next_mino1 = randint(1, 1)
                         next_mino2 = randint(1, 1)
@@ -3524,7 +3524,7 @@ while not done:
                 done = True
 
             elif event.type == USEREVENT: #키보드,마우스 이벤트 
-                pygame.time.set_timer(pygame.USEREVENT, game_speed)  # 기본 게임속도 600으로 초기 설정
+                pygame.time.set_timer(pygame.USEREVENT, game_speed)  # 기본 게임속도 text_rate_2으로 초기 설정
                 draw_mino(dx, dy, mino, rotation, matrix)
                 draw_mino(dx_2P, dy_2P, mino_2P, rotation_2P, matrix_2P)
                 draw_multiboard(next_mino1, hold_mino, next_mino1_2P,
@@ -4246,7 +4246,7 @@ while not done:
                 if event.key == K_RETURN:
                     ui_variables.click_sound.play()
                     if game_status == 'start':  # easy mode일 경우
-                        outfile = open('leaderboard.txt', 'a')
+                        outfile = open('/home/jsm/2022-2-OSSProj-TeamTetris-8/leaderboard.txt', 'a')
                         outfile.write(
                             chr(name[0]) + chr(name[1]) + chr(name[2]) + ' ' + str(score) + '\n')
                         outfile.close()
@@ -4320,7 +4320,7 @@ while not done:
                     if ok_button.isOver(pos):
                         ui_variables.click_sound.play()
                         if game_status == 'start':  # easy mode 일 경우
-                            outfile = open('leaderboard.txt', 'a')
+                            outfile = open('/home/jsm/2022-2-OSSProj-TeamTetris-8/leaderboard.txt', 'a')
                             outfile.write(
                                 chr(name[0]) + chr(name[1]) + chr(name[2]) + ' ' + str(score) + '\n')
                             outfile.close()
