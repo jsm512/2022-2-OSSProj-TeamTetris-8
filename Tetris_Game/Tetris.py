@@ -61,7 +61,7 @@ clock = pygame.time.Clock()
 screen = pygame.display.set_mode((board_width, board_height), pygame.RESIZABLE) 
 pygame.time.set_timer(pygame.USEREVENT, 500)
 pygame.display.set_caption("TETRIS")
-icon = pygame.image.load('Tetris_Game/assets/vector/icon_tetris.png').convert_alpha()
+icon = pygame.image.load('/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/icon_tetris.png').convert_alpha()
 pygame.display.set_icon(icon)
 
 initialize = True  # Start Screen 에서 set_initial_values()로 초기화할지 여부를 boolean으로 저장
@@ -69,9 +69,9 @@ initialize = True  # Start Screen 에서 set_initial_values()로 초기화할지
 
 class ui_variables: #UI
     # Fonts
-    font_path = "Tetris_Game/assets/fonts/a옛날사진관3.ttf"
-    font_path_b = "Tetris_Game/assets/fonts/a옛날사진관3.ttf"
-    font_path_i = "Tetris_Game/assets/fonts/a옛날사진관3.ttf"
+    font_path = "/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/fonts/a옛날사진관3.ttf"
+    font_path_b = "/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/fonts/a옛날사진관3.ttf"
+    font_path_i = "/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/fonts/a옛날사진관3.ttf"
 
 
     h0 = pygame.font.Font(font_path, h0_size)
@@ -92,29 +92,29 @@ class ui_variables: #UI
     h5_i = pygame.font.Font(font_path_i, h5_i_size)
 
     # Sounds
-    pygame.mixer.music.load("Tetris_Game/assets/sounds/BGM1.wav")  # 음악 불러옴
+    pygame.mixer.music.load("/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/sounds/BGM1.wav")  # 음악 불러옴
     # pygame.mixer.music.set_volume(half)  # 이 부분도 필요 없음, set_volume에 추가해야 함
-    intro_sound = pygame.mixer.Sound("Tetris_Game/assets/sounds/intro.wav")
-    fall_sound = pygame.mixer.Sound("Tetris_Game/assets/sounds/SFX_Fall.wav")
-    break_sound = pygame.mixer.Sound("Tetris_Game/assets/sounds/SFX_Break.wav")
-    click_sound = pygame.mixer.Sound("Tetris_Game/assets/sounds/SFX_ButtonUp.wav")  # 여기부터
-    move_sound = pygame.mixer.Sound("Tetris_Game/assets/sounds/SFX_PieceMoveLR.wav")
-    drop_sound = pygame.mixer.Sound("Tetris_Game/assets/sounds/SFX_PieceHardDrop.wav")
+    intro_sound = pygame.mixer.Sound("/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/sounds/intro.wav")
+    fall_sound = pygame.mixer.Sound("/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/sounds/SFX_Fall.wav")
+    break_sound = pygame.mixer.Sound("/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/sounds/SFX_Break.wav")
+    click_sound = pygame.mixer.Sound("/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/sounds/SFX_ButtonUp.wav")  # 여기부터
+    move_sound = pygame.mixer.Sound("/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/sounds/SFX_PieceMoveLR.wav")
+    drop_sound = pygame.mixer.Sound("/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/sounds/SFX_PieceHardDrop.wav")
     single_sound = pygame.mixer.Sound(
-        "Tetris_Game/assets/sounds/SFX_SpecialLineClearSingle.wav")
+        "/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/sounds/SFX_SpecialLineClearSingle.wav")
     double_sound = pygame.mixer.Sound(
-        "Tetris_Game/assets/sounds/SFX_SpecialLineClearDouble.wav")
+        "/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/sounds/SFX_SpecialLineClearDouble.wav")
     triple_sound = pygame.mixer.Sound(
-        "Tetris_Game/assets/sounds/SFX_SpecialLineClearTriple.wav")  # 여기까지는 기존코드
-    tetris_sound = pygame.mixer.Sound("Tetris_Game/assets/sounds/SFX_SpecialTetris.wav")
-    LevelUp_sound = pygame.mixer.Sound("Tetris_Game/assets/sounds/SFX_LevelUp.wav")
-    GameOver_sound = pygame.mixer.Sound("Tetris_Game/assets/sounds/SFX_GameOver.wav")
+        "/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/sounds/SFX_SpecialLineClearTriple.wav")  # 여기까지는 기존코드
+    tetris_sound = pygame.mixer.Sound("/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/sounds/SFX_SpecialTetris.wav")
+    LevelUp_sound = pygame.mixer.Sound("/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/sounds/SFX_LevelUp.wav")
+    GameOver_sound = pygame.mixer.Sound("/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/sounds/SFX_GameOver.wav")
 
     # 레벨업 이미지
-    LevelUp_vector = pygame.image.load('Tetris_Game/assets/vector/Level_Up.png')
+    LevelUp_vector = pygame.image.load('/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/Level_Up.png')
 
     # 피버 이미지
-    fever_image = pygame.image.load("Tetris_Game/assets/images/fever.png")
+    fever_image = pygame.image.load("/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/images/fever.png")
 
     black = black_color
     black_pause = pause_color
@@ -139,154 +139,154 @@ class ui_variables: #UI
     brown = brown_color
     
     t_color = [grey_2, cyan, blue, orange, yellow, green, pink, red, lightgreen, gold, brown, grey_3]
-    cyan_image = 'Tetris_Game/assets/block_images/cyan.png'
-    blue_image = 'Tetris_Game/assets/block_images/blue.png'
-    orange_image = 'Tetris_Game/assets/block_images/orange.png'
-    yellow_image = 'Tetris_Game/assets/block_images/yellow.png'
-    green_image = 'Tetris_Game/assets/block_images/green.png'
-    pink_image = 'Tetris_Game/assets/block_images/pink.png'
-    red_image = 'Tetris_Game/assets/block_images/red.png'
-    lightgreen_image = 'Tetris_Game/assets/block_images/lightgreen.png'
-    gold_image = 'Tetris_Game/assets/block_images/gold.png'
-    brown_image = 'Tetris_Game/assets/block_images/brown.png'
-    ghost_image = 'Tetris_Game/assets/block_images/ghost.png'
-    table_image = 'Tetris_Game/assets/block_images/background.png'
-    linessent_image = 'Tetris_Game/assets/block_images/linessent.png'
+    cyan_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/block_images/cyan.png'
+    blue_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/block_images/blue.png'
+    orange_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/block_images/orange.png'
+    yellow_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/block_images/yellow.png'
+    green_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/block_images/green.png'
+    pink_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/block_images/pink.png'
+    red_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/block_images/red.png'
+    lightgreen_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/block_images/lightgreen.png'
+    gold_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/block_images/gold.png'
+    brown_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/block_images/brown.png'
+    ghost_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/block_images/ghost.png'
+    table_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/block_images/background.png'
+    linessent_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/block_images/linessent.png'
     t_block = [table_image, cyan_image, blue_image, orange_image, yellow_image, green_image, pink_image, red_image,
                lightgreen_image, gold_image, brown_image, ghost_image, linessent_image]
     t_block_1 = [table_image, cyan_image, blue_image, orange_image, yellow_image, green_image, pink_image, red_image,
                 ghost_image, linessent_image]
 
 # 각 이미지 주소
-background_image = 'Tetris_Game/assets/images/mainpage_background.png'  # 메뉴화면(첫 화면) 배경
-gamebackground_image = 'Tetris_Game/assets/images/background_nyc.png'  # 게임 배경화면 : 기본값 뉴욕
-pause_board_image = 'Tetris_Game/assets/vector/pause_board.png'
+background_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/images/mainpage_background.png'  # 메뉴화면(첫 화면) 배경
+gamebackground_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/images/background_nyc.png'  # 게임 배경화면 : 기본값 뉴욕
+pause_board_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/pause_board.png'
 
-fever_image = 'Tetris_Game/assets/vector/fever.png'
+fever_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/fever.png'
 
-help_board_image = 'Tetris_Game/assets/vector/help_board.png'
-select_mode_button_image = 'Tetris_Game/assets/vector/Mode.png'
-clicked_select_mode_button_image = 'Tetris_Game/assets/vector/clicked_Mode.png'
+help_board_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/help_board.png'
+select_mode_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/Mode.png'
+clicked_select_mode_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/clicked_Mode.png'
 
-setting_button_image = 'Tetris_Game/assets/vector/Setting.png'
-clicked_setting_button_image = 'Tetris_Game/assets/vector/clicked_Setting.png'
+setting_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/Setting.png'
+clicked_setting_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/clicked_Setting.png'
 
-pause_setting_button_image = 'Tetris_Game/assets/vector/pause_settings_button.png'
-clicked_pause_setting_button_image = 'Tetris_Game/assets/vector/clicked_pause_settings_button.png'
+pause_setting_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/pause_settings_button.png'
+clicked_pause_setting_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/clicked_pause_settings_button.png'
 
-score_board_button_image = 'Tetris_Game/assets/vector/Score.png'
-clicked_score_board_button_image = 'Tetris_Game/assets/vector/clicked_Score.png'
+score_board_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/Score.png'
+clicked_score_board_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/clicked_Score.png'
 
-quit_button_image = 'Tetris_Game/assets/vector/Quit.png'
-clicked_quit_button_image = 'Tetris_Game/assets/vector/clicked_Quit.png'
+quit_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/Quit.png'
+clicked_quit_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/clicked_Quit.png'
 
-resume_button_image = 'Tetris_Game/assets/vector/Resume.png'
-clicked_resume_button_image = 'Tetris_Game/assets/vector/clicked_resume_button.png'
+resume_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/Resume.png'
+clicked_resume_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/clicked_resume_button.png'
 
-help_button_image = 'Tetris_Game/assets/vector/Help.png'
-clicked_help_button_image = 'Tetris_Game/assets/vector/clicked_Help.png'
+help_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/Help.png'
+clicked_help_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/clicked_Help.png'
 
-single_button_image = 'Tetris_Game/assets/vector/Single.png'
-clicked_single_button_image = 'Tetris_Game/assets/vector/clicked_Single.png'
+single_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/Single.png'
+clicked_single_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/clicked_Single.png'
 
-easy_button_image = 'Tetris_Game/assets/vector/easy.png'
-clicked_easy_button_image = 'Tetris_Game/assets/vector/clicked_easy.png'
+easy_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/Easy.png'
+clicked_easy_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/clicked_easy.png'
 
-normal_button_image='Tetris_Game/assets/vector/normal.png'
-clicked_normal_button_image='Tetris_Game/assets/vector/clicked_normal.png'
+normal_button_image='/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/normal.png'
+clicked_normal_button_image='/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/clicked_normal.png'
 
-hard_button_image = 'Tetris_Game/assets/vector/Hard.png'
-clicked_hard_button_image = 'Tetris_Game/assets/vector/clicked_Hard.png'
+hard_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/Hard.png'
+clicked_hard_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/clicked_Hard.png'
 
-pvp_button_image = 'Tetris_Game/assets/vector/PvP.png'
-clicked_pvp_button_image = 'Tetris_Game/assets/vector/clicked_PvP.png'
-
-
-hard_training_button_image = 'Tetris_Game/assets/vector/hard_tutorial_button.png'
-clicked_hard_training_button_image = 'Tetris_Game/assets/vector/clicked_hard_tutorial_button.png'
+pvp_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/PvP.png'
+clicked_pvp_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/clicked_PvP.png'
 
 
-gameover_board_image = 'Tetris_Game/assets/vector/gameover_board.png'
-hard_training_start_image = 'Tetris_Game/assets/images/hard_tutorial_menual.png'
-multi_training_start_image = 'Tetris_Game/assets/images/multi_tutorial_menual.png'
-setting_board_image = 'Tetris_Game/assets/vector/setting_board.png'
-mute_button_image = 'Tetris_Game/assets/vector/volume_mute.png'
-clicked_mute_button_image = 'Tetris_Game/assets/vector/clicked_allmute_button.png'
+hard_training_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/hard_tutorial_button.png'
+clicked_hard_training_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/clicked_hard_tutorial_button.png'
 
-background1_image = 'Tetris_Game/assets/images/background_hongkong.png'
-background2_image = 'Tetris_Game/assets/images/background_nyc.png'
-background3_image = 'Tetris_Game/assets/images/background_uk.png'
 
-clicked_background1_image = 'Tetris_Game/assets/images/clicked_background_hongkong.png'
-clicked_background2_image = 'Tetris_Game/assets/images/clicked_background_nyc.png'
-clicked_background3_image = 'Tetris_Game/assets/images/clicked_background_uk.png'
+gameover_board_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/gameover_board.png'
+hard_training_start_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/images/hard_tutorial_menual.png'
+multi_training_start_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/images/multi_tutorial_menual.png'
+setting_board_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/setting_board.png'
+mute_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/volume_mute.png'
+clicked_mute_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/clicked_allmute_button.png'
 
-size1_image = 'Tetris_Game/assets/images/small.png'
-size2_image = 'Tetris_Game/assets/images/medium.png'
-size3_image = 'Tetris_Game/assets/images/big.png'
+background1_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/images/background_hongkong.png'
+background2_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/images/background_nyc.png'
+background3_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/images/background_uk.png'
 
-mute_button_image = 'Tetris_Game/assets/vector/volume_mute.png'
-default_button_image = 'Tetris_Game/assets/vector/volume_on.png'
-clicked_default_button_image = 'Tetris_Game/assets/vector/clicked_default_button.png'
+clicked_background1_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/images/clicked_background_hongkong.png'
+clicked_background2_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/images/clicked_background_nyc.png'
+clicked_background3_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/images/clicked_background_uk.png'
+
+size1_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/images/small.png'
+size2_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/images/medium.png'
+size3_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/images/big.png'
+
+mute_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/volume_mute.png'
+default_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/volume_on.png'
+clicked_default_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/clicked_default_button.png'
 
 # img 수정
-resume_button_image = 'Tetris_Game/assets/vector/Resume.png'
-clicked_resume_button_image = 'Tetris_Game/assets/vector/clicked_Resume.png'
-restart_button_image = 'Tetris_Game/assets/vector/Restart.png'
-clicked_restart_button_image = 'Tetris_Game/assets/vector/clicked_Restart.png'
+resume_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/Resume.png'
+clicked_resume_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/clicked_Resume.png'
+restart_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/Restart.png'
+clicked_restart_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/clicked_Restart.png'
 
-back_button_image = 'Tetris_Game/assets/vector/Back.png'
-clicked_back_button_image = 'Tetris_Game/assets/vector/clicked_Back.png'
-volume_vector = 'Tetris_Game/assets/vector/volume_vector.png'
-clicked_volume_vector = 'Tetris_Game/assets/vector/clicked_volume_vector.png'
-keyboard_vector = 'Tetris_Game/assets/vector/keyboard_vector.png'
-clicked_keyboard_vector = 'Tetris_Game/assets/vector/clicked_keyboard_vector.png'
-screen_vector = 'Tetris_Game/assets/vector/screen_vector.png'
-clicked_screen_vector = 'Tetris_Game/assets/vector/clicked_screen_vector.png'
-size_vector = 'Tetris_Game/assets/vector/size_vector.png'
-clicked_size_vector = 'Tetris_Game/assets/vector/clicked_size_vector.png'
-menu_button_image = 'Tetris_Game/assets/vector/Menu.png'
-clicked_menu_button_image = 'Tetris_Game/assets/vector/clicked_Menu.png'
-ok_button_image = 'Tetris_Game/assets/vector/Ok.png'
-clicked_ok_button_image = 'Tetris_Game/assets/vector/clicked_Ok.png'
-plus_button_image = 'Tetris_Game/assets/vector/volume_up.png'
-clicked_plus_button_image = 'Tetris_Game/assets/vector/clicked_plus_button.png'
-minus_button_image = 'Tetris_Game/assets/vector/volume_down.png'
-clicked_minus_button_image = 'Tetris_Game/assets/vector/clicked_minus_button.png'
+back_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/Back.png'
+clicked_back_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/clicked_Back.png'
+volume_vector = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/volume_vector.png'
+clicked_volume_vector = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/clicked_volume_vector.png'
+keyboard_vector = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/keyboard_vector.png'
+clicked_keyboard_vector = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/clicked_keyboard_vector.png'
+screen_vector = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/screen_vector.png'
+clicked_screen_vector = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/clicked_screen_vector.png'
+size_vector = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/size_vector.png'
+clicked_size_vector = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/clicked_size_vector.png'
+menu_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/Menu.png'
+clicked_menu_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/clicked_Menu.png'
+ok_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/Ok.png'
+clicked_ok_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/clicked_Ok.png'
+plus_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/volume_up.png'
+clicked_plus_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/clicked_plus_button.png'
+minus_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/volume_down.png'
+clicked_minus_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/clicked_minus_button.png'
 
-backgroundmusic_select_image = 'Tetris_Game/assets/vector/music_notselect.png'
-clicked_backgroundmusic_select_image = 'Tetris_Game/assets/vector/music_select.png'
-sound_off_button_image = 'Tetris_Game/assets/vector/volume_off_circle.png'
-sound_on_button_image = 'Tetris_Game/assets/vector/volume_on_circle.png'
-check_button_image = 'Tetris_Game/assets/vector/checkbox_button.png'
-clicked_check_button_image = 'Tetris_Game/assets/vector/clicked_checkbox_button.png'
+backgroundmusic_select_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/music_notselect.png'
+clicked_backgroundmusic_select_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/music_select.png'
+sound_off_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/volume_off_circle.png'
+sound_on_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/volume_on_circle.png'
+check_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/checkbox_button.png'
+clicked_check_button_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/clicked_checkbox_button.png'
 
 
-pvp_win_image = 'Tetris_Game/assets/vector/pvp_win.png'
-pvp_lose_image = 'Tetris_Game/assets/vector/pvp_lose.png'
-leaderboard_vector = 'Tetris_Game/assets/vector/leaderboard_vector.png'
-clicked_leaderboard_vector = 'Tetris_Game/assets/vector/clicked_leaderboard_vector.png'
-multi_win_image = 'Tetris_Game/assets/vector/multi_win.png'
-multi_lose_image = 'Tetris_Game/assets/vector/multi_lose.png'
-multi_game_over = 'Tetris_Game/assets/vector/multi_game_over.png'
+pvp_win_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/pvp_win.png'
+pvp_lose_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/pvp_lose.png'
+leaderboard_vector = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/leaderboard_vector.png'
+clicked_leaderboard_vector = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/clicked_leaderboard_vector.png'
+multi_win_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/multi_win.png'
+multi_lose_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/multi_lose.png'
+multi_game_over = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/multi_game_over.png'
 
-leaderboard_vector = 'Tetris_Game/assets/vector/leaderboard_vector.png'
-clicked_leaderboard_vector = 'Tetris_Game/assets/vector/clicked_leaderboard_vector.png'
-scoreboard_board_image = 'Tetris_Game/assets/vector/score_board.png'
+leaderboard_vector = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/leaderboard_vector.png'
+clicked_leaderboard_vector = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/clicked_leaderboard_vector.png'
+scoreboard_board_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/score_board.png'
 
-multi_gameover_image = 'Tetris_Game/assets/vector/multi_game_over.png'
-multi_win_image = 'Tetris_Game/assets/vector/multi_win.png'
-multi_lose_image = 'Tetris_Game/assets/vector/multi_lose.png'
+multi_gameover_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/multi_game_over.png'
+multi_win_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/multi_win.png'
+multi_lose_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/multi_lose.png'
 
-multi_key_reverse_image = 'Tetris_Game/assets/vector/key_reverse.png'
-hard_speed_up_image = 'Tetris_Game/assets/vector/speed_up.png'
-hard_flipped_image = 'Tetris_Game/assets/vector/flipped.png'
+multi_key_reverse_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/key_reverse.png'
+hard_speed_up_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/speed_up.png'
+hard_flipped_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/flipped.png'
 
-multi_1P_break_image = 'Tetris_Game/assets/images/multi_1p_break.png'
-multi_2P_break_image = 'Tetris_Game/assets/images/multi_2p_break.png'
+multi_1P_break_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/images/multi_1p_break.png'
+multi_2P_break_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/images/multi_2p_break.png'
 
-line_message_multi_break_image = 'Tetris_Game/assets/vector/line_message_multi_tutorial_break.png'
-line_message_multi_win_image = 'Tetris_Game/assets/vector/line_message_multi_tutorial_win.png'
+line_message_multi_break_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/line_message_multi_tutorial_break.png'
+line_message_multi_win_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/vector/line_message_multi_tutorial_win.png'
 
 
 
@@ -401,7 +401,7 @@ BGM2_sound_on_button = button(board_width, board_height,BGM2_x_rate,BGM_button_y
 BGM3_sound_on_button = button(board_width, board_height,BGM3_x_rate,BGM_button_y_rate,BGM_button_width_rate,BGM_button_height_rate, backgroundmusic_select_image)
 
 # 선택된 BGM
-selected_bgm = "Tetris_Game/assets/sounds/BGM1.wav"
+selected_bgm = "/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/sounds/BGM1.wav"
 
 
 # 게임 중 버튼 생성하기위한 버튼객체 리스트 (버튼 전체)
@@ -4595,21 +4595,21 @@ while not done:
                     ui_variables.click_sound.play()
                     screen_setting = False
                 if background1_check_button.isOver(pos):
-                    gamebackground_image = 'Tetris_Game/assets/images/background_hongkong.png'
+                    gamebackground_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/images/background_hongkong.png'
                     # 클릭한 이미지에만 체크 표시
                     background2_check_button.image = background2_image
                     background3_check_button.image = background3_image
                     background1_check_button.image = clicked_background1_image
 
                 if background2_check_button.isOver(pos):
-                    gamebackground_image = 'Tetris_Game/assets/images/background_nyc.png'
+                    gamebackground_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/images/background_nyc.png'
                     # 클릭한 이미지에만 체크 표시
                     background1_check_button.image = background1_image
                     background3_check_button.image = background3_image
                     background2_check_button.image = clicked_background2_image
 
                 if background3_check_button.isOver(pos):
-                    gamebackground_image = 'Tetris_Game/assets/images/background_uk.png'
+                    gamebackground_image = '/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/images/background_uk.png'
                     # 클릭한 이미지에만 체크 표시
                     background1_check_button.image = background1_image
                     background2_check_button.image = background2_image
@@ -4955,36 +4955,36 @@ while not done:
                 #BGM 선택 기능 추가#
                 # BGM버튼을 누르면 인트로음악은 멈추고 해당 BGM재생됨 (Back버튼을 눌러 뒤로가기 전까지 계속 재생)
                 if BGM1_sound_on_button.isOver(pos):
-                    #ui_variables.intro_sound.("Tetris_Game/assets/sounds/BGM2.wav")#
+                    #ui_variables.intro_sound.("/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/sounds/BGM2.wav")#
                     # 클릭한 버튼만 체크 표시되도록
                     BGM2_sound_on_button.image = backgroundmusic_select_image
                     BGM3_sound_on_button.image = backgroundmusic_select_image
                     BGM1_sound_on_button.image = clicked_backgroundmusic_select_image
                     ui_variables.intro_sound.stop()
                     pygame.mixer.music.stop()
-                    selected_bgm = "Tetris_Game/assets/sounds/BGM1.wav"
+                    selected_bgm = "/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/sounds/BGM1.wav"
                     pygame.mixer.music.load(selected_bgm)
                     pygame.mixer.music.play()
                 if BGM2_sound_on_button.isOver(pos):
-                    #ui_variables.intro_sound.("Tetris_Game/assets/sounds/BGM2.wav")#
+                    #ui_variables.intro_sound.("/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/sounds/BGM2.wav")#
                     # 클릭한 버튼만 체크 표시되도록
                     BGM1_sound_on_button.image = backgroundmusic_select_image
                     BGM3_sound_on_button.image = backgroundmusic_select_image
                     BGM2_sound_on_button.image = clicked_backgroundmusic_select_image
                     ui_variables.intro_sound.stop()
                     pygame.mixer.music.stop()
-                    selected_bgm = "Tetris_Game/assets/sounds/BGM2.wav"
+                    selected_bgm = "/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/sounds/BGM2.wav"
                     pygame.mixer.music.load(selected_bgm)
                     pygame.mixer.music.play()
                 if BGM3_sound_on_button.isOver(pos):
-                    #ui_variables.intro_sound.("Tetris_Game/assets/sounds/BGM2.wav")#
+                    #ui_variables.intro_sound.("/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/sounds/BGM2.wav")#
                     # 클릭한 버튼만 체크 표시되도록
                     BGM1_sound_on_button.image = backgroundmusic_select_image
                     BGM2_sound_on_button.image = backgroundmusic_select_image
                     BGM3_sound_on_button.image = clicked_backgroundmusic_select_image
                     ui_variables.intro_sound.stop()
                     pygame.mixer.music.stop()
-                    selected_bgm = "Tetris_Game/assets/sounds/BGM3.wav"
+                    selected_bgm = "/home/jsm/2022-2-OSSProj-TeamTetris-8/Tetris_Game/assets/sounds/BGM3.wav"
                     pygame.mixer.music.load(selected_bgm)
                     pygame.mixer.music.play()
 
