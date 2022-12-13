@@ -59,6 +59,10 @@ __오픈소스로 가져온 TETRIS_GAME에 다양한 기능과 이벤트를 추�
 - 모든 모드에 피버타임 추가
 <br>
 
+## STRUCTURE
+<img src="https://user-images.githubusercontent.com/93397687/207367747-16e8ae48-e0a3-43f0-bc38-13f18c3e0baa.png" width="600" height="300" >
+
+
 
 ## TO RUN THIS GAME
 ```
