@@ -3175,7 +3175,6 @@ while not done:
                     if not is_rightedge1(dx, dy, mino_en, rotation, matrix):
                         ui_variables.move_sound.play()
                         dx += 1
-                        s
 
             elif event.type == VIDEORESIZE:
                 board_width = board_width
