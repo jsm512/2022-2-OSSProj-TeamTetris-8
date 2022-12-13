@@ -64,6 +64,8 @@ __오픈소스로 가져온 TETRIS_GAME에 다양한 기능과 이벤트를 추�
 ```
 sudo apt install python3-pip
 sudo pip3 install pygame
+
+git clone https://github.com/CSID-DGU/2022-2-OSSProj-TeamTetris-8.git
 cd 2022-2-OSSProj-TeamTetris-8/Tetris_Game
 python3 Tetris.py
 ```
