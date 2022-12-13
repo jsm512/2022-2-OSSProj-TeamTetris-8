@@ -3274,9 +3274,9 @@ while not done:
 
                 # Erase line
                 erase_count = 0
-                for j in range(21):
+                for j in range(height+1):
                     is_full = True
-                    for i in range(10):
+                    for i in range(width):
                         if matrix[i][j] == 0:
                             is_full = False
                     if is_full:
@@ -3284,7 +3284,7 @@ while not done:
                         line_count += 1
                         k = j
                         while k > 0:
-                            for i in range(10):
+                            for i in range(width):
                                 matrix[i][k] = matrix[i][k - 1]
                             k -= 1
                 if erase_count == 1:
@@ -3413,8 +3413,6 @@ while not done:
                     if rotation == 4:
                         rotation = 0
                     draw_mino(dx, dy, mino, rotation, matrix)
-                    # draw_board(next_mino1, next_mino2,
-                    #         hold_mino, score, level, goal)
                     if change % 2 == 1:
                         draw_hardboard_change(next_mino1, next_mino2, hold_mino, score, level, goal)
                     else:
@@ -3465,8 +3463,6 @@ while not done:
                         ui_variables.move_sound.play()
                         dx -= 1
                     draw_mino(dx, dy, mino, rotation, matrix)
-                    # draw_board(next_mino1, next_mino2,
-                    #         hold_mino, score, level, goal)
                     if change % 2 == 1:
                         draw_hardboard_change(next_mino1, next_mino2, hold_mino, score, level, goal)
                     else:
@@ -3478,8 +3474,6 @@ while not done:
                         ui_variables.move_sound.play()
                         dx += 1
                     draw_mino(dx, dy, mino, rotation, matrix)
-                    # draw_board(next_mino1, next_mino2,
-                    #         hold_mino, score, level, goal)
                     if change % 2 == 1:
                         draw_hardboard_change(next_mino1, next_mino2, hold_mino, score, level, goal)
                     else:
