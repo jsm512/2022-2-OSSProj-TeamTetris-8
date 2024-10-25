@@ -3,9 +3,11 @@
 
 <br>
 
- 👿 [한규민](https://github.com/han-gyumin)    
- 👾 [진승민](https://github.com/jsm512)    
- 🤖 [임지훈](https://github.com/zhoon95)
+ 👿 [한규민](https://github.com/han-gyumin) hangm0820@naver.com 
+ 
+ 👾 [진승민](https://github.com/jsm512) wlstmdals12@naver.com 
+ 
+ 🤖 [임지훈](https://github.com/MontaKr) zhoon95@naver.com
 
 <br>
 
@@ -57,11 +59,17 @@ __오픈소스로 가져온 TETRIS_GAME에 다양한 기능과 이벤트를 추�
 - 모든 모드에 피버타임 추가
 <br>
 
+## STRUCTURE
+<img src="https://user-images.githubusercontent.com/93397687/207367747-16e8ae48-e0a3-43f0-bc38-13f18c3e0baa.png" width="600" height="300" >
+
+
 
 ## TO RUN THIS GAME
 ```
 sudo apt install python3-pip
-pip3 install pygame
+sudo pip3 install pygame
+
+git clone https://github.com/CSID-DGU/2022-2-OSSProj-TeamTetris-8.git
 cd 2022-2-OSSProj-TeamTetris-8/Tetris_Game
 python3 Tetris.py
 ```
@@ -88,3 +96,7 @@ python3 Tetris.py
 - https://github.com/CSID-DGU/2021-1-OSSPC-Pint-9
 - https://github.com/CSID-DGU/2021-2-OSSProj-Kkanbu-5
 - https://github.com/hbseo/OSD_game
+
+## Video Link:
+- https://youtu.be/BavBCyprngQ
+
